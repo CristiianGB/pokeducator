@@ -118,7 +118,7 @@ export const Navbar = () => {
 		</div>
 		{/* <!-- Right elements --> */}
 	</div>
-	{/* <!-- Container wrapper --> */}
+	{/* <!-- Container wrapper -->  */}
 	</nav>
 
 	);
