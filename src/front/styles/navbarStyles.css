@@ -1,0 +1,10 @@
+.logo{
+    width: 90px;
+    height: 80px;
+    border-radius: 100%;
+    background-color: yellow;
+}
+.navbar {
+    padding-top: 0rem;
+    padding-bottom: 0rem;
+}

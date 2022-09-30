@@ -1,8 +1,11 @@
 import React from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-
-import { PokemonInfo } from "./pages/pokemonInfo.jsx";
+import { Navbar } from "./component/navbar.jsx";
+import { Footer } from "./component/footer.jsx";
+import  PokeducatorInfoGuarderia  from "./pages/pokeducatorWiki/pokeducatorInfoGuarderia.jsx";
 import injectContext from "./store/appContext.jsx";
+import ScrollToTop from "./component/scrollToTop.jsx";
+
 
 //create your first component
 const Layout = () => {
@@ -13,9 +16,13 @@ const Layout = () => {
   return (
     <div>
       <BrowserRouter basename={basename}>
-        <Routes>
-          <Route element={<PokemonInfo />} path="/" />
-        </Routes>
+        <ScrollToTop>
+          <Navbar/>
+            <Routes>
+              <Route element={<PokeducatorInfoGuarderia />} path="/" />
+            </Routes>
+          <Footer />
+          </ScrollToTop>
       </BrowserRouter>
     </div>
   );
