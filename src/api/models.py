@@ -13,6 +13,8 @@ class User(db.Model):
     first_name = db.Column(db.String(30), nullable=False, unique=False)
     last_name = db.Column(db.String(30), nullable=False, unique=False)
     email = db.Column(db.String(120), unique=True, nullable=False)
+    img = db.Column(db.String(300), nullable=True)
+    is_active = db.Column(db.Boolean(), unique=False, nullable=False, default=True)
     password = db.Column(db.String(80), unique=False, nullable=False)
 
 
@@ -58,6 +60,5 @@ class Pokemon_Fusion(db.Model):
         return {
            
             }
-
 
 
