@@ -1,5 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import logo from "../../assets/img/logo_pokeducator.png"
+import "../../styles/navbarStyles.css"
 
 export const Navbar = () => {
 	return (
@@ -23,24 +25,23 @@ export const Navbar = () => {
 		{/* <!-- Collapsible wrapper --> */}
 		<div className="collapse navbar-collapse" id="navbarSupportedContent">
 		{/* <!-- Navbar brand --> */}
-		<a className="navbar-brand mt-2 mt-lg-0" href="#">
+		<a className="navbar-brand mt-2 mt-lg-0" href="/">
 			<img
-			src="https://mdbcdn.b-cdn.net/img/logo/mdb-transaprent-noshadows.webp"
-			height="15"
-			alt="MDB Logo"
-			loading="lazy"
+			className="logo"
+			src={logo}
+			alt="Pokeducator Logo"
 			/>
 		</a>
 		{/* <!-- Left links --> */}
 		<ul className="navbar-nav me-auto mb-2 mb-lg-0">
 			<li className="nav-item">
-			<a className="nav-link" href="#">Dashboard</a>
+			<a className="nav-link" href="#">Fusión</a>
 			</li>
 			<li className="nav-item">
-			<a className="nav-link" href="#">Team</a>
+			<a className="nav-link" href="#">Pokémon</a>
 			</li>
 			<li className="nav-item">
-			<a className="nav-link" href="#">Projects</a>
+			<a className="nav-link" href="#">Wiki</a>
 			</li>
 		</ul>
 		{/* <!-- Left links --> */}
@@ -50,10 +51,6 @@ export const Navbar = () => {
 		{/* <!-- Right elements --> */}
 		<div className="d-flex align-items-center">
 		{/* <!-- Icon --> */}
-		<a className="text-reset me-3" href="#">
-			<i className="fas fa-shopping-cart"></i>
-		</a>
-
 		{/* <!-- Notifications --> */}
 		<div className="dropdown">
 			<a

@@ -1,5 +1,5 @@
 import React from "react";
-
+import "../../styles/footerStyles.css"
 export const Footer = () => (
 	
 	<footer className="text-center text-lg-start bg-white text-muted">
@@ -115,8 +115,8 @@ export const Footer = () => (
 	</section>
 	{/* <!-- Section: Links  --> */}
 
-	{/* <!-- Copyright --> */}
-	<div className="text-center p-4" style="background-color: rgba(0, 0, 0, 0.025);">
+	{/* <!-- Copyright --> style={{width: "18px"}}*/}
+	<div className="text-center p-4 footerCopy" >
 		© 2021 Copyright:
 		<a className="text-reset fw-bold" href="https://mdbootstrap.com/">MDBootstrap.com</a>
 	</div>
