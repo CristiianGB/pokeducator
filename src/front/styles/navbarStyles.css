@@ -2,9 +2,17 @@
     width: 90px;
     height: 80px;
     border-radius: 100%;
-    background-color: yellow;
 }
 .navbar {
     padding-top: 0rem;
     padding-bottom: 0rem;
 }
+.desplegable_wiki{
+    background-color: rgb(253, 253, 253);
+  }
+  .desplegable_wiki{
+    padding-left: 0px !important;
+  }
+  .desplegable_wiki li{
+    list-style: none;
+  }

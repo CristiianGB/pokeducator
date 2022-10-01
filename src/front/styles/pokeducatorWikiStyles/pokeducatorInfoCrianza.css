@@ -1,0 +1,30 @@
+.pokeimg_centrada{
+  display: block;
+  margin:auto;
+  max-height: 470px;
+  min-width: 380px;
+  border-radius: 7px;
+}
+.grupos_huevo_img{
+  float: right;
+  border-radius: 7px;
+  max-height: 450px;
+}
+.portada{
+    border-radius: 7px;
+}
+.pokeimg{
+    width: 270px;
+    float: right;
+    border-radius: 7px;
+}
+.crianza_imagen {
+    width: 180px;
+    height: 135px;
+    float: right;
+    border-radius: 7px;
+  }
+  .descripcion {
+    margin-left: 10px;
+    margin-right: 10px;
+  }

@@ -3,6 +3,7 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { Navbar } from "./component/navbar.jsx";
 import { Footer } from "./component/footer.jsx";
 import  PokeducatorInfoGuarderia  from "./pages/pokeducatorWiki/pokeducatorInfoGuarderia.jsx";
+import PokeducatorInfoCrianza from "./pages/pokeducatorWiki/pokeducatorInfoCrianza.jsx"
 import injectContext from "./store/appContext.jsx";
 import ScrollToTop from "./component/scrollToTop.jsx";
 
@@ -19,7 +20,8 @@ const Layout = () => {
         <ScrollToTop>
           <Navbar/>
             <Routes>
-              <Route element={<PokeducatorInfoGuarderia />} path="/" />
+              <Route element={<PokeducatorInfoGuarderia />} path="wiki/guarderia-pokemon" />
+              <Route element={<PokeducatorInfoCrianza />} path="wiki/crianza-pokemon" />
             </Routes>
           <Footer />
           </ScrollToTop>
