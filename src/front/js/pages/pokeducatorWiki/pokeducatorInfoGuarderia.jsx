@@ -2,19 +2,19 @@ import React, { useState, useEffect, useContext } from "react";
 import "../../../styles/pokeducatorWikiStyles/pokeducatorInfoGuarderia.css";
 
 const PokeducatorInfoGuarderia = () => {
+  const [num, setNum] = useState(0)
+
   const aStyles = { fontSize: "18px" };
   const subStyles = { fontSize: "15px" };
-
-  const [num, setNum] = useState(0)
 
   return (
     <div className="container align-items-center">
       <div className="row">
         <div className="col-12 my-4">
           <img
-            className="img-fluid w-100"
+            className="img-fluid w-100 portada"
             src="https://fotosparafacebook.es/wp-content/uploads/2016/07/pokemon-portadas-para-facebook-Fotosparafacebook.es-8.jpg"
-            alt="portada Pokeducator"
+            alt="portada Pokeducator Guardería"
           />
         </div>
       </div>
@@ -46,6 +46,7 @@ const PokeducatorInfoGuarderia = () => {
         </p>
         <br />
         <p>
+        <img className="float-start m-3 w-25 pokeimg" src="https://images.wikidexcdn.net/mwuploads/wikidex/6/6f/latest/20070718201559/Huevos_Pok%C3%A9mon.png" alt="Huevos Pokémon" />
           Al sacar a un Pokémon de la guardería nos cobrarán 100 Pokéyen. Si el
           Pokémon ha subido de nivel, además, nos cobrarán 100 Pokéyen más por
           cada nivel que haya subido en la guardería.
@@ -118,6 +119,7 @@ const PokeducatorInfoGuarderia = () => {
         <hr />
       </div>
       <div className="descripcion">
+      <img className="float-start m-3 w-50 pokeimg" src="https://www.cultture.com/pics/2021/07/pokemon-10-consejos-para-formar-un-equipo-competitivo-3.jpg" alt="Huevos Pokémon, pichu y togepi" />
         <p>
           La utilidad de subir experiencia en la guardería es que en ella no se
           ganan puntos de esfuerzo, por lo que es posible aumentar el nivel de
@@ -134,6 +136,7 @@ const PokeducatorInfoGuarderia = () => {
         </p>
         <br />
         <p>
+        
           Mientras está en la guardería, el Pokémon no evoluciona, aunque sea
           una especie que evoluciona por nivel y haya alcanzado dicho nivel, si
           al recoger al Pokémon éste ha alcanzado su nivel de Evolución puedes
@@ -154,6 +157,7 @@ const PokeducatorInfoGuarderia = () => {
         </p>
         <br />
         <p>
+        <img className="quita-movimientosimg mx-2 mb-2" src="https://static.wikia.nocookie.net/espokemon/images/2/27/Quita-movimientos_en_Pt.png" alt="Quita-Movimientos Pokémon" />
           A partir de la segunda generación la guardería es el lugar donde se
           realiza la crianza Pokémon, por lo que al dejar en ella a dos Pokémon
           compatibles (es decir, que tengan en común por lo menos un grupo

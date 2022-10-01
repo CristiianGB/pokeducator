@@ -1,6 +1,17 @@
 /* style="width: 180px"    thumb right
 width="180" height="135"thumbimage lazyloaded
 width="180" height="135"thumbimage */
+.portada{
+  border-radius: 7px;
+}
+.quita-movimientosimg{
+  width: 300px;
+  float: right;
+  border-radius: 7px;
+}
+.pokeimg{
+  border-radius: 7px;
+}
 .invisible{
     visibility: hidden;
 }
@@ -13,6 +24,7 @@ width="180" height="135"thumbimage */
     max-height: 130px;
 }
 .card-img-top {
+  border-radius: 7px;
   width: 100%;
   min-height: 215px;
   max-height: 215px;
@@ -21,7 +33,7 @@ width="180" height="135"thumbimage */
   width: 180px;
   height: 135px;
   float: right;
-  border-radius: 5px;
+  border-radius: 7px;
 }
 .descripcion {
   margin-left: 10px;

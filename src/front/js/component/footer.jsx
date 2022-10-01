@@ -7,7 +7,7 @@ export const Footer = () => (
 	<section className="d-flex justify-content-center justify-content-lg-between p-4 border-bottom">
 		{/* <!-- Left --> */}
 		<div className="me-5 d-none d-lg-block">
-		<span>Get connected with us on social networks:</span>
+		<span>Otras redes sociales:</span>
 		</div>
 		{/* <!-- Left --> */}
 
@@ -45,11 +45,10 @@ export const Footer = () => (
 			<div className="col-md-3 col-lg-4 col-xl-3 mx-auto mb-4">
 			{/* <!-- Content --> */}
 			<h6 className="text-uppercase fw-bold mb-4">
-				<i className="fas fa-gem me-3 text-secondary"></i>Company name
+				<i className="fas fa-gem me-3 text-secondary"></i>Pokeducator!
 			</h6>
 			<p>
-				Here you can use rows and columns to organize your footer content. Lorem ipsum
-				dolor sit amet, consectetur adipisicing elit.
+				"descripcion funciones pagina"
 			</p>
 			</div>
 			{/* <!-- Grid column --> */}
@@ -58,7 +57,7 @@ export const Footer = () => (
 			<div className="col-md-2 col-lg-2 col-xl-2 mx-auto mb-4">
 			{/* <!-- Links --> */}
 			<h6 className="text-uppercase fw-bold mb-4">
-				Products
+				Funciones
 			</h6>
 			<p>
 				<a href="#!" className="text-reset">Angular</a>
