@@ -1238,6 +1238,11 @@ const PokeducatorInfoCrianza = () => {
                 ciudad Azulona y repite, después de 8 veces habrás hecho cerca
                 de 6000 pasos.
               </li>
+              <img
+              className="mx-3 my-2 float-start crianza_imagen w-25 h-25"
+              src="https://static.wikia.nocookie.net/espokemon/images/c/c3/Criapok%C3%A9mon_ROZA.png/"
+              alt="dos personajes de pokemon llevando huevos pokemon"
+              />
               <li>
                 En Pokémon Blanco y Negro ve al Puente Saeta y simplemente
                 recorre el puente arriba y abajo con la bicicleta, desde que se
@@ -1249,11 +1254,7 @@ const PokeducatorInfoCrianza = () => {
                 colocar dos objetos pesados, uno en el botón de dirección y otro
                 en el botón B y así darás vueltas infinitas.
               </li>
-              <img
-              className="mx-3 my-2 float-start crianza_imagen w-25 h-25"
-              src="https://static.wikia.nocookie.net/espokemon/images/c/c3/Criapok%C3%A9mon_ROZA.png/"
-              alt="dos personajes de pokemon llevando huevos pokemon"
-              />
+              
               <li>
                 En Pokémon X y Pokémon Y ve en bicicleta a lo largo de la ruta
                 7, simplemente debes ponerte en medio del camino e ir de
