@@ -1,0 +1,30 @@
+.generoimg{
+    max-width: 14px;
+    max-height: 14px;
+}
+.genero_imagen {
+    width: 180px;
+    height: 135px;
+    float: right;
+    border-radius: 7px;
+}
+.invisible{
+    visibility: hidden;
+}
+.card{
+    margin: 15px;
+    padding: 5px;
+    box-shadow: 5px 2px 2px rgba(0, 0, 0, 0.274);
+}
+.card-body{
+    max-height: 130px;
+}
+.card-img-top {
+  border-radius: 7px;
+  width: 100%;
+  min-height: 215px;
+  max-height: 215px;
+}
+.portada{
+    max-height: 479.7px ;
+}

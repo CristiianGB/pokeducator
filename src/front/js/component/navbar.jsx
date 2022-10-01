@@ -63,9 +63,9 @@ export const Navbar = () => {
                     </Link>
                   </li>
                   <li>
-                    <a className="dropdown-item" href="#">
-                      Something else here
-                    </a>
+                    <Link className="dropdown-item" to="/wiki/genero-pokemon">
+                      Género Pokémon
+                    </Link>
                   </li>
                 </ul>
               ) : null}

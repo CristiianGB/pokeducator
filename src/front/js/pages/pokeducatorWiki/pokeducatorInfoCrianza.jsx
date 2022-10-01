@@ -157,7 +157,7 @@ const PokeducatorInfoCrianza = () => {
         <div className="col-12">
           <p className="funcionamiento descripcion">
             La crianza en los videojuegos solo se produce en la{" "}
-            <a href="#guarderia_pokemon">guardería Pokémon</a>. En la guardería
+            <a href="/wiki/guarderia-pokemon">guardería Pokémon</a>. En la guardería
             hay que dejar a dos Pokémon de género opuesto (un Pokémon macho y
             otro hembra) y ambos deben compartir un grupo huevo en común.
             También se puede conseguir si uno de los dos es un Ditto (solo uno
