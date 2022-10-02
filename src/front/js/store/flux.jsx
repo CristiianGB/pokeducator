@@ -1,6 +1,7 @@
 const getState = ({ getStore, getActions, setStore }) => {
 	return {
 		store: {
+			pokemon:[],
 			message: null,
 			demo: [
 				{
@@ -46,7 +47,16 @@ const getState = ({ getStore, getActions, setStore }) => {
 
 				//reset the global store
 				setStore({ demo: demo });
-			}
+			},
+			fetchPokeapiPokemon: () => {
+				fetch("https://pokeapi.co/api/v2/pokemon", {
+				  method: "GET",
+				  headers: { "Content-type": "application/json" },
+				})
+				  .then((response) => response.json())
+				  .then((response) => setStore({ pokemon: response.results }))
+				  .catch((err) => console.error(err));
+			  }
 		}
 	};
 };
