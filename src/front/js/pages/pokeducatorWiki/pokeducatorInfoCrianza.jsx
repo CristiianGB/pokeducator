@@ -2,8 +2,10 @@ import React, { useState, useEffect, useContext } from "react";
 import "../../../styles/pokeducatorWikiStyles/pokeducatorInfoCrianza.css";
 import grupos_huevo_img from "../../../assets/img/grupos_huevo_img.png";
 import movimientos_huevo_img from "../../../assets/img/movimientos_huevo_img.png";
+import { Context } from "../../store/appContext.jsx"
 
 const PokeducatorInfoCrianza = () => {
+  const { store, actions } = useContext(Context);
   const [num, setNum] = useState(0) 
 
   const aStyles = { fontSize: "18px" };
@@ -12,6 +14,8 @@ const PokeducatorInfoCrianza = () => {
     width: "300px",
     margin: "auto",
   };
+  
+  console.log(store)
 
   return (
     <div className="container align-items-center">
