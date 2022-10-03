@@ -50,22 +50,32 @@ const getState = ({ getStore, getActions, setStore }) => {
 				setStore({ demo: demo });
 			},
 			fetchPokeapiPokemon: () => {
-				fetch("https://pokeapi.co/api/v2/pokemon?offset=0&limit=1154", {
+				fetch("https://pokeapi.co/api/v2/pokemon", {
 				  method: "GET",
 				  headers: { "Content-type": "application/json" },
 				})
-				  .then((response) => response.json())
+				.then((response) => {
+					if (response.ok){
+						return response.json()
+					}
+					throw new Error("no se ha podido acceder a la api")
+				  })
 				  .then((data) => setStore({ pokemons: data.results }))
-				  .catch((err) => console.error(err))
+				  .catch((err) => console.error(err.message))
 			},
 			fetchPokeapiPokemonId: (url) => {
 				fetch(url, {
 				  method: "GET",
 				  headers: { "Content-type": "application/json" },
 				})
-				  .then((response) => response.json())
-				  .then((data) => setStore({ pokemon: data.results }))
-				  .catch((err) => console.error(err));
+				  .then((response) => {
+					if (response.ok){
+						return response.json()
+					}
+					throw new Error("no se ha podido acceder a la api")
+				  })
+				  .then((data) => setStore({ pokemon: data }))
+				  .catch((err) => console.error(err.message));
 			}
 		}
 	};

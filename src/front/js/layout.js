@@ -5,6 +5,7 @@ import { Footer } from "./component/footer.jsx";
 import  PokeducatorInfoGuarderia  from "./pages/pokeducatorWiki/pokeducatorInfoGuarderia.jsx";
 import PokeducatorInfoCrianza from "./pages/pokeducatorWiki/pokeducatorInfoCrianza.jsx";
 import PokeducatorInfoGenero from "./pages/pokeducatorWiki/pokeducatorInfoGenero.jsx";
+import PokeducatorPokemons from "./pages/pokeducatorPokemons.jsx"
 import injectContext from "./store/appContext.jsx";
 import ScrollToTop from "./component/scrollToTop.jsx";
 
@@ -24,6 +25,7 @@ const Layout = () => {
               <Route element={<PokeducatorInfoGuarderia />} path="wiki/guarderia-pokemon" />
               <Route element={<PokeducatorInfoCrianza />} path="wiki/crianza-pokemon" />
               <Route element={<PokeducatorInfoGenero />} path="wiki/genero-pokemon" />
+              <Route element={<PokeducatorPokemons />} path="/pokemons" />
             </Routes>
           <Footer />
           </ScrollToTop>
