@@ -1,7 +1,8 @@
 const getState = ({ getStore, getActions, setStore }) => {
 	return {
 		store: {
-			pokemon:[],
+			pokemons:[],
+			pokemon: {},
 			message: null,
 			demo: [
 				{
@@ -54,7 +55,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 				  headers: { "Content-type": "application/json" },
 				})
 				  .then((response) => response.json())
-				  .then((data) => setStore({ pokemon: data.results }))
+				  .then((data) => setStore({ pokemons: data.results }))
 				  .catch((err) => console.error(err))
 			},
 			fetchPokeapiPokemonId: (url) => {
