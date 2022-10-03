@@ -1,7 +1,8 @@
 const getState = ({ getStore, getActions, setStore }) => {
 	return {
 		store: {
-			pokemon:[],
+			pokemons:[],
+			pokemon: {},
 			message: null,
 			demo: [
 				{
@@ -49,14 +50,23 @@ const getState = ({ getStore, getActions, setStore }) => {
 				setStore({ demo: demo });
 			},
 			fetchPokeapiPokemon: () => {
-				fetch("https://pokeapi.co/api/v2/pokemon", {
+				fetch("https://pokeapi.co/api/v2/pokemon?offset=0&limit=1154", {
 				  method: "GET",
 				  headers: { "Content-type": "application/json" },
 				})
 				  .then((response) => response.json())
-				  .then((response) => setStore({ pokemon: response.results }))
+				  .then((data) => setStore({ pokemons: data.results }))
+				  .catch((err) => console.error(err))
+			},
+			fetchPokeapiPokemonId: (url) => {
+				fetch(url, {
+				  method: "GET",
+				  headers: { "Content-type": "application/json" },
+				})
+				  .then((response) => response.json())
+				  .then((data) => setStore({ pokemon: data.results }))
 				  .catch((err) => console.error(err));
-			  }
+			}
 		}
 	};
 };
