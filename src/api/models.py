@@ -29,20 +29,7 @@ class User(db.Model):
             "last_name" : self.last_name,
             "email": self.email
         }
-class Pokemon(db.Model):
-    pokemon_id = db.Column(db.Integer, primary_key=True, unique= True) #aqui igual que el de la pokedex
-    name = db.Column(db.String(120), nullable=False, unique=False)
-    atk = db.Column(db.Integer, unique=False, nullable=False)
-    defe = db.Column(db.Integer, unique=False, nullable=False)
-    sDf = db.Column(db.Integer, unique=False, nullable=False)
-    
-    def __repr__(self):
-        return self.name
 
-    def serialize(self):
-        return {
-           
-            }
 
 class Pokemon_Fusion(db.Model):
     pokemon_id = db.Column(db.Integer, primary_key=True, unique= True) 
