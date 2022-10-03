@@ -1,5 +1,7 @@
 import React from "react";
 import "../../styles/footerStyles.css"
+
+
 export const Footer = () => (
 	
 	<footer className="text-center text-lg-start bg-white text-muted">
