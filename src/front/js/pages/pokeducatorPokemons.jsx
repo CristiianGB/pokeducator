@@ -3,9 +3,7 @@ import { Context } from "../store/appContext.jsx";
 import PokemonImg from "../component/pokemonimg.jsx";
 
 const PokeducatorPokemons = () => {
-    const {store, context} = useContext(Context)
-    
-    console.log(store.pokemon_data)
+const {store} = useContext(Context)
 
     return (
       <div className="container align-items-center">
