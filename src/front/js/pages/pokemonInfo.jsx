@@ -153,6 +153,7 @@ export const PokemonInfo = () => {
                       <tr>
                         <th className="text-end">Sp. Atk:</th>
                         <td className="text-center">60</td>
+
                         <td className="align-middle" style={{ width: "10rem" }}>
                           <div className="progress">
                             <div
