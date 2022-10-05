@@ -23,7 +23,7 @@ const Layout = () => {
         <ScrollToTop>
           <Navbar/>
             <Routes>
-              <Route element={<PokemonInfo />} path={"/pokemon"} />
+              <Route element={<PokemonInfo />} path={"/pokemon/:theid"} />
               <Route element={<PokeducatorInfoGuarderia />} path="/wiki/guarderia-pokemon" />
               <Route element={<PokeducatorInfoCrianza />} path="/wiki/crianza-pokemon" />
               <Route element={<PokeducatorInfoGenero />} path="/wiki/genero-pokemon" />

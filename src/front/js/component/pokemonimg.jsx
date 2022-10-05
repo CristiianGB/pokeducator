@@ -4,7 +4,7 @@ import "../../styles/footerStyles.css"
 import { Context } from "../store/appContext.jsx";
 
 const PokemonImg = ({pokemon}) => {
-    
+  
     return (
         <div className="col-3">
           <div>

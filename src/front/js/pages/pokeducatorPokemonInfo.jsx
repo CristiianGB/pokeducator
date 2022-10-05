@@ -1,6 +1,12 @@
-import React from "react";
+import React, { useContext } from "react";
+import { useParams } from "react-router-dom";
+import { Context } from "../store/appContext.jsx";
 
 export const PokemonInfo = () => {
+  const {store, actions} = useContext(Context)
+  const params = useParams();
+
+
   return (
     <div className="container border border-primary">
       <div className="d-flex justify-content-center">
@@ -8,7 +14,7 @@ export const PokemonInfo = () => {
           <div className="row">
             <div className="col-md-5 p-0">
               <img
-                src="https://picsum.photos/id/237/500/500"
+                src={store.pokemon_data[params.theid]?.sprites.front_default}
                 className="img-fluid float-start"
                 style={{ width: "300px", height: "400px" }}
                 alt="..."
