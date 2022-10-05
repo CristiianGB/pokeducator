@@ -2,7 +2,8 @@ import React from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { Navbar } from "./component/navbar.jsx";
 import { Footer } from "./component/footer.jsx";
-import  PokeducatorInfoGuarderia  from "./pages/pokeducatorWiki/pokeducatorInfoGuarderia.jsx";
+import { PokemonInfo } from "./pages/pokeducatorPokemonInfo.jsx";
+import PokeducatorInfoGuarderia  from "./pages/pokeducatorWiki/pokeducatorInfoGuarderia.jsx";
 import PokeducatorInfoCrianza from "./pages/pokeducatorWiki/pokeducatorInfoCrianza.jsx";
 import PokeducatorInfoGenero from "./pages/pokeducatorWiki/pokeducatorInfoGenero.jsx";
 import PokeducatorPokemons from "./pages/pokeducatorPokemons.jsx"
@@ -22,9 +23,10 @@ const Layout = () => {
         <ScrollToTop>
           <Navbar/>
             <Routes>
-              <Route element={<PokeducatorInfoGuarderia />} path="wiki/guarderia-pokemon" />
-              <Route element={<PokeducatorInfoCrianza />} path="wiki/crianza-pokemon" />
-              <Route element={<PokeducatorInfoGenero />} path="wiki/genero-pokemon" />
+              <Route element={<PokemonInfo />} path={"/pokemon"} />
+              <Route element={<PokeducatorInfoGuarderia />} path="/wiki/guarderia-pokemon" />
+              <Route element={<PokeducatorInfoCrianza />} path="/wiki/crianza-pokemon" />
+              <Route element={<PokeducatorInfoGenero />} path="/wiki/genero-pokemon" />
               <Route element={<PokeducatorPokemons />} path="/pokemons" />
             </Routes>
           <Footer />
