@@ -30,6 +30,26 @@ class User(db.Model):
             "email": self.email
         }
 
+class Pokemon(db.Model):
+    pokemon_id = db.Column(db.Integer, primary_key=True)
+    abilitie = db.Column(db.String(40), unique=False, nullable=False)
+    move = db.Column(db.String(40), unique=False, nullable=False)
+    pokemon_name = db.Column(db.String(20), unique=True, nullable=False)
+    pokemon_photo = db.Column(db.String(200), unique=True, nullable=False)
+    pokemon_type = db.Column(db.String(100), unique=False, nullable=False)
+
+    def __repr__(self):
+        return self.pokemon_name
+        
+    def serialize(self):
+        return {
+            "pokemon_id":self.pokemon_id,
+            "abilitie":self.abilitie,
+            "move":self.move,
+            "pokemon_name":self.pokemon_name,
+            "pokemon_photo":self.pokemon_photo,
+            "pokemon_type":self.pokemon_type
+        }
 
 class Pokemon_Fusion(db.Model):
     pokemon_id = db.Column(db.Integer, primary_key=True, unique= True) 
