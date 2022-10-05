@@ -1,8 +1,8 @@
 const getState = ({ getStore, getActions, setStore }) => {
 	return {
 		store: {
-			pokemons:[],
-			pokemon: {},
+			pokemon:[], // Éder esta buenorro
+			pokemon_data: [],
 			message: null,
 			demo: [
 				{
@@ -57,10 +57,15 @@ const getState = ({ getStore, getActions, setStore }) => {
 				.then((response) => {
 					if (response.ok){
 						return response.json()
+
 					}
 					throw new Error("no se ha podido acceder a la api")
 				  })
-				  .then((data) => setStore({ pokemons: data.results }))
+				  .then((data) => {
+					data.results.map( async (pokemon) => {
+						await getActions().fetchPokeapiPokemonId(pokemon.url)
+					})
+					setStore({ pokemon: data.results })})
 				  .catch((err) => console.error(err.message))
 			},
 			fetchPokeapiPokemonId: (url) => {
@@ -74,7 +79,11 @@ const getState = ({ getStore, getActions, setStore }) => {
 					}
 					throw new Error("no se ha podido acceder a la api")
 				  })
-				  .then((data) => setStore({ pokemon: data }))
+				  .then((data) => {
+					let new_pokemon_data = getStore().pokemon_data
+					new_pokemon_data.push(data)
+					setStore({ pokemon_data: new_pokemon_data })
+				})
 				  .catch((err) => console.error(err.message));
 			}
 		}
