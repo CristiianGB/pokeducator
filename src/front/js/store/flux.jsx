@@ -6,7 +6,7 @@ const getState = ({ getStore, getActions, setStore }) => {
     },
     actions: {
       PokemonFind: () => {//limit cambiarlo a 1154
-        fetch("https://pokeapi.co/api/v2/pokemon/?offset=0&limit=40")
+        fetch("https://pokeapi.co/api/v2/pokemon/?offset=0&limit=1154")
           .then((response) => response.json())
           .then((data) =>{
               let pokemonsAll = getStore().pokemon
