@@ -51,7 +51,6 @@ const getState = ({ getStore, getActions, setStore }) => {
 				  if(i+1 == new_pokemon_data.length){
 					new_pokemon_data = new_pokemon_data.sort((a, b) => a.id - b.id)
 					}
-                  console.log(new_pokemon_data);
                   return setStore({ pokemon_data: new_pokemon_data });
                 });
             })

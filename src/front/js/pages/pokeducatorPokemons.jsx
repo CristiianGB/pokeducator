@@ -3,31 +3,16 @@ import { Context } from "../store/appContext.jsx";
 import "../../styles/pokeducatorPokemonsStyles.css";
 
 const PokeducatorPokemons = () => {
-  const [result, setResult] = useState([]);
-  const [poke, setPoke] = useState([]);
+  const {store, actions} = useContext(Context)
+ 
   const [load, setLoad] = useState("true");
 
-  const arr = [];
+  
 
-  useEffect(() => {
-    setPoke(poke)
-    fetch("https://pokeapi.co/api/v2/pokemon/")
-      .then((response) => response.json())
-      .then((data) =>
-        setResult(
-          data.results.map((item) => {
-            fetch(item.url)
-              .then((response) => response.json())
-              .then((allpokemon) => arr.push(allpokemon));
-            setPoke(arr);
-          })
-        )
-      );
-  }, []);
+
 
   setTimeout(() => {
     setLoad(false);
-    console.log(poke);
   }, 1000);
 
   return (
@@ -36,7 +21,7 @@ const PokeducatorPokemons = () => {
         {load ? (
           <p>Loading...</p>
         ) : (
-          poke.map((img, i) => (
+          store.pokemon_data.map((img, i) => (
             <div className="col-md-3" id={img.id} key={img.id}>
               <div
                 className="card"
