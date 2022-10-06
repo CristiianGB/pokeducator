@@ -4,8 +4,9 @@ import "../../styles/pokeducatorPokemonsStyles.css";
 
 const PokeducatorPokemons = () => {
   const {store, actions} = useContext(Context)
- 
   const [load, setLoad] = useState("true");
+  const [iSlice, setISlice] = useState(0)
+  const [jSlice, setJSlice] = useState(20)
 
   setTimeout(() => {
     setLoad(false);
@@ -13,11 +14,30 @@ const PokeducatorPokemons = () => {
 
   return (
     <div className="App container align-items-center">
+      <div className="row d-flex justify-content-end mt-4">
+        {iSlice==0?"":
+        <button 
+        className="btn btn-primary btn-sm mx-3 float-start w-25" 
+        onClick={()=>{
+          setISlice(iSlice-20)
+          setJSlice(jSlice-20)
+        }}>
+            Anterior
+        </button>}
+        <button 
+        className="btn btn-primary btn-sm mx-3 float-end w-25"
+        onClick={()=>{
+          setISlice(iSlice+20)
+          setJSlice(jSlice+20)
+        }}>
+            Siguiente
+        </button>
+      </div>
       <div className="pokegallery">
         {load ? (
           <p>Loading...</p>
         ) : (
-          store.pokemon_data.map((img, i) => (
+          store.pokemon_data.slice(iSlice,jSlice).map((img, i) => (
             <div className="col-md-3" id={img.id} key={img.id}>
               <div
                 className="card"
