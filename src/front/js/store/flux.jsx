@@ -48,50 +48,6 @@ const getState = ({ getStore, getActions, setStore }) => {
 
 				//reset the global store
 				setStore({ demo: demo });
-			},
-			fetchPokeapiPokemon: () => {
-				fetch("https://pokeapi.co/api/v2/pokemon", {
-				  method: "GET",
-				  headers: { "Content-type": "application/json" },
-				})
-				.then((response) => {
-					if (response.ok){
-						return response.json()
-					}
-					throw new Error("no se ha podido acceder a la api")
-				  })
-				.then((data) => {
-					data.results.map( async (pokemon) => {
-						await getActions().fetchPokeapiPokemonId(pokemon.url)
-					})
-					setStore({ pokemon: data.results })
-					console.log(getStore().pokemon_data)
-				})
-				 .then(()=>{
-				 	let pokemon_data_sorted = getStore().pokemon_data
-				 	pokemon_data_sorted = pokemon_data_sorted.sort((a, b) => a.id - b.id)
-				 	setStore({ pokemon_data: pokemon_data_sorted })
-				 	console.log(pokemon_data_sorted)
-				 })
-				.catch((err) => console.error(err.message))
-			},
-			fetchPokeapiPokemonId: (url) => {
-				fetch(url, {
-				  method: "GET",
-				  headers: { "Content-type": "application/json" },
-				})
-				  .then((response) => {
-					if (response.ok){
-						return response.json()
-					}
-					throw new Error("no se ha podido acceder a la api")
-				  })
-				  .then((data) => {
-					let new_pokemon_data = getStore().pokemon_data
-					new_pokemon_data.push(data)
-					return setStore({ pokemon_data: new_pokemon_data })
-				})
-				  .catch((err) => console.error(err.message));
 			}
 		}
 	};
