@@ -7,10 +7,6 @@ const PokeducatorPokemons = () => {
  
   const [load, setLoad] = useState("true");
 
-  
-
-
-
   setTimeout(() => {
     setLoad(false);
   }, 1000);
