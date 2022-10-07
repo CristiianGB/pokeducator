@@ -1,11 +1,19 @@
-import React, { useContext } from "react";
+import React, { useContext, useState, useEffect} from "react";
 import { useParams } from "react-router-dom";
 import { Context } from "../store/appContext.jsx";
 
-export const PokemonInfo = () => {
-  const {store, actions} = useContext(Context)
-  const params = useParams();
 
+const PokemonInfo = () => {
+  const {store, actions} = useContext(Context)
+
+  const params = useParams();
+  const [pokemon, setPokemon] = useState(store.pokemon_data[params.theid-1])
+  
+  useEffect(()=>{
+    if(!actions.pokemonFindOneInData(params.theid)){
+      actions.pokemonFindOne("https://pokeapi.co/api/v2/pokemon/"+params.theid)
+    }
+  }, [])
 
   return (
     <div className="container border border-primary">
@@ -14,17 +22,17 @@ export const PokemonInfo = () => {
           <div className="row">
             <div className="col-md-5 p-0">
               <img
-                src={store.pokemon_data[params.theid]?.sprites.front_default}
+                src={store.single_pokemon_data.sprites?.front_default}
                 className="img-fluid float-start"
                 style={{ width: "300px", height: "400px" }}
                 alt="..."
               />
               <div className="d-flex justify-content-end">
-                <button type="button" class="btn btn-primary btn-sm">
-                  <i class="fas fa-random"></i>
+                <button type="button" className="btn btn-primary btn-sm">
+                  <i className="fas fa-random"></i>
                 </button>
-                <button type="button" class="btn btn-primary btn-sm">
-                  <i class="fas fa-map-marked-alt"></i>
+                <button type="button" className="btn btn-primary btn-sm">
+                  <i className="fas fa-map-marked-alt"></i>
                 </button>
               </div>
             </div>
@@ -165,7 +173,7 @@ export const PokemonInfo = () => {
       </div>
       <div className="moves">
         <h2 className="text-center">MOVES</h2>
-        <table class="table table-bordered">
+        <table className="table table-bordered">
           <thead>
             <tr></tr>
           </thead>
@@ -198,3 +206,4 @@ export const PokemonInfo = () => {
   );
 };
 
+export default PokemonInfo;

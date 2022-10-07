@@ -29,7 +29,16 @@ const injectContext = PassedComponent => {
 			 * store, instead use actions, like this:
 			 **/
 			
-			state.actions.PokemonFind(); // <---- calling this function from the flux.js actions
+			let pokemonDataStorage = JSON.parse(localStorage.getItem("pokemon_data"))
+			let pokemonStorage = JSON.parse(localStorage.getItem("pokemon"))
+			if ( pokemonDataStorage && pokemonDataStorage.length > 0){
+				state.actions.pokemonDataLocalStorage(pokemonDataStorage)
+				state.actions.pokemonLocalStorage(pokemonStorage)
+			}
+			else{
+				state.actions.pokemonFind();
+			}
+			
 		}, []);
 
 		// The initial value for the context is not null anymore, but the current state of this component,
