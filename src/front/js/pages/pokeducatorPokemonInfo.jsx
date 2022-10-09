@@ -1,167 +1,167 @@
-import React, { useContext, useState, useEffect} from "react";
+import React, { useContext, useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { Context } from "../store/appContext.jsx";
 
-
 const PokemonInfo = () => {
-  const {store, actions} = useContext(Context)
+  const { store, actions } = useContext(Context);
 
   const params = useParams();
-  const [pokemon, setPokemon] = useState(store.pokemon_data[params.theid-1])
-  
-  useEffect(()=>{
-    if(!actions.pokemonFindOneInData(params.theid)){
-      actions.pokemonFindOne("https://pokeapi.co/api/v2/pokemon/"+params.theid)
+  const [pokemon, setPokemon] = useState(store.pokemon_data[params.theid - 1]);
+
+  useEffect(() => {
+    if (!actions.pokemonFindOneInData(params.theid)) {
+      actions.pokemonFindOne(
+        "https://pokeapi.co/api/v2/pokemon/" + params.theid
+      );
     }
-  }, [])
+  }, []);
 
   return (
-    <div className="container border border-primary">
-      <div className="d-flex justify-content-center">
-        <div className="card">
-          <div className="row">
-            <div className="col-md-5 p-0">
-              <img
-                src={store.single_pokemon_data.sprites?.front_default}
-                className="img-fluid float-start"
-                style={{ width: "300px", height: "400px" }}
-                alt="..."
-              />
-              <div className="d-flex justify-content-end">
-                <button type="button" className="btn btn-primary btn-sm">
-                  <i className="fas fa-random"></i>
-                </button>
-                <button type="button" className="btn btn-primary btn-sm">
-                  <i className="fas fa-map-marked-alt"></i>
-                </button>
-              </div>
-            </div>
-
-            <div className="col-md-7">
-              <div className="card-body p-1">
-                <h5 className="card-title text-center">NOMBRE POKEMON</h5>
-                <div className="table">
-                  <table className="table">
-                    <tbody>
-                      <tr>
-                        <th className="text-end">HP:</th>
-                        <td className="text-center">39</td>
-                        <td className="align-middle" style={{ width: "10rem" }}>
-                          <div className="progress">
-                            <div
-                              className="progress-bar bg-success"
-                              role="progressbar"
-                              style={{ width: "39%" }}
-                              aria-valuenow="25"
-                              aria-valuemin="0"
-                              aria-valuemax="100"
-                            ></div>
-                          </div>
-                        </td>
-                      </tr>
-                      <tr>
-                        <th className="text-end">Attack:</th>
-                        <td className="text-center">52</td>
-                        <td className="align-middle" style={{ width: "10rem" }}>
-                          <div className="progress">
-                            <div
-                              className="progress-bar bg-success"
-                              role="progressbar"
-                              style={{ width: "52%" }}
-                              aria-valuenow="25"
-                              aria-valuemin="0"
-                              aria-valuemax="100"
-                            ></div>
-                          </div>
-                        </td>
-                      </tr>
-                      <tr>
-                        <th className="text-end">Defense:</th>
-                        <td className="text-center">43</td>
-                        <td className="align-middle" style={{ width: "10rem" }}>
-                          <div className="progress">
-                            <div
-                              className="progress-bar bg-success"
-                              role="progressbar"
-                              style={{ width: "43%" }}
-                              aria-valuenow="25"
-                              aria-valuemin="0"
-                              aria-valuemax="100"
-                            ></div>
-                          </div>
-                        </td>
-                      </tr>
-                      <tr>
-                        <th className="text-end">Sp. Atk:</th>
-                        <td className="text-center">60</td>
-
-                        <td className="align-middle" style={{ width: "10rem" }}>
-                          <div className="progress">
-                            <div
-                              className="progress-bar bg-success"
-                              role="progressbar"
-                              style={{ width: "60%" }}
-                              aria-valuenow="25"
-                              aria-valuemin="0"
-                              aria-valuemax="100"
-                            ></div>
-                          </div>
-                        </td>
-                      </tr>
-                      <tr>
-                        <th className="text-end">Sp. Def:</th>
-                        <td className="text-center">50</td>
-                        <td className="align-middle" style={{ width: "10rem" }}>
-                          <div className="progress">
-                            <div
-                              className="progress-bar bg-success"
-                              role="progressbar"
-                              style={{ width: "50%" }}
-                              aria-valuenow="25"
-                              aria-valuemin="0"
-                              aria-valuemax="100"
-                            ></div>
-                          </div>
-                        </td>
-                      </tr>
-                      <tr>
-                        <th className="text-end">Speed:</th>
-                        <td className="text-center">65</td>
-                        <td className="align-middle" style={{ width: "10rem" }}>
-                          <div className="progress">
-                            <div
-                              className="progress-bar bg-success"
-                              role="progressbar"
-                              style={{ width: "65%" }}
-                              aria-valuenow="25"
-                              aria-valuemin="0"
-                              aria-valuemax="100"
-                            ></div>
-                          </div>
-                        </td>
-                      </tr>
-                    </tbody>
-                  </table>
-                </div>
-              </div>
-              <h5 className="text-center">Type: 🔥⚡🌿</h5>
-              <h5 className="text-center">Evolutions:</h5>
-              <div className="d-flex justify-content-between p-2 m-2 border">
-                <a href="http://" target="_blank" rel="noopener noreferrer">
-                  IMG
-                </a>
-                <a href="http://" target="_blank" rel="noopener noreferrer">
-                  IMG
-                </a>
-                <a href="http://" target="_blank" rel="noopener noreferrer">
-                  IMG
-                </a>
-              </div>
+    <div className="container">
+      <div className="row justify-content-center">
+        {/* DIV LEFT */}
+        <div className="d-flex flex-column col-md-4 align-items-center">
+          <img
+            src={store.single_pokemon_data.sprites?.front_default}
+            className="img-fluid rounded"
+            style={{ width: "400px", height: "400px" }}
+          />
+          <div className="btn-group">
+            <button type="button" className="btn btn-default">
+              Izquierdo
+            </button>
+            <button type="button" className="btn btn-default">
+              Derecho
+            </button>
+          </div>
+        </div>
+        {/* DIV RIGHT */}
+        <div className="col-5 d-flex flex-column">
+          <h5 className="text-center">{store.single_pokemon_data.name}</h5>
+          {/* STATS */}
+          <div>
+            <table className="table m-0">
+              <tbody className="text-center align-middle">
+                <tr>
+                  <th className="text-end p-0 col-3">HP:</th>
+                  <td className="p-0 col-3">sdasd</td>
+                  <td className="p-0">
+                    <div className="progress">
+                      <div
+                        className="progress-bar bg-success m-0"
+                        role="progressbar"
+                        style={{ width: "39%" }}
+                        aria-valuenow="39"
+                        aria-valuemin="0"
+                        aria-valuemax="100"
+                      ></div>
+                    </div>
+                  </td>
+                </tr>
+                <tr>
+                  <th className="text-end p-0 col-3">Attack:</th>
+                  <td className="p-0 col-3">52</td>
+                  <td className="p-0">
+                    <div className="progress">
+                      <div
+                        className="progress-bar bg-success m-0"
+                        role="progressbar"
+                        style={{ width: "52%" }}
+                        aria-valuenow="52"
+                        aria-valuemin="0"
+                        aria-valuemax="100"
+                      ></div>
+                    </div>
+                  </td>
+                </tr>
+                <tr>
+                  <th className="text-end p-0 col-3">Defense:</th>
+                  <td className="p-0 col-3">43</td>
+                  <td className="p-0">
+                    <div className="progress">
+                      <div
+                        className="progress-bar bg-success m-0"
+                        role="progressbar"
+                        style={{ width: "43%" }}
+                        aria-valuenow="43"
+                        aria-valuemin="0"
+                        aria-valuemax="100"
+                      ></div>
+                    </div>
+                  </td>
+                </tr>
+                <tr>
+                  <th className="text-end p-0 col-3">Sp. Atk:</th>
+                  <td className="p-0 col-3">60</td>
+                  <td className="p-0">
+                    <div className="progress">
+                      <div
+                        className="progress-bar bg-success m-0"
+                        role="progressbar"
+                        style={{ width: "60%" }}
+                        aria-valuenow="60"
+                        aria-valuemin="0"
+                        aria-valuemax="100"
+                      ></div>
+                    </div>
+                  </td>
+                </tr>
+                <tr>
+                  <th className="text-end p-0 col-3">Sp. Def:</th>
+                  <td className="p-0 col-3">50</td>
+                  <td className="p-0">
+                    <div className="progress">
+                      <div
+                        className="progress-bar bg-success m-0"
+                        role="progressbar"
+                        style={{ width: "50%" }}
+                        aria-valuenow="50"
+                        aria-valuemin="0"
+                        aria-valuemax="100"
+                      ></div>
+                    </div>
+                  </td>
+                </tr>
+                <tr>
+                  <th className="text-end p-0 col-3">Speed:</th>
+                  <td className="p-0 col-3">65</td>
+                  <td className="p-0">
+                    <div className="progress">
+                      <div
+                        className="progress-bar bg-success m-0"
+                        role="progressbar"
+                        style={{ width: "65%" }}
+                        aria-valuenow="65"
+                        aria-valuemin="0"
+                        aria-valuemax="100"
+                      ></div>
+                    </div>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          {/* TYPE */}
+          <h5 className="text-center">Type: 🔥⚡🌿</h5>
+          {/* EVOLUTION */}
+          <div>
+            <h5 className="text-center">Evolutions:</h5>
+            <div className="d-flex justify-content-between">
+              <a href="http://" target="_blank" rel="noopener noreferrer">
+                IMG
+              </a>
+              <a href="http://" target="_blank" rel="noopener noreferrer">
+                IMG
+              </a>
+              <a href="http://" target="_blank" rel="noopener noreferrer">
+                IMG
+              </a>
             </div>
           </div>
         </div>
       </div>
-      <div className="text-center border m-3">
+      {/* GENERAL INFO */}
+      <div className="text-center m-3">
         <h2>Info general</h2>
         <p className="card-text">
           Charmander might look like a good Pokemon to use due to its movepool
@@ -171,6 +171,7 @@ const PokemonInfo = () => {
           their better Attack, Speed, and bulk.
         </p>
       </div>
+      {/* TABLE OF MOVES */}
       <div className="moves">
         <h2 className="text-center">MOVES</h2>
         <table className="table table-bordered">
