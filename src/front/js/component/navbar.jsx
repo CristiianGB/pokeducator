@@ -42,6 +42,11 @@ export const Navbar = () => {
               </a>
             </li>
             <li className="nav-item">
+              <a className="nav-link" href="/movimientos">
+                Movimientos
+              </a>
+            </li>
+            <li className="nav-item">
               <a className="nav-link" href="/objetos">
                 Objetos
               </a>
@@ -73,7 +78,7 @@ export const Navbar = () => {
                     </Link>
                   </li>
                   <li>
-                    <Link className="dropdown-item" to="/wiki/genero-pokemon">
+                    <Link className="dropdown-item" to="/wiki/grupos-huevo">
                       Grupo Huevo
                     </Link>
                   </li>

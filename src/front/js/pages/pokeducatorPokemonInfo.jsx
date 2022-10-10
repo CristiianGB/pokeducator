@@ -4,9 +4,8 @@ import { Context } from "../store/appContext.jsx";
 
 const PokemonInfo = () => {
   const { store, actions } = useContext(Context);
-
   const params = useParams();
-  const [pokemon, setPokemon] = useState(store.pokemon_data[params.theid - 1]);
+  
 
   useEffect(() => {
     if (!actions.pokemonFindOneInData(params.theid)) {
@@ -22,7 +21,7 @@ const PokemonInfo = () => {
         {/* DIV LEFT */}
         <div className="d-flex flex-column col-md-4 align-items-center">
           <img
-            src={store.single_pokemon_data.sprites?.front_default}
+            src={store.single_pokemon_data.sprites?.other.home.front_default}
             className="img-fluid rounded"
             style={{ width: "400px", height: "400px" }}
           />
@@ -44,7 +43,7 @@ const PokemonInfo = () => {
               <tbody className="text-center align-middle">
                 <tr>
                   <th className="text-end p-0 col-3">HP:</th>
-                  <td className="p-0 col-3">sdasd</td>
+                  <td className="p-0 col-3">39</td>
                   <td className="p-0">
                     <div className="progress">
                       <div

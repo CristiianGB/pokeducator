@@ -6,7 +6,10 @@ const getState = ({ getStore, getActions, setStore }) => {
       single_pokemon_data: {},
       item: [],
       item_data: [],
-      single_item_data: {}
+      single_item_data: {},
+      move: [],
+      move_data: [],
+      single_move_data: {}
     },
     actions: {
       pokemonFind: (next) => {
@@ -92,6 +95,48 @@ const getState = ({ getStore, getActions, setStore }) => {
       },
       itemLocalStorage: (item) => {
         setStore({item})
+      },
+      moveFind: (next) => {
+        fetch(next ? next : "https://pokeapi.co/api/v2/move/")
+          .then((response) => response.json())
+          .then((data) =>{
+            setStore({move: data})
+            setStore({move_data:[]})
+            data.results.map((move, i) => {
+              let new_move_data = getStore().move_data;
+              fetch(move.url)
+                .then((response) => response.json())
+                .then((allmove) => {
+                  new_move_data.push(allmove);
+                  if(i+1 == new_move_data.length){
+                    new_move_data = new_move_data.sort((a, b) => a.id - b.id)
+                    }
+                    localStorage.setItem("move_data" , JSON.stringify(new_move_data))
+                    localStorage.setItem("move" , JSON.stringify(data))
+                  setStore({ item_data: new_move_data });
+                });
+            })
+        });
+      },
+      moveFindOne: (url) => {
+        fetch(url)
+                .then((response) => response.json())
+                .then((data) => {
+                  setStore({ single_move_data: data });
+                });
+      },
+      moveFindOneInData: (id) => {
+        let move = getStore().move_data.find((e)=>e==id)
+        setStore({moveFounded: move})
+        if(move) return true
+        else return false
+        
+      },
+      moveDataLocalStorage: (move_data) => {
+        setStore({move_data})
+      },
+      moveLocalStorage: (move) => {
+        setStore({move})
       }
     },
   };
