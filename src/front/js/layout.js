@@ -4,6 +4,7 @@ import { Navbar } from "./component/navbar.jsx";
 import { Footer } from "./component/footer.jsx";
 import PokemonInfo from "./pages/pokeducatorPokemonInfo.jsx";
 import PokeducatorInfoGuarderia  from "./pages/pokeducatorWiki/pokeducatorInfoGuarderia.jsx";
+import PokeducatorObjetos from "./pages/pokeducatorObjetos.jsx";
 import PokeducatorInfoCrianza from "./pages/pokeducatorWiki/pokeducatorInfoCrianza.jsx";
 import PokeducatorInfoGenero from "./pages/pokeducatorWiki/pokeducatorInfoGenero.jsx";
 import PokeducatorPokemons from "./pages/pokeducatorPokemons.jsx"
@@ -28,6 +29,7 @@ const Layout = () => {
               <Route element={<PokeducatorInfoCrianza />} path="/wiki/crianza-pokemon" />
               <Route element={<PokeducatorInfoGenero />} path="/wiki/genero-pokemon" />
               <Route element={<PokeducatorPokemons />} path="/pokemons" />
+              <Route element={<PokeducatorObjetos />} path="/objetos" />
             </Routes>
           <Footer />
           </ScrollToTop>

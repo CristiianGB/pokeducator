@@ -41,9 +41,14 @@ export const Navbar = () => {
                 Pokémon
               </a>
             </li>
+            <li className="nav-item">
+              <a className="nav-link" href="/objetos">
+                Objetos
+              </a>
+            </li>
             <li onMouseEnter={() => setDropdownVisible(true)}
-				onMouseLeave={() => setDropdownVisible(false)}
-				className="nav-item position-relative">
+            onMouseLeave={() => setDropdownVisible(false)}
+            className="nav-item position-relative">
               <Link
                 className="nav-link dropdown-toggle"
                 to="/wiki"
@@ -67,6 +72,12 @@ export const Navbar = () => {
                       Género Pokémon
                     </Link>
                   </li>
+                  <li>
+                    <Link className="dropdown-item" to="/wiki/genero-pokemon">
+                      Grupo Huevo
+                    </Link>
+                  </li>
+                  
                 </ul>
               ) : null}
             </li>

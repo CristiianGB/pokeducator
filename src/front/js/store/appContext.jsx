@@ -28,7 +28,15 @@ const injectContext = PassedComponent => {
 			 * you should do your ajax requests or fetch api requests here. Do not use setState() to save data in the
 			 * store, instead use actions, like this:
 			 **/
-			
+			let itemDataStorage = JSON.parse(localStorage.getItem("item_data"))
+			let itemStorage = JSON.parse(localStorage.getItem("item"))
+			if (itemDataStorage && itemDataStorage.lengt >0 ){
+				state.actions.itemDataLocalStorage(itemDataStorage)
+				state.actions.itemLocalStorage(itemStorage)
+			}
+			else{
+				state.actions.itemFind()
+			}
 			let pokemonDataStorage = JSON.parse(localStorage.getItem("pokemon_data"))
 			let pokemonStorage = JSON.parse(localStorage.getItem("pokemon"))
 			if ( pokemonDataStorage && pokemonDataStorage.length > 0){

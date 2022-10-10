@@ -332,7 +332,7 @@ const PokeducatorInfoCrianza = () => {
               <tr>
                 <td>
                   <a
-                    href="https://static.wikia.nocookie.net/espokemon/images/1/1b/Blastoise_XY.png"
+                    href="/pokemon/9"
                     className="image"
                     title="Blastoise"
                   >

@@ -1,8 +1,8 @@
 import React, { useState, useEffect, useContext } from "react";
 import { Context } from "../store/appContext.jsx";
-import "../../styles/pokeducatorPokemonsStyles.css";
+import "../../styles/pokeducatorObjetosStyles.css";
 
-const PokeducatorPokemons = () => {
+const PokeducatorObjetos = () => {
   const {store, actions} = useContext(Context)
   const [load, setLoad] = useState("true");
 
@@ -14,18 +14,18 @@ const PokeducatorPokemons = () => {
   return (
     <div className="App container align-items-center">
       <div className="row d-flex justify-content-end mt-4">
-        {!store.pokemon?.previous?"":
+        {!store.item?.previous?"":
         <button 
         className="btn btn-primary btn-sm mx-3 float-start w-25" 
         onClick={()=>{
-          actions.pokemonFind(store.pokemon.previous)//guarda paginacion en storage y actualiza segun click para saber la proxima url onclick comprobar que exista
+          actions.itemFind(store.item.previous)//guarda paginacion en storage y actualiza segun click para saber la proxima url onclick comprobar que exista
         }}>
             Anterior
         </button>}
         <button 
         className="btn btn-primary btn-sm mx-3 float-end w-25"
         onClick={()=>{
-          actions.pokemonFind(store.pokemon.next)
+          actions.itemFind(store.item.next)
         }}>
             Siguiente
         </button>
@@ -34,7 +34,7 @@ const PokeducatorPokemons = () => {
         {load ? (
           <p>Loading...</p>
         ) : (
-          store.pokemon_data.map((img, i) => (
+          store.item_data.map((img, i) => (
             <div className="col-md-3" id={img.id} key={img.id}>
               <div
                 className="card"
@@ -42,17 +42,17 @@ const PokeducatorPokemons = () => {
                   backgroundColor: "#F0F0C9",
                 }}
               >
-                <a href={`/pokemon/${img.id}`}>
+                <a href={`/objeto/${img.id}`}>
                 <img style={{
                   width: "100px",
                   height: "100px"
                 }}
                  className="img-fluid" 
-                 src={img.sprites.front_default} alt="pokemon" />
+                 src={img.sprites.default} alt="item" />
                  </a>
-                <div className="">
+                <div>
                   <h5>{img.name}</h5>
-                  <h6>type: {img.types[0].type.name}</h6>
+                  
                 </div>
               </div>
             </div>
@@ -62,4 +62,4 @@ const PokeducatorPokemons = () => {
     </div>
   );
 };
-export default PokeducatorPokemons;
+export default PokeducatorObjetos;

@@ -9,6 +9,7 @@
 }
 .desplegable_wiki{
     background-color: rgb(253, 253, 253);
+    z-index: 1;
   }
   .desplegable_wiki{
     padding-left: 0px !important;
