@@ -5,7 +5,7 @@ import "../../styles/pokeducatorPokemonsStyles.css";
 const PokeducatorPokemons = () => {
   const {store, actions} = useContext(Context)
   const [load, setLoad] = useState("true");
-
+  
 
   setTimeout(() => {
     setLoad(false);
@@ -48,7 +48,7 @@ const PokeducatorPokemons = () => {
                   height: "100px"
                 }}
                  className="img-fluid" 
-                 src={img.sprites.front_default} alt="pokemon" />
+                 src={img.sprites.other?.dream_world.front_default} alt="pokemon" /> 
                  </a>
                 <div className="">
                   <h5>{img.name}</h5>

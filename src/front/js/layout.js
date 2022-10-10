@@ -6,6 +6,8 @@ import PokemonInfo from "./pages/pokeducatorPokemonInfo.jsx";
 import PokeducatorInfoGuarderia  from "./pages/pokeducatorWiki/pokeducatorInfoGuarderia.jsx";
 import PokeducatorObjetos from "./pages/pokeducatorObjetos.jsx";
 import PokeducatorInfoCrianza from "./pages/pokeducatorWiki/pokeducatorInfoCrianza.jsx";
+import PokeducatorMovimientos from "./pages/pokeducatorMovimientos.jsx"
+import PokeducatorInfoGruposHuevo from "./pages/pokeducatorWiki/pokeducatorInfoGruposHuevo.jsx";
 import PokeducatorInfoGenero from "./pages/pokeducatorWiki/pokeducatorInfoGenero.jsx";
 import PokeducatorPokemons from "./pages/pokeducatorPokemons.jsx"
 import injectContext from "./store/appContext.jsx";
@@ -30,6 +32,8 @@ const Layout = () => {
               <Route element={<PokeducatorInfoGenero />} path="/wiki/genero-pokemon" />
               <Route element={<PokeducatorPokemons />} path="/pokemons" />
               <Route element={<PokeducatorObjetos />} path="/objetos" />
+              <Route element={<PokeducatorMovimientos />} path="/movimientos" />
+              <Route element={<PokeducatorInfoGruposHuevo />} path="/wiki/grupos-huevo" />
             </Routes>
           <Footer />
           </ScrollToTop>
