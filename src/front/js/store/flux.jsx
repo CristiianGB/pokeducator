@@ -143,7 +143,7 @@ const getState = ({ getStore, getActions, setStore }) => {
       },
       typeFind: (next) => {
         fetch(next ? next : "https://pokeapi.co/api/v2/type/")
-          .then((response) => response.json())
+          .then((response) => response.json())//asd
           .then((data) =>{
             setStore({type: data})
             setStore({type_data:[]})
