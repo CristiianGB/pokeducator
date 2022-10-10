@@ -3,40 +3,90 @@ import { Link } from "react-router-dom";
 
 import { Context } from "../store/appContext.jsx";
 
-export const Demo = () => {
-	const { store, actions } = useContext(Context);
+const PokeeducatorLandingPage = () => {
+  return (
+    <div className="container text-center">
+      <div className="bg-success margin1">
+        <p>HUECO PRUEBA</p>
+      </div>
+      <div className="col-12 my-4">
+        <button className="button button1">hey</button>
+        <div>
+          <button type="button" class="btn btn-outline-primary button2">
+            Primary
+          </button>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-4">
+          <div class="image-box1">
+            <img
+              class="card-img-top"
+              src="https://static.wikia.nocookie.net/espokemon/images/1/14/Guarder%C3%ADa_Pok%C3%A9mon_BW.png"
+              alt="guardería Pokémon en Pokémon Negro y Blanco"
+            />
+          </div>
+        </div>
 
-	return (
-		
-		<div className="container">
-			<ul className="list-group">
-				{store.demo.map((item, index) => {
-					return (
-						<li
-							key={index}
-							className="list-group-item d-flex justify-content-between"
-							style={{ background: item.background }}>
-							<Link to={"/single/" + index}>
-								<span>Link to: {item.title}</span>
-							</Link>
-							{// Conditional render example
-							// Check to see if the background is orange, if so, display the message
-							item.background === "orange" ? (
-								<p style={{ color: item.initial }}>
-									Check store/flux.js scroll to the actions to see the code
-								</p>
-							) : null}
-							<button className="btn btn-success" onClick={() => actions.changeColor(index, "orange")}>
-								Change Color
-							</button>
-						</li>
-					);
-				})}
-			</ul>
-			<br />
-			<Link to="/">
-				<button className="btn btn-primary">Back home</button>
-			</Link>
-		</div>
-	);
+        <div class="col-md-4">
+          <div class="image-box2">
+            <img
+              class="card-img-top"
+              src="https://static.wikia.nocookie.net/espokemon/images/1/14/Guarder%C3%ADa_Pok%C3%A9mon_BW.png"
+              alt="guardería Pokémon en Pokémon Negro y Blanco"
+            />
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="image-box3">
+            <img
+              class="card-img-top"
+              src="https://static.wikia.nocookie.net/espokemon/images/1/14/Guarder%C3%ADa_Pok%C3%A9mon_BW.png"
+              alt="guardería Pokémon en Pokémon Negro y Blanco"
+            />
+          </div>
+        </div>
+      </div>
+      <br />
+      <br />
+      <br />
+      <div class="container">
+        <div class="row">
+          <div class="col-sm">1</div>
+          <div class="col-sm">2</div>
+          <div class="col-sm">3</div>
+          <div class="col-sm">4</div>
+          <div class="col-sm">5</div>
+          <div class="col-sm">6</div>
+          <div class="col-sm">7</div>
+        </div>
+      </div>
+      <br />
+      <div class="container">
+        <div class="row">
+          <div class="col-sm">1</div>
+          <div class="col-sm">2</div>
+          <div class="col-sm">3</div>
+          <div class="col-sm">4</div>
+          <div class="col-sm">5</div>
+          <div class="col-sm">6</div>
+          <div class="col-sm">7</div>
+        </div>
+      </div>
+      <br />
+      <div class="container">
+        <div class="row">
+          <div class="col-sm">1</div>
+          <div class="col-sm">2</div>
+          <div class="col-sm">3</div>
+          <div class="col-sm">4</div>
+          <div class="col-sm">5</div>
+          <div class="col-sm">6</div>
+          <div class="col-sm">7</div>
+        </div>
+      </div>
+    </div>
+  );
 };
+
+export default PokeeducatorLandingPage;

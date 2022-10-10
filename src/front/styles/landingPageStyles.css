@@ -5,3 +5,35 @@
     one more css for each page that will contain the selected used 
     on that page only (the ones not reused in other pages).
 */
+.button {
+  background-color: #04aa6d;
+  border: none;
+  color: white;
+  padding: 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 169px;
+  margin: 4px 2px;
+  margin-bottom: 15px;
+}
+
+.button1 {
+  border-radius: 220px;
+}
+.button2 {
+  float: right;
+}
+
+.button1 {
+  text-align: right;
+}
+.image-box1 {
+  margin-top: 45px;
+}
+.image-box2 {
+  margin-top: 15px;
+}
+.image-box3 {
+  margin-top: 60px;
+}
