@@ -2,13 +2,14 @@ import React from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { Navbar } from "./component/navbar.jsx";
 import { Footer } from "./component/footer.jsx";
-import PokemonInfo from "./pages/pokeducatorPokemonInfo.jsx";
+import PokeducatorPokemonInfo from "./pages/pokeducatorPokemonInfo.jsx";
 import PokeducatorInfoGuarderia from "./pages/pokeducatorWiki/pokeducatorInfoGuarderia.jsx";
 import PokeducatorObjetos from "./pages/pokeducatorObjetos.jsx";
 import PokeducatorInfoCrianza from "./pages/pokeducatorWiki/pokeducatorInfoCrianza.jsx";
 import PokeducatorMovimientos from "./pages/pokeducatorMovimientos.jsx";
 import PokeducatorInfoGruposHuevo from "./pages/pokeducatorWiki/pokeducatorInfoGruposHuevo.jsx";
 import PokeducatorInfoGenero from "./pages/pokeducatorWiki/pokeducatorInfoGenero.jsx";
+import PokeducatorObjetoInfo from "./pages/pokeducatorObjetoInfo.jsx"
 import PokeducatorPokemons from "./pages/pokeducatorPokemons.jsx";
 import PokeducatorLandingPage from "./pages/pokeducatorLandingPage.jsx";
 import PokeducatorProfilePage from "./pages/pokeducatorProfilePage.jsx";
@@ -27,7 +28,8 @@ const Layout = () => {
         <ScrollToTop>
           <Navbar />
           <Routes>
-            <Route element={<PokemonInfo />} path={"/pokemon/:theid"} />
+            <Route element={<PokeducatorPokemonInfo />} path={"/pokemon/:theid"} />
+            <Route element={<PokeducatorObjetoInfo />} path={"/objeto/:theid"} />
             <Route
               element={<PokeducatorInfoGuarderia />}
               path="/wiki/guarderia-pokemon"

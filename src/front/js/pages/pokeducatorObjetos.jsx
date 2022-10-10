@@ -34,25 +34,27 @@ const PokeducatorObjetos = () => {
         {load ? (
           <p>Loading...</p>
         ) : (
-          store.item_data.map((img, i) => (
-            <div className="col-md-3" id={img.id} key={img.id}>
+          store.item_data.map((item, i) => (
+            <div className="col-md-3" id={item.id} key={item.id}>
               <div
                 className="card"
                 style={{
                   backgroundColor: "#F0F0C9",
                 }}
               >
-                <a href={`/objeto/${img.id}`}>
+                <a href={`/objeto/${item.id}`}>
                 <img style={{
                   width: "100px",
                   height: "100px"
                 }}
                  className="img-fluid" 
-                 src={img.sprites.default} alt="item" />
+                 src={item.sprites.default} alt="item" />
                  </a>
                 <div>
-                  <h5>{img.name}</h5>
-                  
+                  <h5>{item.names.map((object) => (
+                    object.language?.name=="es"? object.name :""
+                    ))}
+                  </h5>
                 </div>
               </div>
             </div>
