@@ -9,7 +9,10 @@ const getState = ({ getStore, getActions, setStore }) => {
       single_item_data: {},
       move: [],
       move_data: [],
-      single_move_data: {}
+      single_move_data: {}, 
+      type: [],
+      type_data: [], 
+      single_type_data: {}
     },
     actions: {
       pokemonFind: (next) => {
@@ -113,7 +116,7 @@ const getState = ({ getStore, getActions, setStore }) => {
                     }
                     localStorage.setItem("move_data" , JSON.stringify(new_move_data))
                     localStorage.setItem("move" , JSON.stringify(data))
-                  setStore({ item_data: new_move_data });
+                  setStore({ move_data: new_move_data });
                 });
             })
         });
@@ -137,6 +140,41 @@ const getState = ({ getStore, getActions, setStore }) => {
       },
       moveLocalStorage: (move) => {
         setStore({move})
+      },
+      typeFind: (next) => {
+        fetch(next ? next : "https://pokeapi.co/api/v2/type/")
+          .then((response) => response.json())
+          .then((data) =>{
+            setStore({type: data})
+            setStore({type_data:[]})
+            data.results.map((type, i) => {
+              let new_type_data = getStore().type_data;
+              fetch(type.url)
+                .then((response) => response.json())
+                .then((alltype) => {
+                  new_type_data.push(alltype);
+                  if(i+1 == new_type_data.length){
+                    new_type_data = new_type_data.sort((a, b) => a.id - b.id)
+                    }
+                    localStorage.setItem("type_data" , JSON.stringify(new_type_data))
+                    localStorage.setItem("type" , JSON.stringify(data))
+                  setStore({ type_data: new_type_data });
+                });
+            })
+        });
+      },
+      typeFindOne: (url) => {
+        fetch(url)
+                .then((response) => response.json())
+                .then((data) => {
+                  setStore({ single_type_data: data });
+                });
+      },
+      typeDataLocalStorage: (type_data) => {
+        setStore({type_data})
+      },
+      typeLocalStorage: (type) => {
+        setStore({type})
       }
     },
   };

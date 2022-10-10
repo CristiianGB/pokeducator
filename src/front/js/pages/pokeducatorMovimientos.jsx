@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useContext } from "react";
 import { Context } from "../store/appContext.jsx";
-import "../../styles/pokeducatorObjetosStyles.css";
+import "../../styles/pokeducatorMovimientosStyles.css";
 
 const PokeducatorMovimientos = () => {
   const { store, actions } = useContext(Context);
@@ -43,26 +43,28 @@ const PokeducatorMovimientos = () => {
         {load ? (
           <p>Loading...</p>
         ) : (
-          <table>
+          <table className="table">
             <thead>
               <tr>
-                <th>Nombre</th>
-                <th>Tipo</th>
-                <th>Poder</th>
-                <th>Precisión</th>
-                <th>PP</th>
+                <th scope="col">Nombre</th>
+                <th scope="col">Tipo</th>
+                <th scope="col">Poder</th>
+                <th scope="col">Precisión</th>
+                <th scope="col">PP</th>
               </tr>
             </thead>
             <tbody>
               {store.move_data.map((move, i) => (
                 <tr data-index={i}>
-                  <td>{move.name}</td>
+                  <td><a className="links" href={`/movimiento/${move.id}`}>{move.names.map((object) => (
+                    object.language?.name=="es"? object.name :""
+                    ))}</a></td>
                   <td>{move.type?.name}</td>
                   <td>{move.accuracy}</td>
                   <td>{move.power}</td>
                   <td>{move.pp}</td>
                 </tr>
-              ))};
+              ))}
             </tbody>
           </table>
         )}

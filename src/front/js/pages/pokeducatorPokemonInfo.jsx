@@ -2,7 +2,7 @@ import React, { useContext, useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { Context } from "../store/appContext.jsx";
 
-const PokemonInfo = () => {
+const PokeducatorPokemonInfo = () => {
   const { store, actions } = useContext(Context);
   const params = useParams();
   
@@ -21,7 +21,7 @@ const PokemonInfo = () => {
         {/* DIV LEFT */}
         <div className="d-flex flex-column col-md-4 align-items-center">
           <img
-            src={store.single_pokemon_data.sprites?.other.home.front_default}
+            src={store.single_pokemon_data.sprites?.other["official-artwork"].front_default}
             className="img-fluid rounded"
             style={{ width: "400px", height: "400px" }}
           />
@@ -206,4 +206,4 @@ const PokemonInfo = () => {
   );
 };
 
-export default PokemonInfo;
+export default PokeducatorPokemonInfo;

@@ -13,3 +13,8 @@
     border-radius: 5px;
     box-shadow: 6px 10px 5px 0px rgba(199,197,199,0.75);
 }
+.links{
+    text-decoration: none;
+    color: black;
+    font-weight: bold;
+}

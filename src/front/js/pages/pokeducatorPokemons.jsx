@@ -48,7 +48,7 @@ const PokeducatorPokemons = () => {
                   height: "100px"
                 }}
                  className="img-fluid" 
-                 src={img.sprites.other?.dream_world.front_default} alt="pokemon" /> 
+                 src={img.sprites.other?.["official-artwork"].front_default} alt="pokemon" /> 
                  </a>
                 <div className="">
                   <h5>{img.name}</h5>
