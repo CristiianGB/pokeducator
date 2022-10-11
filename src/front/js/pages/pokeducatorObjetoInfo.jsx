@@ -1,54 +1,38 @@
 import React, { useContext, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { Context } from "../store/appContext.jsx";
+import "../../styles/pokeducatorObjetoInfoStyles.css";
 
 const PokeducatorObjetoInfo = () => {
   const { store, actions } = useContext(Context);
   const params = useParams();
-  
 
   useEffect(() => {
-    if (!actions.pokemonFindOneInData(params.theid)) {
-      actions.pokemonFindOne(
-        "https://pokeapi.co/api/v2/pokemon/" + params.theid
-      );
+    if (!actions.itemFindOneInData(params.theid)) {
+      actions.itemFindOne("https://pokeapi.co/api/v2/item/" + params.theid);
     }
   }, []);
 
   return (
     <div className="container">
-      <div className="row justify-content-center">
-        {/* DIV LEFT */}
-        <div className="d-flex flex-column col-md-4 align-items-center">
+      <div className="row">
+        <div className="col-md-5">
           <img
-            src={store.single_item_data.sprites.front_default}
-            className="img-fluid rounded"
-            style={{ width: "400px", height: "400px" }}
+            className="img-fluid objetoimg"
+            src={store.single_item_data.sprites?.default}
+            alt={store.single_item_data.name}
           />
-          <div className="btn-group">
-            <button type="button" className="btn btn-default">
-              Izquierdo
-            </button>
-            <button type="button" className="btn btn-default">
-              Derecho
-            </button>
-          </div>
         </div>
-        {/* DIV RIGHT */}
-        <div className="col-5 d-flex flex-column">
-          <h5 className="text-center">{store.single_item_data.name}</h5>
+        <div className="col-md-5">
+          <h1>
+            {store.single_item_data.names?.map((object) =>
+              object.language?.name == "es" ? object.name : ""
+            )}
+          </h1>
+          <p>{store.single_item_data.flavor_text_entries?.map((object) =>
+              object.language?.name == "es"? object.text : ""
+            )}</p>
         </div>
-      </div>
-      {/* GENERAL INFO */}
-      <div className="text-center m-3">
-        <h2>Info general</h2>
-        <p className="card-text">
-          Charmander might look like a good Pokemon to use due to its movepool
-          and access to Dragon Dance, but its power output is disappointing even
-          with using Life Orb to get the most out of its attacks. It is
-          outclassed by other Fire-types like Ponyta, Larvesta, and Magby due to
-          their better Attack, Speed, and bulk.
-        </p>
       </div>
     </div>
   );
