@@ -10,6 +10,7 @@ import PokeducatorMovimientos from "./pages/pokeducatorMovimientos.jsx";
 import PokeducatorInfoGruposHuevo from "./pages/pokeducatorWiki/pokeducatorInfoGruposHuevo.jsx";
 import PokeducatorInfoGenero from "./pages/pokeducatorWiki/pokeducatorInfoGenero.jsx";
 import PokeducatorObjetoInfo from "./pages/pokeducatorObjetoInfo.jsx"
+import PokeducatorMovimientoInfo from "./pages/pokeducatorMovimientoInfo.jsx"
 import PokeducatorPokemons from "./pages/pokeducatorPokemons.jsx";
 import PokeducatorLandingPage from "./pages/pokeducatorLandingPage.jsx";
 import PokeducatorProfilePage from "./pages/pokeducatorProfilePage.jsx";
@@ -30,6 +31,7 @@ const Layout = () => {
           <Routes>
             <Route element={<PokeducatorPokemonInfo />} path={"/pokemon/:theid"} />
             <Route element={<PokeducatorObjetoInfo />} path={"/objeto/:theid"} />
+            <Route element={<PokeducatorMovimientoInfo />} path={"/movimiento/:theid"} />
             <Route
               element={<PokeducatorInfoGuarderia />}
               path="/wiki/guarderia-pokemon"
