@@ -65,13 +65,13 @@ const injectContext = PassedComponent => {
 				state.actions.pokemonFind();
 			}
 
-			let Group = JSON.parse(localStorage.getItem("grupo_huevo_data"))
-			if ( Group && Group.length > 0){
-				state.actions.GroupDataLocalStorage(Group)
+			let group = JSON.parse(localStorage.getItem("grupo_huevo_data"))
+			if ( group && group.length > 0){
+				state.actions.groupDataLocalStorage(group)
 
 			}
 			else{
-				state.actions.GroupFind();
+				state.actions.groupFind();
 			}
 			
 		}, []);
