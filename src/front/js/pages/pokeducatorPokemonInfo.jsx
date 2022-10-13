@@ -2,11 +2,33 @@ import React, { useContext, useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { Context } from "../store/appContext.jsx";
 import "../../styles/pokeducatorPokemonInfoStyles.css";
+import acero_img from "../../assets/img/tiposimg/acero.png";
+import agua_img from "../../assets/img/tiposimg/agua.png";
+import bicho_img from "../../assets/img/tiposimg/bicho.png";
+import dragon_img from "../../assets/img/tiposimg/dragon.png";
+import electrico_img from "../../assets/img/tiposimg/electrico.png";
+import fantasma_img from "../../assets/img/tiposimg/fantasma.png";
+import fuego_img from "../../assets/img/tiposimg/fuego.png";
+import hada_img from "../../assets/img/tiposimg/hada.png";
+import hielo_img from "../../assets/img/tiposimg/hielo.png";
+import lucha_img from "../../assets/img/tiposimg/lucha.png";
+import normal_img from "../../assets/img/tiposimg/normal.png";
+import planta_img from "../../assets/img/tiposimg/planta.png";
+import psiquico_img from "../../assets/img/tiposimg/psiquico.png";
+import roca_img from "../../assets/img/tiposimg/roca.png";
+import siniestro_img from "../../assets/img/tiposimg/siniestro.png";
+import tierra_img from "../../assets/img/tiposimg/tierra.png";
+import veneno_img from "../../assets/img/tiposimg/veneno.png";
+import volador_img from "../../assets/img/tiposimg/volador.png";
+import desconocido_img from "../../assets/img/tiposimg/desconocido.png";
+import sombra_img from "../../assets/img/tiposimg/sombra.png";
+//llamar stats store.single_pokemon_data.stats?.[3].base_stat
+// llamar foto store.single_pokemon_data.sprites?.other["official-artwork"].front_default
 
 const PokeducatorPokemonInfo = () => {
   const { store, actions } = useContext(Context);
   const params = useParams();
-
+  
   useEffect(() => {
     if (!actions.pokemonFindOneInData(params.theid)) {
       actions.pokemonFindOne(
@@ -15,235 +37,78 @@ const PokeducatorPokemonInfo = () => {
     }
   }, []);
 
+
+
   const handleClick = () => {
     console.log("Click");
   };
-
+  
   return (
     <div className="container">
       <div className="row justify-content-center">
-        {/* DIV LEFT */}
-        <div className="d-flex flex-column col-md-4 align-items-center">
-          <img
-            src={
-              store.single_pokemon_data.sprites?.other["official-artwork"]
-                .front_default
-            }
-            className="img-fluid rounded"
-            style={{ width: "400px", height: "400px" }}
-          />
-          <div className="btn-group">
-            <button
-              type="button"
-              className="btn btn-default"
-              onClick={handleClick()}
-            >
-              Anterior
-            </button>
-            <button
-              type="button"
-              className="btn btn-default"
-              onClick={handleClick()}
-            >
-              Siguiente
-            </button>
+          <div className="col-sm-4"><button onClick={{/*restar uno al id*/ }}>anterior</button></div>
+          <div className="col-sm-4 text-center">Pokédex nº: {store.single_pokemon_data.order}</div>
+          <div className="col-sm-4 text-end"><button onClick={{/*sumar uno al id*/ }}>siguiente</button></div>
+      </div>
+      <div className="row">
+        <div className="col-md-6"> 
+          <div className="pokemon__img img-fluid">
+          <img  src={store.single_pokemon_data.sprites?.other["official-artwork"].front_default} alt={store.single_pokemon_data.name + "foto oficial"} />
           </div>
         </div>
-        {/* DIV RIGHT */}
-        <div className="col-5 d-flex flex-column">
-          <h5 className="pokemonName text-center">
-            {store.single_pokemon_data.name}
-          </h5>
-          {/* STATS */}
-          <div>
-            <table className="table m-0">
-              <tbody className="text-center align-middle">
-                <tr>
-                  <th className="text-end p-0 col-3">HP:</th>
-                  <td className="p-0 col-3">
-                    {store.single_pokemon_data.stats?.[0].base_stat}
-                  </td>
-                  <td className="p-0">
-                    <div className="progress">
-                      <div
-                        className="progress-bar bg-success m-0"
-                        role="progressbar"
-                        style={{
-                          width: `${store.single_pokemon_data.stats?.[0].base_stat}%`,
-                        }}
-                        aria-valuenow={
-                          store.single_pokemon_data.stats?.[0].base_stat
-                        }
-                        aria-valuemin="0"
-                        aria-valuemax="100"
-                      ></div>
-                    </div>
-                  </td>
-                </tr>
-                <tr>
-                  <th className="text-end p-0 col-3">Attack:</th>
-                  <td className="p-0 col-3">
-                    {store.single_pokemon_data.stats?.[1].base_stat}
-                  </td>
-                  <td className="p-0">
-                    <div className="progress">
-                      <div
-                        className="progress-bar bg-success m-0"
-                        role="progressbar"
-                        style={{
-                          width: `${store.single_pokemon_data.stats?.[1].base_stat}%`,
-                        }}
-                        aria-valuenow="52"
-                        aria-valuemin="0"
-                        aria-valuemax="100"
-                      ></div>
-                    </div>
-                  </td>
-                </tr>
-                <tr>
-                  <th className="text-end p-0 col-3">Defense:</th>
-                  <td className="p-0 col-3">
-                    {store.single_pokemon_data.stats?.[2].base_stat}
-                  </td>
-                  <td className="p-0">
-                    <div className="progress">
-                      <div
-                        className="progress-bar bg-success m-0"
-                        role="progressbar"
-                        style={{
-                          width: `${store.single_pokemon_data.stats?.[2].base_stat}%`,
-                        }}
-                        aria-valuenow="43"
-                        aria-valuemin="0"
-                        aria-valuemax="100"
-                      ></div>
-                    </div>
-                  </td>
-                </tr>
-                <tr>
-                  <th className="text-end p-0 col-3">Sp. Atk:</th>
-                  <td className="p-0 col-3">
-                    {store.single_pokemon_data.stats?.[3].base_stat}
-                  </td>
-                  <td className="p-0">
-                    <div className="progress">
-                      <div
-                        className="progress-bar bg-success m-0"
-                        role="progressbar"
-                        style={{
-                          width: `${store.single_pokemon_data.stats?.[3].base_stat}%`,
-                        }}
-                        aria-valuenow="60"
-                        aria-valuemin="0"
-                        aria-valuemax="150"
-                      ></div>
-                    </div>
-                  </td>
-                </tr>
-                <tr>
-                  <th className="text-end p-0 col-3">Sp. Def:</th>
-                  <td className="p-0 col-3">
-                    {store.single_pokemon_data.stats?.[4].base_stat}
-                  </td>
-                  <td className="p-0">
-                    <div className="progress">
-                      <div
-                        className="progress-bar bg-success m-0"
-                        role="progressbar"
-                        style={{
-                          width: `${store.single_pokemon_data.stats?.[4].base_stat}%`,
-                        }}
-                        aria-valuenow="50"
-                        aria-valuemin="0"
-                        aria-valuemax="100"
-                      ></div>
-                    </div>
-                  </td>
-                </tr>
-                <tr>
-                  <th className="text-end p-0 col-3">Speed:</th>
-                  <td className="p-0 col-3">
-                    {store.single_pokemon_data.stats?.[5].base_stat}
-                  </td>
-                  <td className="p-0">
-                    <div className="progress">
-                      <div
-                        className="progress-bar bg-success m-0"
-                        role="progressbar"
-                        style={{
-                          width: `${store.single_pokemon_data.stats?.[5].base_stat}%`,
-                        }}
-                        aria-valuenow="65"
-                        aria-valuemin="0"
-                        aria-valuemax="100"
-                      ></div>
-                    </div>
-                  </td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-          {/* TYPE */}
-          <h5 className="text-center">Type: 🔥⚡🌿</h5>
-          {/* EVOLUTION */}
-          <div>
-            <h5 className="text-center">Evolutions:</h5>
-            <div className="d-flex justify-content-between">
-              <a href="http://" target="_blank" rel="noopener noreferrer">
-                IMG
-              </a>
-              <a href="http://" target="_blank" rel="noopener noreferrer">
-                IMG
-              </a>
-              <a href="http://" target="_blank" rel="noopener noreferrer">
-                IMG
-              </a>
+        <div className="col-md-6 info_pokemon">
+            <div className="row">
+            <h1 className="pokemon_name">{store.single_pokemon_data.name}</h1>
+              <h3 className="pokemon_type">
+                {store.single_pokemon_data.types?.map((objeto)=>{
+                  objeto.type.name == "normal" //porque no renderiza la imagen
+                  ? <img src={normal_img} alt="tipo normal" />
+                  : objeto.type.name == "fighting"
+                  ? <img src={lucha_img} alt="tipo lucha" />
+                  : objeto.type.name == "flying"
+                  ? <img src={volador_img} alt="tipo volador" />
+                  : objeto.type.name == "poison"
+                  ? <img src={veneno_img} alt="tipo veneno" />
+                  : objeto.type.name == "ground"
+                  ? <img src={tierra_img} alt="tipo tierra" />
+                  : objeto.type.name == "rock"
+                  ? <img src={roca_img} alt="tipo roca" />
+                  : objeto.type.name == "ghost"
+                  ? <img src={fantasma_img} alt="tipo fantasma" />
+                  : objeto.type.name == "steel"
+                  ? <img src={acero_img} alt="tipo acero" />
+                  : objeto.type.name == "fire"
+                  ? <img src={fuego_img} alt="tipo fuego" />
+                  : objeto.type.name == "water"
+                  ? <img src={agua_img} alt="tipo agua" />
+                  : objeto.type.name == "grass"
+                  ? <img src={planta_img} alt="tipo planta" />
+                  : objeto.type.name == "electric"
+                  ? <img src={electrico_img} alt="tipo electrico" />
+                  : objeto.type.name == "phsychic"
+                  ? <img src={psiquico_img} alt="tipo psiquico" />
+                  : objeto.type.name == "ice"
+                  ? <img src={hielo_img} alt="tipo hielo" />
+                  : objeto.type.name == "dragon"
+                  ? <img src={dragon_img} alt="tipo dragon" />
+                  : objeto.type.name == "dark"
+                  ? <img src={siniestro_img} alt="tipo siniestro" />
+                  : objeto.type.name == "fairy"
+                  ? <img src={hada_img} alt="tipo hada" />
+                  : objeto.type.name == "unknown"
+                  ? <img src={desconocido_img} alt="tipo desconocido" />
+                  : objeto.type.name == "shadow"
+                  ? <img src={sombra_img} alt="tipo sombra" />
+                  : objeto.type.name == "bug"
+                  ? <img src={bicho_img} alt="tipo bicho" /> :""
+                })}
+              </h3>
             </div>
-          </div>
+            <div className="row">
+              <div className="col-md-6 altura_pokemon">Altura: {store.single_pokemon_data.height} cm</div>
+              <div className="col-md-6 peso_pokemon"> Peso: {store.single_pokemon_data.weight} kg</div>
+            </div>
         </div>
-      </div>
-      {/* GENERAL INFO */}
-      <div className="text-center m-3">
-        <h2>Info general</h2>
-        <p className="card-text">
-          Charmander might look like a good Pokemon to use due to its movepool
-          and access to Dragon Dance, but its power output is disappointing even
-          with using Life Orb to get the most out of its attacks. It is
-          outclassed by other Fire-types like Ponyta, Larvesta, and Magby due to
-          their better Attack, Speed, and bulk.
-        </p>
-      </div>
-      {/* TABLE OF MOVES */}
-      <div className="moves">
-        <h2 className="text-center">MOVES</h2>
-        <table className="table table-bordered">
-          <thead>
-            <tr></tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>Move Name</td>
-              <td>Move type</td>
-              <td>Power</td>
-              <td>Accuracy</td>
-              <td>PP</td>
-            </tr>
-            <tr>
-              <td>Move Name</td>
-              <td>Move type</td>
-              <td>Power</td>
-              <td>Accuracy</td>
-              <td>PP</td>
-            </tr>
-            <tr>
-              <td>Move Name</td>
-              <td>Move type</td>
-              <td>Power</td>
-              <td>Accuracy</td>
-              <td>PP</td>
-            </tr>
-          </tbody>
-        </table>
       </div>
     </div>
   );
