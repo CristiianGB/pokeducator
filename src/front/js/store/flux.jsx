@@ -12,7 +12,9 @@ const getState = ({ getStore, getActions, setStore }) => {
       single_move_data: {}, 
       type: [],
       type_data: [], 
-      single_type_data: {}
+      single_type_data: {}, 
+      grupo_huevo: [], //nombre del grupo y url del grupo
+      grupo_huevo_data: []
     },
     actions: {
       pokemonFind: (next) => {

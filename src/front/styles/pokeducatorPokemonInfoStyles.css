@@ -1,3 +1,21 @@
-.pokemonName {
-  text-transform: uppercase;
+.pokemon__img {
+  border: 2px solid #ccc;
+  width: 100%;
+  border-radius: 3px;
+  margin-top: 8em;
+  color: #fff;
+  
+}
+.pokemon__img img {
+  height: 140%;
+  width: 90%;
+  margin-top: -7em;
+  margin-left: 2em;
+}
+.pokemon_name, .pokemon_types{
+  text-transform: capitalize;
+  margin-left: 1em;
+}
+.info_pokemon{
+  margin-top: 2em;
 }
