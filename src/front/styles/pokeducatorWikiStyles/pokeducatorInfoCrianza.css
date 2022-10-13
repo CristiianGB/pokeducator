@@ -23,8 +23,12 @@
     height: 135px;
     float: right;
     border-radius: 7px;
-  }
-  .descripcion {
-    margin-left: 10px;
-    margin-right: 10px;
-  }
+}
+.descripcion {
+  margin-left: 10px;
+  margin-right: 10px;
+}
+.generoimg{
+  max-width: 14px;
+  max-height: 14px;
+}

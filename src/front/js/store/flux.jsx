@@ -70,8 +70,8 @@ const getState = ({ getStore, getActions, setStore }) => {
             });
           });
       },
-      GroupFind: (next) => {
-        fetch(next ? next : "https://pokeapi.co/api/v2/pokemon/")
+      groupFind: (next) => {
+        fetch(next ? next : "https://pokeapi.co/api/v2/pokemon")
           .then((response) => response.json())
           .then((data) => {
             setStore({ pokemon: data });
@@ -127,7 +127,7 @@ const getState = ({ getStore, getActions, setStore }) => {
       pokemonDataLocalStorage: (pokemon_data) => {
         setStore({ pokemon_data });
       },
-      GroupDataLocalStorage: (grupo_huevo_data) => {
+      groupDataLocalStorage: (grupo_huevo_data) => {
         setStore({ grupo_huevo_data });
       },
       pokemonLocalStorage: (pokemon) => {
