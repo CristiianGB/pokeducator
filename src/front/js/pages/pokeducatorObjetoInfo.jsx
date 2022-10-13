@@ -7,6 +7,10 @@ const PokeducatorObjetoInfo = () => {
   const { store, actions } = useContext(Context);
   const params = useParams();
 
+  let arr = []
+  arr = store.single_item_data.flavor_text_entries?.find(element => element.language?.name == "es") // arr es para encontrar el texto en español y find para que devuelva el primer elemento que encuentre
+  
+
   useEffect(() => {
     if (!actions.itemFindOneInData(params.theid)) {
       actions.itemFindOne("https://pokeapi.co/api/v2/item/" + params.theid);
@@ -29,9 +33,7 @@ const PokeducatorObjetoInfo = () => {
               object.language?.name == "es" ? object.name : ""
             )}
           </h1>
-          <p>{store.single_item_data.flavor_text_entries?.map((object) =>
-              object.language?.name == "es"? object.text : ""
-            )}</p>
+          <p>{arr?.text}</p>
         </div>
       </div>
     </div>
