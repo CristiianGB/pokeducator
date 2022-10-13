@@ -26,6 +26,12 @@ import sombra_img from "../../assets/img/tiposimg/sombra.png";
 const PokeducatorObjetoInfo = () => {
   const { store, actions } = useContext(Context);
   const params = useParams();
+  let arr = []
+  arr = store.single_move_data.flavor_text_entries?.find(element => element.language?.name == "es") // arr es para encontrar el texto en español y find para que devuelva el primer elemento que encuentre
+  // .map((object) =>object.language?.name == "es"? object.flavor_text : "") mapeo
+
+ 
+
 
   useEffect(() => {
     if (!actions.moveFindOneInData(params.theid)) {
@@ -83,9 +89,7 @@ const PokeducatorObjetoInfo = () => {
         </div>
         <div>
             <p>
-            {store.single_move_data.flavor_text_entries?.map((object) =>
-              object.language?.name == "es"? object.flavor_text : ""
-            )}
+            {arr?.flavor_text}
             </p>
         </div>
         <div className="row mb-2">
