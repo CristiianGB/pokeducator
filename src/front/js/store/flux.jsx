@@ -33,26 +33,7 @@ const getState = ({ getStore, getActions, setStore }) => {
                   let pokemon_name = allpokemon.name;
                   let new_pokemon_group = getStore().grupo_huevo_data;
                
-                  fetch(allpokemon.species.url)
-                    .then((response) => response.json())
-                    .then((egg_group) => {
-                      let group_name = [];
-                      egg_group.egg_groups.map((group, i) => {
-                        group_name.push(group.name);
-                      });
-                      let grou = {
-                        img: sprites,
-                        group_name: group_name,
-                        pokemon_name: pokemon_name,
-                      };
-                   
-                      new_pokemon_group.push(grou);
-                      localStorage.setItem(
-                        "grupo_huevo_data",
-                        JSON.stringify(new_pokemon_group)
-                      );
-                      setStore({ grupo_huevo_data: new_pokemon_group });
-                    });
+              
 
                   new_pokemon_data.push(allpokemon);
                   if (i + 1 == new_pokemon_data.length) {
@@ -60,18 +41,15 @@ const getState = ({ getStore, getActions, setStore }) => {
                       (a, b) => a.id - b.id
                     );
                   }
-                  localStorage.setItem(
-                    "pokemon_data",
-                    JSON.stringify(new_pokemon_data)
-                  );
-                  localStorage.setItem("pokemon", JSON.stringify(data));
+                 
+                 
                   setStore({ pokemon_data: new_pokemon_data });
                 });
             });
           });
       },
       groupFind: (next) => {
-        fetch(next ? next : "https://pokeapi.co/api/v2/pokemon")
+        fetch(next ? next : "https://pokeapi.co/api/v2/pokemon/?offset=0&limit=1154")
           .then((response) => response.json())
           .then((data) => {
             setStore({ pokemon: data });
@@ -99,10 +77,7 @@ const getState = ({ getStore, getActions, setStore }) => {
                       };
                    
                       new_pokemon_group.push(grou);
-                      localStorage.setItem(
-                        "grupo_huevo_data",
-                        JSON.stringify(new_pokemon_group)
-                      );
+                    
                       setStore({ grupo_huevo_data: new_pokemon_group });
                     });
 
@@ -148,11 +123,8 @@ const getState = ({ getStore, getActions, setStore }) => {
                   if (i + 1 == new_item_data.length) {
                     new_item_data = new_item_data.sort((a, b) => a.id - b.id);
                   }
-                  localStorage.setItem(
-                    "item_data",
-                    JSON.stringify(new_item_data)
-                  );
-                  localStorage.setItem("item", JSON.stringify(data));
+                  
+        
                   setStore({ item_data: new_item_data });
                 });
             });
@@ -192,11 +164,8 @@ const getState = ({ getStore, getActions, setStore }) => {
                   if (i + 1 == new_move_data.length) {
                     new_move_data = new_move_data.sort((a, b) => a.id - b.id);
                   }
-                  localStorage.setItem(
-                    "move_data",
-                    JSON.stringify(new_move_data)
-                  );
-                  localStorage.setItem("move", JSON.stringify(data));
+                
+               
                   setStore({ move_data: new_move_data });
                 });
             });
@@ -236,11 +205,8 @@ const getState = ({ getStore, getActions, setStore }) => {
                   if (i + 1 == new_type_data.length) {
                     new_type_data = new_type_data.sort((a, b) => a.id - b.id);
                   }
-                  localStorage.setItem(
-                    "type_data",
-                    JSON.stringify(new_type_data)
-                  );
-                  localStorage.setItem("type", JSON.stringify(data));
+                
+                  
                   setStore({ type_data: new_type_data });
                 });
             });
