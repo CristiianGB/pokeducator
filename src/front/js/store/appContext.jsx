@@ -28,52 +28,19 @@ const injectContext = PassedComponent => {
 			 * you should do your ajax requests or fetch api requests here. Do not use setState() to save data in the
 			 * store, instead use actions, like this:
 			 **/
-			 let typeDataStorage = JSON.parse(localStorage.getItem("type_data"))
-			 let typeStorage = JSON.parse(localStorage.getItem("type"))
-			 if (typeDataStorage && typeDataStorage.length >0){
-				state.actions.typeDataLocalStorage(typeDataStorage)
-				state.actions.typeLocalStorage(typeStorage)
-			 }
-			 else{
-				state.actions.typeFind()
-			 }
-			 let moveDataStorage = JSON.parse(localStorage.getItem("move_data"))
-			 let moveStorage = JSON.parse(localStorage.getItem("move"))
-			 if (moveDataStorage && moveDataStorage.length > 0){
-				state.actions.moveDataLocalStorage(moveDataStorage)
-				state.actions.moveLocalStorage(moveStorage)
-			 }
-			 else{
-				state.actions.moveFind()
-			 }
-			let itemDataStorage = JSON.parse(localStorage.getItem("item_data"))
-			let itemStorage = JSON.parse(localStorage.getItem("item"))
-			if (itemDataStorage && itemDataStorage.lengt >0 ){
-				state.actions.itemDataLocalStorage(itemDataStorage)
-				state.actions.itemLocalStorage(itemStorage)
-			}
-			else{
-				state.actions.itemFind()
-			}
-			let pokemonDataStorage = JSON.parse(localStorage.getItem("pokemon_data"))
-			let pokemonStorage = JSON.parse(localStorage.getItem("pokemon"))
-			if ( pokemonDataStorage && pokemonDataStorage.length > 0){
-				state.actions.pokemonDataLocalStorage(pokemonDataStorage)
-				state.actions.pokemonLocalStorage(pokemonStorage)
-			}
-			else{
-				state.actions.pokemonFind();
-			}
-
-			let group = JSON.parse(localStorage.getItem("grupo_huevo_data"))
-			if ( group && group.length > 0){
-				state.actions.groupDataLocalStorage(group)
-
-			}
-			else{
-				state.actions.groupFind();
-			}
+		
 			
+				state.actions.typeFind()
+		
+				state.actions.moveFind()
+		
+				state.actions.itemFind()
+			
+				state.actions.pokemonFind()
+
+				state.actions.groupFind()
+		
+		
 		}, []);
 
 		// The initial value for the context is not null anymore, but the current state of this component,
