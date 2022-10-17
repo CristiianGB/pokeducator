@@ -21,7 +21,7 @@ const getState = ({ getStore, getActions, setStore }) => {
         fetch(next ? next : "https://pokeapi.co/api/v2/pokemon/")
           .then((response) => response.json())
           .then((data) => {
-            setStore({ pokemon: data });
+            setStore({ pokemon: data.results });
             setStore({ pokemon_data: [] });
             data.results.map((pokemon, i) => {
               let new_pokemon_data = getStore().pokemon_data;
@@ -29,11 +29,7 @@ const getState = ({ getStore, getActions, setStore }) => {
               fetch(pokemon.url)
                 .then((response) => response.json())
                 .then((allpokemon) => {
-                  let sprites = allpokemon.sprites;
-                  let pokemon_name = allpokemon.name;
-                  let new_pokemon_group = getStore().grupo_huevo_data;
-               
-              
+          
 
                   new_pokemon_data.push(allpokemon);
                   if (i + 1 == new_pokemon_data.length) {
@@ -52,8 +48,7 @@ const getState = ({ getStore, getActions, setStore }) => {
         fetch(next ? next : "https://pokeapi.co/api/v2/pokemon/?offset=0&limit=1154")
           .then((response) => response.json())
           .then((data) => {
-            setStore({ pokemon: data });
-            setStore({ pokemon_data: [] });
+        
             data.results.map((pokemon, i) => {
 
               fetch(pokemon.url)
