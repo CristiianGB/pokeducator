@@ -28,7 +28,6 @@ import sombra_img from "../../assets/img/tiposimg/sombra.png";
 const PokeducatorPokemonInfo = () => {
   const { store, actions } = useContext(Context);
   const params = useParams();
-  
   useEffect(() => {
     if (!actions.pokemonFindOneInData(params.theid)) {
       actions.pokemonFindOne(
@@ -37,77 +36,112 @@ const PokeducatorPokemonInfo = () => {
     }
   }, []);
 
-
-
   const handleClick = () => {
     console.log("Click");
   };
-  
+
   return (
     <div className="container">
+     
       <div className="row justify-content-center">
-          <div className="col-sm-4"><button onClick={{/*restar uno al id*/ }}>anterior</button></div>
-          <div className="col-sm-4 text-center">Pokédex nº: {store.single_pokemon_data.order}</div>
-          <div className="col-sm-4 text-end"><button onClick={{/*sumar uno al id*/ }}>siguiente</button></div>
+        <div className="col-sm-4">
+          <button
+            onClick={
+              {
+                /*restar uno al id*/
+              }
+            }
+          >
+            anterior
+          </button>
+        </div>
+        <div className="col-sm-4 text-center">
+          Pokédex nº: {store.single_pokemon_data.order}
+        </div>
+        <div className="col-sm-4 text-end">
+          <button
+            onClick={
+              {
+                /*sumar uno al id*/
+              }
+            }
+          >
+            siguiente
+          </button>
+        </div>
       </div>
       <div className="row">
-        <div className="col-md-6"> 
+        <div className="col-md-6">
           <div className="pokemon__img img-fluid">
-          <img  src={store.single_pokemon_data.sprites?.other["official-artwork"].front_default} alt={store.single_pokemon_data.name + "foto oficial"} />
+            <img
+              src={
+                store.single_pokemon_data.sprites?.other["official-artwork"]
+                  .front_default
+              }
+              alt={store.single_pokemon_data.name + "foto oficial"}
+            />
           </div>
         </div>
         <div className="col-md-6 info_pokemon">
-            <div className="row">
+          <div className="row">
             <h1 className="pokemon_name">{store.single_pokemon_data.name}</h1>
-              <h3 className="pokemon_type">
-                {store.single_pokemon_data.types?.map((objeto)=>{
-                  objeto.type.name == "normal" //porque no renderiza la imagen
-                  ? <img src={normal_img} alt="tipo normal" />
-                  : objeto.type.name == "fighting"
-                  ? <img src={lucha_img} alt="tipo lucha" />
-                  : objeto.type.name == "flying"
-                  ? <img src={volador_img} alt="tipo volador" />
-                  : objeto.type.name == "poison"
-                  ? <img src={veneno_img} alt="tipo veneno" />
-                  : objeto.type.name == "ground"
-                  ? <img src={tierra_img} alt="tipo tierra" />
-                  : objeto.type.name == "rock"
-                  ? <img src={roca_img} alt="tipo roca" />
-                  : objeto.type.name == "ghost"
-                  ? <img src={fantasma_img} alt="tipo fantasma" />
-                  : objeto.type.name == "steel"
-                  ? <img src={acero_img} alt="tipo acero" />
-                  : objeto.type.name == "fire"
-                  ? <img src={fuego_img} alt="tipo fuego" />
-                  : objeto.type.name == "water"
-                  ? <img src={agua_img} alt="tipo agua" />
-                  : objeto.type.name == "grass"
-                  ? <img src={planta_img} alt="tipo planta" />
-                  : objeto.type.name == "electric"
-                  ? <img src={electrico_img} alt="tipo electrico" />
-                  : objeto.type.name == "phsychic"
-                  ? <img src={psiquico_img} alt="tipo psiquico" />
-                  : objeto.type.name == "ice"
-                  ? <img src={hielo_img} alt="tipo hielo" />
-                  : objeto.type.name == "dragon"
-                  ? <img src={dragon_img} alt="tipo dragon" />
-                  : objeto.type.name == "dark"
-                  ? <img src={siniestro_img} alt="tipo siniestro" />
-                  : objeto.type.name == "fairy"
-                  ? <img src={hada_img} alt="tipo hada" />
-                  : objeto.type.name == "unknown"
-                  ? <img src={desconocido_img} alt="tipo desconocido" />
-                  : objeto.type.name == "shadow"
-                  ? <img src={sombra_img} alt="tipo sombra" />
-                  : objeto.type.name == "bug"
-                  ? <img src={bicho_img} alt="tipo bicho" /> :""
-                })}
-              </h3>
+            <h3 className="pokemon_type">
+              {store.single_pokemon_data.types?.map((objeto) => {
+                objeto.type.name == "normal" ? ( //porque no renderiza la imagen
+                  <img src={normal_img} alt="tipo normal" />
+                ) : objeto.type.name == "fighting" ? (
+                  <img src={lucha_img} alt="tipo lucha" />
+                ) : objeto.type.name == "flying" ? (
+                  <img src={volador_img} alt="tipo volador" />
+                ) : objeto.type.name == "poison" ? (
+                  <img src={veneno_img} alt="tipo veneno" />
+                ) : objeto.type.name == "ground" ? (
+                  <img src={tierra_img} alt="tipo tierra" />
+                ) : objeto.type.name == "rock" ? (
+                  <img src={roca_img} alt="tipo roca" />
+                ) : objeto.type.name == "ghost" ? (
+                  <img src={fantasma_img} alt="tipo fantasma" />
+                ) : objeto.type.name == "steel" ? (
+                  <img src={acero_img} alt="tipo acero" />
+                ) : objeto.type.name == "fire" ? (
+                  <img src={fuego_img} alt="tipo fuego" />
+                ) : objeto.type.name == "water" ? (
+                  <img src={agua_img} alt="tipo agua" />
+                ) : objeto.type.name == "grass" ? (
+                  <img src={planta_img} alt="tipo planta" />
+                ) : objeto.type.name == "electric" ? (
+                  <img src={electrico_img} alt="tipo electrico" />
+                ) : objeto.type.name == "phsychic" ? (
+                  <img src={psiquico_img} alt="tipo psiquico" />
+                ) : objeto.type.name == "ice" ? (
+                  <img src={hielo_img} alt="tipo hielo" />
+                ) : objeto.type.name == "dragon" ? (
+                  <img src={dragon_img} alt="tipo dragon" />
+                ) : objeto.type.name == "dark" ? (
+                  <img src={siniestro_img} alt="tipo siniestro" />
+                ) : objeto.type.name == "fairy" ? (
+                  <img src={hada_img} alt="tipo hada" />
+                ) : objeto.type.name == "unknown" ? (
+                  <img src={desconocido_img} alt="tipo desconocido" />
+                ) : objeto.type.name == "shadow" ? (
+                  <img src={sombra_img} alt="tipo sombra" />
+                ) : objeto.type.name == "bug" ? (
+                  <img src={bicho_img} alt="tipo bicho" />
+                ) : (
+                  ""
+                );
+              })}
+            </h3>
+          </div>
+          <div className="row">
+            <div className="col-md-6 altura_pokemon">
+              Altura: {store.single_pokemon_data.height} cm
             </div>
-            <div className="row">
-              <div className="col-md-6 altura_pokemon">Altura: {store.single_pokemon_data.height} cm</div>
-              <div className="col-md-6 peso_pokemon"> Peso: {store.single_pokemon_data.weight} kg</div>
+            <div className="col-md-6 peso_pokemon">
+              {" "}
+              Peso: {store.single_pokemon_data.weight} kg
             </div>
+          </div>
         </div>
       </div>
     </div>
