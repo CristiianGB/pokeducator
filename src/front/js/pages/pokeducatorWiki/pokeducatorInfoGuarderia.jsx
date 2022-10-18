@@ -1,14 +1,30 @@
 import React, { useState, useEffect, useContext } from "react";
 import "../../../styles/pokeducatorWikiStyles/pokeducatorInfoGuarderia.css";
+import loading from "../../../assets/img/loading.gif"
 
 const PokeducatorInfoGuarderia = () => {
   const [num, setNum] = useState(0)
+  const [load, setLoad] = useState(true)
+  let time = [2000, 3000, 4000, 5000]
+  let randomtime = Math.floor(Math.random() * time.length)
 
   const aStyles = { fontSize: "18px" };
   const subStyles = { fontSize: "15px" };
 
+setTimeout(()=>{
+    setLoad(false)
+  },time[randomtime])
+
   return (
-    <div className="container align-items-center">
+    <>
+    {load ? (
+      
+      <div className="container align-items-center">
+        <img className="centred img-fluid" src={loading} alt="Cargando..." />
+      </div>
+      
+    ) :
+    (<><div className="container align-items-center">
       <div className="row">
         <div className="col-12 my-4">
           <img
@@ -419,7 +435,7 @@ const PokeducatorInfoGuarderia = () => {
         <p>En Aura está en Villa Ágata. En Pokémon XD: Tempestad oscura, la guardería no abrirá hasta que rescates a la nieta de la dueña, que a partir de entonces se hará cargo de ella.</p>
       </div>
       <br />
-    </div>
+    </div></>)}</>
   );
 };
 

@@ -1,9 +1,14 @@
 import React, { useState } from "react";
 import "../../../styles/pokeducatorWikiStyles/pokeducatorInfoGenero.css";
 import genero_señalado_img from "../../../assets/img/genero_señalado_img.png";
+import loading from "../../../assets/img/loading.gif"
 
 const PokeducatorInfoGenero = () => {
   const [num, setNum] = useState(0);
+  const [load, setLoad] = useState(true)
+  let time = [2000, 3000, 4000, 5000]
+  let randomtime = Math.floor(Math.random() * time.length)
+
 
   const aStyles = { fontSize: "18px" };
   const subStyles = { fontSize: "15px" };
@@ -12,7 +17,21 @@ const PokeducatorInfoGenero = () => {
     margin: "auto",
   };
 
+setTimeout(()=>{
+    setLoad(false)
+  },time[randomtime])
+
   return (
+    <>
+    {load ? (
+      
+      <div className="container align-items-center">
+        <img className="centred img-fluid" src={loading} alt="Cargando..." />
+      </div>
+      
+    ) :
+    (
+    <>
     <div className="container align-items-center">
       <div className="row">
         <div className="col-12 my-4">
@@ -340,6 +359,7 @@ const PokeducatorInfoGenero = () => {
         <br />
       </div>
     </div>
+    </>)}</>
   );
 };
 

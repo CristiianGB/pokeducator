@@ -56,6 +56,7 @@ const getState = ({ getStore, getActions, setStore }) => {
                 .then((allpokemon) => {
                   let sprites = allpokemon.sprites;
                   let pokemon_name = allpokemon.name;
+                  let pokemon_id = allpokemon.id
                   let new_pokemon_group = getStore().grupo_huevo_data;
                
                   fetch(allpokemon.species.url)
@@ -69,14 +70,13 @@ const getState = ({ getStore, getActions, setStore }) => {
                         img: sprites,
                         group_name: group_name,
                         pokemon_name: pokemon_name,
+                        pokemon_id: pokemon_id
                       };
                    
                       new_pokemon_group.push(grou);
                     
                       setStore({ grupo_huevo_data: new_pokemon_group });
                     });
-
-               
                 });
             });
           });
