@@ -3,9 +3,13 @@ import "../../../styles/pokeducatorWikiStyles/pokeducatorInfoCrianza.css";
 import grupos_huevo_img from "../../../assets/img/grupos_huevo_img.png";
 import movimientos_huevo_img from "../../../assets/img/movimientos_huevo_img.png";
 import { Context } from "../../store/appContext.jsx"
+import loading from "../../../assets/img/loading.gif"
 
 const PokeducatorInfoCrianza = () => {
   const [num, setNum] = useState(0) 
+  const [load, setLoad] = useState(true)
+  let time = [2000, 3000, 4000, 5000]
+  let randomtime = Math.floor(Math.random() * time.length)
 
   const aStyles = { fontSize: "18px" };
   const subStyles = { fontSize: "15px" };
@@ -13,8 +17,21 @@ const PokeducatorInfoCrianza = () => {
     width: "300px",
     margin: "auto",
   };
-  
+
+  setTimeout(()=>{
+    setLoad(false)
+  },time[randomtime])
+
   return (
+    <>
+    {load ? (
+      
+      <div className="container align-items-center">
+        <img className="centred img-fluid" src={loading} alt="Cargando..." />
+      </div>
+      
+    ) :
+    (<>
     <div className="container align-items-center">
       <div className="row">
         <div className="col-12 my-4">
@@ -1293,6 +1310,8 @@ const PokeducatorInfoCrianza = () => {
         </div>
       </div>
     </div>
+    </>)}
+    </>
   );
 };
 

@@ -2,17 +2,17 @@ import React, { useState, useEffect, useContext } from "react";
 import { Context } from "../store/appContext.jsx";
 import "../../styles/pokeducatorPokemonsStyles.css";
 import Select from 'react-select'
+import loading from "../../assets/img/loading.gif"
 
 const PokeducatorPokemons = () => {
   const { store, actions } = useContext(Context);
   const [load, setLoad] = useState(true);
- 
+  let time = [2000, 3000, 4000, 5000] // sensacion de carga porque el tiempo es random
+  let randomtime = Math.floor(Math.random() * time.length)
 
-  useEffect(()=>{
-    if(store.pokemon?.length)setLoad(false)
-  },[store.pokemon])
-
-  
+  setTimeout(()=>{
+    setLoad(false)
+  },time[randomtime])//cuando pase el tiempo ( asi el fetch está hecho ) se carga la pagina
 
   return (
     <div className="App container align-items-center">
@@ -46,7 +46,8 @@ const PokeducatorPokemons = () => {
       </div>
       <div className="pokegallery">
         {load ? (
-          <p>Loading...</p>
+          <div className="m-auto"><img src={loading} alt="Cargando..." /></div>
+          
         ) : (
           store.pokemon_data.map((img, i) => (
             <div className="col-md-3" id={img.id} key={img.id}>
