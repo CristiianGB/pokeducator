@@ -42,7 +42,6 @@ const PokeducatorPokemonInfo = () => {
 
   return (
     <div className="container">
-     
       <div className="row justify-content-center">
         <div className="col-sm-4">
           <button
@@ -75,8 +74,28 @@ const PokeducatorPokemonInfo = () => {
           <div className="pokemon__img img-fluid">
             <img
               src={
-                store.single_pokemon_data.sprites?.other["official-artwork"]
-                  .front_default
+                store.single_pokemon_data.sprites?.other?.["official-artwork"]
+                  ?.front_default
+                  ? store.single_pokemon_data.sprites?.other?.[
+                      "official-artwork"
+                    ]?.front_default
+                  : store.single_pokemon_data.sprites?.versions?.[
+                      "generation-vii"
+                    ]?.["ultra-sun-ultra-moon"].front_default
+                  ? store.single_pokemon_data.sprites?.versions?.[
+                      "generation-vii"
+                    ]?.["ultra-sun-ultra-moon"].front_default
+                  : store.single_pokemon_data.sprites?.versions?.[
+                      "generation-vi"
+                    ]?.["x-y"].front_default
+                  ? store.single_pokemon_data.sprites?.versions?.[
+                      "generation-vi"
+                    ]?.["x-y"].front_default
+                  : store.single_pokemon_data.sprites?.other?.home
+                      ?.front_default
+                  ? store.single_pokemon_data.sprites?.other?.home
+                      ?.front_default
+                  : ""
               }
               alt={store.single_pokemon_data.name + "foto oficial"}
             />
@@ -87,7 +106,7 @@ const PokeducatorPokemonInfo = () => {
             <h1 className="pokemon_name">{store.single_pokemon_data.name}</h1>
             <h3 className="pokemon_type">
               {store.single_pokemon_data.types?.map((objeto) => {
-                objeto.type.name == "normal" ? ( //porque no renderiza la imagen
+                objeto.type.name == "normal" ? (
                   <img src={normal_img} alt="tipo normal" />
                 ) : objeto.type.name == "fighting" ? (
                   <img src={lucha_img} alt="tipo lucha" />
