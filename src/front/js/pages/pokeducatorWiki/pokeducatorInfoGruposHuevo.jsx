@@ -4,12 +4,14 @@ import { Context } from "../../store/appContext.jsx";
 import { useParams } from "react-router-dom";
 import loading from "../../../assets/img/loading.gif";
 
+
 const PokeducatorInfoGruposHuevo = () => {
   const { store, actions } = useContext(Context);
   const [load, setLoad] = useState(true);
+  const [num, setNum] = useState(0)
   const params = useParams();
 
-  let time = [2000, 3000, 4000, 5000];
+  let time = [7000, 6000, 4000, 5000];
   let randomtime = Math.floor(Math.random() * time.length);
 
   const aStyles = { fontSize: "18px" };
@@ -31,6 +33,13 @@ const PokeducatorInfoGruposHuevo = () => {
       ) : (
         <div className="container align-items-center">
           <div className="row">
+          <div className="col-12 my-4">
+          <img
+            className="img-fluid w-100 portada"
+            src="https://fotosparafacebook.es/wp-content/uploads/2016/07/pokemon-portadas-para-facebook-Fotosparafacebook.es-1-750x315.png"
+            alt="portada Pokeducator Crianza"
+          />
+        </div>
             <h1 id="grupos_huevo">Grupos Huevo</h1>
             <hr />
           </div>
@@ -44,6 +53,177 @@ const PokeducatorInfoGruposHuevo = () => {
               pertenecer a varios grupos huevo.
             </p>
             <br />
+            <div className="col-sm-5 m-5 ms-3">
+        <nav id="toc" data-toggle="toc" className="sticky-top">
+          <ul className="nav navbar-nav">
+            <li>
+              <a
+                onClick={() => setNum(1)}
+                className={num == 1 ? "nav-link active" : "nav-link"}
+                style={aStyles}
+                href="#grupos_huevo"
+              >
+                Grupos huevo
+              </a>
+            </li>
+            <li>
+              <a
+                onClick={() => setNum(2)}
+                className={num == 2 ? "nav-link active" : "nav-link"}
+                style={aStyles}
+                href="#cadenas_de_cria"
+              >
+                Cadenas de cría
+              </a>
+            </li>
+            <li>
+              <a
+                id="desplegable"
+                onClick={() => setNum(3)}
+                className={num == 3 ? "nav-link active" : "nav-link"}
+                style={aStyles}
+                href="#desplegable"
+              >
+                Tipos de grupos huevo
+              </a>
+              <ul className="nav navbar-nav">
+                <li>
+                  <a
+                    className="nav-link"
+                    style={subStyles}
+                    href="#ninguno"
+                  >
+                    Ninguno.
+                  </a>
+                </li>
+                <li>
+                  <a className="nav-link" style={subStyles} href="#ditto">
+                    Ditto.
+                  </a>
+                </li>
+                <li>
+                  <a
+                    className="nav-link"
+                    style={subStyles}
+                    href="#planta"
+                  >
+                    Planta.
+                  </a>
+                </li>
+                <li>
+                  <a
+                    className="nav-link"
+                    style={subStyles}
+                    href="#bicho"
+                  >
+                    Bicho.
+                  </a>
+                </li>
+                <li>
+                  <a
+                    className="nav-link"
+                    style={subStyles}
+                    href="#volador"
+                  >
+                    Volador.
+                  </a>
+                </li>
+                <li>
+                  <a
+                    className="nav-link"
+                    style={subStyles}
+                    href="#humanoide"
+                  >
+                    Humanoide.
+                  </a>
+                </li>
+                <li>
+                  <a
+                    className="nav-link"
+                    style={subStyles}
+                    href="#mineral"
+                  >
+                    Mineral.
+                  </a>
+                </li>
+                <li>
+                  <a
+                    className="nav-link"
+                    style={subStyles}
+                    href="#amorfo"
+                  >
+                    Amorfo.
+                  </a>
+                </li>
+                <li>
+                  <a
+                    className="nav-link"
+                    style={subStyles}
+                    href="#campo"
+                  >
+                    Campo.
+                  </a>
+                </li>
+                <li>
+                  <a
+                    className="nav-link"
+                    style={subStyles}
+                    href="#agua1"
+                  >
+                    Agua 1.
+                  </a>
+                </li>
+                <li>
+                  <a
+                    className="nav-link"
+                    style={subStyles}
+                    href="#agua2"
+                  >
+                    Agua 2.
+                  </a>
+                </li>
+                <li>
+                  <a
+                    className="nav-link"
+                    style={subStyles}
+                    href="#agua3"
+                  >
+                    Agua 3.
+                  </a>
+                </li>
+                <li>
+                  <a
+                    className="nav-link"
+                    style={subStyles}
+                    href="#monstruo"
+                  >
+                    Monstruo.
+                  </a>
+                </li>
+                <li>
+                  <a
+                    className="nav-link"
+                    style={subStyles}
+                    href="#hada"
+                  >
+                    Hada.
+                  </a>
+                </li>
+                <li>
+                  <a
+                    className="nav-link"
+                    style={subStyles}
+                    href="#dragon"
+                  >
+                    Dragón.
+                  </a>
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </nav>
+      </div>
+      <br />
           </div>
           <div className="row">
             <h1 id="cadenas_de_cria">Cadenas de cría</h1>
@@ -463,7 +643,7 @@ const PokeducatorInfoGruposHuevo = () => {
               de su imagen.
             </p>
             <br />
-            <h3>Ninguno</h3>
+            <h3 id="ninguno">Ninguno</h3>
             <br />
             <p>
               Los Pokémon que pertenecen a este grupo son los que no pueden
@@ -482,7 +662,6 @@ const PokeducatorInfoGruposHuevo = () => {
               esta regla solo se aplica a los legendarios.
             </p>
             <br />
-
             <div className="row">
               {store.grupo_huevo_data.map((grupo, i) =>
                 grupo.group_name.includes("no-eggs") ? (
@@ -531,6 +710,888 @@ const PokeducatorInfoGruposHuevo = () => {
                 )
               )}
             </div>
+            <br />
+            <h3 id="ditto">Ditto</h3>
+            <br />
+            <p>
+              Ditto es un Pokémon que, por su capacidad de transformarse en
+              cualquier Pokémon, puede criar con cualquier Pokémon menos con los
+              clasificados en "ninguno" ni con otro Ditto.
+            </p>{" "}
+            <br />
+            <div className="ditto row">
+              {store.grupo_huevo_data.map((grupo, i) =>
+                grupo.group_name.includes("ditto") ? (
+                  <>
+                    <div className="col mx-1 my-1">
+                      <a
+                        className="links"
+                        href={`/pokemon/${grupo.pokemon_id}`}
+                      >
+                        <p>{grupo.pokemon_name}</p>
+                      </a>
+
+                      <a
+                        href={`/pokemon/${grupo.pokemon_id}`}
+                        className="image"
+                        title=""
+                      >
+                        <img
+                          alt=""
+                          src={
+                            grupo.img.versions?.["generation-vi"]?.["x-y"]
+                              .front_default
+                              ? grupo.img.versions?.["generation-vi"]?.["x-y"]
+                                  .front_default
+                              : grupo.img.versions?.["generation-vii"]?.[
+                                  "ultra-sun-ultra-moon"
+                                ].front_default
+                              ? grupo.img.versions?.["generation-vii"]?.[
+                                  "ultra-sun-ultra-moon"
+                                ].front_default
+                              : grupo.img.other?.["official-artwork"]
+                                  ?.front_default
+                              ? grupo.img.other?.["official-artwork"]
+                                  ?.front_default
+                              : grupo.img.other?.home?.front_default
+                              ? grupo.img.other?.home?.front_default
+                              : ""
+                          }
+                          className="pokemonimg lazyloaded"
+                        />
+                      </a>
+                    </div>
+                  </>
+                ) : (
+                  ""
+                )
+              )}
+            </div>
+            <br />
+            <h3 id="planta">Planta</h3>
+            <br />
+            <p>
+              Este es el grupo 1. Exceptuando a Comfey, está formado en su gran
+              mayoría por Pokémon de tipo planta.
+            </p>
+            <br />
+            <p>
+              Algunos Pokémon de este grupo pertenecen también a los grupos
+              huevo campo, monstruo, agua 1, bicho, humanoide, hada, mineral y
+              amorfo.
+            </p>
+            <br />
+            <div className="row">
+              {store.grupo_huevo_data.map((grupo, i) =>
+                grupo.group_name.includes("plant") ? (
+                  <>
+                    <div className="col mx-1 my-1">
+                      <a
+                        className="links"
+                        href={`/pokemon/${grupo.pokemon_id}`}
+                      >
+                        <p>{grupo.pokemon_name}</p>
+                      </a>
+
+                      <a
+                        href={`/pokemon/${grupo.pokemon_id}`}
+                        className="image"
+                        title=""
+                      >
+                        <img
+                          alt=""
+                          src={
+                            grupo.img.versions?.["generation-vi"]?.["x-y"]
+                              .front_default
+                              ? grupo.img.versions?.["generation-vi"]?.["x-y"]
+                                  .front_default
+                              : grupo.img.versions?.["generation-vii"]?.[
+                                  "ultra-sun-ultra-moon"
+                                ].front_default
+                              ? grupo.img.versions?.["generation-vii"]?.[
+                                  "ultra-sun-ultra-moon"
+                                ].front_default
+                              : grupo.img.other?.["official-artwork"]
+                                  ?.front_default
+                              ? grupo.img.other?.["official-artwork"]
+                                  ?.front_default
+                              : grupo.img.other?.home?.front_default
+                              ? grupo.img.other?.home?.front_default
+                              : ""
+                          }
+                          className="pokemonimg lazyloaded"
+                        />
+                      </a>
+                    </div>
+                  </>
+                ) : (
+                  ""
+                )
+              )}
+            </div>
+            <br />
+            <h3 id="bicho">Bicho</h3>
+            <br />
+            <p>
+              Este es el grupo 2. Está formado por Pokémon de tipo bicho,
+              exceptuando a Drapion, Trapinch, Vibrava, Flygon, Gligar y
+              Gliscor, los cuales aunque posean la apariencia física de
+              insectos, no son tipo bicho.
+            </p>
+            <br />
+            <p>
+              Algunos Pokémon de este grupo pertenecen también a los grupos
+              huevo planta, agua 1, agua 3, humanoide y mineral.
+            </p>
+            <br />
+            <div className="row">
+              {store.grupo_huevo_data.map((grupo, i) =>
+                grupo.group_name.includes("bug") ? (
+                  <>
+                    <div className="col mx-1 my-1">
+                      <a
+                        className="links"
+                        href={`/pokemon/${grupo.pokemon_id}`}
+                      >
+                        <p>{grupo.pokemon_name}</p>
+                      </a>
+
+                      <a
+                        href={`/pokemon/${grupo.pokemon_id}`}
+                        className="image"
+                        title=""
+                      >
+                        <img
+                          alt=""
+                          src={
+                            grupo.img.versions?.["generation-vi"]?.["x-y"]
+                              .front_default
+                              ? grupo.img.versions?.["generation-vi"]?.["x-y"]
+                                  .front_default
+                              : grupo.img.versions?.["generation-vii"]?.[
+                                  "ultra-sun-ultra-moon"
+                                ].front_default
+                              ? grupo.img.versions?.["generation-vii"]?.[
+                                  "ultra-sun-ultra-moon"
+                                ].front_default
+                              : grupo.img.other?.["official-artwork"]
+                                  ?.front_default
+                              ? grupo.img.other?.["official-artwork"]
+                                  ?.front_default
+                              : grupo.img.other?.home?.front_default
+                              ? grupo.img.other?.home?.front_default
+                              : ""
+                          }
+                          className="pokemonimg lazyloaded"
+                        />
+                      </a>
+                    </div>
+                  </>
+                ) : (
+                  ""
+                )
+              )}
+            </div>
+            <br />
+            <h3 id="volador">Volador</h3>
+            <br />
+            <p>
+              Este es el grupo 3. Está formado por 45 Pokémon de tipo volador.
+            </p>
+            <br />
+            <p>
+              Algunos de los Pokémon que pertenecen a este grupo pertenecen a su
+              vez a los grupos huevo campo, agua 1, agua 3, dragón y hada.
+            </p>
+            <br />
+            <div className="row">
+              {store.grupo_huevo_data.map((grupo, i) =>
+                grupo.group_name.includes("flying") ? (
+                  <>
+                    <div className="col mx-1 my-1">
+                      <a
+                        className="links"
+                        href={`/pokemon/${grupo.pokemon_id}`}
+                      >
+                        <p>{grupo.pokemon_name}</p>
+                      </a>
+
+                      <a
+                        href={`/pokemon/${grupo.pokemon_id}`}
+                        className="image"
+                        title=""
+                      >
+                        <img
+                          alt=""
+                          src={
+                            grupo.img.versions?.["generation-vi"]?.["x-y"]
+                              .front_default
+                              ? grupo.img.versions?.["generation-vi"]?.["x-y"]
+                                  .front_default
+                              : grupo.img.versions?.["generation-vii"]?.[
+                                  "ultra-sun-ultra-moon"
+                                ].front_default
+                              ? grupo.img.versions?.["generation-vii"]?.[
+                                  "ultra-sun-ultra-moon"
+                                ].front_default
+                              : grupo.img.other?.["official-artwork"]
+                                  ?.front_default
+                              ? grupo.img.other?.["official-artwork"]
+                                  ?.front_default
+                              : grupo.img.other?.home?.front_default
+                              ? grupo.img.other?.home?.front_default
+                              : ""
+                          }
+                          className="pokemonimg lazyloaded"
+                        />
+                      </a>
+                    </div>
+                  </>
+                ) : (
+                  ""
+                )
+              )}
+            </div>
+            <br />
+            <h3 id="humanoide">Humanoide</h3>
+            <br />
+            <p>
+              Este es el grupo 4. Está formado por Pokémon que poseen una forma
+              similar a los humanos. Por lo general los Pokémon de este grupo
+              son de tipo psíquico, lucha, siniestro o normal.
+            </p>
+            <br />
+            <p>
+              Algunos Pokémon de este grupo pertenecen también a los grupos
+              huevo campo, planta y bicho.
+            </p>
+            <br />
+            <div className="row">
+              {store.grupo_huevo_data.map((grupo, i) =>
+                grupo.group_name.includes("humanshape") ? (
+                  <>
+                    <div className="col mx-1 my-1">
+                      <a
+                        className="links"
+                        href={`/pokemon/${grupo.pokemon_id}`}
+                      >
+                        <p>{grupo.pokemon_name}</p>
+                      </a>
+
+                      <a
+                        href={`/pokemon/${grupo.pokemon_id}`}
+                        className="image"
+                        title=""
+                      >
+                        <img
+                          alt=""
+                          src={
+                            grupo.img.versions?.["generation-vi"]?.["x-y"]
+                              .front_default
+                              ? grupo.img.versions?.["generation-vi"]?.["x-y"]
+                                  .front_default
+                              : grupo.img.versions?.["generation-vii"]?.[
+                                  "ultra-sun-ultra-moon"
+                                ].front_default
+                              ? grupo.img.versions?.["generation-vii"]?.[
+                                  "ultra-sun-ultra-moon"
+                                ].front_default
+                              : grupo.img.other?.["official-artwork"]
+                                  ?.front_default
+                              ? grupo.img.other?.["official-artwork"]
+                                  ?.front_default
+                              : grupo.img.other?.home?.front_default
+                              ? grupo.img.other?.home?.front_default
+                              : ""
+                          }
+                          className="pokemonimg lazyloaded"
+                        />
+                      </a>
+                    </div>
+                  </>
+                ) : (
+                  ""
+                )
+              )}
+            </div>
+            <br />
+            <h3 id="mineral">Mineral</h3>
+            <br />
+            <p>
+              Este es el grupo 5. Está formado por Pokémon de tipo roca, tierra,
+              hielo y acero. Se incluye a Shedinja (Por ser la piel mudada de
+              Ninjask) y a Voltorb con Electrode por ser una especie de Poké
+              Ball. Porygon y sus evoluciones se incluyen por estar hechos de
+              materiales sintéticos, al igual que el acero. Yamask y Cofagrigus
+              son incluidos también por poseer partes de piedra, a pesar de no
+              ser tipo roca.
+            </p>
+            <br />
+            <p>
+              Muchos Pokémon de este grupo no tienen género, por lo que solo
+              pueden criar con Ditto.
+            </p>
+            <br />
+            <p>
+              Algunos Pokémon de este grupo pertenecen a su vez a los grupos
+              huevo planta, bicho, hada y amorfo.
+            </p>
+            <br />
+            <div className="row">
+              {store.grupo_huevo_data.map((grupo, i) =>
+                grupo.group_name.includes("mineral") ? (
+                  <>
+                    <div className="col mx-1 my-1">
+                      <a
+                        className="links"
+                        href={`/pokemon/${grupo.pokemon_id}`}
+                      >
+                        <p>{grupo.pokemon_name}</p>
+                      </a>
+
+                      <a
+                        href={`/pokemon/${grupo.pokemon_id}`}
+                        className="image"
+                        title=""
+                      >
+                        <img
+                          alt=""
+                          src={
+                            grupo.img.versions?.["generation-vi"]?.["x-y"]
+                              .front_default
+                              ? grupo.img.versions?.["generation-vi"]?.["x-y"]
+                                  .front_default
+                              : grupo.img.versions?.["generation-vii"]?.[
+                                  "ultra-sun-ultra-moon"
+                                ].front_default
+                              ? grupo.img.versions?.["generation-vii"]?.[
+                                  "ultra-sun-ultra-moon"
+                                ].front_default
+                              : grupo.img.other?.["official-artwork"]
+                                  ?.front_default
+                              ? grupo.img.other?.["official-artwork"]
+                                  ?.front_default
+                              : grupo.img.other?.home?.front_default
+                              ? grupo.img.other?.home?.front_default
+                              : ""
+                          }
+                          className="pokemonimg lazyloaded"
+                        />
+                      </a>
+                    </div>
+                  </>
+                ) : (
+                  ""
+                )
+              )}
+            </div>
+            <br />
+            <h3 id="amorfo">Amorfo</h3>
+            <br />
+            <p>
+              Este es el grupo 6. Está formado por Pokémon que carecen de una
+              forma específica con la cual poder hacer una comparación con otros
+              animales de la vida real. Suelen ser del tipo psíquico, veneno y
+              fantasma. Slugma, Shellos, Tynamo y sus evoluciones son incluidos
+              aquí a causa de sus formas semejantes a gusanos. La familia de
+              Ralts esta aquí por razones desconocidas.
+            </p>
+            <br />
+            <p>
+              Algunos Pokémon de este grupo pertenecen también a los grupos
+              huevo planta, agua 1, hada y mineral.
+            </p>
+            <br />
+            <div className="row">
+              {store.grupo_huevo_data.map((grupo, i) =>
+                grupo.group_name.includes("indeterminate") ? (
+                  <>
+                    <div className="col mx-1 my-1">
+                      <a
+                        className="links"
+                        href={`/pokemon/${grupo.pokemon_id}`}
+                      >
+                        <p>{grupo.pokemon_name}</p>
+                      </a>
+
+                      <a
+                        href={`/pokemon/${grupo.pokemon_id}`}
+                        className="image"
+                        title=""
+                      >
+                        <img
+                          alt=""
+                          src={
+                            grupo.img.versions?.["generation-vi"]?.["x-y"]
+                              .front_default
+                              ? grupo.img.versions?.["generation-vi"]?.["x-y"]
+                                  .front_default
+                              : grupo.img.versions?.["generation-vii"]?.[
+                                  "ultra-sun-ultra-moon"
+                                ].front_default
+                              ? grupo.img.versions?.["generation-vii"]?.[
+                                  "ultra-sun-ultra-moon"
+                                ].front_default
+                              : grupo.img.other?.["official-artwork"]
+                                  ?.front_default
+                              ? grupo.img.other?.["official-artwork"]
+                                  ?.front_default
+                              : grupo.img.other?.home?.front_default
+                              ? grupo.img.other?.home?.front_default
+                              : ""
+                          }
+                          className="pokemonimg lazyloaded"
+                        />
+                      </a>
+                    </div>
+                  </>
+                ) : (
+                  ""
+                )
+              )}
+            </div>
+            <br />
+            <h3 id="campo">Campo</h3>
+            <br />
+            <p>
+              Este es el grupo 7. Está formado por Pokémon que suelen caminar en
+              tierra firme y algunos en agua, y contiene especies de una gran
+              variedad de tipos de Pokémon. Es el más amplio con diferencia.
+            </p>
+            <br />
+            <p>
+              Algunos Pokémon de este grupo pertenecen a su vez a los grupos
+              huevo monstruo, planta, dragón, agua 1, agua 2, volador, humanoide
+              y hada.
+            </p>
+            <br />
+            <div className="row">
+              {store.grupo_huevo_data.map((grupo, i) =>
+                grupo.group_name.includes("ground") ? (
+                  <>
+                    <div className="col mx-1 my-1">
+                      <a
+                        className="links"
+                        href={`/pokemon/${grupo.pokemon_id}`}
+                      >
+                        <p>{grupo.pokemon_name}</p>
+                      </a>
+
+                      <a
+                        href={`/pokemon/${grupo.pokemon_id}`}
+                        className="image"
+                        title=""
+                      >
+                        <img
+                          alt=""
+                          src={
+                            grupo.img.versions?.["generation-vi"]?.["x-y"]
+                              .front_default
+                              ? grupo.img.versions?.["generation-vi"]?.["x-y"]
+                                  .front_default
+                              : grupo.img.versions?.["generation-vii"]?.[
+                                  "ultra-sun-ultra-moon"
+                                ].front_default
+                              ? grupo.img.versions?.["generation-vii"]?.[
+                                  "ultra-sun-ultra-moon"
+                                ].front_default
+                              : grupo.img.other?.["official-artwork"]
+                                  ?.front_default
+                              ? grupo.img.other?.["official-artwork"]
+                                  ?.front_default
+                              : grupo.img.other?.home?.front_default
+                              ? grupo.img.other?.home?.front_default
+                              : ""
+                          }
+                          className="pokemonimg lazyloaded"
+                        />
+                      </a>
+                    </div>
+                  </>
+                ) : (
+                  ""
+                )
+              )}
+            </div>
+            <br />
+            <h3 id="agua1">Agua 1</h3>
+            <br />
+            <p>
+              Este es el grupo 8. Está formado por una parte de los Pokémon de
+              tipo agua inspirados en anfibios, mamiferos y reptiles. La mayoría
+              poseen extremidades que les permite caminar en tierra firme.
+              Exceptuando a Alomomola, Clamperl, Dratini, Dragonair, Masquerain
+              y Milotic, de entre los cuales, la mayoría pertenece a este grupo
+              a causa de sus preevoluciones y evoluciones.
+            </p>
+            <br />
+            <p>
+              Algunos Pokémon de este grupo pertenecen a su vez a los grupos
+              huevo monstruo, campo, planta, bicho, dragón, agua 2, agua 3,
+              volador, hada y amorfo.
+            </p>
+            <br />
+            <div className="row">
+              {store.grupo_huevo_data.map((grupo, i) =>
+                grupo.group_name.includes("water1") ? (
+                  <>
+                    <div className="col mx-1 my-1">
+                      <a
+                        className="links"
+                        href={`/pokemon/${grupo.pokemon_id}`}
+                      >
+                        <p>{grupo.pokemon_name}</p>
+                      </a>
+
+                      <a
+                        href={`/pokemon/${grupo.pokemon_id}`}
+                        className="image"
+                        title=""
+                      >
+                        <img
+                          alt=""
+                          src={
+                            grupo.img.versions?.["generation-vi"]?.["x-y"]
+                              .front_default
+                              ? grupo.img.versions?.["generation-vi"]?.["x-y"]
+                                  .front_default
+                              : grupo.img.versions?.["generation-vii"]?.[
+                                  "ultra-sun-ultra-moon"
+                                ].front_default
+                              ? grupo.img.versions?.["generation-vii"]?.[
+                                  "ultra-sun-ultra-moon"
+                                ].front_default
+                              : grupo.img.other?.["official-artwork"]
+                                  ?.front_default
+                              ? grupo.img.other?.["official-artwork"]
+                                  ?.front_default
+                              : grupo.img.other?.home?.front_default
+                              ? grupo.img.other?.home?.front_default
+                              : ""
+                          }
+                          className="pokemonimg lazyloaded"
+                        />
+                      </a>
+                    </div>
+                  </>
+                ) : (
+                  ""
+                )
+              )}
+            </div>
+            <br />
+            <h3 id="agua2">Agua 2</h3>
+            <br />
+            <p>
+              Este es el grupo 9. Está formado por una parte de los Pokémon de
+              tipo agua. La mayoría carecen de extremidades excepto las aletas.
+            </p>
+            <br />
+            <p>
+              Algunos Pokémon de este grupo pertenecen al mismo tiempo a los
+              grupos huevo agua 1, campo y dragón.
+            </p>
+            <br />
+            <div className="row">
+              {store.grupo_huevo_data.map((grupo, i) =>
+                grupo.group_name.includes("water2") ? (
+                  <>
+                    <div className="col mx-1 my-1">
+                      <a
+                        className="links"
+                        href={`/pokemon/${grupo.pokemon_id}`}
+                      >
+                        <p>{grupo.pokemon_name}</p>
+                      </a>
+
+                      <a
+                        href={`/pokemon/${grupo.pokemon_id}`}
+                        className="image"
+                        title=""
+                      >
+                        <img
+                          alt=""
+                          src={
+                            grupo.img.versions?.["generation-vi"]?.["x-y"]
+                              .front_default
+                              ? grupo.img.versions?.["generation-vi"]?.["x-y"]
+                                  .front_default
+                              : grupo.img.versions?.["generation-vii"]?.[
+                                  "ultra-sun-ultra-moon"
+                                ].front_default
+                              ? grupo.img.versions?.["generation-vii"]?.[
+                                  "ultra-sun-ultra-moon"
+                                ].front_default
+                              : grupo.img.other?.["official-artwork"]
+                                  ?.front_default
+                              ? grupo.img.other?.["official-artwork"]
+                                  ?.front_default
+                              : grupo.img.other?.home?.front_default
+                              ? grupo.img.other?.home?.front_default
+                              : ""
+                          }
+                          className="pokemonimg lazyloaded"
+                        />
+                      </a>
+                    </div>
+                  </>
+                ) : (
+                  ""
+                )
+              )}
+            </div>
+            <br />
+            <h3 id="agua3">Agua 3</h3>
+            <br />
+            <p>
+              Este es el grupo 10. Está formado por una parte de los Pokémon de
+              tipo agua, la mayoría son artrópodos y fósiles. Los artrópodos son
+              un grupo de invertebrados dentro de los cuales encontramos los
+              crustáceos y los arácnidos, siendo esta la razón de la inclusión
+              de Drapion dentro de este grupo.
+            </p>
+            <br />
+            <p>
+              Algunos Pokémon de este grupo pertenecen a su vez a los grupos
+              huevo agua 1, bicho y volador.
+            </p>
+            <br />
+            <div className="row">
+              {store.grupo_huevo_data.map((grupo, i) =>
+                grupo.group_name.includes("water3") ? (
+                  <>
+                    <div className="col mx-1 my-1">
+                      <a
+                        className="links"
+                        href={`/pokemon/${grupo.pokemon_id}`}
+                      >
+                        <p>{grupo.pokemon_name}</p>
+                      </a>
+
+                      <a
+                        href={`/pokemon/${grupo.pokemon_id}`}
+                        className="image"
+                        title=""
+                      >
+                        <img
+                          alt=""
+                          src={
+                            grupo.img.versions?.["generation-vi"]?.["x-y"]
+                              .front_default
+                              ? grupo.img.versions?.["generation-vi"]?.["x-y"]
+                                  .front_default
+                              : grupo.img.versions?.["generation-vii"]?.[
+                                  "ultra-sun-ultra-moon"
+                                ].front_default
+                              ? grupo.img.versions?.["generation-vii"]?.[
+                                  "ultra-sun-ultra-moon"
+                                ].front_default
+                              : grupo.img.other?.["official-artwork"]
+                                  ?.front_default
+                              ? grupo.img.other?.["official-artwork"]
+                                  ?.front_default
+                              : grupo.img.other?.home?.front_default
+                              ? grupo.img.other?.home?.front_default
+                              : ""
+                          }
+                          className="pokemonimg lazyloaded"
+                        />
+                      </a>
+                    </div>
+                  </>
+                ) : (
+                  ""
+                )
+              )}
+            </div>
+            <br />
+            <h3 id="monstruo">Monstruo</h3>
+            <br />
+            <p>
+              Este es el grupo 11. Está formado por Pokémon que tienen
+              apariencia de bestia, dinosaurio o reptil.
+            </p>
+            <br />
+            <p>
+              Algunos Pokémon de este grupo pertenecen a su vez a los grupos
+              huevo campo, agua 1, dragón y planta.
+            </p>
+            <br />
+            <div className="row">
+              {store.grupo_huevo_data.map((grupo, i) =>
+                grupo.group_name.includes("monster") ? (
+                  <>
+                    <div className="col mx-1 my-1">
+                      <a
+                        className="links"
+                        href={`/pokemon/${grupo.pokemon_id}`}
+                      >
+                        <p>{grupo.pokemon_name}</p>
+                      </a>
+
+                      <a
+                        href={`/pokemon/${grupo.pokemon_id}`}
+                        className="image"
+                        title=""
+                      >
+                        <img
+                          alt=""
+                          src={
+                            grupo.img.versions?.["generation-vi"]?.["x-y"]
+                              .front_default
+                              ? grupo.img.versions?.["generation-vi"]?.["x-y"]
+                                  .front_default
+                              : grupo.img.versions?.["generation-vii"]?.[
+                                  "ultra-sun-ultra-moon"
+                                ].front_default
+                              ? grupo.img.versions?.["generation-vii"]?.[
+                                  "ultra-sun-ultra-moon"
+                                ].front_default
+                              : grupo.img.other?.["official-artwork"]
+                                  ?.front_default
+                              ? grupo.img.other?.["official-artwork"]
+                                  ?.front_default
+                              : grupo.img.other?.home?.front_default
+                              ? grupo.img.other?.home?.front_default
+                              : ""
+                          }
+                          className="pokemonimg lazyloaded"
+                        />
+                      </a>
+                    </div>
+                  </>
+                ) : (
+                  ""
+                )
+              )}
+            </div>
+            <br />
+            <h3 id="hada">Hada</h3>
+            <br />
+            <p>
+              Este es el grupo 12. Está formado por Pokémon considerados "hadas"
+              por su forma tierna y encantadora; a partir de la sexta
+              generación, algunos de estos Pokémon son precisamente de tipo
+              hada.
+            </p>
+            <br />
+            <p>
+              Algunos Pokémon de este grupo pertenecen también a los grupos
+              huevo campo, agua 1, planta, mineral, volador y amorfo.
+            </p>
+            <br />
+            <div className="row">
+              {store.grupo_huevo_data.map((grupo, i) =>
+                grupo.group_name.includes("fairy") ? (
+                  <>
+                    <div className="col mx-1 my-1">
+                      <a
+                        className="links"
+                        href={`/pokemon/${grupo.pokemon_id}`}
+                      >
+                        <p>{grupo.pokemon_name}</p>
+                      </a>
+
+                      <a
+                        href={`/pokemon/${grupo.pokemon_id}`}
+                        className="image"
+                        title=""
+                      >
+                        <img
+                          alt=""
+                          src={
+                            grupo.img.versions?.["generation-vi"]?.["x-y"]
+                              .front_default
+                              ? grupo.img.versions?.["generation-vi"]?.["x-y"]
+                                  .front_default
+                              : grupo.img.versions?.["generation-vii"]?.[
+                                  "ultra-sun-ultra-moon"
+                                ].front_default
+                              ? grupo.img.versions?.["generation-vii"]?.[
+                                  "ultra-sun-ultra-moon"
+                                ].front_default
+                              : grupo.img.other?.["official-artwork"]
+                                  ?.front_default
+                              ? grupo.img.other?.["official-artwork"]
+                                  ?.front_default
+                              : grupo.img.other?.home?.front_default
+                              ? grupo.img.other?.home?.front_default
+                              : ""
+                          }
+                          className="pokemonimg lazyloaded"
+                        />
+                      </a>
+                    </div>
+                  </>
+                ) : (
+                  ""
+                )
+              )}
+            </div>
+            <br />
+            <h3 id="dragon">Dragón</h3>
+            <br />
+            <p>
+              Este es el grupo 13. Está formado por Pokémon de tipo dragón o
+              aquellos que tienen apariencia de dragón, lagartija, serpiente o
+              reptiles por el estilo, con excepción de Feebas y Magikarp, que
+              están por sus evoluciones.
+            </p>
+            <br />
+            <p>
+              Algunos Pokémon de este grupo pertenecen a su vez a los grupos
+              huevo campo, monstruo, agua 1, agua 2 y volador.
+            </p>
+            <br />
+            <div className="row">
+              {store.grupo_huevo_data.map((grupo, i) =>
+                grupo.group_name.includes("dragon") ? (
+                  <>
+                    <div className="col mx-1 my-1">
+                      <a
+                        className="links"
+                        href={`/pokemon/${grupo.pokemon_id}`}
+                      >
+                        <p>{grupo.pokemon_name}</p>
+                      </a>
+
+                      <a
+                        href={`/pokemon/${grupo.pokemon_id}`}
+                        className="image"
+                        title=""
+                      >
+                        <img
+                          alt=""
+                          src={
+                            grupo.img.versions?.["generation-vi"]?.["x-y"]
+                              .front_default
+                              ? grupo.img.versions?.["generation-vi"]?.["x-y"]
+                                  .front_default
+                              : grupo.img.versions?.["generation-vii"]?.[
+                                  "ultra-sun-ultra-moon"
+                                ].front_default
+                              ? grupo.img.versions?.["generation-vii"]?.[
+                                  "ultra-sun-ultra-moon"
+                                ].front_default
+                              : grupo.img.other?.["official-artwork"]
+                                  ?.front_default
+                              ? grupo.img.other?.["official-artwork"]
+                                  ?.front_default
+                              : grupo.img.other?.home?.front_default
+                              ? grupo.img.other?.home?.front_default
+                              : ""
+                          }
+                          className="pokemonimg lazyloaded"
+                        />
+                      </a>
+                    </div>
+                  </>
+                ) : (
+                  ""
+                )
+              )}
+            </div>
+            <br />
           </div>
         </div>
       )}
