@@ -57,20 +57,28 @@ const getState = ({ getStore, getActions, setStore }) => {
                   let sprites = allpokemon.sprites;
                   let pokemon_name = allpokemon.name;
                   let pokemon_id = allpokemon.id
+                  
                   let new_pokemon_group = getStore().grupo_huevo_data;
                
                   fetch(allpokemon.species.url)
                     .then((response) => response.json())
                     .then((egg_group) => {
+                      let description = ""
                       let group_name = [];
                       egg_group.egg_groups.map((group, i) => {
                         group_name.push(group.name);
+                      });
+                      egg_group.flavor_text_entries.map((desc, i) => {
+                        if(desc.language.name == "es" && desc.version.name == "shield"){
+                          description = desc.flavor_text
+                        }
                       });
                       let grou = {
                         img: sprites,
                         group_name: group_name,
                         pokemon_name: pokemon_name,
-                        pokemon_id: pokemon_id
+                        pokemon_id: pokemon_id,
+                        description: description
                       };
                    
                       new_pokemon_group.push(grou);
