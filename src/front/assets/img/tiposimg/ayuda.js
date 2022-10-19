@@ -124,3 +124,15 @@ import veneno_img from "../../assets/img/tiposimg/veneno.png";
 import volador_img from "../../assets/img/tiposimg/volador.png";
 import desconocido_img from "../../assets/img/tiposimg/desconocido.png";
 import sombra_img from "../../assets/img/tiposimg/sombra.png";
+// ayuda fotos pokemon img.sprites.versions?.["generation-vi"]?.["x-y"].front_default img.sprites.other?.["official-artwork"]?.front_default
+store.single_pokemon_data.sprites.other?.["official-artwork"]?.front_default
+  ? store.single_pokemon_data.sprites.other?.["official-artwork"]?.front_default
+  : store.single_pokemon_data.sprites.versions?.["generation-vii"]?.["ultra-sun-ultra-moon"]
+      .front_default
+  ? store.single_pokemon_data.sprites.versions?.["generation-vii"]?.["ultra-sun-ultra-moon"]
+      .front_default
+  : store.single_pokemon_data.sprites.versions?.["generation-vi"]?.["x-y"].front_default
+  ? store.single_pokemon_data.sprites.versions?.["generation-vi"]?.["x-y"].front_default
+  : store.single_pokemon_data.sprites.other?.home?.front_default
+  ? store.single_pokemon_data.sprites.other?.home?.front_default
+  : "";
