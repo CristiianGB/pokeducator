@@ -3,6 +3,10 @@
     color: black;
     font-weight: bold;
 }
-.tabla{
-        column-count:8;
+.ditto{
+    display: block;
+    margin: auto;
+}
+.portada{
+    max-height: 460px ;
 }
