@@ -92,7 +92,17 @@ export const Navbar = () => {
                       Naturaleza Pokémon
                     </Link>
                   </li>
-                  
+                  <hr />
+                  <li>
+                    <Link className="dropdown-item" to="/wiki/juegos-pokemon">
+                      Juegos Pokémon
+                    </Link>
+                  </li>
+                  <li>
+                    <Link className="dropdown-item mb-2" to="/wiki/series-pokemon">
+                      Series Pokémon
+                    </Link>
+                  </li>
                 </ul>
               ) : null}
             </li>
