@@ -28,6 +28,7 @@ import sombra_img from "../../assets/img/tiposimg/sombra.png";
 const PokeducatorPokemonInfo = () => {
   const { store, actions } = useContext(Context);
   const params = useParams();
+  
   useEffect(() => {
     if (!actions.pokemonFindOneInData(params.theid)) {
       actions.pokemonFindOne(

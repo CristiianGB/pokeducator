@@ -1,11 +1,11 @@
 import React, { useState, useEffect, useContext } from "react";
-import "../../../styles/pokeducatorWikiStyles/pokeducatorInfoCrianza.css";
+import "../../../styles/pokeducatorWikiStyles/pokeducatorWikiCrianzaStyles.css";
 import { Context } from "../../store/appContext.jsx";
 import { useParams } from "react-router-dom";
 import loading from "../../../assets/img/loading.gif";
 
 
-const PokeducatorInfoGruposHuevo = () => {
+const PokeducatorWikiGruposHuevo = () => {
   const { store, actions } = useContext(Context);
   const [load, setLoad] = useState(true);
   const [num, setNum] = useState(0)
@@ -1599,4 +1599,4 @@ const PokeducatorInfoGruposHuevo = () => {
   );
 };
 
-export default PokeducatorInfoGruposHuevo;
+export default PokeducatorWikiGruposHuevo;
