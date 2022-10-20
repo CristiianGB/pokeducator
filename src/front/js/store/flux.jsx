@@ -19,13 +19,14 @@ const getState = ({ getStore, getActions, setStore }) => {
       nature_data: [],
       ability: [],
       ability_data: [],
+      single_ability_data: [],
     },
     actions: {
       pokemonFind: (next) => {
         fetch(next ? next : "https://pokeapi.co/api/v2/pokemon/")
           .then((response) => response.json())
           .then((data) => {
-            setStore({ pokemon: data.results });
+            setStore({ pokemon: data });
             setStore({ pokemon_data: [] });
             data.results.map((pokemon, i) => {
               let new_pokemon_data = getStore().pokemon_data;
@@ -236,7 +237,7 @@ const getState = ({ getStore, getActions, setStore }) => {
         fetch(next ? next : "https://pokeapi.co/api/v2/nature/")
           .then((response) => response.json())
           .then((data) => {
-            setStore({ nature: data.results });
+            setStore({ nature: data });
             setStore({ nature_data: [] });
             data.results.map((nature, i) => {
               let new_nature_data = getStore().nature_data;
@@ -263,7 +264,7 @@ const getState = ({ getStore, getActions, setStore }) => {
         fetch(next ? next : "https://pokeapi.co/api/v2/ability/")
           .then((response) => response.json())
           .then((data) => {
-            setStore({ ability: data.results });
+            setStore({ ability: data});
             setStore({ ability_data: [] });
             data.results.map((ability, i) => {
               let new_ability_data = getStore().ability_data;
@@ -285,7 +286,20 @@ const getState = ({ getStore, getActions, setStore }) => {
                 });
             });
           });
-      }
+      },
+      abilityFindOne: (url) => {
+        fetch(url)
+          .then((response) => response.json())
+          .then((data) => {
+            setStore({ single_ability_data: data });
+          });
+      },
+      abilityFindOneInData: (id) => {
+        let ability = getStore().ability_data.find((e) => e == id);
+        setStore({ abilityFounded: ability });
+        if (ability) return true;
+        else return false;
+      },
     },
   };
 };

@@ -1,9 +1,9 @@
 import React, { useState } from "react";
-import "../../../styles/pokeducatorWikiStyles/pokeducatorInfoGenero.css";
+import "../../../styles/pokeducatorWikiStyles/pokeducatorWikiGeneroStyles.css";
 import genero_señalado_img from "../../../assets/img/genero_señalado_img.png";
 import loading from "../../../assets/img/loading.gif"
 
-const PokeducatorInfoGenero = () => {
+const PokeducatorWikiGenero = () => {
   const [num, setNum] = useState(0);
   const [load, setLoad] = useState(true)
   let time = [2000, 3000, 4000, 5000]
@@ -363,4 +363,4 @@ setTimeout(()=>{
   );
 };
 
-export default PokeducatorInfoGenero;
+export default PokeducatorWikiGenero;

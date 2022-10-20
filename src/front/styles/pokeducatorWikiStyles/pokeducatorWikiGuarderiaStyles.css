@@ -1,8 +1,7 @@
-/* style="width: 180px"    thumb right
-width="180" height="135"thumbimage lazyloaded
-width="180" height="135"thumbimage */
+
 .portada{
   border-radius: 7px;
+  max-height: 460px ;
 }
 .quita-movimientosimg{
   width: 300px;
