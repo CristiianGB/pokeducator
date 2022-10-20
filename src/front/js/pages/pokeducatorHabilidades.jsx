@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useContext } from "react";
 import { Context } from "../store/appContext.jsx";
 import loading from "../../assets/img/loading.gif";
+import "../../styles/pokeducatorHabilidadesStyles.css"
 
 const PokeducatorHabilidad = () => {
     const {store, actions} = useContext(Context)
@@ -64,7 +65,23 @@ const PokeducatorHabilidad = () => {
                     object.language?.name=="es"
                     ).flavor_text
                     }</td>
-                  <td>{habilidad.generation?.name}</td>
+                  <td>{habilidad.generation?.name == "generation-i" 
+                  ? <img className="generationimg" src="https://static.wikia.nocookie.net/espokemon/images/2/2a/Primera_generaci%C3%B3n.png" alt="generation-i" /> 
+                  : habilidad.generation?.name == "generation-ii" 
+                  ? <img className="generationimg" src="https://static.wikia.nocookie.net/espokemon/images/f/f7/Segunda_generaci%C3%B3n.png" alt="generation-ii" /> 
+                  : habilidad.generation?.name == "generation-iii"
+                  ? <img className="generationimg" src="https://static.wikia.nocookie.net/espokemon/images/5/54/Tercera_generaci%C3%B3n.png" alt="generation-iii" /> 
+                  : habilidad.generation?.name == "generation-iv"
+                  ? <img className="generationimg" src="https://static.wikia.nocookie.net/espokemon/images/0/0a/Cuarta_generaci%C3%B3n.png" alt="generation-iv" /> 
+                  : habilidad.generation?.name == "generation-v"
+                  ? <img className="generationimg" src="https://static.wikia.nocookie.net/espokemon/images/6/61/Quinta_generaci%C3%B3n.png/" alt="generation-v" />
+                  : habilidad.generation?.name == "generation-vi"
+                  ? <img className="generationimg" src="https://static.wikia.nocookie.net/espokemon/images/1/1a/Sexta_generaci%C3%B3n.png/" alt="generation-vi" />
+                  : habilidad.generation?.name == "generation-vii"
+                  ? <img className="generationimg" src="https://static.wikia.nocookie.net/espokemon/images/0/0a/S%C3%A9ptima_generaci%C3%B3n.png/" alt="generation-vii" />
+                  : habilidad.generation?.name == "generation-viii"
+                  ? <img className="generationimg" src="https://static.wikia.nocookie.net/espokemon/images/b/b4/Octava_generaci%C3%B3n.png/" alt="generation-viii" />
+                  :""}</td>
                   
                 </tr>
               ))}

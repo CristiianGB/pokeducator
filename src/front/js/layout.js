@@ -9,6 +9,8 @@ import PokeducatorWikiCrianza from "./pages/pokeducatorWiki/pokeducatorWikiCrian
 import PokeducatorMovimientos from "./pages/pokeducatorMovimientos.jsx";
 import PokeducatorWikiGruposHuevo from "./pages/pokeducatorWiki/pokeducatorWikiGruposHuevo.jsx";
 import PokeducatorWikiGenero from "./pages/pokeducatorWiki/pokeducatorWikiGenero.jsx";
+import PokeducatorWikiSeries from "./pages/pokeducatorWiki/pokeducatorWikiSeries.jsx";
+import PokeducatorWikiJuegos from "./pages/pokeducatorWiki/pokeducatorWikiJuegos.jsx";
 import PokeducatorWikiNaturaleza from "./pages/pokeducatorWiki/pokeducatorWikiNaturaleza.jsx";
 import PokeducatorObjetoInfo from "./pages/pokeducatorObjetoInfo.jsx"
 import PokeducatorMovimientoInfo from "./pages/pokeducatorMovimientoInfo.jsx"
@@ -40,6 +42,14 @@ const Layout = () => {
             <Route
               element={<PokeducatorWikiGuarderia />}
               path="/wiki/guarderia-pokemon"
+            />
+            <Route
+              element={<PokeducatorWikiSeries />}
+              path="/wiki/series-pokemon"
+            />
+            <Route
+              element={<PokeducatorWikiJuegos />}
+              path="/wiki/juegos-pokemon"
             />
             <Route
               element={<PokeducatorWikiCrianza />}

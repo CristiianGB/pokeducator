@@ -79,11 +79,11 @@ const PokeducatorWikiNaturaleza = () => {
               <ul className="mt-3">
                 {store.nature_data.map((object) => (
                   <li className="listaNaturaleza">
-                    {
+                    <strong>{
                       object.names.find(
                         (element) => element.language?.name == "es"
                       ).name
-                    }{" "}
+                    }</strong>{" "}
                     ({object.name})
                   </li>
                 ))}
