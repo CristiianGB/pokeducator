@@ -6,3 +6,59 @@
     margin-left: 10px;
     margin-right: 10px;
 }
+.hrTabla{
+    background: #485AA1;
+     margin:0 -7px 0 -7px;
+}
+.separador{
+    background-color:#5C69CC;
+    margin:0 -7px -7px -7px;
+    border:1px solid #485AA1;
+    -moz-border-radius: 0 0 3px 3px;
+    -webkit-border-radius: 0 0 3px 3px;
+    border-radius: 0 0 3px 3px;
+    height:10px;
+}
+.separadorInfo{
+    border-bottom:1px dotted #E8ECF9;
+}
+.info{
+    width:300px;
+}
+.fondoCabecera{
+    text-align:center;
+    font-size: 135%;
+}
+.enlacesblancos{
+    background-color:#4a59ca;
+    margin:-7px -7px -1px -7px;
+    border:1px solid #485AA1;
+    -moz-border-radius: 3px 3px 0 0;
+    -webkit-border-radius: 3px 3px 0 0;
+    border-radius: 3px 3px 0 0;
+    line-height:22px;
+}
+.tabla{
+    padding: 0.5em;
+    border: 2px solid #485AA1;
+    background: #F7F6FF;
+    font-size: 90%;
+    font-family: Trebuchet MS, Arial, Helvetica, sans-serif;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    border-radius: 5px;
+    text-align: center;
+    margin: auto;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+.fotosTabla{
+    width:300px;
+    height: 122px;
+}
+.fondoCabecera a{
+    color: white;
+}
+.fondoCabecera a:hover{
+    text-decoration: underline;
+}
