@@ -34,48 +34,48 @@ const getState = ({ getStore, getActions, setStore }) => {
               fetch(pokemon.url)
                 .then((response) => response.json())
                 .then((allpokemon) => {
-          
-
                   new_pokemon_data.push(allpokemon);
                   if (i + 1 == new_pokemon_data.length) {
                     new_pokemon_data = new_pokemon_data.sort(
                       (a, b) => a.id - b.id
                     );
                   }
-                 
-                 
+
                   setStore({ pokemon_data: new_pokemon_data });
                 });
             });
           });
       },
       groupFind: (next) => {
-        fetch(next ? next : "https://pokeapi.co/api/v2/pokemon/?offset=0&limit=1154")
+        fetch(
+          next ? next : "https://pokeapi.co/api/v2/pokemon/?offset=0&limit=1154"
+        )
           .then((response) => response.json())
           .then((data) => {
-        
             data.results.map((pokemon, i) => {
-
               fetch(pokemon.url)
                 .then((response) => response.json())
                 .then((allpokemon) => {
                   let sprites = allpokemon.sprites;
                   let pokemon_name = allpokemon.name;
-                  let pokemon_id = allpokemon.id
-                  
+                  let pokemon_id = allpokemon.id;
+
                   let new_pokemon_group = getStore().grupo_huevo_data;
-               
+
                   fetch(allpokemon.species.url)
                     .then((response) => response.json())
                     .then((egg_group) => {
-                      let description = ""
+                      let description = "";
                       let group_name = [];
                       egg_group.egg_groups.map((group, i) => {
                         group_name.push(group.name);
                       });
                       egg_group.flavor_text_entries.map((desc, i) => {
-                        if(desc.language.name == "es" && desc.version.name == "shield"){
-                          description = desc.flavor_text
+                        if (
+                          desc.language.name == "es" &&
+                          desc.version.name == "shield"
+                        ) {
+                          description = desc.flavor_text;
                         }
                       });
                       let grou = {
@@ -83,11 +83,11 @@ const getState = ({ getStore, getActions, setStore }) => {
                         group_name: group_name,
                         pokemon_name: pokemon_name,
                         pokemon_id: pokemon_id,
-                        description: description
+                        description: description,
                       };
-                   
+
                       new_pokemon_group.push(grou);
-                    
+
                       setStore({ grupo_huevo_data: new_pokemon_group });
                     });
                 });
@@ -131,8 +131,7 @@ const getState = ({ getStore, getActions, setStore }) => {
                   if (i + 1 == new_item_data.length) {
                     new_item_data = new_item_data.sort((a, b) => a.id - b.id);
                   }
-                  
-        
+
                   setStore({ item_data: new_item_data });
                 });
             });
@@ -172,8 +171,7 @@ const getState = ({ getStore, getActions, setStore }) => {
                   if (i + 1 == new_move_data.length) {
                     new_move_data = new_move_data.sort((a, b) => a.id - b.id);
                   }
-                
-               
+
                   setStore({ move_data: new_move_data });
                 });
             });
@@ -213,8 +211,7 @@ const getState = ({ getStore, getActions, setStore }) => {
                   if (i + 1 == new_type_data.length) {
                     new_type_data = new_type_data.sort((a, b) => a.id - b.id);
                   }
-                
-                  
+
                   setStore({ type_data: new_type_data });
                 });
             });
