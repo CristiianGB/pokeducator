@@ -62,3 +62,11 @@
 .fondoCabecera a:hover{
     text-decoration: underline;
 }
+.anchor{
+    text-decoration: none;
+    color: black;
+}
+.anchor:hover{
+    font-weight: bold;
+    color: black;
+}
