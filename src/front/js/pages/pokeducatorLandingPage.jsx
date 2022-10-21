@@ -1,6 +1,8 @@
 import React, { useState, useEffect, useContext } from "react";
 
+
 const PokeducatorLandingPage = () => {
+  
   return (
     <div className="container text-center">
       <div className="bg-success margin1">

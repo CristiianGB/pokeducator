@@ -15,13 +15,18 @@ const getState = ({ getStore, getActions, setStore }) => {
       single_type_data: {},
       grupo_huevo: [], //nombre del grupo y url del grupo
       grupo_huevo_data: [],
+      nature: [],
+      nature_data: [],
+      ability: [],
+      ability_data: [],
+      single_ability_data: [],
     },
     actions: {
       pokemonFind: (next) => {
         fetch(next ? next : "https://pokeapi.co/api/v2/pokemon/")
           .then((response) => response.json())
           .then((data) => {
-            setStore({ pokemon: data.results });
+            setStore({ pokemon: data });
             setStore({ pokemon_data: [] });
             data.results.map((pokemon, i) => {
               let new_pokemon_data = getStore().pokemon_data;
@@ -224,6 +229,73 @@ const getState = ({ getStore, getActions, setStore }) => {
       },
       typeLocalStorage: (type) => {
         setStore({ type });
+      },
+      natureFind: (next) => {
+        fetch(next ? next : "https://pokeapi.co/api/v2/nature/")
+          .then((response) => response.json())
+          .then((data) => {
+            setStore({ nature: data });
+            setStore({ nature_data: [] });
+            data.results.map((nature, i) => {
+              let new_nature_data = getStore().nature_data;
+
+              fetch(nature.url)
+                .then((response) => response.json())
+                .then((allnature) => {
+          
+
+                  new_nature_data.push(allnature);
+                  if (i + 1 == new_nature_data.length) {
+                    new_nature_data = new_nature_data.sort(
+                      (a, b) => a.id - b.id
+                    );
+                  }
+                 
+                 
+                  setStore({ nature_data: new_nature_data });
+                });
+            });
+          });
+      },
+      abilityFind: (next) => {
+        fetch(next ? next : "https://pokeapi.co/api/v2/ability/")
+          .then((response) => response.json())
+          .then((data) => {
+            setStore({ ability: data});
+            setStore({ ability_data: [] });
+            data.results.map((ability, i) => {
+              let new_ability_data = getStore().ability_data;
+
+              fetch(ability.url)
+                .then((response) => response.json())
+                .then((allability) => {
+          
+
+                  new_ability_data.push(allability);
+                  if (i + 1 == new_ability_data.length) {
+                    new_ability_data = new_ability_data.sort(
+                      (a, b) => a.id - b.id
+                    );
+                  }
+                 
+                 
+                  setStore({ ability_data: new_ability_data });
+                });
+            });
+          });
+      },
+      abilityFindOne: (url) => {
+        fetch(url)
+          .then((response) => response.json())
+          .then((data) => {
+            setStore({ single_ability_data: data });
+          });
+      },
+      abilityFindOneInData: (id) => {
+        let ability = getStore().ability_data.find((e) => e == id);
+        setStore({ abilityFounded: ability });
+        if (ability) return true;
+        else return false;
       },
     },
   };

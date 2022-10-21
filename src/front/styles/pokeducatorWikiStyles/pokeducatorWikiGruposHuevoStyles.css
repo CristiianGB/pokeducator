@@ -1,0 +1,17 @@
+.links{
+    text-decoration: none;
+    color: black;
+    font-weight: bold;
+}
+.ditto{
+    display: block;
+    margin: auto;
+}
+.portada{
+    border-radius: 7px;
+    max-height: 460px ;
+  }
+  .descripcion {
+    margin-left: 10px;
+    margin-right: 10px;
+  }

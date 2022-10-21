@@ -26,5 +26,10 @@
   max-height: 215px;
 }
 .portada{
-    max-height: 479.7px ;
-}
+    border-radius: 7px;
+    max-height: 460px ;
+  }
+  .descripcion {
+    margin-left: 10px;
+    margin-right: 10px;
+  }

@@ -1,11 +1,11 @@
 import React, { useState, useEffect, useContext } from "react";
-import "../../../styles/pokeducatorWikiStyles/pokeducatorInfoCrianza.css";
+import "../../../styles/pokeducatorWikiStyles/pokeducatorWikiCrianzaStyles.css";
 import grupos_huevo_img from "../../../assets/img/grupos_huevo_img.png";
 import movimientos_huevo_img from "../../../assets/img/movimientos_huevo_img.png";
 import { Context } from "../../store/appContext.jsx"
 import loading from "../../../assets/img/loading.gif"
 
-const PokeducatorInfoCrianza = () => {
+const PokeducatorWikiCrianza = () => {
   const [num, setNum] = useState(0) 
   const [load, setLoad] = useState(true)
   let time = [2000, 3000, 4000, 5000]
@@ -1315,4 +1315,4 @@ const PokeducatorInfoCrianza = () => {
   );
 };
 
-export default PokeducatorInfoCrianza;
+export default PokeducatorWikiCrianza;

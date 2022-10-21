@@ -1,8 +1,8 @@
 import React, { useState, useEffect, useContext } from "react";
-import "../../../styles/pokeducatorWikiStyles/pokeducatorInfoGuarderia.css";
+import "../../../styles/pokeducatorWikiStyles/pokeducatorWikiGuarderiaStyles.css";
 import loading from "../../../assets/img/loading.gif"
 
-const PokeducatorInfoGuarderia = () => {
+const PokeducatorWikiGuarderia = () => {
   const [num, setNum] = useState(0)
   const [load, setLoad] = useState(true)
   let time = [2000, 3000, 4000, 5000]
@@ -24,7 +24,8 @@ setTimeout(()=>{
       </div>
       
     ) :
-    (<><div className="container align-items-center">
+    (<>
+    <div className="container align-items-center">
       <div className="row">
         <div className="col-12 my-4">
           <img
@@ -439,4 +440,4 @@ setTimeout(()=>{
   );
 };
 
-export default PokeducatorInfoGuarderia;
+export default PokeducatorWikiGuarderia;

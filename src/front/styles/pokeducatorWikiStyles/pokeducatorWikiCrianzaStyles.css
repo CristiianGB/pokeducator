@@ -11,7 +11,8 @@
   max-height: 450px;
 }
 .portada{
-    border-radius: 7px;
+  border-radius: 7px;
+  max-height: 460px ;
 }
 .pokeimg{
     width: 270px;
@@ -36,4 +37,8 @@
   display: block;
   margin-left: auto;
   margin-right: auto;
+}
+.pokemonimg{
+  max-width: 96px;
+  max-height: 96px;
 }

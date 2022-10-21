@@ -39,8 +39,7 @@ const PokeducatorPokemonInfo = () => {
   const { store, actions } = useContext(Context);
   const params = useParams();
   const [load, setLoad] = useState("true");
-  const [count, setCount] = useState(params.theid);
-
+  
   useEffect(() => {
     if (!actions.pokemonFindOneInData(params.theid)) {
       actions.pokemonFindOne(

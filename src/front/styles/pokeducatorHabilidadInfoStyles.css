@@ -1,0 +1,7 @@
+.pokemonList{
+    text-transform: capitalize;
+}
+.generationimg{
+    max-width: 30px;
+    max-height: 20px;
+}

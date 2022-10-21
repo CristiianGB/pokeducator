@@ -42,6 +42,11 @@ export const Navbar = () => {
               </a>
             </li>
             <li className="nav-item">
+              <a className="nav-link" href="/habilidades">
+                Habilidades
+              </a>
+            </li>
+            <li className="nav-item">
               <a className="nav-link" href="/movimientos">
                 Movimientos
               </a>
@@ -82,7 +87,22 @@ export const Navbar = () => {
                       Grupo Huevo
                     </Link>
                   </li>
-                  
+                  <li>
+                    <Link className="dropdown-item" to="/wiki/naturaleza-pokemon">
+                      Naturaleza Pokémon
+                    </Link>
+                  </li>
+                  <hr />
+                  <li>
+                    <Link className="dropdown-item" to="/wiki/juegos-pokemon">
+                      Juegos Pokémon
+                    </Link>
+                  </li>
+                  <li>
+                    <Link className="dropdown-item mb-2" to="/wiki/series-pokemon">
+                      Series Pokémon
+                    </Link>
+                  </li>
                 </ul>
               ) : null}
             </li>
