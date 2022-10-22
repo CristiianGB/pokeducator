@@ -39,7 +39,7 @@ const PokeducatorPokemonInfo = () => {
   const { store, actions } = useContext(Context);
   const params = useParams();
   const [load, setLoad] = useState("true");
-  
+
   useEffect(() => {
     if (!actions.pokemonFindOneInData(params.theid)) {
       actions.pokemonFindOne(
@@ -54,7 +54,6 @@ const PokeducatorPokemonInfo = () => {
   }, 2000);
 
   let moves = [];
-
   store.single_pokemon_data?.moves?.map((movement) => {
     store.move_data.map((move) => {
       if (move.name === movement.move.name) {
@@ -109,10 +108,6 @@ const PokeducatorPokemonInfo = () => {
     )
   );
 
-  let pokemonType = store.single_pokemon_data.types?.map((objeto) =>
-    objeto.slot == "1" ? objeto.type.name : ""
-  );
-
   // let debilidades = store.type_data.map((objeto) =>
   //   objeto.damage_relations.double_damage_from.name == pokemonType
   //     ? objeto.name
@@ -137,15 +132,22 @@ const PokeducatorPokemonInfo = () => {
         <>
           {/* POKEMON BOTONES */}
           <div className="row justify-content-center mt-2">
-            <div className="col-sm-4">
-              <button>Anterior</button>
+            <div className="col-sm-6">
+              <a
+                href={`/pokemon/${parseInt(
+                  params.theid == 1 ? (params.theid = 905) : params.theid - 1
+                )}`}
+              >
+                <button>Anterior</button>
+              </a>
             </div>
-            <div className="col-sm-4 text-center text-muted align-self-center">
-              Pokédex #{store.single_pokemon_data.order}
-              {/* .toString().padStart(4, "0") */}
-            </div>
-            <div className="col-sm-4 text-end">
-              <a href={`/pokemon/${params.theid}` + 1}>
+
+            <div className="col-sm-6 text-end">
+              <a
+                href={`/pokemon/${parseInt(
+                  params.theid == 905 ? (params.theid = 1) : params.theid + 1
+                )}`}
+              >
                 <button>siguiente</button>
               </a>
             </div>
