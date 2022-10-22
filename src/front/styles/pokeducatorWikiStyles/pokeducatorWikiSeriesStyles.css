@@ -1,8 +1,65 @@
-.portada{
-    border-radius: 7px;
-    max-height: 460px ;
+.portada {
+  border-radius: 7px;
+  max-height: 460px;
 }
 .descripcion {
-    margin-left: 10px;
-    margin-right: 10px;
+  margin-left: 10px;
+  margin-right: 10px;
+}
+.tabla {
+  border: 1px solid #2c4196;
+  border-right-width: 2px;
+  border-bottom-width: 2px;
+  padding: 1px;
+  text-align: center;
+}
+.header1 {
+  border-bottom: 2px solid #2c4196;
+  border-right: 1px solid white;
+  background: #445ab3;
+  color: white;
+  font-size: 1.1em;
+  width: 150px;
+}
+.header2 {
+  width: 220px;
+  border-bottom: 2px solid #2c4196;
+  border-right: 1px solid white;
+  background: #445ab3;
+  color: white;
+  font-size: 1.1em;
+}
+.header3 {
+  width: 150px;
+  border-bottom: 2px solid #2c4196;
+  border-right: 1px solid white;
+  background: #445ab3;
+  color: white;
+  font-size: 1.1em;
+}
+.header4 {
+  border-bottom: 2px solid #2c4196;
+  background: #445ab3;
+  color: white;
+  font-size: 1.1em;
+  width: 150px;
+}
+.subtitulo {
+  font-size: 16px;
+  padding: 12px;
+  background: #dce3fa;
+}
+.separador {
+  border-left: 1px solid #ccccff;
+  border-right: 1px solid #ccccff;
+  background: white !important;
+}
+.nombreSeries {
+  border-bottom: 1px dotted #ccccff;
+}
+.serieSinopsis,
+.descripcionTemporada {
+  text-align: left;
+  padding: 10px;
+  border-top: 1px solid #ccccff;
 }

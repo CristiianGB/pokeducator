@@ -116,28 +116,28 @@ const PokeducatorWikiJuegos = () => {
               </a>
               <ul className="nav navbar-nav">
                 <li>
-                  <a className="nav-link" style={subStyles} href="#primera_generacion">Primera</a>
+                  <a className="nav-link" style={subStyles} href="#primera_generacion">Primera generación</a>
                 </li>
                 <li>
-                  <a className="nav-link" style={subStyles} href="#segunda_generacion">Segunda</a>
+                  <a className="nav-link" style={subStyles} href="#segunda_generacion">Segunda generación</a>
                 </li>
                 <li>
-                  <a className="nav-link" style={subStyles} href="#tercera_generacion">Tercera</a>
+                  <a className="nav-link" style={subStyles} href="#tercera_generacion">Tercera generación</a>
                 </li>
                 <li>
-                  <a className="nav-link" style={subStyles} href="#cuarta_generacion">Cuarta</a>
+                  <a className="nav-link" style={subStyles} href="#cuarta_generacion">Cuarta generación</a>
                 </li>
                 <li>
-                  <a className="nav-link" style={subStyles} href="#quinta_generacion">Quinta</a>
+                  <a className="nav-link" style={subStyles} href="#quinta_generacion">Quinta generación</a>
                 </li>
                 <li>
-                  <a className="nav-link" style={subStyles} href="#sexta_generacion">Sexta</a>
+                  <a className="nav-link" style={subStyles} href="#sexta_generacion">Sexta generación</a>
                 </li>
                 <li>
-                  <a className="nav-link" style={subStyles} href="#septima_generacion">Séptima</a>
+                  <a className="nav-link" style={subStyles} href="#septima_generacion">Séptima generación</a>
                 </li>
                 <li>
-                  <a className="nav-link" style={subStyles} href="#octava_generacion">Octava</a>
+                  <a className="nav-link" style={subStyles} href="#octava_generacion">Octava generación</a>
                 </li>
                 
               </ul>
@@ -1531,31 +1531,18 @@ const PokeducatorWikiJuegos = () => {
                   </tr>
                   <tr>
                     <td rowSpan={6} className="fotosTabla">
-                      <a
-                        className="links image"
-                        href="https://static.wikia.nocookie.net/espokemon/images/5/5d/Car%C3%A1tula_Pok%C3%A9mon_Rub%C3%AD_Omega.png/"
-                        title="Ultrasol"
-                      >
-                        <img
-                          alt="Ultrasol"
-                          src="https://static.wikia.nocookie.net/espokemon/images/5/5d/Car%C3%A1tula_Pok%C3%A9mon_Rub%C3%AD_Omega.png/"
-                          decoding="async"
-                          width="120"
-                          height="119"
-                          className=" lazyloaded"
-                        />
-                      </a>
+                      
                       <a
                         className="links image"
                         href="https://static.wikia.nocookie.net/espokemon/images/7/7f/Artwork_Pok%C3%A9mon_Ultrasol_y_Pok%C3%A9mon_Ultraluna.png/"
-                        title="Pokémon Ultraluna"
+                        title="Pokémon Ultrasol y Ultraluna"
                       >
                         <img
-                          alt="Pokémon Ultraluna"
+                          alt="Pokémon Ultrasol y Ultraluna"
                           src="https://static.wikia.nocookie.net/espokemon/images/7/7f/Artwork_Pok%C3%A9mon_Ultrasol_y_Pok%C3%A9mon_Ultraluna.png/"
                           decoding="async"
-                          width="120"
-                          height="119"
+                          width="240"
+                          height="150"
                           className=" lazyloaded"
                         />
                       </a>
