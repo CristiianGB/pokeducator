@@ -1920,9 +1920,9 @@ const PokeducatorWikiJuegos = () => {
             <div className="otras_clasificaciones descripcion">
               <p>Los videojuegos de Pokémon también pueden clasificarse según su fecha de lanzamiento, su plataforma o la generación a la que pertenecen. Para ello consulta los siguientes artículos:</p><br />
               <ul>
-                <li><a className="anchor" href="https://pokemon.fandom.com/es/wiki/Lista_de_videojuegos_por_fecha_de_lanzamiento">Lista de videojuegos por fecha de lanzamiento</a></li>
-                <li><a className="anchor" href="https://pokemon.fandom.com/es/wiki/Lista_de_videojuegos_por_plataforma">Lista de videojuegos por plataforma</a></li>
-                <li><a className="anchor" href="https://pokemon.fandom.com/es/wiki/Lista_de_videojuegos_por_generaci%C3%B3n">Lista de videojuegos por generación</a></li>
+                <li><a className="links" href="https://pokemon.fandom.com/es/wiki/Lista_de_videojuegos_por_fecha_de_lanzamiento">Lista de videojuegos por fecha de lanzamiento</a></li>
+                <li><a className="links" href="https://pokemon.fandom.com/es/wiki/Lista_de_videojuegos_por_plataforma">Lista de videojuegos por plataforma</a></li>
+                <li><a className="links" href="https://pokemon.fandom.com/es/wiki/Lista_de_videojuegos_por_generaci%C3%B3n">Lista de videojuegos por generación</a></li>
               </ul>
             </div>
             <br />

@@ -6,7 +6,7 @@
   margin-top: 2em;
 }
 
-button {
+.buttonPokemonInfo {
   padding: 1.3em 3em;
   font-size: 12px;
   text-transform: uppercase;
@@ -22,18 +22,18 @@ button {
   outline: none;
 }
 
-button:hover {
+.buttonPokemonInfo:hover {
   background-color: #23c483;
   box-shadow: 0px 15px 20px rgba(46, 229, 157, 0.4);
   color: #fff;
   transform: translateY(-7px);
 }
 
-button:active {
+.buttonPokemonInfo:active {
   transform: translateY(-1px);
 }
 
-.image_tipo img {
+.image_tipo{
   width: 100px;
 }
 
@@ -45,7 +45,7 @@ button:active {
   align-items: center;
 }
 
-.pokemon_name h1 {
+.pokemon_name{
   margin: 0 auto;
 }
 

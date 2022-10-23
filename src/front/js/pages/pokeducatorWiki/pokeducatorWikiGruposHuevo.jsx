@@ -1,8 +1,9 @@
 import React, { useState, useEffect, useContext } from "react";
-import "../../../styles/pokeducatorWikiStyles/pokeducatorWikiCrianzaStyles.css";
+import "../../../styles/pokeducatorWikiStyles/pokeducatorWikiGruposHuevoStyles.css";
 import { Context } from "../../store/appContext.jsx";
 import { useParams } from "react-router-dom";
 import loading from "../../../assets/img/loading.gif";
+import { mergeWithCustomize } from "webpack-merge";
 
 
 const PokeducatorWikiGruposHuevo = () => {

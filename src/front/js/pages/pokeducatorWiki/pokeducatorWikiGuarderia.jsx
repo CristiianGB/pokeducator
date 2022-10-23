@@ -81,6 +81,7 @@ setTimeout(()=>{
           baja posible) y sacarlo al poco de haber subido por lo menos un nivel.
         </p>
       </div>
+      <br /><br />
       <div className="col-sm-6 m-5 ms-3">
         <nav id="toc" data-toggle="toc" className="sticky-top">
           <ul className="nav navbar-nav">
@@ -186,7 +187,7 @@ setTimeout(()=>{
           hayan tenido un huevo el anciano estará dirigido hacia la izquierda,
           en caso negativo mirará hacia debajo.
         </p>
-        <br />
+        <br /><br /><br />
         <p>
           En Pokémon Colosseum la guardería sirve para ayudar a purificar a los
           Pokémon oscuros.
@@ -197,94 +198,95 @@ setTimeout(()=>{
         <hr />
       </div>
       <div className="row">
-        <div className="card-group">
-          <div className="card">
+        <div className="card-deck d-flex justify-content-center">
+          <div  className="card cardGuarderia">
             <img
-              className="card-img-top"
+              className="img-fluid card-img-top cardImgGuarderia"
               src="https://static.wikia.nocookie.net/espokemon/images/1/15/Guarder%C3%ADa_en_Rojo.png/"
               alt="guardería en Pokémon Rojo"
             />
-            <div className="card-body">
+            <div className="card-body cardBodyGuarderia">
               <h5 className="card-title">Guardería en Pokémon Rojo.</h5>
+              
             </div>
           </div>
-          <div className="card">
+          <div  className="card cardGuarderia">
             <img
-              className="card-img-top"
+              className="img-fluid card-img-top cardImgGuarderia"
               src="https://static.wikia.nocookie.net/espokemon/images/9/93/Guarder%C3%ADa.png"
               alt="guardería en Pokémon Cristal"
             />
-            <div className="card-body">
+            <div className="card-body cardBodyGuarderia">
               <h5 className="card-title">Guardería en Pokémon Cristal.</h5>
             </div>
           </div>
-          <div className="card">
+          <div  className="card cardGuarderia">
             <img
-              className="card-img-top"
+              className="img-fluid card-img-top cardImgGuarderia"
               src="https://www.cpokemon.com/reviews/esmeralda/imagenes_guia/044.png"
               alt="guardería en Pokémon Rubí y Zafiro"
             />
-            <div className="card-body">
+            <div className="card-body cardBodyGuarderia">
               <h5 className="card-title">Guardería en Pokémon Rubí y Zafiro</h5>
             </div>
           </div>
-          <div className="card">
+          <div  className="card cardGuarderia">
             <img
-              className="card-img-top"
+              className="img-fluid card-img-top cardImgGuarderia"
               src="https://static.wikia.nocookie.net/espokemon/images/a/a0/Guarder%C3%ADa_Pok%C3%A9mon_Esmeralda.png"
               alt="Guardería en Pokémon Esmeralda"
             />
-            <div className="card-body">
+            <div className="card-body cardBodyGuarderia">
               <h5 className="card-title">Guardería en Pokémon Esmeralda.</h5>
             </div>
           </div>
         </div>
       </div>
       <div classNameName="row">
-        <div className="card-group">
-          <div className="card">
+        <div className="card-deck d-flex justify-content-center">
+          <div  className="card cardGuarderia">
             <img
-              className="card-img-top"
+              className="img-fluid card-img-top cardImgGuarderia"
               src="https://static.wikia.nocookie.net/espokemon/images/c/c7/Guarderia_en_Pok%C3%A9mon_Rojo_Fuego.png"
               alt="guardería en Pokémon Rojo Fuego y Verde Hoja"
             />
-            <div className="card-body">
+            <div className="card-body cardBodyGuarderia">
               <h5 className="card-title">
                 Guardería en Pokémon Rojo Fuego y Verde Hoja.
               </h5>
             </div>
           </div>
-          <div className="card">
+          <div  className="card cardGuarderia">
             <img
-              className="card-img-top"
+              className="img-fluid card-img-top cardImgGuarderia"
               src="https://static.wikia.nocookie.net/espokemon/images/c/cc/Guarder%C3%ADa_Pok%C3%A9mon_RFLG01.png"
               alt="guardería en Pokémon Rojo Fuego y Verde Hoja - Isla Carta"
             />
-            <div className="card-body">
+            <div className="card-body cardBodyGuarderia">
               <h5 className="card-title">
                 Guardería en Pokémon Rojo Fuego y Verde Hoja - Isla Carta
               </h5>
             </div>
           </div>
-          <div className="card">
+          <div  className="card cardGuarderia">
             <img
-              className="card-img-top"
+              className="img-fluid card-img-top cardImgGuarderia"
               src="https://static.wikia.nocookie.net/espokemon/images/0/0c/Guarder%C3%ADa_Pok%C3%A9mon_Platino.png"
               alt="guardería en Pokémon Diamante, Perla y Platino"
             />
-            <div className="card-body">
+            <div className="card-body cardBodyGuarderia">
               <h5 className="card-title">
                 Guardería en Pokémon Diamante, Perla y Platino.
               </h5>
             </div>
           </div>
-          <div className="card">
+          <div  className="card cardGuarderia">
             <img
-              className="card-img-top"
+              className="img-fluid card-img-top cardImgGuarderia"
               src="https://static.wikia.nocookie.net/espokemon/images/9/98/Guarder%C3%ADa_Pok%C3%A9mon_OCPA.png"
               alt="guardería en Pokémon Oro HeartGold y Plata SoulSilver"
             />
-            <div className="card-body">
+            <div className="card-body cardBodyGuarderia">
               <h5 className="card-title">
                 Guardería en Pokémon Oro HeartGold y Plata SoulSilver.
               </h5>
@@ -293,51 +295,33 @@ setTimeout(()=>{
         </div>
       </div>
       <div classNameName="row">
-        <div className="card-group">
-          <div className="card invisible">
+        <div className="card-deck d-flex justify-content-center">
+          
+          <div  className="card cardGuarderia">
             <img
-              className="card-img-top"
-              src=""
-              alt="guardería en Pokémon Rojo Fuego y Verde Hoja"
-            />
-            <div className="card-body">
-              <h5 className="card-title">Card title</h5>
-            </div>
-          </div>
-          <div className="card">
-            <img
-              class="card-img-top"
+              class="card-img-top cardImgGuarderia"
               src="https://static.wikia.nocookie.net/espokemon/images/1/14/Guarder%C3%ADa_Pok%C3%A9mon_BW.png"
               alt="guardería Pokémon en Pokémon Negro y Blanco"
             />
-            <div className="card-body">
+            <div className="card-body cardBodyGuarderia">
               <h5 className="card-title">
                 Guardería Pokémon en Pokémon Negro y Blanco.
               </h5>
             </div>
           </div>
-          <div className="card">
+          <div  className="card cardGuarderia">
             <img
-              class="card-img-top"
+              class="card-img-top cardImgGuarderia"
               src="https://static.wikia.nocookie.net/espokemon/images/5/53/Guarder%C3%ADa_Pok%C3%A9mon_XY.png"
               alt="guardería en Pokémon en Pokémon X y Pokémon Y"
             />
-            <div className="card-body">
+            <div className="card-body cardBodyGuarderia">
               <h5 className="card-title">
                 Guardería en Pokémon en Pokémon X y Pokémon Y.
               </h5>
             </div>
           </div>
-          <div className="card invisible">
-            <img
-              className="card-img-top"
-              src=""
-              alt="Guardería en Pokémon Oro HeartGold y Plata SoulSilver"
-            />
-            <div className="card-body">
-              <h5 className="card-title">Card title</h5>
-            </div>
-          </div>
+          
         </div>
       </div>
       <div className="row">

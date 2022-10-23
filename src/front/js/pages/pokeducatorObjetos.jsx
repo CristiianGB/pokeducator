@@ -37,7 +37,7 @@ const PokeducatorObjetos = () => {
           store.item_data.map((item, i) => (
             <div className="col-md-3" id={item.id} key={item.id}>
               <div
-                className="card"
+                className="card cardObjetos"
                 style={{
                   backgroundColor: "#F0F0C9",
                 }}

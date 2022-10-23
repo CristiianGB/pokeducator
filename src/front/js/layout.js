@@ -4,6 +4,7 @@ import { Navbar } from "./component/navbar.jsx";
 import { Footer } from "./component/footer.jsx";
 import PokeducatorPokemonInfo from "./pages/pokeducatorPokemonInfo.jsx";
 import PokeducatorWikiGuarderia from "./pages/pokeducatorWiki/pokeducatorWikiGuarderia.jsx";
+import PokeducatorWikiLanding from "./pages/pokeducatorWiki/pokeducatorWikiLanding.jsx";
 import PokeducatorObjetos from "./pages/pokeducatorObjetos.jsx";
 import PokeducatorWikiCrianza from "./pages/pokeducatorWiki/pokeducatorWikiCrianza.jsx";
 import PokeducatorMovimientos from "./pages/pokeducatorMovimientos.jsx";
@@ -42,6 +43,10 @@ const Layout = () => {
             <Route
               element={<PokeducatorWikiGuarderia />}
               path="/wiki/guarderia-pokemon"
+            />
+            <Route
+              element={<PokeducatorWikiLanding />}
+              path="/wiki"
             />
             <Route
               element={<PokeducatorWikiSeries />}

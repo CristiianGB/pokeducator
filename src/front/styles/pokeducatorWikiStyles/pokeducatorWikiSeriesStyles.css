@@ -6,13 +6,23 @@
   margin-left: 10px;
   margin-right: 10px;
 }
-.tabla {
+.tablaSeries {
   border: 1px solid #2c4196;
   border-right-width: 2px;
   border-bottom-width: 2px;
   padding: 1px;
   text-align: center;
-  border-radius: 7px;
+  margin-left: auto;
+  margin-right: auto;
+}
+.tablaSeries a {
+  text-decoration: none;
+  color: #445ab3;
+  transition: 0.3s;
+}
+.tablaSeries a:hover {
+  text-decoration: underline;
+  color: #31407e;
 }
 .header1 {
   border-bottom: 2px solid #2c4196;
@@ -64,37 +74,42 @@
   padding: 10px;
   border-top: 1px solid #ccccff;
 }
-.pokeimg{
+.pokeimg {
   width: 270px;
   float: right;
   border-radius: 7px;
 }
-a{
+.anchor {
   text-decoration: none;
   transition: 0.5s;
 }
-a:hover{
+.anchor:hover {
   color: black;
   text-decoration: underline;
 }
-.card{
+.cardSeries {
   height: 19rem;
   width: 13rem;
   overflow: hidden;
   position: relative;
   cursor: pointer;
   border-radius: 20px;
+  margin-left: 5px;
+  margin-right: 5px;
 }
-.card img{
-  margin-top: 0.2rem;
+.cardSeries img {
+  margin-top: 0.35rem;
+  margin-left: 0.35rem;
+  
+  border-radius: 15px;
   height: 17.8rem;
   width: 12.2rem;
 }
-.card:hover .details{
+.cardSeries:hover .details {
   opacity: 1;
   height: 100%;
 }
-.details{
+.details {
   position: absolute;
   display: flex;
   flex-direction: column;
@@ -103,16 +118,16 @@ a:hover{
   bottom: 0;
   width: 100%;
   height: 0%;
-  background-color: rgba(0,0,0,0.7);
+  background-color: rgba(0, 0, 0, 0.7);
   opacity: 0;
   transition: 0.5s ease;
 }
-.details h3{
+.details h3 {
   font-size: 18px;
   font-weight: 600;
   color: white;
   text-decoration: none;
 }
-.linkCard{
+.linkCard {
   text-decoration: none;
 }
