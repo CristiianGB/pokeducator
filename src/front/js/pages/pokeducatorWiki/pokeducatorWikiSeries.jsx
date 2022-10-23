@@ -582,7 +582,7 @@ const PokeducatorWikiSeries = () => {
                 </p>
                 <br />
               </div>
-              <table cellPadding={2} cellSpacing={0} className=" tabla">
+              <table cellPadding={2} cellSpacing={0} className=" tablaSeries">
                 <tbody>
                   <tr>
                     <th className="radiusinnertl header1">Logo</th>
@@ -1310,7 +1310,7 @@ const PokeducatorWikiSeries = () => {
                 </p>
                 <br />
               </div>
-              <table cellPadding={2} cellSpacing={0} className=" tabla">
+              <table cellPadding={2} cellSpacing={0} className=" tablaSeries">
                 <tbody>
                   <tr>
                     <th className="radiusinnertl header1">Logo</th>
@@ -1907,7 +1907,7 @@ const PokeducatorWikiSeries = () => {
                 </p>
                 <br />
               </div>
-              <table cellPadding={2} cellSpacing={0} className=" tabla">
+              <table cellPadding={2} cellSpacing={0} className=" tablaSeries">
                 <tbody>
                   <tr>
                     <th className="radiusinnertl header1">Logo</th>
@@ -2510,7 +2510,7 @@ const PokeducatorWikiSeries = () => {
                 </p>
                 <br />
               </div>
-              <table cellPadding={2} cellSpacing={0} className=" tabla">
+              <table cellPadding={2} cellSpacing={0} className=" tablaSeries">
                 <tbody>
                   <tr>
                     <th className="radiusinnertl header1">Logo</th>
@@ -2960,7 +2960,7 @@ const PokeducatorWikiSeries = () => {
                   sexta generación.
                 </p>
                 <br />
-                <table cellPadding={2} cellSpacing={0} className=" tabla">
+                <table cellPadding={2} cellSpacing={0} className=" tablaSeries">
                   <tbody>
                     <tr>
                       <th className="radiusinnertl header1">Logo</th>
@@ -3411,7 +3411,7 @@ const PokeducatorWikiSeries = () => {
                   aventuras de Ash en Alola.
                 </p>
                 <br />
-                <table cellPadding={2} cellSpacing={0} className=" tabla">
+                <table cellPadding={2} cellSpacing={0} className=" tablaSeries">
                   <tbody>
                     <tr>
                       <th className="radiusinnertl header1">Logo</th>
@@ -3859,7 +3859,7 @@ const PokeducatorWikiSeries = () => {
                   las aventuras de Ash en Galar.
                 </p>
                 <br />
-                <table cellPadding={2} cellSpacing={0} className=" tabla">
+                <table cellPadding={2} cellSpacing={0} className=" tablaSeries">
                   <tbody>
                     <tr>
                       <th className="radiusinnertl header1">Logo</th>
@@ -4212,12 +4212,12 @@ const PokeducatorWikiSeries = () => {
             </div>
             <div className="peliculas descripcion">
               <div className="row">
-                <a className="links" href="#serie_original">
-                  <h3 id="pelicula_serie_original">Serie original</h3>
+                <a className="anchor" href="#serie_original">
+                  <h3 id="pelicula_serie_original">Serie original</h3><br />
                 </a>
-                <br />
+                
                 <div className="card-deck d-flex justify-content-center">
-                  <div className="card">
+                  <div className="card cardSeries ">
                     <a href="https://pokemon.fandom.com/es/wiki/P01">
                       <img
                         className=""
@@ -4225,18 +4225,18 @@ const PokeducatorWikiSeries = () => {
                         alt="Card image cap"
                       />
                     </a>
-                    <div className="card-body details">
+                    <div className="card-body cardSeries_body details">
                       <a
                         className="linkCard"
                         href="https://pokemon.fandom.com/es/wiki/P01"
                       >
-                        <h3 className="card-title ">
+                        <h3 className="card-title cardSeries_title ">
                           Mewtwo vs. Mew/ Mewtwo contraataca
                         </h3>
                       </a>
                     </div>
                   </div>
-                  <div className="card">
+                  <div className="card cardSeries">
                     <a href="https://pokemon.fandom.com/es/wiki/P02">
                       <img
                         className=""
@@ -4244,16 +4244,16 @@ const PokeducatorWikiSeries = () => {
                         alt="Card image cap"
                       />
                     </a>
-                    <div className="card-body details">
+                    <div className="card-body cardSeries_body details">
                       <a
                         className="linkCard"
                         href="https://pokemon.fandom.com/es/wiki/P02"
                       >
-                        <h3 className="card-title ">El poder de uno</h3>
+                        <h3 className="card-title  cardSeries_title ">El poder de uno</h3>
                       </a>
                     </div>
                   </div>
-                  <div className="card">
+                  <div className="card cardSeries">
                     <a href="https://pokemon.fandom.com/es/wiki/P03">
                       <img
                         className=""
@@ -4261,7 +4261,7 @@ const PokeducatorWikiSeries = () => {
                         alt="Card image cap"
                       />
                     </a>
-                    <div className="card-body details">
+                    <div className="card-body cardSeries_body details">
                       <a
                         className="linkCard"
                         href="https://pokemon.fandom.com/es/wiki/P03"
@@ -4272,7 +4272,7 @@ const PokeducatorWikiSeries = () => {
                       </a>
                     </div>
                   </div>
-                  <div className="card">
+                  <div className="card cardSeries">
                     <a href="https://pokemon.fandom.com/es/wiki/P04">
                       <img
                         className=""
@@ -4280,7 +4280,7 @@ const PokeducatorWikiSeries = () => {
                         alt="Card image cap"
                       />
                     </a>
-                    <div className="card-body details">
+                    <div className="card-body cardSeries_body details">
                       <a
                         className="linkCard"
                         href="https://pokemon.fandom.com/es/wiki/P04"
@@ -4292,7 +4292,7 @@ const PokeducatorWikiSeries = () => {
                       </a>
                     </div>
                   </div>
-                  <div className="card">
+                  <div className="card cardSeries">
                     <a href="https://pokemon.fandom.com/es/wiki/P05">
                       <img
                         className=""
@@ -4300,7 +4300,7 @@ const PokeducatorWikiSeries = () => {
                         alt="Card image cap"
                       />
                     </a>
-                    <div className="card-body details">
+                    <div className="card-body cardSeries_body details">
                       <a
                         className="linkCard"
                         href="https://pokemon.fandom.com/es/wiki/P05"
@@ -4315,13 +4315,13 @@ const PokeducatorWikiSeries = () => {
               </div>
               <br />
               <div className="row">
-                <a className="links" href="#advanced">
+                <a className="anchor" href="#advanced">
                   <h3 id="pelicula_advanced_generation">
                     Serie Advanced Generation
-                  </h3>
+                  </h3><br />
                 </a>
                 <div className="card-deck d-flex justify-content-center">
-                  <div className="card">
+                  <div className="card cardSeries">
                     <a href="https://pokemon.fandom.com/es/wiki/P06">
                       <img
                         className=""
@@ -4329,7 +4329,7 @@ const PokeducatorWikiSeries = () => {
                         alt="Card image cap"
                       />
                     </a>
-                    <div className="card-body details">
+                    <div className="card-body cardSeries_body details">
                       <a
                         className="linkCard"
                         href="https://pokemon.fandom.com/es/wiki/P06"
@@ -4338,7 +4338,7 @@ const PokeducatorWikiSeries = () => {
                       </a>
                     </div>
                   </div>
-                  <div className="card">
+                  <div className="card cardSeries">
                     <a href="https://pokemon.fandom.com/es/wiki/P07">
                       <img
                         className=""
@@ -4346,7 +4346,7 @@ const PokeducatorWikiSeries = () => {
                         alt="Card image cap"
                       />
                     </a>
-                    <div className="card-body details">
+                    <div className="card-body cardSeries_body details">
                       <a
                         className="linkCard"
                         href="https://pokemon.fandom.com/es/wiki/P07"
@@ -4355,7 +4355,7 @@ const PokeducatorWikiSeries = () => {
                       </a>
                     </div>
                   </div>
-                  <div className="card">
+                  <div className="card cardSeries">
                     <a href="https://pokemon.fandom.com/es/wiki/P08">
                       <img
                         className=""
@@ -4363,7 +4363,7 @@ const PokeducatorWikiSeries = () => {
                         alt="Card image cap"
                       />
                     </a>
-                    <div className="card-body details">
+                    <div className="card-body cardSeries_body details">
                       <a
                         className="linkCard"
                         href="https://pokemon.fandom.com/es/wiki/P08"
@@ -4374,7 +4374,7 @@ const PokeducatorWikiSeries = () => {
                       </a>
                     </div>
                   </div>
-                  <div className="card">
+                  <div className="card cardSeries">
                     <a href="https://pokemon.fandom.com/es/wiki/P09">
                       <img
                         className=""
@@ -4382,7 +4382,7 @@ const PokeducatorWikiSeries = () => {
                         alt="Card image cap"
                       />
                     </a>
-                    <div className="card-body details">
+                    <div className="card-body cardSeries_body details">
                       <a
                         className="linkCard"
                         href="https://pokemon.fandom.com/es/wiki/P09"
@@ -4394,15 +4394,15 @@ const PokeducatorWikiSeries = () => {
                     </div>
                   </div>
                 </div>
-                <br />
-              </div>
+                
+              </div><br />
               <div className="row">
-                <a className="links" href="#series_diamante_y_perla">
-                  <h3 id="pelicula_diamante_y_perla">Serie Diamante y Perla</h3>
+                <a className="anchor" href="#series_diamante_y_perla">
+                  <h3 id="pelicula_diamante_y_perla">Serie Diamante y Perla</h3><br />
                 </a>
-                <br />
+                
                 <div className="card-deck d-flex justify-content-center">
-                  <div className="card">
+                  <div className="card cardSeries">
                     <a href="https://pokemon.fandom.com/es/wiki/P10">
                       <img
                         className=""
@@ -4410,7 +4410,7 @@ const PokeducatorWikiSeries = () => {
                         alt="Card image cap"
                       />
                     </a>
-                    <div className="card-body details">
+                    <div className="card-body cardSeries_body details">
                       <a
                         className="linkCard"
                         href="https://pokemon.fandom.com/es/wiki/P10"
@@ -4421,7 +4421,7 @@ const PokeducatorWikiSeries = () => {
                       </a>
                     </div>
                   </div>
-                  <div className="card">
+                  <div className="card cardSeries">
                     <a href="https://pokemon.fandom.com/es/wiki/P11">
                       <img
                         className=""
@@ -4429,7 +4429,7 @@ const PokeducatorWikiSeries = () => {
                         alt="Card image cap"
                       />
                     </a>
-                    <div className="card-body details">
+                    <div className="card-body cardSeries_body details">
                       <a
                         className="linkCard"
                         href="https://pokemon.fandom.com/es/wiki/P11"
@@ -4441,7 +4441,7 @@ const PokeducatorWikiSeries = () => {
                       </a>
                     </div>
                   </div>
-                  <div className="card">
+                  <div className="card cardSeries">
                     <a href="https://pokemon.fandom.com/es/wiki/P12">
                       <img
                         className=""
@@ -4449,7 +4449,7 @@ const PokeducatorWikiSeries = () => {
                         alt="Card image cap"
                       />
                     </a>
-                    <div className="card-body details">
+                    <div className="card-body cardSeries_body details">
                       <a
                         className="linkCard"
                         href="https://pokemon.fandom.com/es/wiki/P12"
@@ -4460,7 +4460,7 @@ const PokeducatorWikiSeries = () => {
                       </a>
                     </div>
                   </div>
-                  <div className="card">
+                  <div className="card cardSeries">
                     <a href="https://pokemon.fandom.com/es/wiki/P13">
                       <img
                         className=""
@@ -4468,7 +4468,7 @@ const PokeducatorWikiSeries = () => {
                         alt="Card image cap"
                       />
                     </a>
-                    <div className="card-body details">
+                    <div className="card-body cardSeries_body details">
                       <a
                         className="linkCard"
                         href="https://pokemon.fandom.com/es/wiki/P13"
@@ -4480,15 +4480,15 @@ const PokeducatorWikiSeries = () => {
                     </div>
                   </div>
                 </div>
-                <br />
-              </div>
+                
+              </div><br />
               <div className="row">
-                <a className="links" href="#series_negro_y_blanco">
-                  <h3 id="pelicula_negro_y_blanco">Serie Negro y Blanco</h3>
+                <a className="anchor" href="#series_negro_y_blanco">
+                  <h3 id="pelicula_negro_y_blanco">Serie Negro y Blanco</h3> <br />
                 </a>
-                <br />
+               
                 <div className="card-deck d-flex justify-content-center">
-                  <div className="card">
+                  <div className="card cardSeries">
                     <a href="https://pokemon.fandom.com/es/wiki/P14">
                       <img
                         className=""
@@ -4496,7 +4496,7 @@ const PokeducatorWikiSeries = () => {
                         alt="Card image cap"
                       />
                     </a>
-                    <div className="card-body details">
+                    <div className="card-body cardSeries_body details">
                       <a
                         className="linkCard"
                         href="https://pokemon.fandom.com/es/wiki/P14"
@@ -4507,7 +4507,7 @@ const PokeducatorWikiSeries = () => {
                       </a>
                     </div>
                   </div>
-                  <div className="card">
+                  <div className="card cardSeries">
                     <a href="https://pokemon.fandom.com/es/wiki/P15">
                       <img
                         className=""
@@ -4515,7 +4515,7 @@ const PokeducatorWikiSeries = () => {
                         alt="Card image cap"
                       />
                     </a>
-                    <div className="card-body details">
+                    <div className="card-body cardSeries_body details">
                       <a
                         className="linkCard"
                         href="https://pokemon.fandom.com/es/wiki/P15"
@@ -4526,7 +4526,7 @@ const PokeducatorWikiSeries = () => {
                       </a>
                     </div>
                   </div>
-                  <div className="card">
+                  <div className="card cardSeries">
                     <a href="https://pokemon.fandom.com/es/wiki/P16">
                       <img
                         className=""
@@ -4534,7 +4534,7 @@ const PokeducatorWikiSeries = () => {
                         alt="Card image cap"
                       />
                     </a>
-                    <div className="card-body details">
+                    <div className="card-body cardSeries_body details">
                       <a
                         className="linkCard"
                         href="https://pokemon.fandom.com/es/wiki/P16"
@@ -4546,15 +4546,15 @@ const PokeducatorWikiSeries = () => {
                     </div>
                   </div>
                 </div>
-                <br />
-              </div>
+                
+              </div><br />
               <div className="row">
-                <a className="links" href="#serie_xy">
-                  <h3 id="pelicula_xy">Serie XY</h3>
+                <a className="anchor" href="#serie_xy">
+                  <h3 id="pelicula_xy">Serie XY</h3><br />
                 </a>
-                <br />
+                
                 <div className="card-deck d-flex justify-content-center">
-                  <div className="card">
+                  <div className="card cardSeries">
                     <a href="https://pokemon.fandom.com/es/wiki/P17">
                       <img
                         className=""
@@ -4562,7 +4562,7 @@ const PokeducatorWikiSeries = () => {
                         alt="Card image cap"
                       />
                     </a>
-                    <div className="card-body details">
+                    <div className="card-body cardSeries_body details">
                       <a
                         className="linkCard"
                         href="https://pokemon.fandom.com/es/wiki/P17"
@@ -4573,7 +4573,7 @@ const PokeducatorWikiSeries = () => {
                       </a>
                     </div>
                   </div>
-                  <div className="card">
+                  <div className="card cardSeries">
                     <a href="https://pokemon.fandom.com/es/wiki/P18">
                       <img
                         className=""
@@ -4581,7 +4581,7 @@ const PokeducatorWikiSeries = () => {
                         alt="Card image cap"
                       />
                     </a>
-                    <div className="card-body details">
+                    <div className="card-body cardSeries_body details">
                       <a
                         className="linkCard"
                         href="https://pokemon.fandom.com/es/wiki/P18"
@@ -4592,7 +4592,7 @@ const PokeducatorWikiSeries = () => {
                       </a>
                     </div>
                   </div>
-                  <div className="card">
+                  <div className="card cardSeries">
                     <a href="https://pokemon.fandom.com/es/wiki/P19">
                       <img
                         className=""
@@ -4600,7 +4600,7 @@ const PokeducatorWikiSeries = () => {
                         alt="Card image cap"
                       />
                     </a>
-                    <div className="card-body details">
+                    <div className="card-body cardSeries_body details">
                       <a
                         className="linkCard"
                         href="https://pokemon.fandom.com/es/wiki/P19"
@@ -4612,15 +4612,15 @@ const PokeducatorWikiSeries = () => {
                     </div>
                   </div>
                 </div>
-                <br />
-              </div>
+                
+              </div><br />
               <div className="row">
-                <a className="links" href="#serie_sol_y_luna">
-                  <h3 id="pelicula_sol_y_luna">Serie Sol y Luna</h3>
+                <a className="anchor" href="#serie_sol_y_luna">
+                  <h3 id="pelicula_sol_y_luna">Serie Sol y Luna</h3><br />
                 </a>
-                <br />
+                
                 <div className="card-deck d-flex justify-content-center">
-                  <div className="card">
+                  <div className="card cardSeries">
                     <a href="https://pokemon.fandom.com/es/wiki/P20">
                       <img
                         className=""
@@ -4628,7 +4628,7 @@ const PokeducatorWikiSeries = () => {
                         alt="Card image cap"
                       />
                     </a>
-                    <div className="card-body details">
+                    <div className="card-body cardSeries_body details">
                       <a
                         className="linkCard"
                         href="https://pokemon.fandom.com/es/wiki/P20"
@@ -4639,7 +4639,7 @@ const PokeducatorWikiSeries = () => {
                       </a>
                     </div>
                   </div>
-                  <div className="card">
+                  <div className="card cardSeries">
                     <a href="https://pokemon.fandom.com/es/wiki/P21">
                       <img
                         className=""
@@ -4647,7 +4647,7 @@ const PokeducatorWikiSeries = () => {
                         alt="Card image cap"
                       />
                     </a>
-                    <div className="card-body details">
+                    <div className="card-body cardSeries_body details">
                       <a
                         className="linkCard"
                         href="https://pokemon.fandom.com/es/wiki/P21"
@@ -4656,7 +4656,7 @@ const PokeducatorWikiSeries = () => {
                       </a>
                     </div>
                   </div>
-                  <div className="card">
+                  <div className="card cardSeries">
                     <a href="https://pokemon.fandom.com/es/wiki/P22">
                       <img
                         className=""
@@ -4664,7 +4664,7 @@ const PokeducatorWikiSeries = () => {
                         alt="Card image cap"
                       />
                     </a>
-                    <div className="card-body details">
+                    <div className="card-body cardSeries_body details">
                       <a
                         className="linkCard"
                         href="https://pokemon.fandom.com/es/wiki/P22"
@@ -4676,15 +4676,15 @@ const PokeducatorWikiSeries = () => {
                     </div>
                   </div>
                 </div>
-                <br />
-              </div>
+                
+              </div><br />
               <div className="row">
-                <a className="links" href="#serie_espada_y_escudo">
-                  <h3 id="pelicula_espada_y_escudo">Serie Espada y Escudo</h3>
+                <a className="anchor" href="#serie_espada_y_escudo">
+                  <h3 id="pelicula_espada_y_escudo">Serie Espada y Escudo</h3><br />
                 </a>
-                <br />
+                
                 <div className="card-deck d-flex justify-content-center">
-                  <div className="card">
+                  <div className="card cardSeries">
                     <a href="https://pokemon.fandom.com/es/wiki/P23">
                       <img
                         className=""
@@ -4692,7 +4692,7 @@ const PokeducatorWikiSeries = () => {
                         alt="Card image cap"
                       />
                     </a>
-                    <div className="card-body details">
+                    <div className="card-body cardSeries_body details">
                       <a
                         className="linkCard"
                         href="https://pokemon.fandom.com/es/wiki/P23"
@@ -4705,8 +4705,8 @@ const PokeducatorWikiSeries = () => {
                   </div>
                 </div>
               </div>
-              <br />
-            </div>
+              
+            </div><br />
           </div>
         </>
       )}

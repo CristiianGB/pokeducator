@@ -82,11 +82,15 @@ setTimeout(()=>{
           .
         </p>
         <img
-          className="genero_imagen w-25 h-25 mt-2 my-2 mx-2"
+          className="genero_imagen w-25 h-25 mb-3 mt-2 my-2 mx-2"
           src="https://static.wikia.nocookie.net/espokemon/images/2/28/Informaci%C3%B3n_de_Bidoof.png"
           alt="imagen sobre el crianza pokemon."
         />
         <br />
+        <br />
+        <br />
+        <br />
+        
       </div>
       <div className="col-sm-5 m-5 ms-3">
         <nav id="toc" data-toggle="toc" className="sticky-top">
@@ -308,57 +312,51 @@ setTimeout(()=>{
         </p>
         <br />
         <div className="row">
-          <div className="card-group">
-            <div className="card invisible">
-              <img
-                className="card-img-top"
-                src="https://static.wikia.nocookie.net/espokemon/images/1/15/Guarder%C3%ADa_en_Rojo.png/"
-                alt="guardería en Pokémon Rojo"
-              />
-              <div className="card-body">
-                <h5 className="card-title">Guardería en Pokémon Rojo.</h5>
+        <div className="card-deck d-flex justify-content-center">
+                  <div className="card cardGenero">
+                    <a href="https://static.wikia.nocookie.net/espokemon/images/7/77/EP478_Pikachu_con_Buneary.png/">
+                      <img
+                        className=""
+                        src="https://static.wikia.nocookie.net/espokemon/images/7/77/EP478_Pikachu_con_Buneary.png/"
+                        alt="Card image cap"
+                      />
+                    </a>
+                    <div className="card-body cardBodyGenero details">
+                      <a
+                        className="linkCard"
+                        href="https://pokemon.fandom.com/es/wiki/P01"
+                      >
+                        <h3 className="card-title ">
+                        La Buneary de Dawn/Maya ruborizada ante la presencia del
+                        Pikachu de Ash.
+                        </h3>
+                      </a>
+                    </div>
+                  </div>
+                  <div className="card cardGenero">
+                    <a href="https://static.wikia.nocookie.net/espokemon/images/f/f3/EP508_Buneary%2C_Happiny_y_Aipom_en_la_fiesta.png/">
+                      <img
+                        className=""
+                        src="https://static.wikia.nocookie.net/espokemon/images/f/f3/EP508_Buneary%2C_Happiny_y_Aipom_en_la_fiesta.png/"
+                        alt="Card image cap"
+                      />
+                    </a>
+                    <div className="card-body cardBodyGenero details">
+                      <a
+                        className="linkCard"
+                        href="https://pokemon.fandom.com/es/wiki/P01"
+                      >
+                        <h3 className="card-title ">
+                        Pokémon disfrazados con vestidos.
+                        </h3>
+                      </a>
+                    </div>
+                </div>
               </div>
-            </div>
-            <div className="card">
-              <img
-                className="card-img-top"
-                src="https://static.wikia.nocookie.net/espokemon/images/7/77/EP478_Pikachu_con_Buneary.png/"
-                alt="buneary vergonzoso"
-              />
-              <div className="card-body">
-                <h5 className="card-title">
-                  La Buneary de Dawn/Maya ruborizada ante la presencia del
-                  Pikachu de Ash, lo que explica sus sentimientos.
-                </h5>
-              </div>
-            </div>
-            <div className="card">
-              <img
-                className="card-img-top"
-                src="https://static.wikia.nocookie.net/espokemon/images/f/f3/EP508_Buneary%2C_Happiny_y_Aipom_en_la_fiesta.png/"
-                alt="happiny y aipom en la fiesta"
-              />
-              <div className="card-body">
-                <h5 className="card-title">
-                  Pokémon disfrazados con vestidos.
-                </h5>
-              </div>
-            </div>
-            <div className="card invisible">
-              <img
-                className="card-img-top"
-                src="https://static.wikia.nocookie.net/espokemon/images/1/15/Guarder%C3%ADa_en_Rojo.png/"
-                alt="guardería en Pokémon Rojo"
-              />
-              <div className="card-body">
-                <h5 className="card-title">Guardería en Pokémon Rojo.</h5>
-              </div>
-            </div>
           </div>
         </div>
         <br />
       </div>
-    </div>
     </>)}</>
   );
 };

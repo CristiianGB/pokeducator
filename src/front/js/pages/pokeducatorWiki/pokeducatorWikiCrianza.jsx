@@ -175,7 +175,7 @@ const PokeducatorWikiCrianza = () => {
         <div className="col-12">
           <p className="funcionamiento descripcion">
             La crianza en los videojuegos solo se produce en la{" "}
-            <a href="/wiki/guarderia-pokemon">guardería Pokémon</a>. En la guardería
+            <a  className="links" href="/wiki/guarderia-pokemon">guardería Pokémon</a>. En la guardería
             hay que dejar a dos Pokémon de género opuesto (un Pokémon macho y
             otro hembra) y ambos deben compartir un grupo huevo en común.
             También se puede conseguir si uno de los dos es un Ditto (solo uno
@@ -310,7 +310,7 @@ const PokeducatorWikiCrianza = () => {
       </div>
       <div className="crianza_guarderia descripcion">
         <p>
-          Artículo principal: <a href="/wiki/guarderia-pokemon">Guardería Pokémon.</a></p>
+          Artículo principal: <a className="links" href="/wiki/guarderia-pokemon">Guardería Pokémon.</a></p>
         <br />
         <img
               className="crianza_imagen w-25 me-4 mb-4 my-2 mx-2"
@@ -509,7 +509,7 @@ const PokeducatorWikiCrianza = () => {
         </div>
         <div className="grupos_huevo descripcion">
           <p>
-            Artículo principal: <a href="/wiki/grupos-huevo">Grupos huevo.</a>
+            Artículo principal: <a className="links" href="/wiki/grupos-huevo">Grupos huevo.</a>
           </p>
           <br />
           <p>
@@ -978,10 +978,7 @@ const PokeducatorWikiCrianza = () => {
           <hr />
         </div>
         <div className="movimientos_huevo descripcion">
-          <p>
-            Artículo principal:{" "}
-            <a href="/wiki/movimientos-huevo">Movimientos huevo.</a>
-          </p>
+          
           <p>
             Este es uno de los grandes atractivos de la crianza Pokémon. Un
             movimiento huevo es aquel movimiento de combate que un Pokémon nace

@@ -14,17 +14,22 @@
 .invisible{
     visibility: hidden;
 }
-.card{
+.cardGuarderia{
     margin: 15px;
     padding: 5px;
     box-shadow: 5px 2px 2px rgba(0, 0, 0, 0.274);
+    width: 277px;
+    height:315px;
 }
-.card-body{
+.cardBodyGuarderia{
     max-height: 130px;
+   
 }
-.card-img-top {
+.cardImgGuarderia {
   border-radius: 7px;
   width: 100%;
+  max-width: 265px;
+  min-width: 265px;
   min-height: 215px;
   max-height: 215px;
 }

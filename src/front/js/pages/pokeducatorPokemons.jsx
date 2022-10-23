@@ -57,7 +57,7 @@ const PokeducatorPokemons = () => {
           store.pokemon_data.map((img, i) => (
             <div className="col-md-3" id={img.id} key={img.id}>
               <div
-                className="card"
+                className="card cardPokemon"
                 style={{
                   backgroundColor: "#F0F0C9",
                 }}
@@ -68,7 +68,7 @@ const PokeducatorPokemons = () => {
                       width: "100px",
                       height: "100px",
                     }}
-                    className="img-fluid"
+                    className="img-fluid pokemonImg"
                     src={
                       img.sprites.other?.["official-artwork"]?.front_default
                         ? img.sprites.other?.["official-artwork"]?.front_default
@@ -86,11 +86,11 @@ const PokeducatorPokemons = () => {
                         ? img.sprites.other?.home?.front_default
                         : ""
                     }
-                    alt="pokemon"
+                    alt={img.name}
                   />
                 </a>
                 <div className="">
-                  <h5>{img.name}</h5>
+                  <h5 className="nombrePokemon">{img.name}</h5>
                   <h6>type: {img.types[0].type.name}</h6>
                 </div>
               </div>

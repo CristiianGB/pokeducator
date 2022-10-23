@@ -8,8 +8,11 @@
     align-content: space-between;
     margin: 10px;
 }
-.card{
+.cardPokemon{
     margin: 10px;
     border-radius: 5px;
     box-shadow: 6px 10px 5px 0px rgba(199,197,199,0.75);
+}
+.nombrePokemon{
+    text-transform: capitalize;
 }

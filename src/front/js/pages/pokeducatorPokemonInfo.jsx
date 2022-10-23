@@ -138,7 +138,7 @@ const PokeducatorPokemonInfo = () => {
                   params.theid == 1 ? (params.theid = 905) : params.theid - 1
                 )}`}
               >
-                <button>Anterior</button>
+                <button className="buttonPokemonInfo">Anterior</button>
               </a>
             </div>
 
@@ -148,7 +148,7 @@ const PokeducatorPokemonInfo = () => {
                   params.theid == 905 ? (params.theid = 1) : params.theid + 1
                 )}`}
               >
-                <button>siguiente</button>
+                <button className="buttonPokemonInfo">siguiente</button>
               </a>
             </div>
           </div>
