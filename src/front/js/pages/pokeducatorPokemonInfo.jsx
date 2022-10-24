@@ -23,17 +23,7 @@ import veneno_img from "../../assets/img/tiposimg/veneno.png";
 import volador_img from "../../assets/img/tiposimg/volador.png";
 import "../../styles/pokeducatorPokemonInfoStyles.css";
 import { Context } from "../store/appContext.jsx";
-
-// {
-// let moves = [];  Hacerlo useState
-//   store.single_pokemon_data?.moves?.map((movement) => {
-//     store.move_data.map((move) => {
-//       if (move.name == movement.move.name) {
-//         moves.push(move);
-//       }
-//     });
-//   });
-// }
+import loading from "../../assets/img/loading.gif";
 
 const PokeducatorPokemonInfo = () => {
   const { store, actions } = useContext(Context);
@@ -108,12 +98,6 @@ const PokeducatorPokemonInfo = () => {
     )
   );
 
-  // let debilidades = store.type_data.map((objeto) =>
-  //   objeto.damage_relations.double_damage_from.name == pokemonType
-  //     ? objeto.name
-  //     : ""
-  // );
-
   let descriptionPokemon = store.grupo_huevo_data.map((objeto) =>
     objeto.pokemon_name == store.single_pokemon_data.name
       ? objeto.description
@@ -127,27 +111,25 @@ const PokeducatorPokemonInfo = () => {
   return (
     <div className="container">
       {load ? (
-        <p>Loading...</p>
+        <div className="m-auto">
+          <img src={loading} alt="Cargando..." />
+        </div>
       ) : (
         <>
           {/* POKEMON BOTONES */}
-          <div className="row justify-content-center mt-2">
+          <div className="row justify-content-center mt-3">
             <div className="col-sm-6">
-              <a
-                href={`/pokemon/${parseInt(
-                  params.theid == 1 ? (params.theid = 905) : params.theid - 1
-                )}`}
-              >
-                <button className="buttonPokemonInfo">Anterior</button>
-              </a>
+              {params.theid == 1 ? (
+                ""
+              ) : (
+                <a href={`/pokemon/${parseInt(params.theid - 1)}`}>
+                  <button className="buttonPokemonInfo">Anterior</button>
+                </a>
+              )}
             </div>
 
             <div className="col-sm-6 text-end">
-              <a
-                href={`/pokemon/${parseInt(
-                  params.theid == 905 ? (params.theid = 1) : params.theid + 1
-                )}`}
-              >
+              <a href={`/pokemon/${parseInt(params.theid) + 1}`}>
                 <button className="buttonPokemonInfo">siguiente</button>
               </a>
             </div>
@@ -284,13 +266,6 @@ const PokeducatorPokemonInfo = () => {
                       <h3>MOVIMIENTOS</h3>
                     </th>
                   </tr>
-                  {/* <tr>
-                    <th>NOMBRE</th>
-                    <th>TIPO</th>
-                    <th>PODER</th>
-                    <th>PRECISION</th>
-                    <th>PP</th>
-                  </tr> */}
                 </thead>
                 <tbody>
                   {moves.map((objeto) => (
