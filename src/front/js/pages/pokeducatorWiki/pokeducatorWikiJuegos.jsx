@@ -809,7 +809,7 @@ const PokeducatorWikiJuegos = () => {
               </table>
               <br />
               <div className="row">
-                <h1 id="cuarta_generacion">Cuarta generación</h1>
+                <h3 id="cuarta_generacion">Cuarta generación</h3>
                 <br />
               </div>
               <div className="cuarta_generacion descripcion">
@@ -1063,7 +1063,7 @@ const PokeducatorWikiJuegos = () => {
               </table>
               <br />
               <div className="row">
-                <h1 id="quinta_generacion">Quinta generación</h1>
+                <h3 id="quinta_generacion">Quinta generación</h3>
                 <br />
               </div>
               <div className="quinta_generacion descripcion">

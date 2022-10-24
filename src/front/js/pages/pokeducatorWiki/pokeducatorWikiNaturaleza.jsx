@@ -66,6 +66,43 @@ const PokeducatorWikiNaturaleza = () => {
               </p>
               <br />
             </div>
+            <div className="col-sm-5 m-5 ms-3">
+        <nav id="toc" data-toggle="toc" className="sticky-top">
+          <ul className="nav navbar-nav">
+            <li>
+              <a
+                onClick={() => setNum(1)}
+                className={num == 1 ? "nav-link active" : "nav-link"}
+                style={aStyles}
+                href="#naturaleza"
+              >
+                Naturaleza Pokémon
+              </a>
+            </li>
+            <li>
+              <a
+                id="desplegable"
+                onClick={() => setNum(2)}
+                className={num == 2 ? "nav-link active" : "nav-link"}
+                style={aStyles}
+                href="#efectos_en_las_estadisticas"
+              >
+                Efectos en las estadísticas
+              </a>
+            </li>
+            <li>
+              <a
+                onClick={() => setNum(3)}
+                className={num == 3 ? "nav-link active" : "nav-link"}
+                style={aStyles}
+                href="#herencia_mediante_crianza"
+              >
+                Herencia de la naturaleza mediante la crianza Pokémon
+              </a>
+            </li>
+          </ul>
+        </nav>
+      </div>
             <div className="row">
               <h1 id="lista_de_naturalezas">Lista de naturalezas</h1>
               <hr />
@@ -500,9 +537,9 @@ const PokeducatorWikiNaturaleza = () => {
               </table>
               <br />
               <div className="row">
-                <h1 id="herencia">Herencia de la naturaleza mediante crianza</h1><hr />
+                <h1 id="herencia_mediante_crianza">Herencia de la naturaleza mediante crianza</h1><hr />
               </div>
-              <div className="herencia descripcion">
+              <div className="herencia_mediante_crianza descripcion">
                 <p>En la crianza Pokémon, desde Pokémon Esmeralda, si la madre lleva equipada una piedra eterna, la probabilidad de que la cría herede la naturaleza de la madre será de un 50%. Si la crianza es con un Ditto y es éste quien lleva la piedra eterna, la probabilidad será de un 50% de que la naturaleza la herede de Ditto, incluso si el otro Pokémon también lleva una piedra eterna. Eso sí, la piedra eterna solo tiene efecto si los padres vienen de juegos en el mismo idioma.</p><br />
                 <p>A partir de Pokémon Oro HeartGold y Pokémon Plata SoulSilver, la piedra eterna puede llevarla cualquiera de los dos padres y la naturaleza podrá heredarse de quien la lleve equipada en un 50%. Si ambos la llevan equipada, la probabilidad se reparte a partes iguales entre heredar la naturaleza del padre, de la madre, u otra cualquiera (aproximadamente el 33% de probabilidades para cada opción), por lo que si ambos tienen la misma naturaleza, la probabilidad de que sea la de sus padres aumentaría al 66%. Aquí se suma un segundo requisito para que la piedra eterna tenga efecto: que los padres tengan el mismo entrenador original (no puede estar alguno intercambiado del entrenador de otro videojuego).</p><br />
                 <p>Por último, desde Pokémon Negro 2 y Pokémon Blanco 2 y en los juegos de la sexta generación, la cría siempre heredará la naturaleza del padre que lleve una piedra eterna equipada (es decir, en este caso la probabilidad sería del 100%). Y si ambos llevan la piedra eterna, la naturaleza será la de uno de los dos padres con la misma probabilidad para cada uno (50%).</p><br />
