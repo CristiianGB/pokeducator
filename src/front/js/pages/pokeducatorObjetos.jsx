@@ -1,64 +1,94 @@
 import React, { useState, useEffect, useContext } from "react";
 import { Context } from "../store/appContext.jsx";
 import "../../styles/pokeducatorObjetosStyles.css";
+import loading from "../../assets/img/loading.gif";
 
 const PokeducatorObjetos = () => {
-  const {store, actions} = useContext(Context)
+  const { store, actions } = useContext(Context);
   const [load, setLoad] = useState("true");
-
 
   setTimeout(() => {
     setLoad(false);
   }, 1000);
 
   return (
-    <div className="App container align-items-center">
-      <div className="row d-flex justify-content-end mt-4">
-        {!store.item?.previous?"":
-        <button 
-        className="btn btn-primary btn-sm mx-3 float-start w-25" 
-        onClick={()=>{
-          actions.itemFind(store.item.previous)//guarda paginacion en storage y actualiza segun click para saber la proxima url onclick comprobar que exista
-        }}>
-            Anterior
-        </button>}
-        <button 
-        className="btn btn-primary btn-sm mx-3 float-end w-25"
-        onClick={()=>{
-          actions.itemFind(store.item.next)
-        }}>
-            Siguiente
-        </button>
-      </div>
-      <div className="pokegallery">
+    <div className="App container">
+      <div className="d-flex flex-column justify-content-center ">
         {load ? (
-          <p>Loading...</p>
+          <div className="m-auto">
+            <img src={loading} alt="Cargando..." />
+          </div>
         ) : (
-          store.item_data.map((item, i) => (
-            <div className="col-md-3" id={item.id} key={item.id}>
-              <div
-                className="card cardObjetos"
-                style={{
-                  backgroundColor: "#F0F0C9",
-                }}
-              >
-                <a href={`/objeto/${item.id}`}>
-                <img style={{
-                  width: "100px",
-                  height: "100px"
-                }}
-                 className="img-fluid" 
-                 src={item.sprites.default} alt="item" />
-                 </a>
-                <div>
-                  <h5>{item.names.map((object) => (
-                    object.language?.name=="es"? object.name :""
-                    ))}
-                  </h5>
-                </div>
+          <>
+            <div className="row d-flex justify-content-center mt-3">
+              <div className="col-sm-6 text-start">
+                {!store.item?.previous ? (
+                  ""
+                ) : (
+                  <button
+                    className=" btn-sm buttonPokemonInfo"
+                    onClick={() => {
+                      actions.itemFind(store.item.previous); //guarda paginacion en storage y actualiza segun click para saber la proxima url onclick comprobar que exista
+                    }}
+                  >
+                    Anterior
+                  </button>
+                )}
+              </div>
+
+              <div className="col-sm-6 text-end">
+                <button
+                  className="btn-sm buttonPokemonInfo"
+                  onClick={() => {
+                    actions.itemFind(store.item.next);
+                  }}
+                >
+                  Siguiente
+                </button>
               </div>
             </div>
-          ))
+
+            <div className="bg-light rounded-3 mt-3">
+              <div className="table-responsive table-secondary rounded-3">
+                <table className="table">
+                  <thead>
+                    <tr>
+                      <th></th>
+                      <th>NOMBRE</th>
+                      <th>DESCRIPTION</th>
+                      <th>COSTO</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {store.item_data.map((objeto) => (
+                      <tr>
+                        <td>
+                          <img src={objeto.sprites.default} alt={objeto.name} />
+                        </td>
+                        <td>
+                          <a className="links" href={`/objeto/${objeto.id}`}>
+                            {objeto.names.map((elemento) =>
+                              elemento.language?.name == "es"
+                                ? elemento.name
+                                : ""
+                            )}
+                          </a>
+                        </td>
+                        <td>
+                          {
+                            objeto.flavor_text_entries?.find(
+                              (elemento) => elemento.language?.name == "es"
+                            )?.text
+                          }
+                        </td>
+                        <td>{objeto.cost == 0 ? "-" : `${objeto.cost}¥`}</td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </>
         )}
       </div>
     </div>
