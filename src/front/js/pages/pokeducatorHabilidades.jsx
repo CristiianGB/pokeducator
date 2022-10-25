@@ -44,7 +44,7 @@ const PokeducatorHabilidad = () => {
           <img className="centred img-fluid" src={loading} alt="Cargando..." />
         </div>
         ) : (
-          <table className="table">
+          <table className="table table-responsive mt-4">
             <thead>
               <tr>
                 <th scope="col">Nombre</th>

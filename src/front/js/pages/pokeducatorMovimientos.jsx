@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useContext } from "react";
 import { Context } from "../store/appContext.jsx";
 import "../../styles/pokeducatorMovimientosStyles.css";
+import loading from "../../assets/img/loading.gif"
 import acero_img from "../../assets/img/tiposimg/acero.png";
 import agua_img from "../../assets/img/tiposimg/agua.png";
 import bicho_img from "../../assets/img/tiposimg/bicho.png";
@@ -24,17 +25,23 @@ import sombra_img from "../../assets/img/tiposimg/sombra.png";
 
 
 const PokeducatorMovimientos = () => {
-  const { store, actions } = useContext(Context);
-  const [load, setLoad] = useState("true");
+  const {store, actions} = useContext(Context)
+  const [num, setNum] = useState(0) 
+  const [load, setLoad] = useState(true)
+  let time = [2000, 3000, 4000, 5000]
+  let randomtime = Math.floor(Math.random() * time.length)
 
-  
-  
-  
-  
+  const aStyles = { fontSize: "18px" };
+  const subStyles = { fontSize: "15px" };
+  const tableStyle = {
+    width: "300px",
+    margin: "auto",
+  };
 
-  setTimeout(() => {
-    setLoad(false);
-  }, 1000);
+  setTimeout(()=>{
+    setLoad(false)
+  },time[randomtime])
+
 
   return (
     <div className="App container align-items-center">
@@ -62,9 +69,11 @@ const PokeducatorMovimientos = () => {
       </div>
       <div className="pokegallery">
         {load ? (
-          <p>Loading...</p>
+          <div className="container align-items-center">
+          <img className="centred img-fluid" src={loading} alt="Cargando..." />
+        </div>
         ) : (
-          <table className="table">
+          <table className="table table-responsive mt-4">
             <thead>
               <tr>
                 <th scope="col">Nombre</th>

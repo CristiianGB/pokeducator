@@ -27,8 +27,23 @@ import loading from "../../assets/img/loading.gif";
 
 const PokeducatorPokemonInfo = () => {
   const { store, actions } = useContext(Context);
-  const params = useParams();
-  const [load, setLoad] = useState("true");
+  const [num, setNum] = useState(0) 
+  const [load, setLoad] = useState(true)
+  const params = useParams()
+  let time = [2000, 3000, 4000, 5000]
+  let randomtime = Math.floor(Math.random() * time.length)
+
+  const aStyles = { fontSize: "18px" };
+  const subStyles = { fontSize: "15px" };
+  const tableStyle = {
+    width: "300px",
+    margin: "auto",
+  };
+
+  setTimeout(()=>{
+    setLoad(false)
+  },time[randomtime])
+
 
   useEffect(() => {
     if (!actions.pokemonFindOneInData(params.theid)) {
@@ -38,10 +53,6 @@ const PokeducatorPokemonInfo = () => {
     }
   }, []);
 
-  setTimeout(() => {
-    setLoad(false);
-    // console.log(debilidades);
-  }, 2000);
 
   let moves = [];
   store.single_pokemon_data?.moves?.map((movement) => {
@@ -109,14 +120,16 @@ const PokeducatorPokemonInfo = () => {
   );
 
   return (
-    <div className="container">
+    <>
       {load ? (
-        <div className="m-auto">
-          <img src={loading} alt="Cargando..." />
-        </div>
+        <div className="container align-items-center">
+        <img className="centred img-fluid" src={loading} alt="Cargando..." />
+      </div>
       ) : (
         <>
+        <div className="container align-items-center">
           {/* POKEMON BOTONES */}
+
           <div className="row justify-content-center mt-3">
             <div className="col-sm-6">
               {params.theid == 1 ? (
@@ -287,9 +300,10 @@ const PokeducatorPokemonInfo = () => {
               </table>
             </div>
           </div>
+        </div>
         </>
       )}
-    </div>
+    </>
   );
 };
 
