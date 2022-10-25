@@ -40,7 +40,11 @@ const PokeducatorObjetoInfo = () => {
   }, []);
 
   return (
-    <div className="container">
+    <>{load ? (
+      <div className="m-auto">
+        <img src={loading} alt="Cargando..." />
+      </div>
+    ) : (<><div className="container">
         <div className="row mt-2">
             <h1>   
             {store.single_move_data.names?.map((object) => (object.language?.name=="es"? object.name :""))}
@@ -100,7 +104,7 @@ const PokeducatorObjetoInfo = () => {
                 
         </div>
         
-    </div>
+    </div></>)}</>
   );
 };
 
