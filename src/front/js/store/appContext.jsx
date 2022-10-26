@@ -29,6 +29,10 @@ const injectContext = PassedComponent => {
 			 * store, instead use actions, like this:
 			 **/
 
+			/*
+
+				NO TOCAR NINGUNO DE LOS COMENTADOS 
+
 				state.actions.abilityFind()
 
 				state.actions.natureFind()
@@ -42,7 +46,33 @@ const injectContext = PassedComponent => {
 				state.actions.pokemonFind()
 
 				state.actions.groupFind()
-		
+				
+				state.actions.saveAbilityonDb()
+
+				state.actions.saveNatureonDb()
+				
+				state.actions.saveMoveonDb()
+
+				state.actions.saveItemonDb()
+
+				state.actions.pokemonFindDb()
+
+				state.actions.saveDbonStore()
+			
+				NO TOCAR NINGUNO DE LOS COMENTADOS
+				state.actions.pokemonFindDb()
+				state.actions.saveItemonDb()
+				state.actions.saveMoveonDb()
+				state.actions.saveNatureonDb()
+				state.actions.saveAbilityonDb()
+								state.actions.saveDbonStore()
+				state.actions.FindOnePokemon(1)
+				*/
+
+				state.actions.saveDbonStore()
+
+
+				
 		
 		}, []);
 
