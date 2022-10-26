@@ -37,7 +37,7 @@ const PokeducatorWikiLanding = () => {
                 Nuestra página web se centra en las fusiones Pokémon y en la
                 creación del espécimen mas poderoso jamás visto, no obstante,
                 como ya hemos indicado en nuestra{" "}
-                <a className="links" href="">
+                <a className="links" href="/info">
                   página de información
                 </a>
                 , en la{" "}

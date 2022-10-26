@@ -50,9 +50,9 @@ const PokeducatorPokemons = () => {
       </div>
       <div className="pokegallery">
         {load ? (
-          <div className="m-auto">
-            <img src={loading} alt="Cargando..." />
-          </div>
+         <div className="container align-items-center">
+         <img className="centred img-fluid" src={loading} alt="Cargando..." />
+       </div>
         ) : (
           store.pokemon_data.map((img, i) => (
             <div className="col-md-3" id={img.id} key={img.id}>
@@ -68,7 +68,7 @@ const PokeducatorPokemons = () => {
                       width: "100px",
                       height: "100px",
                     }}
-                    className="img-fluid pokemonImg"
+                    className="img-fluid pokemonCardImg"
                     src={
                       img.sprites.other?.["official-artwork"]?.front_default
                         ? img.sprites.other?.["official-artwork"]?.front_default

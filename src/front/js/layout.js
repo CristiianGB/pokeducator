@@ -22,6 +22,7 @@ import injectContext from "./store/appContext.jsx";
 import ScrollToTop from "./component/scrollToTop.jsx";
 import PokeducatorHabilidad from "./pages/pokeducatorHabilidades.jsx";
 import PokeducatorHabilidadInfo from "./pages/pokeducatorHabilidadInfo.jsx";
+import PokeducatorInfo from "./pages/pokeducatorInfo.jsx";
 
 //create your first component
 const Layout = () => {
@@ -43,6 +44,10 @@ const Layout = () => {
             <Route
               element={<PokeducatorWikiGuarderia />}
               path="/wiki/guarderia-pokemon"
+            />
+            <Route
+              element={<PokeducatorInfo />}
+              path="/info"
             />
             <Route
               element={<PokeducatorWikiLanding />}

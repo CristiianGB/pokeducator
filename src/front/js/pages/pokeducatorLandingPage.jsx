@@ -11,9 +11,9 @@ const PokeducatorLandingPage = () => {
       <div className="col-12 my-4">
         <button className="button button1">hey</button>
         <div>
-          <button type="button" class="btn btn-outline-primary button2">
+          <a href="/info"><button type="button" class="btn btn-outline-primary button2">
             Primary
-          </button>
+          </button></a>
         </div>
       </div>
       <div class="row">

@@ -71,7 +71,7 @@ const PokeducatorMovimientos = () => {
         {load ? (
           <div className="container align-items-center">
           <img className="centred img-fluid" src={loading} alt="Cargando..." />
-        </div>
+          </div>
         ) : (
           <table className="table table-responsive mt-4">
             <thead>
