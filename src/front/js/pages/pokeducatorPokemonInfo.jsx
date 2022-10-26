@@ -28,11 +28,11 @@ import "../../styles/pokemonTypes.css";
 
 const PokeducatorPokemonInfo = () => {
   const { store, actions } = useContext(Context);
-  const [num, setNum] = useState(0) 
-  const [load, setLoad] = useState(true)
-  const params = useParams()
-  let time = [2000, 3000, 4000, 5000]
-  let randomtime = Math.floor(Math.random() * time.length)
+  const [num, setNum] = useState(0);
+  const [load, setLoad] = useState(true);
+  const params = useParams();
+  let time = [2000, 3000, 4000, 5000];
+  let randomtime = Math.floor(Math.random() * time.length);
 
   const aStyles = { fontSize: "18px" };
   const subStyles = { fontSize: "15px" };
@@ -41,10 +41,9 @@ const PokeducatorPokemonInfo = () => {
     margin: "auto",
   };
 
-  setTimeout(()=>{
-    setLoad(false)
-  },time[randomtime])
-
+  setTimeout(() => {
+    setLoad(false);
+  }, time[randomtime]);
 
   useEffect(() => {
     if (!actions.pokemonFindOneInData(params.theid)) {
@@ -53,7 +52,6 @@ const PokeducatorPokemonInfo = () => {
       );
     }
   }, []);
-
 
   let moves = [];
   store.single_pokemon_data?.moves?.map((movement) => {
@@ -148,200 +146,206 @@ const PokeducatorPokemonInfo = () => {
     <div className="container bg-light container_section">
       {load ? (
         <div className="container align-items-center">
-        <img className="centred img-fluid" src={loading} alt="Cargando..." />
-      </div>
+          <img className="centred img-fluid" src={loading} alt="Cargando..." />
+        </div>
       ) : (
         <>
-        <div className="container align-items-center">
-          {/* POKEMON BOTONES */}
+          <div className="container align-items-center">
+            {/* POKEMON BOTONES */}
 
-          <div className="row justify-content-center mt-3">
-            <div className="col-sm-6">
-              {params.theid == 1 ? (
-                ""
-              ) : (
-                <a href={`/pokemon/${parseInt(params.theid - 1)}`}>
-                  <button className="buttonPokemonInfo">Anterior</button>
+            <div className="row justify-content-center mt-3">
+              <div className="col-sm-6">
+                {params.theid == 1 ? (
+                  ""
+                ) : (
+                  <a href={`/pokemon/${parseInt(params.theid - 1)}`}>
+                    <button className="buttonPokemonInfo">Anterior</button>
+                  </a>
+                )}
+              </div>
+
+              <div className="col-sm-6 text-end">
+                <a href={`/pokemon/${parseInt(params.theid) + 1}`}>
+                  <button className="buttonPokemonInfo">siguiente</button>
                 </a>
-              )}
-            </div>
-
-            <div className="col-sm-6 text-end">
-              <a href={`/pokemon/${parseInt(params.theid) + 1}`}>
-                <button className="buttonPokemonInfo">siguiente</button>
-              </a>
-            </div>
-          </div>
-
-          {/* POKEMON NAME */}
-          <div className="pokemon_name d-flex text-center text-uppercase">
-            <span className="order_pokemon">
-              {store.single_pokemon_data.id}
-            </span>
-            <h1>{store.single_pokemon_data.name}</h1>
-          </div>
-
-          <div className="row">
-            {/* DIV IZQ */}
-            <div className="col-md-6">
-              {/* POKEMON IMAGEN */}
-              <div className="pokemon_img">
-                <img
-                  className="img-fluid"
-                  src={
-                    store.single_pokemon_data.sprites?.other["official-artwork"]
-                      .front_default
-                  }
-                  alt={store.single_pokemon_data.name + " official artwork"}
-                />
               </div>
-              {/* POKEMON STATS */}
-              <div className="stats_pokemon mt-3 mb-3 div_estadisticas">
-                <div className="table-responsive table-secondary rounded-3">
-                  <table className="table">
-                    <thead>
-                      <tr>
-                        <th>
-                          <h4>ESTADISTICAS</h4>
-                        </th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      {store.single_pokemon_data.stats?.map((objeto) => (
-                        <tr className="d-flex text-center align-items-center">
-                          <td className="col-3">{objeto.stat.name}</td>
-                          <td className="col-6">
-                            <div className="progress">
-                              <div
-                                className="progress-bar"
-                                role="progressbar"
-                                style={{ width: `${objeto.base_stat}%` }}
-                                aria-valuenow="75"
-                                aria-valuemin="0"
-                                aria-valuemax="100"
-                              ></div>
-                            </div>
-                          </td>
-                          <td className="col-3">{objeto.base_stat}</td>
+            </div>
+
+            {/* POKEMON NAME */}
+            <div className="pokemon_name d-flex text-center text-uppercase">
+              <span className="order_pokemon">
+                {store.single_pokemon_data.id}
+              </span>
+              <h1>{store.single_pokemon_data.name}</h1>
+            </div>
+
+            <div className="row">
+              {/* DIV IZQ */}
+              <div className="col-md-6">
+                {/* POKEMON IMAGEN */}
+                <div className="pokemon_img">
+                  <img
+                    className="img-fluid"
+                    src={
+                      store.single_pokemon_data.sprites?.other[
+                        "official-artwork"
+                      ].front_default
+                    }
+                    alt={store.single_pokemon_data.name + " official artwork"}
+                  />
+                </div>
+                {/* POKEMON STATS */}
+                <div className="stats_pokemon mt-3 mb-3 div_estadisticas">
+                  <div className="table-responsive table-secondary rounded-3">
+                    <table className="table">
+                      <thead>
+                        <tr>
+                          <th>
+                            <h4>ESTADISTICAS</h4>
+                          </th>
                         </tr>
-                      ))}
-                    </tbody>
-                  </table>
+                      </thead>
+                      <tbody>
+                        {store.single_pokemon_data.stats?.map((objeto) => (
+                          <tr className="d-flex text-center align-items-center">
+                            <td className="col-3">{objeto.stat.name}</td>
+                            <td className="col-6">
+                              <div className="progress">
+                                <div
+                                  className="progress-bar"
+                                  role="progressbar"
+                                  style={{ width: `${objeto.base_stat}%` }}
+                                  aria-valuenow="75"
+                                  aria-valuemin="0"
+                                  aria-valuemax="100"
+                                ></div>
+                              </div>
+                            </td>
+                            <td className="col-3">{objeto.base_stat}</td>
+                          </tr>
+                        ))}
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+
+              {/* DIV DRCH */}
+              <div className="col-md-6 d-flex flex-column justify-content-around m-0 info_pokemon">
+                <div className="bg-light rounded-4 p-2 div_descripcion">
+                  <h5>{descriptionPokemon}</h5>
+                </div>
+                {/* INFO ADICIONAL */}
+                {/* <div className="bg-info rounded-4 p-2 div_info_adicional"> */}
+                <div
+                  className={`rounded-4 p-2 div_info_adicional ${tipoPokemonColor}-background`}
+                >
+                  <h4 className="text-white">INFORMACION ADICIONAL</h4>
+                  <div className="row">
+                    <div className="col-6">
+                      <ul>
+                        <li>
+                          <p className="fw-bold fs-5 text-white">Altura:</p>
+                          <p className="fw-bold">
+                            {store.single_pokemon_data.height} cm
+                          </p>
+                        </li>
+                        <li>
+                          <p className="fw-bold fs-5 text-white">Peso:</p>
+                          <p className="fw-bold">
+                            {store.single_pokemon_data.weight} kg
+                          </p>
+                        </li>
+                      </ul>
+                    </div>
+                    <div className="col-6">
+                      <ul>
+                        <li>
+                          <p className="fw-bold fs-5 text-white">Categoria</p>
+                          <p className="fw-bold">.......</p>
+                        </li>
+                        <li>
+                          <p className="fw-bold fs-5 text-white">Habilidad</p>
+                          <p className="fw-bold">{habilidadPokemon}</p>
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+                <div className="bg-light p-2 rounded-4 div_tipo">
+                  <h4>TIPO</h4>
+                  <div>{tipoPokemon}</div>
+                </div>
+                <div className="bg-light  p-2 rounded-4 div_debilidades">
+                  <h4>DEBILIDADES</h4>
+                  <div>{tipoPokemon}</div>
+                </div>
+                <div className="bg-light p-2 rounded-4 div_evoluciones">
+                  <h4>EVOLUCIONES</h4>
+                  <div className="d-flex flex-row justify-content-around">
+                    <div
+                      className="rounded-circle bg-secondary"
+                      style={{ width: "150px", height: "150px" }}
+                    ></div>
+                    <div
+                      className="rounded-circle bg-secondary"
+                      style={{ width: "150px", height: "150px" }}
+                    ></div>
+                    <div
+                      className="rounded-circle bg-secondary"
+                      style={{ width: "150px", height: "150px" }}
+                    ></div>
+                  </div>
                 </div>
               </div>
             </div>
 
-            {/* DIV DRCH */}
-            <div className="col-md-6 d-flex flex-column justify-content-around m-0 info_pokemon">
-              <div className="bg-light rounded-4 p-2 div_descripcion">
-                <h5>{descriptionPokemon}</h5>
-              </div>
-              {/* INFO ADICIONAL */}
-              {/* <div className="bg-info rounded-4 p-2 div_info_adicional"> */}
-              <div
-                className={`rounded-4 p-2 div_info_adicional ${tipoPokemonColor}-background`}
-              >
-                <h4 className="text-white">INFORMACION ADICIONAL</h4>
-                <div className="row">
-                  <div className="col-6">
-                    <ul>
-                      <li>
-                        <p className="fw-bold fs-5 text-white">Altura:</p>
-                        <p className="fw-bold">
-                          {store.single_pokemon_data.height} cm
-                        </p>
-                      </li>
-                      <li>
-                        <p className="fw-bold fs-5 text-white">Peso:</p>
-                        <p className="fw-bold">
-                          {store.single_pokemon_data.weight} kg
-                        </p>
-                      </li>
-                    </ul>
-                  </div>
-                  <div className="col-6">
-                    <ul>
-                      <li>
-                        <p className="fw-bold fs-5 text-white">Categoria</p>
-                        <p className="fw-bold">.......</p>
-                      </li>
-                      <li>
-                        <p className="fw-bold fs-5 text-white">Habilidad</p>
-                        <p className="fw-bold">{habilidadPokemon}</p>
-                      </li>
-                    </ul>
-                  </div>
-                </div>
-              </div>
-              <div className="bg-light p-2 rounded-4 div_tipo">
-                <h4>TIPO</h4>
-                <div>{tipoPokemon}</div>
-              </div>
-              <div className="bg-light  p-2 rounded-4 div_debilidades">
-                <h4>DEBILIDADES</h4>
-                <div>{tipoPokemon}</div>
-              </div>
-              <div className="bg-light p-2 rounded-4 div_evoluciones">
-                <h4>EVOLUCIONES</h4>
-                <div className="d-flex flex-row justify-content-around">
-                  <div
-                    className="rounded-circle bg-secondary"
-                    style={{ width: "150px", height: "150px" }}
-                  ></div>
-                  <div
-                    className="rounded-circle bg-secondary"
-                    style={{ width: "150px", height: "150px" }}
-                  ></div>
-                  <div
-                    className="rounded-circle bg-secondary"
-                    style={{ width: "150px", height: "150px" }}
-                  ></div>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          {/* POKEMON MOVIMIENTOS */}
-          <div className="bg-light rounded-4 div_moves">
-            <div className="table-responsive table-secondary rounded-3">
-              <table className="table">
-                <thead>
-                  <tr>
-                    <th>
-                      <h3>MOVIMIENTOS</h3>
-                    </th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {moves.map((objeto) => (
+            {/* POKEMON MOVIMIENTOS */}
+            <div className="bg-light rounded-4 div_moves">
+              <div className="table-responsive table-secondary rounded-3">
+                <table className="table">
+                  <thead>
                     <tr>
-                      <td>
-                        <a className="links" href={`/movimiento/${objeto.id}`}>
-                          {objeto.names.map((elemento) =>
-                            elemento.language?.name == "es" ? elemento.name : ""
-                          )}
-                        </a>
-                      </td>
-                      <td>
-                        <button
-                          className={`type-pokemon ${objeto.type.name}-background`}
-                        >
-                          {objeto.type.name}
-                        </button>
-                      </td>
-                      <td>{objeto.power}</td>
-                      <td>{objeto.accuracy}</td>
-                      <td>{objeto.pp}</td>
+                      <th>
+                        <h3>MOVIMIENTOS</h3>
+                      </th>
                     </tr>
-                  ))}
-                </tbody>
-              </table>
+                  </thead>
+                  <tbody>
+                    {moves.map((objeto) => (
+                      <tr>
+                        <td>
+                          <a
+                            className="links"
+                            href={`/movimiento/${objeto.id}`}
+                          >
+                            {objeto.names.map((elemento) =>
+                              elemento.language?.name == "es"
+                                ? elemento.name
+                                : ""
+                            )}
+                          </a>
+                        </td>
+                        <td>
+                          <button
+                            className={`type-pokemon ${objeto.type.name}-background`}
+                          >
+                            {objeto.type.name}
+                          </button>
+                        </td>
+                        <td>{objeto.power}</td>
+                        <td>{objeto.accuracy}</td>
+                        <td>{objeto.pp}</td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
             </div>
           </div>
-        </div>
         </>
       )}
-    </>
+    </div>
   );
 };
 
