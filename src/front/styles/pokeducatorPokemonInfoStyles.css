@@ -74,6 +74,30 @@
   background-color: #ecedf0;
 }
 
-.aditional_info_pokemon li {
+.div_info_adicional li {
   list-style: none;
 }
+
+.container_section {
+  box-shadow: 8px 8px 5px 0px rgba(0, 0, 0, 0.75);
+  -webkit-box-shadow: 8px 8px 5px 0px rgba(0, 0, 0, 0.75);
+  -moz-box-shadow: 8px 8px 5px 0px rgba(0, 0, 0, 0.75);
+}
+
+.background_pokeinfo {
+  background-position: center;
+  background-size: 100% auto;
+}
+
+/* SOMBRAS DIVS */
+/* .div_descripcion,
+.div_info_adicional,
+.div_tipo,
+.div_debilidades,
+.div_moves,
+.div_estadisticas,
+.div_evoluciones {
+  box-shadow: 5px 5px 5px 0px rgba(0, 0, 0, 0.75);
+  -webkit-box-shadow: 5px 5px 5px 0px rgba(0, 0, 0, 0.75);
+  -moz-box-shadow: 5px 5px 5px 0px rgba(0, 0, 0, 0.75);
+} */
