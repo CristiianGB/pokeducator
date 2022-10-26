@@ -55,10 +55,10 @@ const PokeducatorWikiCrianza = () => {
         />
           <p>
             La crianza Pokémon (Pokémon breeding en inglés) es el conjunto de
-            actividades que se realizan para obtener crías de otros Pokémon. Se
+            actividades que se realizan para obtener crías de otros <a className="links" href="/pokemons">Pokémon</a>. Se
             introdujo en la segunda generación. Aparece gracias al señor
-            Pokémon, quien descubre un Huevo misterioso que los jugadores de
-            Pokémon Oro, Plata y Cristal tienen que entregar al profesor Elm.
+            Pokémon, quien descubre un Huevo misterioso que los jugadores de 
+            <a className="links" href="/wiki/juegos-pokemon"> Pokémon Oro</a>, <a className="links" href="/wiki/juegos-pokemon">Plata</a> y <a className="links" href="/wiki/juegos-pokemon">Cristal</a> tienen que entregar al profesor Elm.
           </p>
         </div>
       </div>
@@ -174,16 +174,16 @@ const PokeducatorWikiCrianza = () => {
       <div className="row">
         <div className="col-12">
           <p className="funcionamiento descripcion">
-            La crianza en los videojuegos solo se produce en la{" "}
-            <a  className="links" href="/wiki/guarderia-pokemon">guardería Pokémon</a>. En la guardería
-            hay que dejar a dos Pokémon de género opuesto (un Pokémon macho y
-            otro hembra) y ambos deben compartir un grupo huevo en común.
-            También se puede conseguir si uno de los dos es un Ditto (solo uno
-            de los dos), y el otro pertenece a algún grupo huevo. Esto puede ser
-            útil, ya que los Pokémon de género desconocido solo pueden
-            reproducirse con un Ditto. Sin embargo, no se puede reproducir un
-            Ditto con otro, y hasta la sexta generación no se podían aprender
-            movimientos huevo.
+            La crianza en los <a className="links" href="/wiki/juegos-pokemon">videojuegos</a> solo se produce en la{" "}
+            <a  className="links" href="/wiki/guarderia-pokemon">guardería Pokémon</a>. En la <a className="links" href="/wiki/guarderia-pokemon">guardería</a>
+            hay que dejar a dos <a className="links" href="/pokemons">Pokémon</a> de <a className="links" href="/wiki/genero-pokemon">género</a> opuesto (un Pokémon macho y
+            otro hembra) y ambos deben compartir un <a className="links" href="/wiki/grupos-huevo">grupo huevo</a> en común.
+            También se puede conseguir si uno de los dos es un <a className="links" href="/pokemon/132">Ditto</a> (solo uno
+            de los dos), y el otro pertenece a algún <a className="links" href="/wiki/grupos-huevo">grupo huevo</a>. Esto puede ser
+            útil, ya que los <a className="links" href="/pokemons">Pokémon</a> de género desconocido solo pueden
+            reproducirse con un <a className="links" href="/pokemon/132">Ditto</a>. Sin embargo, no se puede reproducir un
+            <a className="links" href="/pokemon/132">Ditto</a> con otro, y hasta la sexta generación no se podían aprender
+            <a className="links" href="/movimientos"></a> movimientos huevo.
             <br />
             <img
               className="crianza_imagen w-50 h-50 mt-4 my-2 mx-2"

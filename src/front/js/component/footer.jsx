@@ -50,7 +50,8 @@ export const Footer = () => (
 				<i className="fas fa-gem me-3 text-secondary"></i>Pokeducator!
 			</h6>
 			<p>
-				"descripcion funciones pagina"
+				En Pokeducator podrás crear al mejor Pokémon en la <a className="links" href="/fusion">máquina de fusión</a>. Así como informarte sobra los métodos de <a className="links" href="/wiki/crianza-pokemon">crianza</a> en nuestra <a className="links" href="/wiki">wiki</a>. <br />
+				Para mas información visita nuestra <a className="links" href="/info">página de información</a>.
 			</p>
 			</div>
 			{/* <!-- Grid column --> */}
@@ -62,16 +63,16 @@ export const Footer = () => (
 				Funciones
 			</h6>
 			<p>
-				<a href="#!" className="text-reset">Angular</a>
+				<a href="/fusion" className="text-reset">Fusión!</a>
 			</p>
 			<p>
-				<a href="#!" className="text-reset">React</a>
+				<a href="/pokemons" className="text-reset">Pokédex</a>
 			</p>
 			<p>
-				<a href="#!" className="text-reset">Vue</a>
+				<a href="/wiki" className="text-reset">Wiki</a>
 			</p>
 			<p>
-				<a href="#!" className="text-reset">Laravel</a>
+				<a href="/info" className="text-reset">Información</a>
 			</p>
 			</div>
 			{/* <!-- Grid column --> */}
@@ -80,19 +81,19 @@ export const Footer = () => (
 			<div className="col-md-3 col-lg-2 col-xl-2 mx-auto mb-4">
 			{/* <!-- Links --> */}
 			<h6 className="text-uppercase fw-bold mb-4">
-				Useful links
+				Personaliza
 			</h6>
 			<p>
-				<a href="#!" className="text-reset">Pricing</a>
+				<a href="/perfil" className="text-reset">Perfil</a>
 			</p>
 			<p>
-				<a href="#!" className="text-reset">Settings</a>
+				<a href="/votacion" className="text-reset">Vota</a>
 			</p>
 			<p>
-				<a href="#!" className="text-reset">Orders</a>
+				<a href="/perfil/equipos" className="text-reset">Crea tu equipo</a>
 			</p>
 			<p>
-				<a href="#!" className="text-reset">Help</a>
+				<a href="/registrar" className="text-reset">Regístrate</a>
 			</p>
 			</div>
 			{/* <!-- Grid column --> */}
@@ -100,14 +101,14 @@ export const Footer = () => (
 			{/* <!-- Grid column --> */}
 			<div className="col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-4">
 			{/* <!-- Links --> */}
-			<h6 className="text-uppercase fw-bold mb-4">Contact</h6>
-			<p><i className="fas fa-home me-3 text-secondary"></i> New York, NY 10012, US</p>
+			<h6 className="text-uppercase fw-bold mb-4">Contacta</h6>
+			<p><i className="fas fa-home me-3 text-secondary"></i> Región de Kanto, Pueblo Paleta</p>
 			<p>
 				<i className="fas fa-envelope me-3 text-secondary"></i>
-				info@example.com
+				pokeducator@gmail.com
 			</p>
-			<p><i className="fas fa-phone me-3 text-secondary"></i> + 01 234 567 88</p>
-			<p><i className="fas fa-print me-3 text-secondary"></i> + 01 234 567 89</p>
+			
+			<p><a className="text-reset" href="/soporte">Ayuda</a></p>
 			</div>
 			{/* <!-- Grid column --> */}
 		</div>

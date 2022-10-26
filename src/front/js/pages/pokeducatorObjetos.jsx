@@ -15,8 +15,8 @@ const PokeducatorObjetos = () => {
     <div className="App container">
       <div className="d-flex flex-column justify-content-center ">
         {load ? (
-          <div className="m-auto">
-            <img src={loading} alt="Cargando..." />
+          <div className="container align-items-center">
+          <img className="centred img-fluid" src={loading} alt="Cargando..." />
           </div>
         ) : (
           <>
@@ -48,23 +48,23 @@ const PokeducatorObjetos = () => {
               </div>
             </div>
 
-            <div className="bg-light rounded-3 mt-3">
-              <div className="table-responsive table-secondary rounded-3">
+            
+              <div className="table-responsive rounded-3 mt-4">
                 <table className="table">
                   <thead>
                     <tr>
                       <th></th>
-                      <th>NOMBRE</th>
-                      <th>DESCRIPTION</th>
-                      <th>COSTO</th>
+                      <th>Nombre</th>
+                      <th>Descripción</th>
+                      <th>Precio</th>
                     </tr>
                   </thead>
                   <tbody>
                     {store.item_data.map((objeto) => (
                       <tr>
                         <td>
-                          <img src={objeto.sprites.default} alt={objeto.name} />
-                        </td>
+                        <a className="links" href={`/objeto/${objeto.id}`}><img className="objetoTablaImg" src={objeto.sprites.default} alt={objeto.name} /></a>
+                        </td> 
                         <td>
                           <a className="links" href={`/objeto/${objeto.id}`}>
                             {objeto.names.map((elemento) =>
@@ -87,7 +87,7 @@ const PokeducatorObjetos = () => {
                   </tbody>
                 </table>
               </div>
-            </div>
+            
           </>
         )}
       </div>
