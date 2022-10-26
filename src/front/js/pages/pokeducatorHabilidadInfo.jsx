@@ -1,13 +1,30 @@
 
-import React, { useContext, useEffect } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { Context } from "../store/appContext.jsx";
 import "../../styles/pokeducatorHabilidadInfoStyles.css";
+import loading from "../../assets/img/loading.gif";
 
 const PokeducatorHabilidadInfo = () => {
     const {store, actions} = useContext(Context)
     const params = useParams();
-  
+    
+  const [num, setNum] = useState(0) 
+  const [load, setLoad] = useState(true)
+  let time = [2000, 3000, 4000, 5000]
+  let randomtime = Math.floor(Math.random() * time.length)
+
+  const aStyles = { fontSize: "18px" };
+  const subStyles = { fontSize: "15px" };
+  const tableStyle = {
+    width: "300px",
+    margin: "auto",
+  };
+
+  setTimeout(()=>{
+    setLoad(false)
+  },time[randomtime])
+
    useEffect(() => {
      if (!actions.abilityFindOneInData(params.theid)) {
        actions.abilityFindOne(
@@ -18,7 +35,11 @@ const PokeducatorHabilidadInfo = () => {
 
 
     return (
-        <div className="container">
+      <>{load ? (
+        <div className="container align-items-center">
+        <img className="centred img-fluid" src={loading} alt="Cargando..." />
+        </div>
+      ) : (<><div className="container">
         <div className="row mt-2">
             <h1>   
             {store.single_ability_data.names?.map((object) => (object.language?.name=="es"? object.name :""))}
@@ -56,7 +77,7 @@ const PokeducatorHabilidadInfo = () => {
             </ul>
         </div>
         
-    </div>
+    </div></>)}</>
     )
 }
 

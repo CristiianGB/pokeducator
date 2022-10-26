@@ -11,7 +11,7 @@ const PokeducatorHabilidad = () => {
 
   setTimeout(() => {
     setLoad(false);
-  }, 1000);
+  }, 2000);
 
   return (
     

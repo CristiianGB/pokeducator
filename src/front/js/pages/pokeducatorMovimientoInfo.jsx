@@ -1,4 +1,5 @@
-import React, { useContext, useEffect } from "react";
+import React, { useContext, useEffect, useState } from "react";
+import loading from "../../assets/img/loading.gif";
 import { useParams } from "react-router-dom";
 import { Context } from "../store/appContext.jsx";
 import "../../styles/pokeducatorMovimientoInfoStyles.css";
@@ -26,6 +27,22 @@ import sombra_img from "../../assets/img/tiposimg/sombra.png";
 const PokeducatorObjetoInfo = () => {
   const { store, actions } = useContext(Context);
   const params = useParams();
+  const [num, setNum] = useState(0) 
+  const [load, setLoad] = useState(true)
+  let time = [2000, 3000, 4000]
+  let randomtime = Math.floor(Math.random() * time.length)
+
+  const aStyles = { fontSize: "18px" };
+  const subStyles = { fontSize: "15px" };
+  const tableStyle = {
+    width: "300px",
+    margin: "auto",
+  };
+
+  setTimeout(()=>{
+    setLoad(false)
+  },time[randomtime])
+
   let arr = []
   arr = store.single_move_data.flavor_text_entries?.find(element => element.language?.name == "es") // arr es para encontrar el texto en español y find para que devuelva el primer elemento que encuentre
   // .map((object) =>object.language?.name == "es"? object.flavor_text : "") mapeo
@@ -41,8 +58,8 @@ const PokeducatorObjetoInfo = () => {
 
   return (
     <>{load ? (
-      <div className="m-auto">
-        <img src={loading} alt="Cargando..." />
+      <div className="container align-items-center">
+      <img className="centred img-fluid" src={loading} alt="Cargando..." />
       </div>
     ) : (<><div className="container">
         <div className="row mt-2">

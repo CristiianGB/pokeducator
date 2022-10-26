@@ -1,0 +1,25 @@
+.portadaInfo{
+    border-radius: 7px;
+    max-height: 460px ;
+    max-width: 90%;
+    
+  }
+
+.gifDemo{
+  border: 2px solid grey;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  border-radius: 7px;
+  box-shadow: 10px 5px 5px rgba(0, 0, 0, 0.226);
+  transition: transform .3s;
+}
+.gifDemo:hover{
+
+  transform: scale(1.1); 
+}
+.agradecimientosTitulo{
+  font-size: 14px;
+}
+.agradecimientos{
+  font-size: 12px;
+}
