@@ -1,0 +1,28 @@
+.fusionFoto{
+    width: 300px;
+    height:300px;
+    border-radius: 100%;
+    object-fit: contain;
+    width: 100%;
+}
+.cartasFusion{
+    margin-top: 50px;
+}
+.pruebaBarra1{
+    width: 91%;
+}
+.pruebaBarra2{
+    width: 72%;
+}
+.pruebaBarra3{
+    width: 90%;
+}
+.pruebaBarra4{
+    width: 129%;
+}
+.pruebaBarra5{
+    width: 90%;
+}
+.pruebaBarra6{
+    width: 108%;
+}

@@ -26,7 +26,7 @@ const PokeducatorObjetos = () => {
                   ""
                 ) : (
                   <button
-                    className=" btn-sm buttonPokemonInfo"
+                    className="btn-sm mx-3 float-start w-25 buttonPokemonInfo"
                     onClick={() => {
                       actions.itemFind(store.item.previous); //guarda paginacion en storage y actualiza segun click para saber la proxima url onclick comprobar que exista
                     }}
@@ -38,7 +38,7 @@ const PokeducatorObjetos = () => {
 
               <div className="col-sm-6 text-end">
                 <button
-                  className="btn-sm buttonPokemonInfo"
+                  className="btn-sm mx-3 float-end w-25 buttonPokemonInfo"
                   onClick={() => {
                     actions.itemFind(store.item.next);
                   }}
