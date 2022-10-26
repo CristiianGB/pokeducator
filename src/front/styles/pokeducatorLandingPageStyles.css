@@ -1,33 +1,210 @@
+/*
+    home.css: This website contains selectors only used in home.css
 
-.button {
-  background-color: #04aa6d;
-  border: none;
-  color: white;
-  padding: 20px;
+    All pages share the styles on index.css but you should create 
+    one more css for each page that will contain the selected used 
+    on that page only (the ones not reused in other pages).
+*/
+* {
+  padding: 0;
+  margin: 0;
+}
+.fondo {
+  background-image: url(https://japeal.prestocdn.net/wordpress/wp-content/themes/total/PKM/pkmfoverlay3.png);
+  
+  background-repeat: no-repeat;
+  padding: 5px;
+  transition: transform 2s;
+}
+.fondo:hover{
+  transform: scale(1.05);
+
+}
+
+.imagenPodio,
+.imagenPodio1,
+.imagenPodio3 {
+  transition: transform 0.3s;
+ 
+}
+.wrapper { 
+  width:300px;
+  height:400px;
+  overflow:hidden;
+}
+.image {
+  background:url("http://placekitten.com/g/500/500");
+  background-size:cover;
+  width:100%;
+  height:100%;
+  transition: transform 2s;
+}
+
+.image:hover { transform:scale(1.1) }
+.imagenPodio:hover,
+.imagenPodio1:hover,
+.imagenPodio3:hover {
+  transform: scale(1.1);
+}
+.divPadre1,
+.divPadre2,
+.divPadre3 {
+  border: 2px solid #ccc;
+  border-radius: 3px;
+  margin-top: 8em;
+  color: #fff;
+}
+.divPadre1 img,
+.divPadre2 img,
+.divPadre3 img {
+  height: 250%;
+  width: 120%;
+  margin-top: -7em;
+  
+}
+
+
+
+
+.medalla2,.medalla3, .medalla1 {
+  max-width: 80px;
+}
+
+
+.fotoPerfilEquipos {
+  margin-top: 10px;
+  object-fit: contain;
+  width: 100%;
+  max-height: 70px;
+  max-width: 70px;
+  border-radius: 100%;
+}
+.perfilPadre {
+  align-items: center;
+}
+.fotoPokemonEquipos {
+  object-fit: contain;
+  width: 100%;
+  max-height: 100px;
+  max-width: 100px;
+  transition: transform 0.3s;
+}
+.fotoPokemonEquipos:hover {
+  transform: scale(1.2);
+}
+
+
+.cardTeam {
+  margin: 0px 10px 0px 10px;
+}
+
+.pokeball {
+  box-sizing: border-box;
+  border: 10px solid #262122;
+  width: 350px;
+  height: 350px;
+  border-radius: 100%;
+  margin: 0 auto;
+  background: linear-gradient(
+    150deg,
+    #ba0c2f 0%,
+    #ba0c2f 48%,
+    #262122 48%,
+    #262122 52%,
+    #fff 52%,
+    #fff 100%
+  );
+}
+
+.equipos{
+  margin-top:150px;
+}
+.teamRow{
+  margin-top: 25px;
+  margin-bottom: 25px;
+}
+.pokeball:before,
+.pokeball:after {
+  content: " ";
+  border-radius: 100%;
+  display: block;
+  position: absolute;
+}
+
+.pokeball:before {
+  background: #262122;
+  width: 100px;
+  height: 100px;
+  margin-top: 115px;
+  margin-left: 115px;
+}
+
+.pokeball:after {
+  background: #fff;
+  width: 70px;
+  height: 70px;
+  margin-top: -22px;
+  margin-left: 130px;
+  border: double 20px #262122;
+}
+
+.pokeball-animated:hover {
+  animation-duration: 2s;
+  animation-fill-mode: both;
+  animation-iteration-count: 3;
+  animation-name: shake;
+}
+
+@keyframes shake {
+  from {
+    transform: none;
+  }
+  20% {
+    transform: translate3d(-20%, 0, 0) rotate3d(0, 0, 1, -10deg);
+  }
+  40% {
+    transform: translate3d(20%, 0, 0) rotate3d(0, 0, 1, 5deg);
+  }
+  50% {
+    transform: translate3d(-10%, 0, 0) rotate3d(0, 0, 1, -10deg);
+  }
+  60% {
+    transform: translate3d(10%, 0, 0) rotate3d(0, 0, 1, 50deg);
+  }
+  to {
+    transform: none;
+  }
+}
+.cardPerfil {
+  border-radius: 100%;
+  max-width: 100px;
+  height: 100px;
+  margin-right: 15px;
+}
+.cardPerfil:hover {
+  transform: scale(1.1);
+  box-shadow: 0 10px 40px 0 rgba(0, 0, 0, 0.4);
+  z-index: 3;
+  border-color: #007bff !important;
+  cursor: pointer;
+}
+
+.fusionButton {
+  color: rgb(255, 0, 0);
+
+  font-size: 45px;
+  font-weight: bolder;
+  font-style: italic;
   text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  font-size: 169px;
-  margin: 4px 2px;
-  margin-bottom: 15px;
+  line-height: 60px;
+  text-shadow: 3px 3px 3px rgba(24, 24, 24, 0.5);
 }
-
-.button1 {
-  border-radius: 220px;
+.fusionButton:hover {
+  animation-duration: 2s;
+  animation-fill-mode: initial;
+  animation-iteration-count: 1;
+  animation-name: shake;
 }
-.button2 {
-  float: right;
-}
-
-.button1 {
-  text-align: right;
-}
-.image-box1 {
-  margin-top: 45px;
-}
-.image-box2 {
-  margin-top: 15px;
-}
-.image-box3 {
-  margin-top: 60px;
+.fusionImg {
+  z-index: 2;
 }

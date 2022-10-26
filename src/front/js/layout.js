@@ -23,6 +23,8 @@ import ScrollToTop from "./component/scrollToTop.jsx";
 import PokeducatorHabilidad from "./pages/pokeducatorHabilidades.jsx";
 import PokeducatorHabilidadInfo from "./pages/pokeducatorHabilidadInfo.jsx";
 import PokeducatorInfo from "./pages/pokeducatorInfo.jsx";
+import PokeducatorFusion from "./pages/pokeducatorFusion.jsx";
+
 
 //create your first component
 const Layout = () => {
@@ -41,6 +43,7 @@ const Layout = () => {
             <Route element={<PokeducatorMovimientoInfo />} path={"/movimiento/:theid"} />
             <Route element={<PokeducatorHabilidadInfo />} path={"/habilidad/:theid"} />
             <Route element={<PokeducatorHabilidad />} path={"/habilidades"} />
+            <Route element={<PokeducatorFusion />} path={"/fusion"} />
             <Route
               element={<PokeducatorWikiGuarderia />}
               path="/wiki/guarderia-pokemon"

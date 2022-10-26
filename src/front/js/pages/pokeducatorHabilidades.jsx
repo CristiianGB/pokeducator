@@ -20,23 +20,25 @@ const PokeducatorHabilidad = () => {
       {!store.ability?.previous ? (
           ""
         ) : (
+          <div className="col-sm-6 text-start">
           <button
-            className="btn btn-primary btn-sm mx-3 float-start w-25"
+            className="btn-sm mx-3 float-start w-25 buttonPokemonInfo"
             onClick={() => {
               actions.abilityFind(store.ability.previous); //guarda paginacion en storage y actualiza segun click para saber la proxima url onclick comprobar que exista
             }}
           >
             Anterior
-          </button>
+          </button></div>
         )}
+        <div className="col-sm-6 text-end">
         <button
-          className="btn btn-primary btn-sm mx-3 float-end w-25"
+          className="btn-sm mx-3 float-end w-25 buttonPokemonInfo"
           onClick={() => {
             actions.abilityFind(store.ability.next);
           }}
         >
           Siguiente
-        </button>
+        </button></div>
       </div>
       <div className="pokegallery">
         {load ? (

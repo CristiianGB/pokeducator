@@ -1,91 +1,288 @@
 import React, { useState, useEffect, useContext } from "react";
+import medalla1 from "../../assets/img/medalla1.png";
+import medalla2 from "../../assets/img/medalla2.png";
+import medalla3 from "../../assets/img/medalla3.png";
+import fusion from "../../assets/img/fusion.png";
+
+function PokeducatorLandingPage() {
 
 
-const PokeducatorLandingPage = () => {
+ let style = {
   
+}
+
   return (
-    <div className="container text-center">
-      <div className="bg-success margin1">
-        <p>HUECO PRUEBA</p>
-      </div>
-      <div className="col-12 my-4">
-        <button className="button button1">hey</button>
+    <div className="container text-center maincontainer">
+      <div className="">
+      <div className="fondo mt-3 rounded">
+        <div className=" margin1 mt-3">
+          <span className="alert alert-warning w-75 text-center">
+            Con Pokeducator podrás criar diferentes tipos de pokemons y
+            fusionarlos, consiguiendo aprender gracias a nuestra propia
+            inteligencia artificial.
+          </span>
+        </div>
         <div>
-          <a href="/info"><button type="button" class="btn btn-outline-primary button2">
-            Primary
-          </button></a>
+          <div className="col-md-4 btn border-0 shadow-none mt-4">
+            <a href="/fusion"><div class="pokeball pokeball-animated">
+              <h1 className="fusionButton mt-4">
+                <img src={fusion} alt="" className="fusionImg" />
+              </h1>
+            </div></a>
+          </div>
+
+          <div className="text-end me-3 mb-3" >
+            <a href="/info"><button className="buttonPokemonInfo">
+              Mas información...
+            </button></a>
+          </div>
         </div>
       </div>
-      <div class="row">
-        <div class="col-md-4">
-          <div class="image-box1">
-            <img
-              class="card-img-top"
-              src="https://static.wikia.nocookie.net/espokemon/images/1/14/Guarder%C3%ADa_Pok%C3%A9mon_BW.png"
-              alt="guardería Pokémon en Pokémon Negro y Blanco"
-            />
+      </div>
+      <div className="fondoBlanco">
+        <div className="row margin">
+          <div className="col-md-4 divPadre2">
+            <div className="image-box1 divFotoPodio">
+              <img
+                className="card-img-top imagenPodio img-fluid"
+                src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/1.png"
+                alt="guardería Pokémon en Pokémon Negro y Blanco"
+              />
+            </div>
+            <div className="podium2 divMedalla">
+              <img src={medalla2} className="medalla2" />
+            </div>
+          </div>
+
+          <div className="col-md-4 divPadre1">
+            <div className="image-box2 divFotoPodio1">
+              <img
+                className="card-img-top imagenPodio1 img-fluid"
+                src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/9.png"
+                alt="guardería Pokémon en Pokémon Negro y Blanco"
+              />
+            </div>
+            <div className="podium1 divMedalla">
+              <img src={medalla1} className="medalla1" />
+            </div>
+          </div>
+          <div className="col-md-4 divPadre3">
+            <div className="image-box3 divFotoPodio3">
+              <img
+                className="card-img-top imagenPodio3 img-fluid"
+                src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/3.png"
+                alt="guardería Pokémon en Pokémon Negro y Blanco"
+              />
+            </div>
+            <div className="podium3 divMedalla">
+              <img src={medalla3} className="medalla3" />
+            </div>
           </div>
         </div>
 
-        <div class="col-md-4">
-          <div class="image-box2">
-            <img
-              class="card-img-top"
-              src="https://static.wikia.nocookie.net/espokemon/images/1/14/Guarder%C3%ADa_Pok%C3%A9mon_BW.png"
-              alt="guardería Pokémon en Pokémon Negro y Blanco"
-            />
+        <div className="equipos">
+            <div className="row teamRow">
+              <div className="col-sm perfilPadre card cardTeam cardPerfil">
+                <img
+                  src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/19.png"
+                  alt=""
+                  className="fotoPerfilEquipos"
+                />
+              </div>
+              <div className="col-sm card cardTeam">
+                <a href="https://3000-cristiiangb-pokeducator-ykzxqppapc2.ws-eu71.gitpod.io/pokemon/1">
+                  <img
+                    src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/1.png"
+                    alt=""
+                    className="fotoPokemonEquipos"
+                  />
+                </a>
+              </div>
+              <div className="col-sm card cardTeam">
+                <a href="https://3000-cristiiangb-pokeducator-ykzxqppapc2.ws-eu71.gitpod.io/pokemon/1">
+                  <img
+                    src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/24.png"
+                    alt=""
+                    className="fotoPokemonEquipos"
+                  />
+                </a>
+              </div>
+              <div className="col-sm card cardTeam">
+                <a href="https://3000-cristiiangb-pokeducator-ykzxqppapc2.ws-eu71.gitpod.io/pokemon/1">
+                  <img
+                    src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/21.png"
+                    alt=""
+                    className="fotoPokemonEquipos"
+                  />
+                </a>
+              </div>
+              <div className="col-sm card cardTeam">
+                <a href="https://3000-cristiiangb-pokeducator-ykzxqppapc2.ws-eu71.gitpod.io/pokemon/1">
+                  <img
+                    src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/22.png"
+                    alt=""
+                    className="fotoPokemonEquipos"
+                  />
+                </a>
+              </div>
+              <div className="col-sm card cardTeam">
+                <a href="https://3000-cristiiangb-pokeducator-ykzxqppapc2.ws-eu71.gitpod.io/pokemon/1">
+                  <img
+                    src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/23.png"
+                    alt=""
+                    className="fotoPokemonEquipos"
+                  />
+                </a>
+              </div>
+              <div className="col-sm card cardTeam">
+                <a href="https://3000-cristiiangb-pokeducator-ykzxqppapc2.ws-eu71.gitpod.io/pokemon/1">
+                  <img
+                    src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/1.png"
+                    alt=""
+                    className="fotoPokemonEquipos"
+                  />
+                </a>
+              </div>
+            </div>
           </div>
-        </div>
-        <div class="col-md-4">
-          <div class="image-box3">
-            <img
-              class="card-img-top"
-              src="https://static.wikia.nocookie.net/espokemon/images/1/14/Guarder%C3%ADa_Pok%C3%A9mon_BW.png"
-              alt="guardería Pokémon en Pokémon Negro y Blanco"
-            />
-          </div>
+          
+          
+           <div className="row teamRow">
+                <div className="col-sm perfilPadre card cardPerfil cardTeam">
+                  <img
+                    src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/19.png"
+                    alt=""
+                    className="fotoPerfilEquipos"
+                  />
+                </div>
+                <div className="col-sm card cardTeam">
+                  <a href="https://3000-cristiiangb-pokeducator-ykzxqppapc2.ws-eu71.gitpod.io/pokemon/1">
+                    <img
+                      src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/10.png"
+                      alt=""
+                      className="fotoPokemonEquipos"
+                    />
+                  </a>
+                </div>
+                <div className="col-sm card cardTeam">
+                  <a href="https://3000-cristiiangb-pokeducator-ykzxqppapc2.ws-eu71.gitpod.io/pokemon/1">
+                    <img
+                      src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/12.png"
+                      alt=""
+                      className="fotoPokemonEquipos"
+                    />
+                  </a>
+                </div>
+                <div className="col-sm card cardTeam">
+                  <a href="https://3000-cristiiangb-pokeducator-ykzxqppapc2.ws-eu71.gitpod.io/pokemon/1">
+                    <img
+                      src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/17.png"
+                      alt=""
+                      className="fotoPokemonEquipos"
+                    />
+                  </a>
+                </div>
+                <div className="col-sm card cardTeam">
+                  <a href="https://3000-cristiiangb-pokeducator-ykzxqppapc2.ws-eu71.gitpod.io/pokemon/1">
+                    <img
+                      src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/13.png"
+                      alt=""
+                      className="fotoPokemonEquipos"
+                    />
+                  </a>
+                </div>
+                <div className="col-sm card cardTeam">
+                  <a href="https://3000-cristiiangb-pokeducator-ykzxqppapc2.ws-eu71.gitpod.io/pokemon/1">
+                    <img
+                      src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/15.png"
+                      alt=""
+                      className="fotoPokemonEquipos"
+                    />
+                  </a>
+                </div>
+                <div className="col-sm card cardTeam">
+                  <a href="https://3000-cristiiangb-pokeducator-ykzxqppapc2.ws-eu71.gitpod.io/pokemon/1">
+                    <img
+                      src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/11.png"
+                      alt=""
+                      className="fotoPokemonEquipos"
+                    />
+                  </a>
+                </div>
+              </div>
+            
+            
+              <div className="row teamRow">
+                <div className="col-sm perfilPadre card cardPerfil cardTeam">
+                  <img
+                    src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/19.png"
+                    alt=""
+                    className="fotoPerfilEquipos"
+                  />
+                </div>
+                <div className="col-sm card cardTeam">
+                  <a href="https://3000-cristiiangb-pokeducator-ykzxqppapc2.ws-eu71.gitpod.io/pokemon/1">
+                    <img
+                      src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/8.png"
+                      alt=""
+                      className="fotoPokemonEquipos"
+                    />
+                  </a>
+                </div>
+                <div className="col-sm card cardTeam">
+                  <a href="https://3000-cristiiangb-pokeducator-ykzxqppapc2.ws-eu71.gitpod.io/pokemon/1">
+                    <img
+                      src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/6.png"
+                      alt=""
+                      className="fotoPokemonEquipos"
+                    />
+                  </a>
+                </div>
+                <div className="col-sm card cardTeam">
+                  <a href="https://3000-cristiiangb-pokeducator-ykzxqppapc2.ws-eu71.gitpod.io/pokemon/1">
+                    <img
+                      src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/5.png"
+                      alt=""
+                      className="fotoPokemonEquipos"
+                    />
+                  </a>
+                </div>
+                <div className="col-sm card cardTeam">
+                  <a href="https://3000-cristiiangb-pokeducator-ykzxqppapc2.ws-eu71.gitpod.io/pokemon/1">
+                    <img
+                      src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/4.png"
+                      alt=""
+                      className="fotoPokemonEquipos"
+                    />
+                  </a>
+                </div>
+                <div className="col-sm card cardTeam">
+                  <a href="https://3000-cristiiangb-pokeducator-ykzxqppapc2.ws-eu71.gitpod.io/pokemon/1">
+                    <img
+                      src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/13.png"
+                      alt=""
+                      className="fotoPokemonEquipos"
+                    />
+                  </a>
+                </div>
+                <div className="col-sm card cardTeam">
+                  <a href="https://3000-cristiiangb-pokeducator-ykzxqppapc2.ws-eu71.gitpod.io/pokemon/1">
+                    <img
+                      src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/2.png"
+                      alt=""
+                      className="fotoPokemonEquipos"
+                    />
+                  </a>
+                </div>
+              
+              
+            
+          
         </div>
       </div>
-      <br />
-      <br />
-      <br />
-      <div class="container">
-        <div class="row">
-          <div class="col-sm">1</div>
-          <div class="col-sm">2</div>
-          <div class="col-sm">3</div>
-          <div class="col-sm">4</div>
-          <div class="col-sm">5</div>
-          <div class="col-sm">6</div>
-          <div class="col-sm">7</div>
-        </div>
-      </div>
-      <br />
-      <div class="container">
-        <div class="row">
-          <div class="col-sm">1</div>
-          <div class="col-sm">2</div>
-          <div class="col-sm">3</div>
-          <div class="col-sm">4</div>
-          <div class="col-sm">5</div>
-          <div class="col-sm">6</div>
-          <div class="col-sm">7</div>
-        </div>
-      </div>
-      <br />
-      <div class="container">
-        <div class="row">
-          <div class="col-sm">1</div>
-          <div class="col-sm">2</div>
-          <div class="col-sm">3</div>
-          <div class="col-sm">4</div>
-          <div class="col-sm">5</div>
-          <div class="col-sm">6</div>
-          <div class="col-sm">7</div>
-        </div>
-      </div>
+      <div></div>
     </div>
   );
-};
+}
 
 export default PokeducatorLandingPage;

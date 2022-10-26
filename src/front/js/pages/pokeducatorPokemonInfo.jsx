@@ -66,7 +66,7 @@ const PokeducatorPokemonInfo = () => {
     (objeto) => objeto.type.name
   ).type.name;
 
-  console.log(tipoPokemonColor);
+  
 
   let tipoPokemon = store.single_pokemon_data.types?.map((objeto) => (
     <button className={`type-pokemon ${objeto.type.name}-background`}>
@@ -143,7 +143,7 @@ const PokeducatorPokemonInfo = () => {
   );
 
   return (
-    <div className="container bg-light container_section">
+    <div className="containe container_section">
       {load ? (
         <div className="container align-items-center">
           <img className="centred img-fluid" src={loading} alt="Cargando..." />

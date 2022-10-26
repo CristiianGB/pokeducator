@@ -30,23 +30,26 @@ const PokeducatorPokemons = () => {
         {!store.pokemon?.previous ? (
           ""
         ) : (
+          <div className="col-sm-6 text-start">
           <button
-            className="btn btn-primary btn-sm mx-3 float-start w-25"
+            className=" btn-sm mx-3 float-start w-25 buttonPokemonInfo"
             onClick={() => {
               actions.pokemonFind(store.pokemon.previous); //guarda paginacion en storage y actualiza segun click para saber la proxima url onclick comprobar que exista
             }}
           >
             Anterior
           </button>
+          </div>
         )}
+        <div className="col-sm-6 text-end">
         <button
-          className="btn btn-primary btn-sm mx-3 float-end w-25"
+          className="btn-sm mx-3 float-end w-25 buttonPokemonInfo"
           onClick={() => {
             actions.pokemonFind(store.pokemon.next);
           }}
         >
           Siguiente
-        </button>
+        </button></div>
       </div>
       <div className="pokegallery">
         {load ? (
