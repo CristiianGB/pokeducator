@@ -24,6 +24,7 @@ import volador_img from "../../assets/img/tiposimg/volador.png";
 import "../../styles/pokeducatorPokemonInfoStyles.css";
 import { Context } from "../store/appContext.jsx";
 import loading from "../../assets/img/loading.gif";
+import "../../styles/pokemonTypes.css";
 
 const PokeducatorPokemonInfo = () => {
   const { store, actions } = useContext(Context);
@@ -63,51 +64,69 @@ const PokeducatorPokemonInfo = () => {
     });
   });
 
-  let tipoPokemon = store.single_pokemon_data.types?.map((objeto) =>
-    objeto.type.name == "normal" ? (
-      <img src={normal_img} alt="tipo normal" />
-    ) : objeto.type.name == "fighting" ? (
-      <img src={lucha_img} alt="tipo lucha" />
-    ) : objeto.type.name == "flying" ? (
-      <img src={volador_img} alt="tipo volador" />
-    ) : objeto.type.name == "poison" ? (
-      <img src={veneno_img} alt="tipo veneno" />
-    ) : objeto.type.name == "ground" ? (
-      <img src={tierra_img} alt="tipo tierra" />
-    ) : objeto.type.name == "rock" ? (
-      <img src={roca_img} alt="tipo roca" />
-    ) : objeto.type.name == "ghost" ? (
-      <img src={fantasma_img} alt="tipo fantasma" />
-    ) : objeto.type.name == "steel" ? (
-      <img src={acero_img} alt="tipo acero" />
-    ) : objeto.type.name == "fire" ? (
-      <img src={fuego_img} alt="tipo fuego" />
-    ) : objeto.type.name == "water" ? (
-      <img src={agua_img} alt="tipo agua" />
-    ) : objeto.type.name == "grass" ? (
-      <img src={planta_img} alt="tipo planta" />
-    ) : objeto.type.name == "electric" ? (
-      <img src={electrico_img} alt="tipo electrico" />
-    ) : objeto.type.name == "phsychic" ? (
-      <img src={psiquico_img} alt="tipo psiquico" />
-    ) : objeto.type.name == "ice" ? (
-      <img src={hielo_img} alt="tipo hielo" />
-    ) : objeto.type.name == "dragon" ? (
-      <img src={dragon_img} alt="tipo dragon" />
-    ) : objeto.type.name == "dark" ? (
-      <img src={siniestro_img} alt="tipo siniestro" />
-    ) : objeto.type.name == "fairy" ? (
-      <img src={hada_img} alt="tipo hada" />
-    ) : objeto.type.name == "unknown" ? (
-      <img src={desconocido_img} alt="tipo desconocido" />
-    ) : objeto.type.name == "shadow" ? (
-      <img src={sombra_img} alt="tipo sombra" />
-    ) : objeto.type.name == "bug" ? (
-      <img src={bicho_img} alt="tipo bicho" />
-    ) : (
-      ""
-    )
-  );
+  let tipoPokemonColor = store.single_pokemon_data.types?.find(
+    (objeto) => objeto.type.name
+  ).type.name;
+
+  console.log(tipoPokemonColor);
+
+  let tipoPokemon = store.single_pokemon_data.types?.map((objeto) => (
+    <button className={`type-pokemon ${objeto.type.name}-background`}>
+      {objeto.type.name}
+    </button>
+  ));
+
+  let tipoMovimiento = moves.map((objeto) => (
+    <span className={`type-background ${objeto.type.name}-background`}>
+      {objeto.type.name}
+    </span>
+  ));
+
+  // let tipoPokemon = store.single_pokemon_data.types?.map((objeto) =>
+  //   objeto.type.name == "normal" ? (
+  //     <img src={normal_img} alt="tipo normal" />
+  //   ) : objeto.type.name == "fighting" ? (
+  //     <img src={lucha_img} alt="tipo lucha" />
+  //   ) : objeto.type.name == "flying" ? (
+  //     <img src={volador_img} alt="tipo volador" />
+  //   ) : objeto.type.name == "poison" ? (
+  //     <img src={veneno_img} alt="tipo veneno" />
+  //   ) : objeto.type.name == "ground" ? (
+  //     <img src={tierra_img} alt="tipo tierra" />
+  //   ) : objeto.type.name == "rock" ? (
+  //     <img src={roca_img} alt="tipo roca" />
+  //   ) : objeto.type.name == "ghost" ? (
+  //     <img src={fantasma_img} alt="tipo fantasma" />
+  //   ) : objeto.type.name == "steel" ? (
+  //     <img src={acero_img} alt="tipo acero" />
+  //   ) : objeto.type.name == "fire" ? (
+  //     <img src={fuego_img} alt="tipo fuego" />
+  //   ) : objeto.type.name == "water" ? (
+  //     <img src={agua_img} alt="tipo agua" />
+  //   ) : objeto.type.name == "grass" ? (
+  //     <img src={planta_img} alt="tipo planta" />
+  //   ) : objeto.type.name == "electric" ? (
+  //     <img src={electrico_img} alt="tipo electrico" />
+  //   ) : objeto.type.name == "phsychic" ? (
+  //     <img src={psiquico_img} alt="tipo psiquico" />
+  //   ) : objeto.type.name == "ice" ? (
+  //     <img src={hielo_img} alt="tipo hielo" />
+  //   ) : objeto.type.name == "dragon" ? (
+  //     <img src={dragon_img} alt="tipo dragon" />
+  //   ) : objeto.type.name == "dark" ? (
+  //     <img src={siniestro_img} alt="tipo siniestro" />
+  //   ) : objeto.type.name == "fairy" ? (
+  //     <img src={hada_img} alt="tipo hada" />
+  //   ) : objeto.type.name == "unknown" ? (
+  //     <img src={desconocido_img} alt="tipo desconocido" />
+  //   ) : objeto.type.name == "shadow" ? (
+  //     <img src={sombra_img} alt="tipo sombra" />
+  //   ) : objeto.type.name == "bug" ? (
+  //     <img src={bicho_img} alt="tipo bicho" />
+  //   ) : (
+  //     ""
+  //   )
+  // );
 
   let descriptionPokemon = store.grupo_huevo_data.map((objeto) =>
     objeto.pokemon_name == store.single_pokemon_data.name
@@ -119,8 +138,14 @@ const PokeducatorPokemonInfo = () => {
     objeto.slot == 1 ? objeto.ability.name : ""
   );
 
+  let debilidadPokemon = store.single_pokemon_data.types?.map((objeto) =>
+    store.type_data
+      .find((elemento) => (elemento.name == objeto.type.name ? elemento : ""))
+      ?.damage_relations.double_damage_from.map((elemento) => elemento.name)
+  );
+
   return (
-    <>
+    <div className="container bg-light container_section">
       {load ? (
         <div className="container align-items-center">
         <img className="centred img-fluid" src={loading} alt="Cargando..." />
@@ -160,7 +185,7 @@ const PokeducatorPokemonInfo = () => {
             {/* DIV IZQ */}
             <div className="col-md-6">
               {/* POKEMON IMAGEN */}
-              <div className="pokemon_img text-center rounded-3">
+              <div className="pokemon_img">
                 <img
                   className="img-fluid"
                   src={
@@ -171,7 +196,7 @@ const PokeducatorPokemonInfo = () => {
                 />
               </div>
               {/* POKEMON STATS */}
-              <div className="stats_pokemon mt-3 mb-3">
+              <div className="stats_pokemon mt-3 mb-3 div_estadisticas">
                 <div className="table-responsive table-secondary rounded-3">
                   <table className="table">
                     <thead>
@@ -208,48 +233,55 @@ const PokeducatorPokemonInfo = () => {
 
             {/* DIV DRCH */}
             <div className="col-md-6 d-flex flex-column justify-content-around m-0 info_pokemon">
-              <div className="description_pokemon rounded p-2 mb-1">
-                <h6>{descriptionPokemon}</h6>
+              <div className="bg-light rounded-4 p-2 div_descripcion">
+                <h5>{descriptionPokemon}</h5>
               </div>
-              {/* INFO */}
-              <div className="aditional_info_pokemon bg-info rounded-3 p-2">
+              {/* INFO ADICIONAL */}
+              {/* <div className="bg-info rounded-4 p-2 div_info_adicional"> */}
+              <div
+                className={`rounded-4 p-2 div_info_adicional ${tipoPokemonColor}-background`}
+              >
                 <h4 className="text-white">INFORMACION ADICIONAL</h4>
                 <div className="row">
                   <div className="col-6">
                     <ul>
                       <li>
-                        <p className="fw-bold text-white">Altura:</p>
-                        <p>{store.single_pokemon_data.height} cm</p>
+                        <p className="fw-bold fs-5 text-white">Altura:</p>
+                        <p className="fw-bold">
+                          {store.single_pokemon_data.height} cm
+                        </p>
                       </li>
                       <li>
-                        <p className="fw-bold text-white">Peso:</p>
-                        <p>{store.single_pokemon_data.weight} kg</p>
+                        <p className="fw-bold fs-5 text-white">Peso:</p>
+                        <p className="fw-bold">
+                          {store.single_pokemon_data.weight} kg
+                        </p>
                       </li>
                     </ul>
                   </div>
                   <div className="col-6">
                     <ul>
                       <li>
-                        <p className="fw-bold text-white">Categoria</p>
-                        <p>.......</p>
+                        <p className="fw-bold fs-5 text-white">Categoria</p>
+                        <p className="fw-bold">.......</p>
                       </li>
                       <li>
-                        <p className="fw-bold text-white">Habilidad</p>
-                        <p>{habilidadPokemon}</p>
+                        <p className="fw-bold fs-5 text-white">Habilidad</p>
+                        <p className="fw-bold">{habilidadPokemon}</p>
                       </li>
                     </ul>
                   </div>
                 </div>
               </div>
-              <div>
+              <div className="bg-light p-2 rounded-4 div_tipo">
                 <h4>TIPO</h4>
-                <div className="image_tipo">{tipoPokemon}</div>
+                <div>{tipoPokemon}</div>
               </div>
-              <div>
+              <div className="bg-light  p-2 rounded-4 div_debilidades">
                 <h4>DEBILIDADES</h4>
-                <div className="image_tipo">{tipoPokemon}</div>
+                <div>{tipoPokemon}</div>
               </div>
-              <div>
+              <div className="bg-light p-2 rounded-4 div_evoluciones">
                 <h4>EVOLUCIONES</h4>
                 <div className="d-flex flex-row justify-content-around">
                   <div
@@ -270,7 +302,7 @@ const PokeducatorPokemonInfo = () => {
           </div>
 
           {/* POKEMON MOVIMIENTOS */}
-          <div className="bg-light rounded-3">
+          <div className="bg-light rounded-4 div_moves">
             <div className="table-responsive table-secondary rounded-3">
               <table className="table">
                 <thead>
@@ -290,7 +322,13 @@ const PokeducatorPokemonInfo = () => {
                           )}
                         </a>
                       </td>
-                      <td>{tipoPokemon}</td>
+                      <td>
+                        <button
+                          className={`type-pokemon ${objeto.type.name}-background`}
+                        >
+                          {objeto.type.name}
+                        </button>
+                      </td>
                       <td>{objeto.power}</td>
                       <td>{objeto.accuracy}</td>
                       <td>{objeto.pp}</td>
