@@ -65,13 +65,13 @@ const injectContext = PassedComponent => {
 				state.actions.saveMoveonDb()
 				state.actions.saveNatureonDb()
 				state.actions.saveAbilityonDb()
-								state.actions.saveDbonStore()
+				state.actions.saveDbonStore()
 				state.actions.FindOnePokemon(1)
 				*/
 
+				
 				state.actions.saveDbonStore()
-
-
+				
 				
 		
 		}, []);

@@ -7,6 +7,8 @@ import loading from "../../assets/img/loading.gif";
 const PokeducatorPokemons = () => {
   const { store, actions } = useContext(Context);
   const [load, setLoad] = useState(true);
+  const [slice0, setSlice0] = useState(0)
+  const [slice50, setSlice50] = useState(52)
   let time = [2000, 3000, 4000, 5000]; // sensacion de carga porque el tiempo es random
   let randomtime = Math.floor(Math.random() * time.length);
 
@@ -27,14 +29,26 @@ const PokeducatorPokemons = () => {
           <br />
           <button className="btn btn-primary">Search</button>
         </div>
-        {!store.pokemon?.previous ? (
+        {!slice0>=52 ?  (
           ""
         ) : (
           <div className="col-sm-6 text-start">
           <button
             className=" btn-sm mx-3 float-start w-25 buttonPokemonInfo"
             onClick={() => {
-              actions.pokemonFind(store.pokemon.previous); //guarda paginacion en storage y actualiza segun click para saber la proxima url onclick comprobar que exista
+              if (slice0  == 0){
+                
+                
+              }
+              else if (slice0 == 1144 && slice50 == 1154 ){
+                setSlice0(1092)
+                setSlice50(1144)
+                
+              }
+              else{
+                setSlice0(slice0 -52) 
+                setSlice50(slice50 - 52)
+              }
             }}
           >
             Anterior
@@ -45,7 +59,18 @@ const PokeducatorPokemons = () => {
         <button
           className="btn-sm mx-3 float-end w-25 buttonPokemonInfo"
           onClick={() => {
-            actions.pokemonFind(store.pokemon.next);
+            if(slice50 >= 1144){
+              setSlice0(1144)
+              setSlice50(1154)
+            }
+            else if (slice50 == 1154){
+
+            }
+            else{
+              setSlice0(slice0 +52) 
+              setSlice50(slice50 + 52)
+            }
+            
           }}
         >
           Siguiente
@@ -57,15 +82,15 @@ const PokeducatorPokemons = () => {
          <img className="centred img-fluid" src={loading} alt="Cargando..." />
        </div>
         ) : (
-          store.pokemon_data.map((img, i) => (
-            <div className="col-md-3" id={img.id} key={img.id}>
+          store.pokemon_data.slice(slice0, slice50).map((pokemon, i) => (
+            <div className="col-md-3" id={pokemon.id} key={pokemon.id}>
               <div
                 className="card cardPokemon"
                 style={{
                   backgroundColor: "#F0F0C9",
                 }}
               >
-                <a href={`/pokemon/${img.id}`}>
+                <a href={`/pokemon/${pokemon.id}`}>
                   <img
                     style={{
                       width: "100px",
@@ -73,28 +98,14 @@ const PokeducatorPokemons = () => {
                     }}
                     className="img-fluid pokemonCardImg"
                     src={
-                      img.sprites.other?.["official-artwork"]?.front_default
-                        ? img.sprites.other?.["official-artwork"]?.front_default
-                        : img.sprites.versions?.["generation-vii"]?.[
-                            "ultra-sun-ultra-moon"
-                          ].front_default
-                        ? img.sprites.versions?.["generation-vii"]?.[
-                            "ultra-sun-ultra-moon"
-                          ].front_default
-                        : img.sprites.versions?.["generation-vi"]?.["x-y"]
-                            .front_default
-                        ? img.sprites.versions?.["generation-vi"]?.["x-y"]
-                            .front_default
-                        : img.sprites.other?.home?.front_default
-                        ? img.sprites.other?.home?.front_default
-                        : ""
+                      pokemon.img
                     }
-                    alt={img.name}
+                    alt={pokemon.name}
                   />
                 </a>
                 <div className="">
-                  <h5 className="nombrePokemon">{img.name}</h5>
-                  <h6>type: {img.types[0].type.name}</h6>
+                  <h5 className="nombrePokemon">{pokemon.name}</h5>
+                  <h6>type: {pokemon.type.map((tipo,i)=>tipo + " ")}</h6>
                 </div>
               </div>
             </div>
