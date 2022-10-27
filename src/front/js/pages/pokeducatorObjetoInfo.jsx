@@ -24,18 +24,14 @@ const PokeducatorObjetoInfo = () => {
   },time[randomtime])
 
 
-  let arr = []
-  arr = store.single_item_data.flavor_text_entries?.find(element => element.language?.name == "es") // arr es para encontrar el texto en español y find para que devuelva el primer elemento que encuentre
-  
-
   useEffect(() => {
-    if (!actions.itemFindOneInData(params.theid)) {
-      actions.itemFindOne("https://pokeapi.co/api/v2/item/" + params.theid);
+    if (!actions.FindOneItem(params.theid)) {
+      actions.FindOneItem(params.theid);
     }
   }, []);
 
   return (
-    <>{load ? (
+    <>{store.single_item_data? load ? (
       <div className="container align-items-center">
       <img className="centred img-fluid" src={loading} alt="Cargando..." />
       </div>
@@ -45,21 +41,19 @@ const PokeducatorObjetoInfo = () => {
         <div className="col-md-5">
           <img
             className="img-fluid objetoimg"
-            src={store.single_item_data.sprites?.default}
+            src={store.single_item_data.img}
             alt={store.single_item_data.name}
           />
         </div>
         <div className="col-md-5">
           <h1>
-            {store.single_item_data.names?.map((object) =>
-              object.language?.name == "es" ? object.name : ""
-            )}
+            {store.single_item_data.name}
           </h1>
-          <p>{arr?.text}</p>
+          <p>{store.single_item_data.description}</p>
         </div>
       </div>
       </div>
-    </>)}</>
+    </>):""}</>
   );
 };
 
