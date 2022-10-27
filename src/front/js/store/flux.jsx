@@ -1,12 +1,17 @@
+
+import React, { useContext, useEffect, useState } from "react";
 const getState = ({ getStore, getActions, setStore }) => {
   return {
     store: {
       pokemon_data: [],
       single_pokemon_data: [],
       item_data: [],
+      single_item_data: [],
       move_data: [],
+      single_move_data: [],
       nature_data: [],
       ability_data: [],
+      single_ability_data: [],
     },
     actions: {
 
@@ -131,7 +136,7 @@ const getState = ({ getStore, getActions, setStore }) => {
           })
 
           const resp = fetch(
-            "https://3001-cristiiangb-pokeducator-susysw454i1.ws-eu72.gitpod.io/api/createPokemon",
+            "https://3001-cristiiangb-pokeducator-xu6ivheks77.ws-eu72.gitpod.io/api/createPokemon",
             {
               method: "POST",
               headers: { "Content-Type": "application/json" },
@@ -191,7 +196,7 @@ const getState = ({ getStore, getActions, setStore }) => {
                 })
                 .finally(() => {
                   fetch(
-                    "https://3001-cristiiangb-pokeducator-susysw454i1.ws-eu72.gitpod.io/api/createItem",
+                    "https://3001-cristiiangb-pokeducator-xu6ivheks77.ws-eu72.gitpod.io/api/createItem",
                     {
                       method: "POST",
                       headers: { "Content-Type": "application/json" },
@@ -211,7 +216,7 @@ const getState = ({ getStore, getActions, setStore }) => {
       },
 
       saveDbonStore: () => {
-        fetch("https://3001-cristiiangb-pokeducator-susysw454i1.ws-eu72.gitpod.io/api/store")
+        fetch("https://3001-cristiiangb-pokeducator-xu6ivheks77.ws-eu72.gitpod.io/api/store")
           .then((response) => response.json())
           .then((store) => {
             setStore({pokemon_data: store.pokemons})
@@ -222,10 +227,68 @@ const getState = ({ getStore, getActions, setStore }) => {
           })       
       },
       FindOnePokemon: (pokemon_id) => {
-        fetch("https://3001-cristiiangb-pokeducator-susysw454i1.ws-eu72.gitpod.io/api/allmovabi/"+pokemon_id)
+        fetch("https://3001-cristiiangb-pokeducator-xu6ivheks77.ws-eu72.gitpod.io/api/allmovabi/"+pokemon_id)
           .then((response) => response.json())
           .then((pokemon) => {
+            let stat = []
+            for(let i in pokemon.pokemon.stats){
+              stat.push(pokemon.pokemon.stats[i])
+            }
+            pokemon.pokemon.stats = stat
             setStore({single_pokemon_data: pokemon})
+          });
+      },
+      FindOneItem: (item_id) => {
+        fetch("https://3001-cristiiangb-pokeducator-xu6ivheks77.ws-eu72.gitpod.io/api/item/"+item_id)
+          .then((response) => response.json())
+          .then((item) => {
+            setStore({single_item_data: item.item})
+          });
+      },
+      FindOneMove: (move_id) => {
+        fetch("https://3001-cristiiangb-pokeducator-xu6ivheks77.ws-eu72.gitpod.io/api/move/"+move_id)
+          .then((response) => response.json())
+          .then((move) => {
+       
+            setStore({single_move_data: move.move})
+          });
+      },
+      FindOneAbility: (ability_id) => {
+        fetch("https://3001-cristiiangb-pokeducator-xu6ivheks77.ws-eu72.gitpod.io/api/ability/"+ability_id)
+          .then((response) => response.json())
+          .then((ability) => {
+            console.log(ability)
+            let img = (
+            ability.ability.generation == "generation-i" ? (
+              "https://static.wikia.nocookie.net/espokemon/images/2/2a/Primera_generaci%C3%B3n.png"
+               
+            ) : ability.ability.generation == "generation-ii" ? (
+              "https://static.wikia.nocookie.net/espokemon/images/f/f7/Segunda_generaci%C3%B3n.png"
+               
+            ) : ability.ability.generation == "generation-iii" ? (
+              "https://static.wikia.nocookie.net/espokemon/images/5/54/Tercera_generaci%C3%B3n.png"
+               
+            ) : ability.ability.generation == "generation-iv" ? (
+              "https://static.wikia.nocookie.net/espokemon/images/0/0a/Cuarta_generaci%C3%B3n.png"
+               
+            ) : ability.ability.generation == "generation-v" ? (
+              "https://static.wikia.nocookie.net/espokemon/images/6/61/Quinta_generaci%C3%B3n.png/"
+               
+            ) : ability.ability.generation == "generation-vi" ? (
+              "https://static.wikia.nocookie.net/espokemon/images/1/1a/Sexta_generaci%C3%B3n.png/"
+               
+            ) : ability.ability.generation == "generation-vii" ? (
+              "https://static.wikia.nocookie.net/espokemon/images/0/0a/S%C3%A9ptima_generaci%C3%B3n.png/"
+                
+            ) : habilidad.generation == "generation-viii" ? (
+              "https://static.wikia.nocookie.net/espokemon/images/b/b4/Octava_generaci%C3%B3n.png/"
+                
+            ) : (
+              ""
+            ))
+            let src = {"img":img}
+            Object.assign(ability.ability, src);
+            setStore({single_ability_data: ability})
           });
       },
     
@@ -238,6 +301,8 @@ const getState = ({ getStore, getActions, setStore }) => {
             
           });
       },
+
+    
       saveDb: async(data) => {
         return await data.results.map(async(move) => {
           let name;
@@ -279,7 +344,7 @@ const getState = ({ getStore, getActions, setStore }) => {
             })
           setTimeout(()=>{
              fetch(
-              "https://3001-cristiiangb-pokeducator-susysw454i1.ws-eu72.gitpod.io/api/createMove",
+              "https://3001-cristiiangb-pokeducator-xu6ivheks77.ws-eu72.gitpod.io/api/createMove",
               {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
@@ -326,7 +391,7 @@ const getState = ({ getStore, getActions, setStore }) => {
                 })
                 .finally(() => {
                   fetch(
-                    "https://3001-cristiiangb-pokeducator-susysw454i1.ws-eu72.gitpod.io/api/createNature",
+                    "https://3001-cristiiangb-pokeducator-xu6ivheks77.ws-eu72.gitpod.io/api/createNature",
                     {
                       method: "POST",
                       headers: { "Content-Type": "application/json" },
@@ -373,7 +438,7 @@ const getState = ({ getStore, getActions, setStore }) => {
                 })
                 .finally(() => {
                   fetch(
-                    "https://3001-cristiiangb-pokeducator-susysw454i1.ws-eu72.gitpod.io/api/createAbility",
+                    "https://3001-cristiiangb-pokeducator-xu6ivheks77.ws-eu72.gitpod.io/api/createAbility",
                     {
                       method: "POST",
                       headers: { "Content-Type": "application/json" },

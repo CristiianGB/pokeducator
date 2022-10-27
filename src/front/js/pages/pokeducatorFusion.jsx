@@ -4,8 +4,7 @@ import { useParams } from "react-router-dom";
 import { Context } from "../store/appContext.jsx";
 import "../../styles/pokeducatorFusionStyles.css";
 import loading from "../../assets/img/loading.gif";
-import agua from "../../assets/img/tiposimg/agua.png"
-import lucha from "../../assets/img/tiposimg/lucha.png"
+
 
 const PokeducatorFusion = () => {
     const {store, actions} = useContext(Context)

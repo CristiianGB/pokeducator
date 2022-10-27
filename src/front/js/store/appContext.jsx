@@ -68,9 +68,7 @@ const injectContext = PassedComponent => {
 								state.actions.saveDbonStore()
 				state.actions.FindOnePokemon(1)
 				*/
-
 				state.actions.saveDbonStore()
-
 
 				
 		

@@ -248,7 +248,7 @@ def all():
  #   pokemon = Pokemon.query.order_by(Pokemon.id.asc())
   #  pokemon = list(map(lambda x: x.serialize(), pokemon))
     # print(pokemon)
-    all = Pokemon_Move.query.all()
+    all = Pokemon_Move.query.filter_by(pokemon_id=1)
     all = list(map(lambda x: x.serialize(), all))
     return jsonify(all), 200
 
@@ -261,7 +261,7 @@ def allmoves(pokemon_id):
     for i in rows:
         move = Moves.query.filter_by(move_id=i["move_id"]).first().serialize()
         moves.append(move)
-    print(pokemon_id)
+    print(moves)
     pokemon = Pokemon.query.filter_by(id=pokemon_id).first().serialize()
     pokeid = Pokemon.query.filter_by(id=pokemon_id).first().findone()
     abilities = []
@@ -274,7 +274,30 @@ def allmoves(pokemon_id):
             ability_id=i["ability_id"]).first().serialize()
         
         abilities.append(ability)
-    return jsonify({"pokemon":pokemon, "abilities": abilities, "move":move}), 200
+    return jsonify({"pokemon":pokemon, "abilities": abilities, "moves":moves}), 200
+
+@api.route("/item/<int:item_id>", methods=["GET"])
+def item(item_id):
+    item = Item.query.filter_by(id=item_id).first().serialize()
+    return jsonify({"item":item}), 200
+
+@api.route("/move/<int:move_id>", methods=["GET"])
+def move(move_id):
+    move = Moves.query.filter_by(id=move_id).first().serialize()
+    return jsonify({"move":move}), 200
+
+@api.route("/ability/<int:ability_id>", methods=["GET"])
+def ability(ability_id):
+    ability = Ability.query.filter_by(id=ability_id).first().serialize()
+    pokemons = []
+    rows = Pokemon_Ability.query.filter_by(ability_id=ability["ability_id"])
+    rows = list(map(lambda x: x.serialize(), rows))
+    for i in rows:
+        pokemon = Pokemon.query.filter_by(
+            pokemon_id=i["pokemon_id"]).first().serialize()
+        
+        pokemons.append(pokemon)
+    return jsonify({"ability":ability, "pokemons":pokemons}), 200
 
 
 @api.route("/store", methods=["GET"])

@@ -99,6 +99,7 @@ class Ability(db.Model):
 
     def serialize(self):
         return {
+             "ability_id": self.ability_id,
             "id": self.id,
             "name": self.name,
             "generation": self.generation,
