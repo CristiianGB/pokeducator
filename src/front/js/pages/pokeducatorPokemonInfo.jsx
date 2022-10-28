@@ -50,7 +50,7 @@ const PokeducatorPokemonInfo = () => {
         ) : (
           <>
             <div className="container align-items-center">
-              {/* POKEMON BOTONES */ console.log(store.single_pokemon_data)}
+              {/* POKEMON BOTONES */}
 
               <div className="row justify-content-center mt-3">
                 <div className="col-sm-6">
@@ -236,11 +236,6 @@ const PokeducatorPokemonInfo = () => {
                       {store.single_pokemon_data.moves.map((objeto) => (
                         <tr data-index={objeto.id}>
                           <td className="fs-6">
-                            {/* <a className="links" href={`/movimiento/${move.id}`}>
-                      {move.names.map((object) =>
-                        object.language?.name == "es" ? object.name : ""
-                      )}
-                    </a> */}
                             <a
                               className="links"
                               href={`/movimiento/${objeto.id}`}

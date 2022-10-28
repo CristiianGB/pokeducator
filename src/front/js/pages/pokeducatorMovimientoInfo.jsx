@@ -44,24 +44,32 @@ const PokeducatorObjetoInfo = () => {
           <>
             <div className="container">
               <div className="row mt-2">
-                <h1>
-                  {store.single_move_data.name}
-                 
-                </h1>
+                <div className="col-6">
+                  <h1 className="fw-bold">{store.single_move_data.name}</h1>
+                </div>
+                <div className="col-6 text-end align-self-center">
+                  <button
+                    className={`type-pokemon ${store.single_move_data.type}-background`}
+                  >
+                    {store.single_move_data.type}
+                  </button>
+                </div>
                 <hr />
               </div>
               <div>
-                <p>{store.single_move_data.description}</p>
+                <h4>{store.single_move_data.description}</h4>
               </div>
               <div className="row mb-2">
-                <div className="col-sm-2">
+                <div className="col-sm-2 fw-bold">
                   Poder: {store.single_move_data.power}
                 </div>
-                <div className="col-sm-2">
+                <div className="col-sm-2 fw-bold">
                   Precisión: {store.single_move_data.accuracy}
                 </div>
-                <div className="col-sm-2">PP: {store.single_move_data.pp}</div>
-                <div className="col-sm-2">
+                <div className="col-sm-2 fw-bold">
+                  PP: {store.single_move_data.pp}
+                </div>
+                <div className="col-sm-2 fw-bold">
                   Prioridad: {store.single_move_data.priority}
                 </div>
               </div>
