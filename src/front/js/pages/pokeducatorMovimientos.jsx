@@ -9,7 +9,6 @@ const PokeducatorMovimientos = () => {
   const [load, setLoad] = useState(true);
   const [number, setNumber] = useState(0);
 
-
   let time = [2000, 3000, 4000, 5000];
   let randomtime = Math.floor(Math.random() * time.length);
 
@@ -31,7 +30,11 @@ const PokeducatorMovimientos = () => {
           <button
             className=" btn-sm mx-3 float-start w-25 buttonPokemonInfo"
             onClick={() => {
-              number > 49 ? setNumber(number - 50) : number!=0?setNumber(0):"";
+              number > 49
+                ? setNumber(number - 50)
+                : number != 0
+                ? setNumber(0)
+                : "";
             }}
           >
             Anterior
@@ -60,29 +63,44 @@ const PokeducatorMovimientos = () => {
           </div>
         ) : (
           <table className="table table-responsive mt-4">
-            <thead>
+            <thead className="text-uppercase fs-5">
               <tr>
-                <th scope="col">Nombre</th>
-                <th scope="col">Tipo</th>
-                <th scope="col">Poder</th>
-                <th scope="col">Precisión</th>
-                <th scope="col">PP</th>
+                <th scope="col" className="fw-bold">
+                  Nombre
+                </th>
+                <th scope="col" className="fw-bold">
+                  Tipo
+                </th>
+                <th scope="col" className="fw-bold">
+                  Poder
+                </th>
+                <th scope="col" className="fw-bold">
+                  Precisión
+                </th>
+                <th scope="col" className="fw-bold">
+                  PP
+                </th>
               </tr>
             </thead>
+
             <tbody>
-              {store.move_data.slice(number, number+50).map((move, i) => (
-                <tr data-index={i}>
-                  <td>
+              {store.move_data.slice(number, number + 50).map((move) => (
+                <tr data-index={move.id}>
+                  <td className="fs-6">
                     <a className="links" href={`/movimiento/${move.id}`}>
                       {move.name}
                     </a>
                   </td>
                   <td>
-                    {/*IMAGEN AQUI*/}
+                    <button className={`type-pokemon ${move.type}-background`}>
+                      {move.type}
+                    </button>
                   </td>
-                  <td>{move.accuracy}</td>
-                  <td>{move.power}</td>
-                  <td>{move.pp}</td>
+                  <td className="fs-6">{move.power ? move.power : "-"}</td>
+                  <td className="fs-6">
+                    {move.accuracy ? move.accuracy : "-"}
+                  </td>
+                  <td className="fs-6">{move.pp ? move.pp : "-"}</td>
                 </tr>
               ))}
             </tbody>
