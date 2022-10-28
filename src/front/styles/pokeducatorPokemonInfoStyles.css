@@ -77,12 +77,17 @@
 .div_info_adicional li {
   list-style: none;
 }
-
-.container_section {
-  box-shadow: 8px 8px 5px 0px rgba(0, 0, 0, 0.75);
-  -webkit-box-shadow: 8px 8px 5px 0px rgba(0, 0, 0, 0.75);
-  -moz-box-shadow: 8px 8px 5px 0px rgba(0, 0, 0, 0.75);
+.linksPokemon{
+  text-decoration: none;
+  color: black;
+  font-weight: bold;
+  transition: 0.3s;
 }
+.linksPokemon:hover{
+font-size: 20px;
+color: black;
+}
+
 
 .background_pokeinfo {
   background-position: center;

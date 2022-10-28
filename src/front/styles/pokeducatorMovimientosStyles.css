@@ -1,6 +1,12 @@
 .App {
     text-align: center;
   }
+  .tipoImg{
+    max-width: 80px;
+  }
+  .tablaTitulos{
+    font-size: 15px;
+  }
 .pokegallery{
     display: flex;
     flex-wrap: wrap;

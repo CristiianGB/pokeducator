@@ -2,12 +2,34 @@ import React, { useState, useEffect, useContext } from "react";
 import { Context } from "../store/appContext.jsx";
 import "../../styles/pokeducatorMovimientosStyles.css";
 import loading from "../../assets/img/loading.gif";
+import acero_img from "../../assets/img/tiposimg/acero.png";
+import agua_img from "../../assets/img/tiposimg/agua.png";
+import bicho_img from "../../assets/img/tiposimg/bicho.png";
+import dragon_img from "../../assets/img/tiposimg/dragon.png";
+import electrico_img from "../../assets/img/tiposimg/electrico.png";
+import fantasma_img from "../../assets/img/tiposimg/fantasma.png";
+import fuego_img from "../../assets/img/tiposimg/fuego.png";
+import hada_img from "../../assets/img/tiposimg/hada.png";
+import hielo_img from "../../assets/img/tiposimg/hielo.png";
+import lucha_img from "../../assets/img/tiposimg/lucha.png";
+import normal_img from "../../assets/img/tiposimg/normal.png";
+import planta_img from "../../assets/img/tiposimg/planta.png";
+import psiquico_img from "../../assets/img/tiposimg/psiquico.png";
+import roca_img from "../../assets/img/tiposimg/roca.png";
+import siniestro_img from "../../assets/img/tiposimg/siniestro.png";
+import tierra_img from "../../assets/img/tiposimg/tierra.png";
+import veneno_img from "../../assets/img/tiposimg/veneno.png";
+import volador_img from "../../assets/img/tiposimg/volador.png";
+import desconocido_img from "../../assets/img/tiposimg/desconocido.png";
+import sombra_img from "../../assets/img/tiposimg/sombra.png";
+
 
 const PokeducatorMovimientos = () => {
   const { store, actions } = useContext(Context);
   const [num, setNum] = useState(0);
   const [load, setLoad] = useState(true);
-  const [number, setNumber] = useState(0);
+  const [slice0, setSlice0] = useState(0)
+  const [slice50, setSlice50] = useState(52)
 
   let time = [2000, 3000, 4000, 5000];
   let randomtime = Math.floor(Math.random() * time.length);
@@ -27,25 +49,42 @@ const PokeducatorMovimientos = () => {
     <div className="App container align-items-center">
       <div className="row d-flex justify-content-end mt-4">
         <div className="col-sm-6 text-start">
-          <button
+         {slice0>0 ?  <button
             className=" btn-sm mx-3 float-start w-25 buttonPokemonInfo"
             onClick={() => {
-              number > 49
-                ? setNumber(number - 50)
-                : number != 0
-                ? setNumber(0)
-                : "";
+              if (slice0  == 0){
+              }
+              else if (slice0 == 1144 && slice50 == 1154 ){
+                setSlice0(1092)
+                setSlice50(1144)
+                
+              }
+              else{
+                setSlice0(slice0 -52) 
+                setSlice50(slice50 - 52)
+              }
             }}
           >
             Anterior
-          </button>
+          </button> : ""}
         </div>
 
         <div className="col-sm-6 text-end">
           <button
             className="btn-sm mx-3 float-end w-25 buttonPokemonInfo"
             onClick={() => {
-              number >= 750 ? setNumber(794) : setNumber(number + 50);
+              if(slice50 >= 1144){
+                setSlice0(1144)
+                setSlice50(780)
+              }
+              else if (slice50 > 780){
+  
+              }
+              else{
+                setSlice0(slice0 +52) 
+                setSlice50(slice50 + 52)
+              }
+              
             }}
           >
             Siguiente
@@ -63,44 +102,83 @@ const PokeducatorMovimientos = () => {
           </div>
         ) : (
           <table className="table table-responsive mt-4">
-            <thead className="text-uppercase fs-5">
+            <thead className="text-capitalize tablaTitulos">
               <tr>
-                <th scope="col" className="fw-bold">
+                <th scope="col">
                   Nombre
                 </th>
-                <th scope="col" className="fw-bold">
+                <th scope="col">
                   Tipo
                 </th>
-                <th scope="col" className="fw-bold">
+                <th scope="col">
                   Poder
                 </th>
-                <th scope="col" className="fw-bold">
+                <th scope="col">
                   Precisión
                 </th>
-                <th scope="col" className="fw-bold">
+                <th scope="col">
                   PP
                 </th>
               </tr>
             </thead>
 
             <tbody>
-              {store.move_data.slice(number, number + 50).map((move) => (
+              {store.move_data.slice(slice0, slice50).map((move) => (
                 <tr data-index={move.id}>
-                  <td className="fs-6">
+                  <td>
                     <a className="links" href={`/movimiento/${move.id}`}>
                       {move.name}
                     </a>
                   </td>
+                  
                   <td>
-                    <button className={`type-pokemon ${move.type}-background`}>
-                      {move.type}
-                    </button>
+                    {move.type == "normal"
+                    ? <img className="tipoImg" src={normal_img} alt="normal" />
+                    : move.type == "fighting"
+                    ? <img className="tipoImg" src={lucha_img} alt="normal" />
+                    : move.type == "flying"
+                    ? <img className="tipoImg" src={volador_img} alt="normal" />
+                    : move.type == "poison"
+                    ? <img className="tipoImg" src={veneno_img} alt="normal" />
+                    : move.type == "ground"
+                    ? <img className="tipoImg" src={tierra_img} alt="normal" />
+                    : move.type == "rock"
+                    ? <img className="tipoImg" src={roca_img} alt="normal" />
+                    : move.type == "ghost"
+                    ? <img className="tipoImg" src={fantasma_img} alt="normal" />
+                    : move.type == "steel"
+                    ? <img className="tipoImg" src={acero_img} alt="normal" />
+                    : move.type == "fire"
+                    ? <img className="tipoImg" src={fuego_img} alt="normal" />
+                    : move.type == "water"
+                    ? <img className="tipoImg" src={agua_img} alt="normal" />
+                    : move.type == "grass"
+                    ? <img className="tipoImg" src={planta_img} alt="normal" />
+                    : move.type == "electric"
+                    ? <img className="tipoImg" src={electrico_img} alt="normal" />
+                    : move.type == "phsychic"
+                    ? <img className="tipoImg" src={psiquico_img} alt="normal" />
+                    : move.type == "ice"
+                    ? <img className="tipoImg" src={hielo_img} alt="normal" />
+                    : move.type == "dragon"
+                    ? <img className="tipoImg" src={dragon_img} alt="normal" />
+                    : move.type == "dark"
+                    ? <img className="tipoImg" src={siniestro_img} alt="normal" />
+                    : move.type == "fairy"
+                    ? <img className="tipoImg" src={hada_img} alt="normal" />
+                    : move.type == "unknown"
+                    ? <img className="tipoImg" src={desconocido_img} alt="normal" />
+                    : move.type == "shadow"
+                    ? <img className="tipoImg" src={sombra_img} alt="normal" />
+                    : move.type == "bug"
+                    ? <img className="tipoImg" src={bicho_img} alt="normal" /> :""}
+                    
                   </td>
-                  <td className="fs-6">{move.power ? move.power : "-"}</td>
-                  <td className="fs-6">
+                  <td >{move.power ? move.power : "-"}</td>
+                  <td >
                     {move.accuracy ? move.accuracy : "-"}
                   </td>
-                  <td className="fs-6">{move.pp ? move.pp : "-"}</td>
+                  <td >{move.pp ? move.pp : "-"}</td>
                 </tr>
               ))}
             </tbody>

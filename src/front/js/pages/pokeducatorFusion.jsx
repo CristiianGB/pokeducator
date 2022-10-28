@@ -37,7 +37,7 @@ const PokeducatorFusion = () => {
             <div className="row cartasFusion">
                 <div className="col-md text-center "> 
                 <div className="card rounded ">
-                    <h4 className="my-3 me-2">Keldeo-Ordinary</h4><h4><img src={agua} alt="" /><img src={lucha} alt="" /></h4> 
+                    <h4 className="my-3 me-2">Keldeo-Ordinary</h4><h4><img className="tipoImg mx-1" src={agua} alt="" /><img className="tipoImg mx-1" src={lucha} alt="" /></h4> 
                     
                         <a href="/pokemon/647">
                       <img
