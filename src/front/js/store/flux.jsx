@@ -1,4 +1,3 @@
-
 import React, { useContext, useEffect, useState } from "react";
 const getState = ({ getStore, getActions, setStore }) => {
   return {
@@ -14,7 +13,6 @@ const getState = ({ getStore, getActions, setStore }) => {
       single_ability_data: [],
     },
     actions: {
-
       pokemonFindDb: () => {
         fetch("https://pokeapi.co/api/v2/pokemon/?offset=0&limit=1154")
           .then((response) => response.json())
@@ -35,7 +33,7 @@ const getState = ({ getStore, getActions, setStore }) => {
                         if (
                           descri.language.name == "es" &&
                           (descri.version.name == "shield" ||
-                            descri.version.name == "y"||
+                            descri.version.name == "y" ||
                             descri.version.name == "sun")
                         ) {
                           description = { description: descri.flavor_text };
@@ -43,9 +41,8 @@ const getState = ({ getStore, getActions, setStore }) => {
                       });
                       speci.egg_groups.map((group, i) => {
                         group_name.push(group.name);
-                    });
-                    group_name = { group_name: group_name };
-                    
+                      });
+                      group_name = { group_name: group_name };
                     })
                     .finally(() => {
                       Object.assign(pokeinfo, description);
@@ -72,11 +69,11 @@ const getState = ({ getStore, getActions, setStore }) => {
           return 0;
         });
 
-        console.log(sortedData.length)
+        console.log(sortedData.length);
 
         sortedData.map((pokemon) => {
           let description = pokemon.description;
-          let group_name = pokemon.group_name
+          let group_name = pokemon.group_name;
           let height = pokemon.height;
           let order = pokemon.order;
           let atk;
@@ -85,7 +82,7 @@ const getState = ({ getStore, getActions, setStore }) => {
           let sp_defens;
           let ps;
           let spd;
-          let learning = []
+          let learning = [];
 
           pokemon.stats.map((element) => {
             let name = element.stat.name;
@@ -130,13 +127,13 @@ const getState = ({ getStore, getActions, setStore }) => {
             types.push(element.type.name);
           });
 
-          pokemon.moves.map((obj)=>{
-            let mo = obj.move.url.split("/")
-            learning.push(mo[mo.length-2])
-          })
+          pokemon.moves.map((obj) => {
+            let mo = obj.move.url.split("/");
+            learning.push(mo[mo.length - 2]);
+          });
 
           const resp = fetch(
-            "https://3001-cristiiangb-pokeducator-xu6ivheks77.ws-eu72.gitpod.io/api/createPokemon",
+            "https://3001-cristiiangb-pokeducator-2d2vyf8auki.ws-eu72.gitpod.io/api/createPokemon",
             {
               method: "POST",
               headers: { "Content-Type": "application/json" },
@@ -165,38 +162,33 @@ const getState = ({ getStore, getActions, setStore }) => {
         });
       },
 
-   
-     
       saveItemonDb: () => {
         fetch("https://pokeapi.co/api/v2/item/?offset=0&limit=1608")
           .then((response) => response.json())
           .then((allitem) => {
             allitem.results.map((item) => {
-              let description
-              let name 
-              let id 
-              let cost 
-              let img
+              let description;
+              let name;
+              let id;
+              let cost;
+              let img;
               fetch(item.url)
                 .then((response) => response.json())
                 .then((data) => {
                   data.flavor_text_entries.map((desc) => {
-                    desc.language.name == "es"
-                      ? (description = desc.text)
-                      : "";
+                    desc.language.name == "es" ? (description = desc.text) : "";
                   });
                   id = data.id;
                   cost = data.cost;
                   data.names.map((elem) => {
                     elem.language.name == "es" ? (name = elem.name) : "";
                   });
-                  name == null?name = "nullo":""
-                  img = data.sprites.default
-                 
+                  name == null ? (name = "nullo") : "";
+                  img = data.sprites.default;
                 })
                 .finally(() => {
                   fetch(
-                    "https://3001-cristiiangb-pokeducator-xu6ivheks77.ws-eu72.gitpod.io/api/createItem",
+                    "https://3001-cristiiangb-pokeducator-2d2vyf8auki.ws-eu72.gitpod.io/api/createItem",
                     {
                       method: "POST",
                       headers: { "Content-Type": "application/json" },
@@ -210,101 +202,100 @@ const getState = ({ getStore, getActions, setStore }) => {
                     }
                   );
                 });
-                
             });
           });
       },
 
       saveDbonStore: () => {
-        fetch("https://3001-cristiiangb-pokeducator-xu6ivheks77.ws-eu72.gitpod.io/api/store")
+        fetch(
+          "https://3001-cristiiangb-pokeducator-2d2vyf8auki.ws-eu72.gitpod.io/api/store"
+        )
           .then((response) => response.json())
           .then((store) => {
-            setStore({pokemon_data: store.pokemons})
-            setStore({move_data: store.moves})
-            setStore({ability_data: store.abilities})
-            setStore({item_data: store.items})
-            setStore({nature_data: store.natures})
-          })       
+            setStore({ pokemon_data: store.pokemons });
+            setStore({ move_data: store.moves });
+            setStore({ ability_data: store.abilities });
+            setStore({ item_data: store.items });
+            setStore({ nature_data: store.natures });
+          });
       },
       FindOnePokemon: (pokemon_id) => {
-        fetch("https://3001-cristiiangb-pokeducator-xu6ivheks77.ws-eu72.gitpod.io/api/allmovabi/"+pokemon_id)
+        fetch(
+          "https://3001-cristiiangb-pokeducator-2d2vyf8auki.ws-eu72.gitpod.io/api/allmovabi/" +
+            pokemon_id
+        )
           .then((response) => response.json())
           .then((pokemon) => {
-            let stat = []
-            for(let i in pokemon.pokemon.stats){
-              stat.push(pokemon.pokemon.stats[i])
+            let stat = [];
+            for (let i in pokemon.pokemon.stats) {
+              stat.push(pokemon.pokemon.stats[i]);
             }
-            pokemon.pokemon.stats = stat
-            setStore({single_pokemon_data: pokemon})
+            pokemon.pokemon.stats = stat;
+            setStore({ single_pokemon_data: pokemon });
           });
       },
       FindOneItem: (item_id) => {
-        fetch("https://3001-cristiiangb-pokeducator-xu6ivheks77.ws-eu72.gitpod.io/api/item/"+item_id)
+        fetch(
+          "https://3001-cristiiangb-pokeducator-2d2vyf8auki.ws-eu72.gitpod.io/api/item/" +
+            item_id
+        )
           .then((response) => response.json())
           .then((item) => {
-            setStore({single_item_data: item.item})
+            setStore({ single_item_data: item.item });
           });
       },
       FindOneMove: (move_id) => {
-        fetch("https://3001-cristiiangb-pokeducator-xu6ivheks77.ws-eu72.gitpod.io/api/move/"+move_id)
+        fetch(
+          "https://3001-cristiiangb-pokeducator-2d2vyf8auki.ws-eu72.gitpod.io/api/move/" +
+            move_id
+        )
           .then((response) => response.json())
           .then((move) => {
-       
-            setStore({single_move_data: move.move})
+            setStore({ single_move_data: move.move });
           });
       },
       FindOneAbility: (ability_id) => {
-        fetch("https://3001-cristiiangb-pokeducator-xu6ivheks77.ws-eu72.gitpod.io/api/ability/"+ability_id)
+        fetch(
+          "https://3001-cristiiangb-pokeducator-2d2vyf8auki.ws-eu72.gitpod.io/api/ability/" +
+            ability_id
+        )
           .then((response) => response.json())
           .then((ability) => {
-            console.log(ability)
-            let img = (
-            ability.ability.generation == "generation-i" ? (
-              "https://static.wikia.nocookie.net/espokemon/images/2/2a/Primera_generaci%C3%B3n.png"
-               
-            ) : ability.ability.generation == "generation-ii" ? (
-              "https://static.wikia.nocookie.net/espokemon/images/f/f7/Segunda_generaci%C3%B3n.png"
-               
-            ) : ability.ability.generation == "generation-iii" ? (
-              "https://static.wikia.nocookie.net/espokemon/images/5/54/Tercera_generaci%C3%B3n.png"
-               
-            ) : ability.ability.generation == "generation-iv" ? (
-              "https://static.wikia.nocookie.net/espokemon/images/0/0a/Cuarta_generaci%C3%B3n.png"
-               
-            ) : ability.ability.generation == "generation-v" ? (
-              "https://static.wikia.nocookie.net/espokemon/images/6/61/Quinta_generaci%C3%B3n.png/"
-               
-            ) : ability.ability.generation == "generation-vi" ? (
-              "https://static.wikia.nocookie.net/espokemon/images/1/1a/Sexta_generaci%C3%B3n.png/"
-               
-            ) : ability.ability.generation == "generation-vii" ? (
-              "https://static.wikia.nocookie.net/espokemon/images/0/0a/S%C3%A9ptima_generaci%C3%B3n.png/"
-                
-            ) : habilidad.generation == "generation-viii" ? (
-              "https://static.wikia.nocookie.net/espokemon/images/b/b4/Octava_generaci%C3%B3n.png/"
-                
-            ) : (
-              ""
-            ))
-            let src = {"img":img}
+            console.log(ability);
+            let img =
+              ability.ability.generation == "generation-i"
+                ? "https://static.wikia.nocookie.net/espokemon/images/2/2a/Primera_generaci%C3%B3n.png"
+                : ability.ability.generation == "generation-ii"
+                ? "https://static.wikia.nocookie.net/espokemon/images/f/f7/Segunda_generaci%C3%B3n.png"
+                : ability.ability.generation == "generation-iii"
+                ? "https://static.wikia.nocookie.net/espokemon/images/5/54/Tercera_generaci%C3%B3n.png"
+                : ability.ability.generation == "generation-iv"
+                ? "https://static.wikia.nocookie.net/espokemon/images/0/0a/Cuarta_generaci%C3%B3n.png"
+                : ability.ability.generation == "generation-v"
+                ? "https://static.wikia.nocookie.net/espokemon/images/6/61/Quinta_generaci%C3%B3n.png/"
+                : ability.ability.generation == "generation-vi"
+                ? "https://static.wikia.nocookie.net/espokemon/images/1/1a/Sexta_generaci%C3%B3n.png/"
+                : ability.ability.generation == "generation-vii"
+                ? "https://static.wikia.nocookie.net/espokemon/images/0/0a/S%C3%A9ptima_generaci%C3%B3n.png/"
+                : habilidad.generation == "generation-viii"
+                ? "https://static.wikia.nocookie.net/espokemon/images/b/b4/Octava_generaci%C3%B3n.png/"
+                : "";
+            let src = { img: img };
             Object.assign(ability.ability, src);
-            setStore({single_ability_data: ability})
-          });
-      },
-    
-  
-      saveMoveonDb: () => {
-        fetch("https://pokeapi.co/api/v2/move/?offset=800&limit=50")
-          .then((response) => response.json())
-          .then( (data) => {
-            return getActions().saveDb(data)
-            
+            setStore({ single_ability_data: ability });
           });
       },
 
-    
-      saveDb: async(data) => {
-        return await data.results.map(async(move) => {
+      saveMoveonDb: () => {
+        fetch("https://pokeapi.co/api/v2/move/?offset=100&limit=150")
+          .then((response) => response.json())
+          .then((data) => {
+            return getActions().saveDb(data);
+          });
+      },
+
+      saveDb: async (data) => {
+        return await data.results.map(async (move) => {
           let name;
           let type;
           let power;
@@ -316,12 +307,10 @@ const getState = ({ getStore, getActions, setStore }) => {
           let description;
           let generation;
           let learning = [];
-        
-           
+
           await fetch(move.url)
             .then((response) => response.json())
             .then((data) => {
-             
               damage_class = data.damage_class.name;
               data.flavor_text_entries.map((text) => {
                 text.language.name == "es"
@@ -341,10 +330,10 @@ const getState = ({ getStore, getActions, setStore }) => {
               priority = data.priority;
               type = data.type.name;
               accuracy = data.accuracy;
-            })
-          setTimeout(()=>{
-             fetch(
-              "https://3001-cristiiangb-pokeducator-xu6ivheks77.ws-eu72.gitpod.io/api/createMove",
+            });
+          setTimeout(() => {
+            fetch(
+              "https://3001-cristiiangb-pokeducator-2d2vyf8auki.ws-eu72.gitpod.io/api/createMove",
               {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
@@ -363,35 +352,33 @@ const getState = ({ getStore, getActions, setStore }) => {
                 }),
               }
             );
-          },500)
-            
+          }, 500);
         });
       },
-    
+
       saveNatureonDb: () => {
         fetch("https://pokeapi.co/api/v2/nature/?offset=0&limit=26")
           .then((response) => response.json())
           .then((allnature) => {
             allnature.results.map((nature) => {
-              let increase_stat
-              let name 
-              let id 
-              let decrease_stat 
-         
+              let increase_stat;
+              let name;
+              let id;
+              let decrease_stat;
+
               fetch(nature.url)
                 .then((response) => response.json())
                 .then((data) => {
-                 
                   id = data.id;
                   data.names.map((elem) => {
                     elem.language.name == "es" ? (name = elem.name) : "";
                   });
-                  decrease_stat = data.decreased_stat.name
-                  increase_stat = data.increased_stat.name
+                  decrease_stat = data.decreased_stat.name;
+                  increase_stat = data.increased_stat.name;
                 })
                 .finally(() => {
                   fetch(
-                    "https://3001-cristiiangb-pokeducator-xu6ivheks77.ws-eu72.gitpod.io/api/createNature",
+                    "https://3001-cristiiangb-pokeducator-2d2vyf8auki.ws-eu72.gitpod.io/api/createNature",
                     {
                       method: "POST",
                       headers: { "Content-Type": "application/json" },
@@ -404,7 +391,6 @@ const getState = ({ getStore, getActions, setStore }) => {
                     }
                   );
                 });
-                
             });
           });
       },
@@ -438,7 +424,7 @@ const getState = ({ getStore, getActions, setStore }) => {
                 })
                 .finally(() => {
                   fetch(
-                    "https://3001-cristiiangb-pokeducator-xu6ivheks77.ws-eu72.gitpod.io/api/createAbility",
+                    "https://3001-cristiiangb-pokeducator-2d2vyf8auki.ws-eu72.gitpod.io/api/createAbility",
                     {
                       method: "POST",
                       headers: { "Content-Type": "application/json" },
@@ -453,20 +439,10 @@ const getState = ({ getStore, getActions, setStore }) => {
                   );
                 });
             });
-          })
-         
+          });
       },
 
-
-
-
-
-
-
-
-
-
-   /*  pokemonFind: (next) => {
+      /*  pokemonFind: (next) => {
         fetch(next ? next : "https://pokeapi.co/api/v2/pokemon/")
           .then((response) => response.json())
           .then((data) => {
