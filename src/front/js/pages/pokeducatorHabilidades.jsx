@@ -7,6 +7,8 @@ const PokeducatorHabilidad = () => {
   const { store, actions } = useContext(Context);
   const [load, setLoad] = useState("true");
   const [number, setNumber] = useState(0);
+  const [slice0, setSlice0] = useState(0)
+  const [slice50, setSlice50] = useState(52)
  
   setTimeout(() => {
     setLoad(false);
@@ -16,25 +18,42 @@ const PokeducatorHabilidad = () => {
     <div className="App container align-items-center">
       <div className="row d-flex justify-content-end mt-4">
         <div className="col-sm-6 text-start">
-          <button
+        {slice0>0 ?  <button
             className=" btn-sm mx-3 float-start w-25 buttonPokemonInfo"
             onClick={() => {
-              number > 49
-                ? setNumber(number - 50)
-                : number != 0
-                ? setNumber(0)
-                : "";
+              if (slice0  == 0){
+              }
+              else if (slice0 == 1144 && slice50 == 1154 ){
+                setSlice0(1092)
+                setSlice50(1144)
+                
+              }
+              else{
+                setSlice0(slice0 -52) 
+                setSlice50(slice50 - 52)
+              }
             }}
           >
             Anterior
-          </button>
+          </button> : ""}
         </div>
 
         <div className="col-sm-6 text-end">
           <button
             className="btn-sm mx-3 float-end w-25 buttonPokemonInfo"
             onClick={() => {
-              number >= 200 ? setNumber(217) : setNumber(number + 50);
+              if(slice50 >= 1144){
+                setSlice0(1144)
+                setSlice50(780)
+              }
+              else if (slice50 > 260){
+  
+              }
+              else{
+                setSlice0(slice0 +52) 
+                setSlice50(slice50 + 52)
+              }
+              console.log(slice50)
             }}
           >
             Siguiente
@@ -61,7 +80,7 @@ const PokeducatorHabilidad = () => {
                 </tr>
               </thead>
               <tbody>
-                {store.ability_data.slice(number,number+50).map((habilidad, i) => (
+                {store.ability_data.slice(slice0, slice50).map((habilidad, i) => (
                   <tr data-index={i}>
                     <td>
                       <a className="links" href={`/habilidad/${habilidad.id}`}>
