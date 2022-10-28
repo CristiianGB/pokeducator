@@ -627,7 +627,7 @@ const PokeducatorWikiCrianza = () => {
           <div className="table-responsive-md">
             <table className="wiki" style={tableStyle}>
               <tbody>
-                <tr className="encabezado">
+                <tr className="">
                   <th className="text-align-center" colSpan="5">
                     Crías
                   </th>
