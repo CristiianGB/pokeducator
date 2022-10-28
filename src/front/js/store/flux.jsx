@@ -133,7 +133,7 @@ const getState = ({ getStore, getActions, setStore }) => {
           });
 
           const resp = fetch(
-            "https://3001-cristiiangb-pokeducator-2d2vyf8auki.ws-eu72.gitpod.io/api/createPokemon",
+            "https://3001-cristiiangb-pokeducator-p7qzjsyllyp.ws-eu73.gitpod.io/api/createPokemon",
             {
               method: "POST",
               headers: { "Content-Type": "application/json" },
@@ -188,7 +188,7 @@ const getState = ({ getStore, getActions, setStore }) => {
                 })
                 .finally(() => {
                   fetch(
-                    "https://3001-cristiiangb-pokeducator-2d2vyf8auki.ws-eu72.gitpod.io/api/createItem",
+                    "https://3001-cristiiangb-pokeducator-p7qzjsyllyp.ws-eu73.gitpod.io/api/createItem",
                     {
                       method: "POST",
                       headers: { "Content-Type": "application/json" },
@@ -208,7 +208,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 
       saveDbonStore: () => {
         fetch(
-          "https://3001-cristiiangb-pokeducator-2d2vyf8auki.ws-eu72.gitpod.io/api/store"
+          "https://3001-cristiiangb-pokeducator-p7qzjsyllyp.ws-eu73.gitpod.io/api/store"
         )
           .then((response) => response.json())
           .then((store) => {
@@ -221,7 +221,7 @@ const getState = ({ getStore, getActions, setStore }) => {
       },
       FindOnePokemon: (pokemon_id) => {
         fetch(
-          "https://3001-cristiiangb-pokeducator-2d2vyf8auki.ws-eu72.gitpod.io/api/allmovabi/" +
+          "https://3001-cristiiangb-pokeducator-p7qzjsyllyp.ws-eu73.gitpod.io/api/allmovabi/" +
             pokemon_id
         )
           .then((response) => response.json())
@@ -236,7 +236,7 @@ const getState = ({ getStore, getActions, setStore }) => {
       },
       FindOneItem: (item_id) => {
         fetch(
-          "https://3001-cristiiangb-pokeducator-2d2vyf8auki.ws-eu72.gitpod.io/api/item/" +
+          "https://3001-cristiiangb-pokeducator-p7qzjsyllyp.ws-eu73.gitpod.io/api/item/" +
             item_id
         )
           .then((response) => response.json())
@@ -246,7 +246,7 @@ const getState = ({ getStore, getActions, setStore }) => {
       },
       FindOneMove: (move_id) => {
         fetch(
-          "https://3001-cristiiangb-pokeducator-2d2vyf8auki.ws-eu72.gitpod.io/api/move/" +
+          "https://3001-cristiiangb-pokeducator-p7qzjsyllyp.ws-eu73.gitpod.io/api/move/" +
             move_id
         )
           .then((response) => response.json())
@@ -256,7 +256,7 @@ const getState = ({ getStore, getActions, setStore }) => {
       },
       FindOneAbility: (ability_id) => {
         fetch(
-          "https://3001-cristiiangb-pokeducator-2d2vyf8auki.ws-eu72.gitpod.io/api/ability/" +
+          "https://3001-cristiiangb-pokeducator-p7qzjsyllyp.ws-eu73.gitpod.io/api/ability/" +
             ability_id
         )
           .then((response) => response.json())
@@ -287,7 +287,7 @@ const getState = ({ getStore, getActions, setStore }) => {
       },
 
       saveMoveonDb: () => {
-        fetch("https://pokeapi.co/api/v2/move/?offset=100&limit=150")
+        fetch("https://pokeapi.co/api/v2/move/?offset=800&limit=50")
           .then((response) => response.json())
           .then((data) => {
             return getActions().saveDb(data);
@@ -333,7 +333,7 @@ const getState = ({ getStore, getActions, setStore }) => {
             });
           setTimeout(() => {
             fetch(
-              "https://3001-cristiiangb-pokeducator-2d2vyf8auki.ws-eu72.gitpod.io/api/createMove",
+              "https://3001-cristiiangb-pokeducator-p7qzjsyllyp.ws-eu73.gitpod.io/api/createMove",
               {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
@@ -378,7 +378,7 @@ const getState = ({ getStore, getActions, setStore }) => {
                 })
                 .finally(() => {
                   fetch(
-                    "https://3001-cristiiangb-pokeducator-2d2vyf8auki.ws-eu72.gitpod.io/api/createNature",
+                    "https://3001-cristiiangb-pokeducator-p7qzjsyllyp.ws-eu73.gitpod.io/api/createNature",
                     {
                       method: "POST",
                       headers: { "Content-Type": "application/json" },
@@ -424,7 +424,7 @@ const getState = ({ getStore, getActions, setStore }) => {
                 })
                 .finally(() => {
                   fetch(
-                    "https://3001-cristiiangb-pokeducator-2d2vyf8auki.ws-eu72.gitpod.io/api/createAbility",
+                    "https://3001-cristiiangb-pokeducator-p7qzjsyllyp.ws-eu73.gitpod.io/api/createAbility",
                     {
                       method: "POST",
                       headers: { "Content-Type": "application/json" },
