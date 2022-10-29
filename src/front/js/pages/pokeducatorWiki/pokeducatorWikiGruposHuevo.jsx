@@ -664,43 +664,25 @@ const PokeducatorWikiGruposHuevo = () => {
             </p>
             <br />
             <div className="row">
-              {store.grupo_huevo_data.map((grupo, i) =>
-                grupo.group_name.includes("no-eggs") ? (
+              {store.pokemon_data.map((pokemon, i) =>
+                pokemon.group_name.includes("no-eggs") ? (
                   <>
                     <div className="col mx-1 my-1">
                       <a
                         className="links"
-                        href={`/pokemon/${grupo.pokemon_id}`}
+                        href={`/pokemon/${pokemon.id}`}
                       >
-                        <p>{grupo.pokemon_name}</p>
+                        <p>{pokemon.name}</p>
                       </a>
 
                       <a
-                        href={`/pokemon/${grupo.pokemon_id}`}
+                        href={`/pokemon/${pokemon.id}`}
                         className="image"
                         title=""
                       >
                         <img
                           alt=""
-                          src={
-                            grupo.img.versions?.["generation-vi"]?.["x-y"]
-                              .front_default
-                              ? grupo.img.versions?.["generation-vi"]?.["x-y"]
-                                  .front_default
-                              : grupo.img.versions?.["generation-vii"]?.[
-                                  "ultra-sun-ultra-moon"
-                                ].front_default
-                              ? grupo.img.versions?.["generation-vii"]?.[
-                                  "ultra-sun-ultra-moon"
-                                ].front_default
-                              : grupo.img.other?.["official-artwork"]
-                                  ?.front_default
-                              ? grupo.img.other?.["official-artwork"]
-                                  ?.front_default
-                              : grupo.img.other?.home?.front_default
-                              ? grupo.img.other?.home?.front_default
-                              : ""
-                          }
+                          src={pokemon.img}
                           className="pokemonimg lazyloaded"
                         />
                       </a>
@@ -721,42 +703,26 @@ const PokeducatorWikiGruposHuevo = () => {
             </p>{" "}
             <br />
             <div className="ditto row">
-              {store.grupo_huevo_data.map((grupo, i) =>
-                grupo.group_name.includes("ditto") ? (
+              {store.pokemon_data.map((pokemon, i) =>
+                pokemon.group_name.includes("ditto") ? (
                   <>
                     <div className="col mx-1 my-1">
                       <a
                         className="links"
-                        href={`/pokemon/${grupo.pokemon_id}`}
+                        href={`/pokemon/${pokemon.id}`}
                       >
-                        <p>{grupo.pokemon_name}</p>
+                        <p>{pokemon.name}</p>
                       </a>
 
                       <a
-                        href={`/pokemon/${grupo.pokemon_id}`}
+                        href={`/pokemon/${pokemon.id}`}
                         className="image"
                         title=""
                       >
                         <img
                           alt=""
                           src={
-                            grupo.img.versions?.["generation-vi"]?.["x-y"]
-                              .front_default
-                              ? grupo.img.versions?.["generation-vi"]?.["x-y"]
-                                  .front_default
-                              : grupo.img.versions?.["generation-vii"]?.[
-                                  "ultra-sun-ultra-moon"
-                                ].front_default
-                              ? grupo.img.versions?.["generation-vii"]?.[
-                                  "ultra-sun-ultra-moon"
-                                ].front_default
-                              : grupo.img.other?.["official-artwork"]
-                                  ?.front_default
-                              ? grupo.img.other?.["official-artwork"]
-                                  ?.front_default
-                              : grupo.img.other?.home?.front_default
-                              ? grupo.img.other?.home?.front_default
-                              : ""
+                            pokemon.img
                           }
                           className="pokemonimg lazyloaded"
                         />
@@ -783,42 +749,26 @@ const PokeducatorWikiGruposHuevo = () => {
             </p>
             <br />
             <div className="row">
-              {store.grupo_huevo_data.map((grupo, i) =>
-                grupo.group_name.includes("plant") ? (
+              {store.pokemon_data.map((pokemon, i) =>
+                pokemon.group_name.includes("plant") ? (
                   <>
                     <div className="col mx-1 my-1">
                       <a
                         className="links"
-                        href={`/pokemon/${grupo.pokemon_id}`}
+                        href={`/pokemon/${pokemon.id}`}
                       >
-                        <p>{grupo.pokemon_name}</p>
+                        <p>{pokemon.name}</p>
                       </a>
 
                       <a
-                        href={`/pokemon/${grupo.pokemon_id}`}
+                        href={`/pokemon/${pokemon.id}`}
                         className="image"
                         title=""
                       >
                         <img
                           alt=""
                           src={
-                            grupo.img.versions?.["generation-vi"]?.["x-y"]
-                              .front_default
-                              ? grupo.img.versions?.["generation-vi"]?.["x-y"]
-                                  .front_default
-                              : grupo.img.versions?.["generation-vii"]?.[
-                                  "ultra-sun-ultra-moon"
-                                ].front_default
-                              ? grupo.img.versions?.["generation-vii"]?.[
-                                  "ultra-sun-ultra-moon"
-                                ].front_default
-                              : grupo.img.other?.["official-artwork"]
-                                  ?.front_default
-                              ? grupo.img.other?.["official-artwork"]
-                                  ?.front_default
-                              : grupo.img.other?.home?.front_default
-                              ? grupo.img.other?.home?.front_default
-                              : ""
+                            pokemon.img
                           }
                           className="pokemonimg lazyloaded"
                         />
@@ -846,42 +796,26 @@ const PokeducatorWikiGruposHuevo = () => {
             </p>
             <br />
             <div className="row">
-              {store.grupo_huevo_data.map((grupo, i) =>
-                grupo.group_name.includes("bug") ? (
+              {store.pokemon_data.map((pokemon, i) =>
+                pokemon.group_name.includes("bug") ? (
                   <>
                     <div className="col mx-1 my-1">
                       <a
                         className="links"
-                        href={`/pokemon/${grupo.pokemon_id}`}
+                        href={`/pokemon/${pokemon.id}`}
                       >
-                        <p>{grupo.pokemon_name}</p>
+                        <p>{pokemon.name}</p>
                       </a>
 
                       <a
-                        href={`/pokemon/${grupo.pokemon_id}`}
+                        href={`/pokemon/${pokemon.id}`}
                         className="image"
                         title=""
                       >
                         <img
                           alt=""
                           src={
-                            grupo.img.versions?.["generation-vi"]?.["x-y"]
-                              .front_default
-                              ? grupo.img.versions?.["generation-vi"]?.["x-y"]
-                                  .front_default
-                              : grupo.img.versions?.["generation-vii"]?.[
-                                  "ultra-sun-ultra-moon"
-                                ].front_default
-                              ? grupo.img.versions?.["generation-vii"]?.[
-                                  "ultra-sun-ultra-moon"
-                                ].front_default
-                              : grupo.img.other?.["official-artwork"]
-                                  ?.front_default
-                              ? grupo.img.other?.["official-artwork"]
-                                  ?.front_default
-                              : grupo.img.other?.home?.front_default
-                              ? grupo.img.other?.home?.front_default
-                              : ""
+                            pokemon.img
                           }
                           className="pokemonimg lazyloaded"
                         />
@@ -906,42 +840,26 @@ const PokeducatorWikiGruposHuevo = () => {
             </p>
             <br />
             <div className="row">
-              {store.grupo_huevo_data.map((grupo, i) =>
-                grupo.group_name.includes("flying") ? (
+              {store.pokemon_data.map((pokemon, i) =>
+                pokemon.group_name.includes("flying") ? (
                   <>
                     <div className="col mx-1 my-1">
                       <a
                         className="links"
-                        href={`/pokemon/${grupo.pokemon_id}`}
+                        href={`/pokemon/${pokemon.id}`}
                       >
-                        <p>{grupo.pokemon_name}</p>
+                        <p>{pokemon.name}</p>
                       </a>
 
                       <a
-                        href={`/pokemon/${grupo.pokemon_id}`}
+                        href={`/pokemon/${pokemon.id}`}
                         className="image"
                         title=""
                       >
                         <img
                           alt=""
                           src={
-                            grupo.img.versions?.["generation-vi"]?.["x-y"]
-                              .front_default
-                              ? grupo.img.versions?.["generation-vi"]?.["x-y"]
-                                  .front_default
-                              : grupo.img.versions?.["generation-vii"]?.[
-                                  "ultra-sun-ultra-moon"
-                                ].front_default
-                              ? grupo.img.versions?.["generation-vii"]?.[
-                                  "ultra-sun-ultra-moon"
-                                ].front_default
-                              : grupo.img.other?.["official-artwork"]
-                                  ?.front_default
-                              ? grupo.img.other?.["official-artwork"]
-                                  ?.front_default
-                              : grupo.img.other?.home?.front_default
-                              ? grupo.img.other?.home?.front_default
-                              : ""
+                            pokemon.img
                           }
                           className="pokemonimg lazyloaded"
                         />
@@ -968,42 +886,26 @@ const PokeducatorWikiGruposHuevo = () => {
             </p>
             <br />
             <div className="row">
-              {store.grupo_huevo_data.map((grupo, i) =>
-                grupo.group_name.includes("humanshape") ? (
+              {store.pokemon_data.map((pokemon, i) =>
+                pokemon.group_name.includes("humanshape") ? (
                   <>
                     <div className="col mx-1 my-1">
                       <a
                         className="links"
-                        href={`/pokemon/${grupo.pokemon_id}`}
+                        href={`/pokemon/${pokemon.id}`}
                       >
-                        <p>{grupo.pokemon_name}</p>
+                        <p>{pokemon.name}</p>
                       </a>
 
                       <a
-                        href={`/pokemon/${grupo.pokemon_id}`}
+                        href={`/pokemon/${pokemon.id}`}
                         className="image"
                         title=""
                       >
                         <img
                           alt=""
                           src={
-                            grupo.img.versions?.["generation-vi"]?.["x-y"]
-                              .front_default
-                              ? grupo.img.versions?.["generation-vi"]?.["x-y"]
-                                  .front_default
-                              : grupo.img.versions?.["generation-vii"]?.[
-                                  "ultra-sun-ultra-moon"
-                                ].front_default
-                              ? grupo.img.versions?.["generation-vii"]?.[
-                                  "ultra-sun-ultra-moon"
-                                ].front_default
-                              : grupo.img.other?.["official-artwork"]
-                                  ?.front_default
-                              ? grupo.img.other?.["official-artwork"]
-                                  ?.front_default
-                              : grupo.img.other?.home?.front_default
-                              ? grupo.img.other?.home?.front_default
-                              : ""
+                            pokemon.img
                           }
                           className="pokemonimg lazyloaded"
                         />
@@ -1039,42 +941,26 @@ const PokeducatorWikiGruposHuevo = () => {
             </p>
             <br />
             <div className="row">
-              {store.grupo_huevo_data.map((grupo, i) =>
-                grupo.group_name.includes("mineral") ? (
+              {store.pokemon_data.map((pokemon, i) =>
+                pokemon.group_name.includes("mineral") ? (
                   <>
                     <div className="col mx-1 my-1">
                       <a
                         className="links"
-                        href={`/pokemon/${grupo.pokemon_id}`}
+                        href={`/pokemon/${pokemon.id}`}
                       >
-                        <p>{grupo.pokemon_name}</p>
+                        <p>{pokemon.name}</p>
                       </a>
 
                       <a
-                        href={`/pokemon/${grupo.pokemon_id}`}
+                        href={`/pokemon/${pokemon.id}`}
                         className="image"
                         title=""
                       >
                         <img
                           alt=""
                           src={
-                            grupo.img.versions?.["generation-vi"]?.["x-y"]
-                              .front_default
-                              ? grupo.img.versions?.["generation-vi"]?.["x-y"]
-                                  .front_default
-                              : grupo.img.versions?.["generation-vii"]?.[
-                                  "ultra-sun-ultra-moon"
-                                ].front_default
-                              ? grupo.img.versions?.["generation-vii"]?.[
-                                  "ultra-sun-ultra-moon"
-                                ].front_default
-                              : grupo.img.other?.["official-artwork"]
-                                  ?.front_default
-                              ? grupo.img.other?.["official-artwork"]
-                                  ?.front_default
-                              : grupo.img.other?.home?.front_default
-                              ? grupo.img.other?.home?.front_default
-                              : ""
+                            pokemon.img
                           }
                           className="pokemonimg lazyloaded"
                         />
@@ -1104,42 +990,26 @@ const PokeducatorWikiGruposHuevo = () => {
             </p>
             <br />
             <div className="row">
-              {store.grupo_huevo_data.map((grupo, i) =>
-                grupo.group_name.includes("indeterminate") ? (
+              {store.pokemon_data.map((pokemon, i) =>
+                pokemon.group_name.includes("indeterminate") ? (
                   <>
                     <div className="col mx-1 my-1">
                       <a
                         className="links"
-                        href={`/pokemon/${grupo.pokemon_id}`}
+                        href={`/pokemon/${pokemon.id}`}
                       >
-                        <p>{grupo.pokemon_name}</p>
+                        <p>{pokemon.name}</p>
                       </a>
 
                       <a
-                        href={`/pokemon/${grupo.pokemon_id}`}
+                        href={`/pokemon/${pokemon.id}`}
                         className="image"
                         title=""
                       >
                         <img
                           alt=""
                           src={
-                            grupo.img.versions?.["generation-vi"]?.["x-y"]
-                              .front_default
-                              ? grupo.img.versions?.["generation-vi"]?.["x-y"]
-                                  .front_default
-                              : grupo.img.versions?.["generation-vii"]?.[
-                                  "ultra-sun-ultra-moon"
-                                ].front_default
-                              ? grupo.img.versions?.["generation-vii"]?.[
-                                  "ultra-sun-ultra-moon"
-                                ].front_default
-                              : grupo.img.other?.["official-artwork"]
-                                  ?.front_default
-                              ? grupo.img.other?.["official-artwork"]
-                                  ?.front_default
-                              : grupo.img.other?.home?.front_default
-                              ? grupo.img.other?.home?.front_default
-                              : ""
+                            pokemon.img
                           }
                           className="pokemonimg lazyloaded"
                         />
@@ -1167,42 +1037,26 @@ const PokeducatorWikiGruposHuevo = () => {
             </p>
             <br />
             <div className="row">
-              {store.grupo_huevo_data.map((grupo, i) =>
-                grupo.group_name.includes("ground") ? (
+              {store.pokemon_data.map((pokemon, i) =>
+                pokemon.group_name.includes("ground") ? (
                   <>
                     <div className="col mx-1 my-1">
                       <a
                         className="links"
-                        href={`/pokemon/${grupo.pokemon_id}`}
+                        href={`/pokemon/${pokemon.id}`}
                       >
-                        <p>{grupo.pokemon_name}</p>
+                        <p>{pokemon.name}</p>
                       </a>
 
                       <a
-                        href={`/pokemon/${grupo.pokemon_id}`}
+                        href={`/pokemon/${pokemon.id}`}
                         className="image"
                         title=""
                       >
                         <img
                           alt=""
                           src={
-                            grupo.img.versions?.["generation-vi"]?.["x-y"]
-                              .front_default
-                              ? grupo.img.versions?.["generation-vi"]?.["x-y"]
-                                  .front_default
-                              : grupo.img.versions?.["generation-vii"]?.[
-                                  "ultra-sun-ultra-moon"
-                                ].front_default
-                              ? grupo.img.versions?.["generation-vii"]?.[
-                                  "ultra-sun-ultra-moon"
-                                ].front_default
-                              : grupo.img.other?.["official-artwork"]
-                                  ?.front_default
-                              ? grupo.img.other?.["official-artwork"]
-                                  ?.front_default
-                              : grupo.img.other?.home?.front_default
-                              ? grupo.img.other?.home?.front_default
-                              : ""
+                            pokemon.img
                           }
                           className="pokemonimg lazyloaded"
                         />
@@ -1233,42 +1087,26 @@ const PokeducatorWikiGruposHuevo = () => {
             </p>
             <br />
             <div className="row">
-              {store.grupo_huevo_data.map((grupo, i) =>
-                grupo.group_name.includes("water1") ? (
+              {store.pokemon_data.map((pokemon, i) =>
+                pokemon.group_name.includes("water1") ? (
                   <>
                     <div className="col mx-1 my-1">
                       <a
                         className="links"
-                        href={`/pokemon/${grupo.pokemon_id}`}
+                        href={`/pokemon/${pokemon.id}`}
                       >
-                        <p>{grupo.pokemon_name}</p>
+                        <p>{pokemon.name}</p>
                       </a>
 
                       <a
-                        href={`/pokemon/${grupo.pokemon_id}`}
+                        href={`/pokemon/${pokemon.id}`}
                         className="image"
                         title=""
                       >
                         <img
                           alt=""
                           src={
-                            grupo.img.versions?.["generation-vi"]?.["x-y"]
-                              .front_default
-                              ? grupo.img.versions?.["generation-vi"]?.["x-y"]
-                                  .front_default
-                              : grupo.img.versions?.["generation-vii"]?.[
-                                  "ultra-sun-ultra-moon"
-                                ].front_default
-                              ? grupo.img.versions?.["generation-vii"]?.[
-                                  "ultra-sun-ultra-moon"
-                                ].front_default
-                              : grupo.img.other?.["official-artwork"]
-                                  ?.front_default
-                              ? grupo.img.other?.["official-artwork"]
-                                  ?.front_default
-                              : grupo.img.other?.home?.front_default
-                              ? grupo.img.other?.home?.front_default
-                              : ""
+                            pokemon.img
                           }
                           className="pokemonimg lazyloaded"
                         />
@@ -1294,42 +1132,26 @@ const PokeducatorWikiGruposHuevo = () => {
             </p>
             <br />
             <div className="row">
-              {store.grupo_huevo_data.map((grupo, i) =>
-                grupo.group_name.includes("water2") ? (
+              {store.pokemon_data.map((pokemon, i) =>
+                pokemon.group_name.includes("water2") ? (
                   <>
                     <div className="col mx-1 my-1">
                       <a
                         className="links"
-                        href={`/pokemon/${grupo.pokemon_id}`}
+                        href={`/pokemon/${pokemon.id}`}
                       >
-                        <p>{grupo.pokemon_name}</p>
+                        <p>{pokemon.name}</p>
                       </a>
 
                       <a
-                        href={`/pokemon/${grupo.pokemon_id}`}
+                        href={`/pokemon/${pokemon.id}`}
                         className="image"
                         title=""
                       >
                         <img
                           alt=""
                           src={
-                            grupo.img.versions?.["generation-vi"]?.["x-y"]
-                              .front_default
-                              ? grupo.img.versions?.["generation-vi"]?.["x-y"]
-                                  .front_default
-                              : grupo.img.versions?.["generation-vii"]?.[
-                                  "ultra-sun-ultra-moon"
-                                ].front_default
-                              ? grupo.img.versions?.["generation-vii"]?.[
-                                  "ultra-sun-ultra-moon"
-                                ].front_default
-                              : grupo.img.other?.["official-artwork"]
-                                  ?.front_default
-                              ? grupo.img.other?.["official-artwork"]
-                                  ?.front_default
-                              : grupo.img.other?.home?.front_default
-                              ? grupo.img.other?.home?.front_default
-                              : ""
+                            pokemon.img
                           }
                           className="pokemonimg lazyloaded"
                         />
@@ -1358,42 +1180,26 @@ const PokeducatorWikiGruposHuevo = () => {
             </p>
             <br />
             <div className="row">
-              {store.grupo_huevo_data.map((grupo, i) =>
-                grupo.group_name.includes("water3") ? (
+              {store.pokemon_data.map((pokemon, i) =>
+                pokemon.group_name.includes("water3") ? (
                   <>
                     <div className="col mx-1 my-1">
                       <a
                         className="links"
-                        href={`/pokemon/${grupo.pokemon_id}`}
+                        href={`/pokemon/${pokemon.id}`}
                       >
-                        <p>{grupo.pokemon_name}</p>
+                        <p>{pokemon.name}</p>
                       </a>
 
                       <a
-                        href={`/pokemon/${grupo.pokemon_id}`}
+                        href={`/pokemon/${pokemon.id}`}
                         className="image"
                         title=""
                       >
                         <img
                           alt=""
                           src={
-                            grupo.img.versions?.["generation-vi"]?.["x-y"]
-                              .front_default
-                              ? grupo.img.versions?.["generation-vi"]?.["x-y"]
-                                  .front_default
-                              : grupo.img.versions?.["generation-vii"]?.[
-                                  "ultra-sun-ultra-moon"
-                                ].front_default
-                              ? grupo.img.versions?.["generation-vii"]?.[
-                                  "ultra-sun-ultra-moon"
-                                ].front_default
-                              : grupo.img.other?.["official-artwork"]
-                                  ?.front_default
-                              ? grupo.img.other?.["official-artwork"]
-                                  ?.front_default
-                              : grupo.img.other?.home?.front_default
-                              ? grupo.img.other?.home?.front_default
-                              : ""
+                            pokemon.img
                           }
                           className="pokemonimg lazyloaded"
                         />
@@ -1419,42 +1225,26 @@ const PokeducatorWikiGruposHuevo = () => {
             </p>
             <br />
             <div className="row">
-              {store.grupo_huevo_data.map((grupo, i) =>
-                grupo.group_name.includes("monster") ? (
+              {store.pokemon_data.map((pokemon, i) =>
+                pokemon.group_name.includes("monster") ? (
                   <>
                     <div className="col mx-1 my-1">
                       <a
                         className="links"
-                        href={`/pokemon/${grupo.pokemon_id}`}
+                        href={`/pokemon/${pokemon.id}`}
                       >
-                        <p>{grupo.pokemon_name}</p>
+                        <p>{pokemon.name}</p>
                       </a>
 
                       <a
-                        href={`/pokemon/${grupo.pokemon_id}`}
+                        href={`/pokemon/${pokemon.id}`}
                         className="image"
                         title=""
                       >
                         <img
                           alt=""
                           src={
-                            grupo.img.versions?.["generation-vi"]?.["x-y"]
-                              .front_default
-                              ? grupo.img.versions?.["generation-vi"]?.["x-y"]
-                                  .front_default
-                              : grupo.img.versions?.["generation-vii"]?.[
-                                  "ultra-sun-ultra-moon"
-                                ].front_default
-                              ? grupo.img.versions?.["generation-vii"]?.[
-                                  "ultra-sun-ultra-moon"
-                                ].front_default
-                              : grupo.img.other?.["official-artwork"]
-                                  ?.front_default
-                              ? grupo.img.other?.["official-artwork"]
-                                  ?.front_default
-                              : grupo.img.other?.home?.front_default
-                              ? grupo.img.other?.home?.front_default
-                              : ""
+                            pokemon.img
                           }
                           className="pokemonimg lazyloaded"
                         />
@@ -1482,42 +1272,26 @@ const PokeducatorWikiGruposHuevo = () => {
             </p>
             <br />
             <div className="row">
-              {store.grupo_huevo_data.map((grupo, i) =>
-                grupo.group_name.includes("fairy") ? (
+              {store.pokemon_data.map((pokemon, i) =>
+                pokemon.group_name.includes("fairy") ? (
                   <>
                     <div className="col mx-1 my-1">
                       <a
                         className="links"
-                        href={`/pokemon/${grupo.pokemon_id}`}
+                        href={`/pokemon/${pokemon.id}`}
                       >
-                        <p>{grupo.pokemon_name}</p>
+                        <p>{pokemon.name}</p>
                       </a>
 
                       <a
-                        href={`/pokemon/${grupo.pokemon_id}`}
+                        href={`/pokemon/${pokemon.id}`}
                         className="image"
                         title=""
                       >
                         <img
                           alt=""
                           src={
-                            grupo.img.versions?.["generation-vi"]?.["x-y"]
-                              .front_default
-                              ? grupo.img.versions?.["generation-vi"]?.["x-y"]
-                                  .front_default
-                              : grupo.img.versions?.["generation-vii"]?.[
-                                  "ultra-sun-ultra-moon"
-                                ].front_default
-                              ? grupo.img.versions?.["generation-vii"]?.[
-                                  "ultra-sun-ultra-moon"
-                                ].front_default
-                              : grupo.img.other?.["official-artwork"]
-                                  ?.front_default
-                              ? grupo.img.other?.["official-artwork"]
-                                  ?.front_default
-                              : grupo.img.other?.home?.front_default
-                              ? grupo.img.other?.home?.front_default
-                              : ""
+                            pokemon.img
                           }
                           className="pokemonimg lazyloaded"
                         />
@@ -1545,42 +1319,26 @@ const PokeducatorWikiGruposHuevo = () => {
             </p>
             <br />
             <div className="row">
-              {store.grupo_huevo_data.map((grupo, i) =>
-                grupo.group_name.includes("dragon") ? (
+              {store.pokemon_data.map((pokemon, i) =>
+                pokemon.group_name.includes("dragon") ? (
                   <>
                     <div className="col mx-1 my-1">
                       <a
                         className="links"
-                        href={`/pokemon/${grupo.pokemon_id}`}
+                        href={`/pokemon/${pokemon.id}`}
                       >
-                        <p>{grupo.pokemon_name}</p>
+                        <p>{pokemon.name}</p>
                       </a>
 
                       <a
-                        href={`/pokemon/${grupo.pokemon_id}`}
+                        href={`/pokemon/${pokemon.id}`}
                         className="image"
                         title=""
                       >
                         <img
                           alt=""
                           src={
-                            grupo.img.versions?.["generation-vi"]?.["x-y"]
-                              .front_default
-                              ? grupo.img.versions?.["generation-vi"]?.["x-y"]
-                                  .front_default
-                              : grupo.img.versions?.["generation-vii"]?.[
-                                  "ultra-sun-ultra-moon"
-                                ].front_default
-                              ? grupo.img.versions?.["generation-vii"]?.[
-                                  "ultra-sun-ultra-moon"
-                                ].front_default
-                              : grupo.img.other?.["official-artwork"]
-                                  ?.front_default
-                              ? grupo.img.other?.["official-artwork"]
-                                  ?.front_default
-                              : grupo.img.other?.home?.front_default
-                              ? grupo.img.other?.home?.front_default
-                              : ""
+                            pokemon.img
                           }
                           className="pokemonimg lazyloaded"
                         />

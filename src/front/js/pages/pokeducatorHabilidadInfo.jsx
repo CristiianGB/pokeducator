@@ -56,7 +56,7 @@ const PokeducatorHabilidadInfo = () => {
         <div className="row mb-2">
             <h3>Pokémon que pueden tener esta habilidad:</h3><hr />
             <ul>
-            {store.single_ability_data.pokemons?.map((poke)=> <li className="pokemonList">{poke.name + " "}</li> )}
+            {store.single_ability_data.pokemons?.map((poke)=> <li className="pokemonList"><a className="links" href={`/pokemon/`+poke.id}>{poke.name}</a></li> )}
             </ul>
         </div>
         

@@ -1,28 +1,107 @@
-.fusionFoto{
-    width: 300px;
-    height:300px;
-    border-radius: 100%;
-    object-fit: contain;
-    width: 100%;
+.fusionFoto {
+  width: 300px;
+  height: 300px;
+  border-radius: 100%;
+  object-fit: contain;
+  width: 100%;
 }
-.cartasFusion{
-    margin-top: 50px;
+.cartasFusion {
+  margin-top: 50px;
 }
-.pruebaBarra1{
-    width: 91%;
+.tipoImgFusion {
+  max-width: 40px;
 }
-.pruebaBarra2{
-    width: 72%;
+
+.center-on-page {
+  display: flex;
+    align-items: center;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
-.pruebaBarra3{
-    width: 90%;
+/* Poké Styles */
+.pokeballFusionPage {
+    
+  margin-left: auto;
+  margin-right: auto !important; 
+  position: relative;
+  width: 100px;
+  height: 100px;
+  background: #fff;
+  border: 5px solid #000;
+  border-radius: 50%;
+  overflow: hidden;
+  box-shadow: inset -10px 10px 0 10px #ccc;
+  transition: transform 0.3s;
+  animation: fall 0.25s ease-in-out,
+    shake 1.25s cubic-bezier(0.36, 0.07, 0.19, 0.97) 3;
 }
-.pruebaBarra4{
-    width: 129%;
+
+.pokeballFusionPage:hover {
+  transform: scale(1.2);
 }
-.pruebaBarra5{
-    width: 90%;
+.pokeballFusionPage__button:hover{
+    background: #e74c3c;
 }
-.pruebaBarra6{
-    width: 108%;
+.pokeballFusionPage:active {
+  transform: scale(1.1);
+}
+.pokeballFusionPage::before,
+.pokeballFusionPage::after {
+  content: "";
+  position: absolute ;
+  top: 0px;
+  right: 0;
+  width: 125px;
+  height: 50px;
+  
+}
+.pokeballFusionPage::before {
+  background: red;
+  width: 100px;
+  height: 50%;
+
+}
+.pokeballFusionPage::after {
+  top: calc(56% - 10px);
+  width: 100%;
+  height: 10px;
+  background: #000;
+}
+.pokeballFusionPage__button {
+  position: absolute;
+  top: calc(70% - 30px);
+  left: calc(68% - 30px);
+  width: 30px;
+  height: 30px;
+  background: #7f8c8d;
+  border: 5px solid #fff;
+  border-radius: 50%;
+  z-index: 10;
+  box-shadow: 0 0 0 10px black;
+  animation: blink 0.5s alternate 7;
+}
+/* Animation */
+
+@keyframes blink {
+  from {
+    background: #eee;
+  }
+  to {
+    background: #e74c3c;
+  }
+}
+@keyframes fall {
+  0% {
+    top: -200px;
+  }
+  60% {
+    top: 0;
+  }
+  80% {
+    top: -20px;
+  }
+  100% {
+    top: 0;
+  }
 }

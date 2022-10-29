@@ -54,7 +54,7 @@ function PokeducatorLandingPage() {
             </div>
           </div>
 
-          <div className="col-md-4 divPadre1">
+          <div className="col-md-4 divPadre1 ">
             <div className="image-box2 divFotoPodio1">
               <img
                 className="card-img-top imagenPodio1 img-fluid"
