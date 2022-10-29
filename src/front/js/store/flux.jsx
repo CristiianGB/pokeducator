@@ -133,7 +133,7 @@ const getState = ({ getStore, getActions, setStore }) => {
           });
 
           const resp = fetch(
-            "https://3001-cristiiangb-pokeducator-bwyvbb3kb6i.ws-eu72.gitpod.io/api/createPokemon",
+            process.env.BACKEND_URL+"api/createPokemon",
             {
               method: "POST",
               headers: { "Content-Type": "application/json" },
@@ -188,7 +188,7 @@ const getState = ({ getStore, getActions, setStore }) => {
                 })
                 .finally(() => {
                   fetch(
-                    "https://3001-cristiiangb-pokeducator-bwyvbb3kb6i.ws-eu72.gitpod.io/api/createItem",
+                    process.env.BACKEND_URL+"api/createItem",
                     {
                       method: "POST",
                       headers: { "Content-Type": "application/json" },
@@ -207,21 +207,28 @@ const getState = ({ getStore, getActions, setStore }) => {
       },
 
       saveDbonStore: () => {
-        fetch(
-          "https://3001-cristiiangb-pokeducator-bwyvbb3kb6i.ws-eu72.gitpod.io/api/store"
-        )
+        fetch(process.env.BACKEND_URL+"api/store")
           .then((response) => response.json())
           .then((store) => {
-            setStore({ pokemon_data: store.pokemons });
-            setStore({ move_data: store.moves });
-            setStore({ ability_data: store.abilities });
-            setStore({ item_data: store.items });
-            setStore({ nature_data: store.natures });
-          });
+            store.pokemons.map((poke)=>{
+              let stat = []
+              for(let i in poke.stats){
+                stat.push(poke.stats[i])
+              }
+              poke.stats = stat
+            })
+            
+            
+            setStore({pokemon_data: store.pokemons})
+            setStore({move_data: store.moves})
+            setStore({ability_data: store.abilities})
+            setStore({item_data: store.items})
+            setStore({nature_data: store.natures})
+          })       
       },
       FindOnePokemon: (pokemon_id) => {
         fetch(
-          "https://3001-cristiiangb-pokeducator-bwyvbb3kb6i.ws-eu72.gitpod.io/api/allmovabi/" +
+          process.env.BACKEND_URL+"api/allmovabi/" +
             pokemon_id
         )
           .then((response) => response.json())
@@ -236,7 +243,7 @@ const getState = ({ getStore, getActions, setStore }) => {
       },
       FindOneItem: (item_id) => {
         fetch(
-          "https://3001-cristiiangb-pokeducator-bwyvbb3kb6i.ws-eu72.gitpod.io/api/item/" +
+          process.env.BACKEND_URL+"api/item/" +
             item_id
         )
           .then((response) => response.json())
@@ -246,7 +253,7 @@ const getState = ({ getStore, getActions, setStore }) => {
       },
       FindOneMove: (move_id) => {
         fetch(
-          "https://3001-cristiiangb-pokeducator-bwyvbb3kb6i.ws-eu72.gitpod.io/api/move/" +
+          process.env.BACKEND_URL+"api/move/" +
             move_id
         )
           .then((response) => response.json())
@@ -256,7 +263,7 @@ const getState = ({ getStore, getActions, setStore }) => {
       },
       FindOneAbility: (ability_id) => {
         fetch(
-          "https://3001-cristiiangb-pokeducator-bwyvbb3kb6i.ws-eu72.gitpod.io/api/ability/" +
+          process.env.BACKEND_URL+"api/ability/" +
             ability_id
         )
           .then((response) => response.json())
@@ -285,16 +292,14 @@ const getState = ({ getStore, getActions, setStore }) => {
             setStore({ single_ability_data: ability });
           });
       },
-
       saveMoveonDb: () => {
-        //hacer un bucle for aqui que el offset sea i y aumente de 50 en 50 
-        fetch("https://pokeapi.co/api/v2/move/?offset=800&limit=50")
+        //hacer un bucle for aqui que el offset sea i y aumente de 50 en 50
+        fetch("https://pokeapi.co/api/v2/move/?offset=0&limit=100")
           .then((response) => response.json())
           .then((data) => {
             return getActions().saveDb(data);
           });
-      },
-
+        },
       saveDb: async (data) => {
         return await data.results.map(async (move) => {
           let name;
@@ -334,7 +339,7 @@ const getState = ({ getStore, getActions, setStore }) => {
             });
           setTimeout(() => {
             fetch(
-              "https://3001-cristiiangb-pokeducator-bwyvbb3kb6i.ws-eu72.gitpod.io/api/createMove",
+              process.env.BACKEND_URL+"api/createMove",
               {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
@@ -379,7 +384,7 @@ const getState = ({ getStore, getActions, setStore }) => {
                 })
                 .finally(() => {
                   fetch(
-                    "https://3001-cristiiangb-pokeducator-bwyvbb3kb6i.ws-eu72.gitpod.io/api/createNature",
+                    process.env.BACKEND_URL+"api/createNature",
                     {
                       method: "POST",
                       headers: { "Content-Type": "application/json" },
@@ -425,7 +430,7 @@ const getState = ({ getStore, getActions, setStore }) => {
                 })
                 .finally(() => {
                   fetch(
-                    "https://3001-cristiiangb-pokeducator-bwyvbb3kb6i.ws-eu72.gitpod.io/api/createAbility",
+                    process.env.BACKEND_URL+"api/createAbility",
                     {
                       method: "POST",
                       headers: { "Content-Type": "application/json" },
