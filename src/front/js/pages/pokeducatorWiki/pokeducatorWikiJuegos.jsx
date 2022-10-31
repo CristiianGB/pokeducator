@@ -50,7 +50,8 @@ const PokeducatorWikiJuegos = () => {
                 anime, manga y Trading Card Game. Todavía hoy, son los
                 videojuegos los que marcan la pauta dominante, de manera que las
                 anteriores derivan su contenido de los videojuegos.
-              </p>
+              </p>              
+              <img className="rounded float-end img-fluid p-2" style={{width: "500px"}}  src="https://as01.epimg.net/meristation/imagenes/2020/05/16/videos/1589611376_053940_1589611452_noticia_normal.jpg" alt="Video Juegos Pokémon" />
               <br />
               <p>
                 La clasificación de videojuegos de Pokémon más importante es

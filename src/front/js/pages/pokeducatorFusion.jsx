@@ -984,7 +984,7 @@ const PokeducatorFusion = () => {
                 </div>
               </div>
             </div>
-              <div class="col-md-2 text-center">
+              <div class="col-md-2 text-center align-self-center">
                 <div class="pokeballFusionPage">
                   <div class="pokeballFusionPage__button"></div>
                 </div>
