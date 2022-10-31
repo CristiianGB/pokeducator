@@ -50,17 +50,17 @@ const PokeducatorWikiNaturaleza = () => {
 
               <p>
                 La naturaleza (Nature en inglés; 性格 Seikaku en japonés) es un
-                atributo introducido en la tercera generación que refleja la
-                personalidad individual definida de cada Pokémon. Así, aunque
+                atributo introducido en la <a className="links" href="/wiki/juegos-pokemon">tercera generación</a> que refleja la
+                personalidad individual definida de cada <a className="links" href="/pokemons">Pokémon</a>. Así, aunque
                 dos individuos pertenezcan a la misma especie, pueden tener
                 naturalezas diferentes. Es una característica que añade aun más
                 variedades y diferencias entre individuos de la misma especie.
               </p>
               <br />
               <p>
-                Para conocer a qué naturaleza pertenece un Pokémon, se debe
+                Para conocer a qué naturaleza pertenece un <a className="links" href="/pokemons">Pokémon</a>, se debe
                 consultar la pantalla de estado del mismo en la pantalla de
-                datos. Desde Pokémon Esmeralda, si el primer Pokémon del equipo
+                datos. Desde <a className="links" href="/wiki/juegos-pokemon">Pokémon Esmeralda</a>, si el primer Pokémon del equipo
                 tiene la habilidad sincronía hay una probabilidad del 50% de que
                 el Pokémon salvaje que aparezca tenga la misma naturaleza.
               </p>
@@ -109,21 +109,14 @@ const PokeducatorWikiNaturaleza = () => {
             </div>
             <div className="lista_de_naturalezas descripcion">
               <p>
-                Un Pokémon puede pertenecer a alguna de las siguientes 25 clases
+                Un <a className="links" href="/pokemons">Pokémon</a> puede pertenecer a alguna de las siguientes 25 clases
                 de naturalezas:
               </p>
               <br />
               <ul className="mt-3">
-                {store.nature_data.map((object) => (
-                  <li className="listaNaturaleza">
-                    <strong>{
-                      object.names.find(
-                        (element) => element.language?.name == "es"
-                      ).name
-                    }</strong>{" "}
-                    ({object.name})
-                  </li>
-                ))}
+              {store.nature_data?.map((objeto) =>
+                <li><strong>{objeto.name}</strong></li>
+              )}
               </ul>
               <br />
             </div>
@@ -136,9 +129,9 @@ const PokeducatorWikiNaturaleza = () => {
             </div>
             <div className="efectos_en_las_estadisticas descripcion">
               <p>
-                Las naturalezas de los Pokémon afectan principalmente al
+                Las naturalezas de los <a className="links" href="/pokemons">Pokémon</a> afectan principalmente al
                 crecimiento de sus estadísticas. Es decir, dependiendo de su
-                naturaleza, el Pokémon desarrollará más una estadística y menos
+                naturaleza, desarrollará más una estadística y menos
                 otra. Sin embargo, hay que tener en cuenta que algunas
                 naturalezas son neutras: no tienen ningún efecto, es decir, no
                 aumentan ni disminuyen ninguna estadística. El valor real del
@@ -149,9 +142,9 @@ const PokeducatorWikiNaturaleza = () => {
               </p>
               <br />
               <p>
-                A partir de los juegos Pokémon Oro HeartGold y Plata SoulSilver,
+                A partir de los juegos <a className="links" href="/wiki/juegos-pokemon">Pokémon Oro HeartGold y Pokémon Plata SoulSilver</a>,
                 para saber qué estadísticas suben y cuáles bajan con la
-                naturaleza de un Pokémon, basta con echar un vistazo al color de
+                naturaleza de un <a className="links" href="/pokemons">Pokémon</a>, basta con echar un vistazo al color de
                 letra que aparece en sus estadísticas: la estadística que le sea
                 favorable estará en un color rojizo y la estadística
                 desfavorable estará en un tono azulado. Si la naturaleza es
@@ -159,7 +152,7 @@ const PokeducatorWikiNaturaleza = () => {
               </p>
               <br />
               <p>
-                Un ejemplo sencillo: en el caso de un Pokémon con naturaleza
+                Un ejemplo sencillo: en el caso de un <a className="links" href="/pokemons">Pokémon</a> con naturaleza
                 activa, a medida de que vaya subiendo de nivel, su defensa será
                 un 10% menor de lo habitual y su velocidad un 10% mayor de lo
                 habitual. Por ello, se considera que activa es una naturaleza
@@ -169,22 +162,22 @@ const PokeducatorWikiNaturaleza = () => {
               <p>
                 En la siguiente tabla se recogen las estadísticas que se ven
                 favorecidas o perjudicadas según la naturaleza a la que
-                pertenezca el Pokémon en cuestión:
+                pertenezca el <a className="links" href="/pokemons">Pokémon</a> en cuestión:
               </p>
               <br />
               
-              <table id="tabla_de_estadisticas" className="wiki text-align-center m-auto">
+              <table id="tabla_de_estadisticas" className="wiki text-center m-auto">
                 <tbody>
-                  <tr class="encabezado">
-                    <th rowSpan={2}>Naturaleza</th>
-                    <th colSpan={6}>Estadísticas</th>
+                  <tr className="encabezado text-center">
+                    <th colSpan={12}>Estadísticas</th>
                   </tr>
                   <tr bgcolor="#dbdbff">
-                    <th>Ataque</th>
-                    <th>Defensa</th>
-                    <th>Ataque especial</th>
-                    <th>Defensa especial</th>
-                    <th>Velocidad</th>
+                    <th className="col-2">Naturaleza</th>
+                    <th className="col-2">Ataque</th>
+                    <th className="col-2">Defensa</th>
+                    <th className="col-2">Ataque esp.</th>
+                    <th className="col-2">Defensa esp.</th>
+                    <th className="col-2">Velocidad</th>
                   </tr>
                   <tr>
                     <td>
@@ -250,12 +243,12 @@ const PokeducatorWikiNaturaleza = () => {
                     <td bgcolor="#cafda4">Sube</td>
                   </tr>
                   <tr bgcolor="#dbdbff">
-                    <th>Naturaleza</th>
-                    <th>Ataque</th>
-                    <th>Defensa</th>
-                    <th>Ataque especial</th>
-                    <th>Defensa especial</th>
-                    <th>Velocidad</th>
+                    <th className="col-2">Naturaleza</th>
+                    <th className="col-2">Ataque</th>
+                    <th className="col-2">Defensa</th>
+                    <th className="col-2">Ataque esp.</th>
+                    <th className="col-2">Defensa esp.</th>
+                    <th className="col-2">Velocidad</th>
                   </tr>
                   <tr>
                     <td>
@@ -321,12 +314,12 @@ const PokeducatorWikiNaturaleza = () => {
                     <td bgcolor="#cafda4">Sube</td>
                   </tr>
                   <tr bgcolor="#dbdbff">
-                    <th>Naturaleza</th>
-                    <th>Ataque</th>
-                    <th>Defensa</th>
-                    <th>Ataque especial</th>
-                    <th>Defensa especial</th>
-                    <th>Velocidad</th>
+                    <th className="col-2">Naturaleza</th>
+                    <th className="col-2">Ataque</th>
+                    <th className="col-2">Defensa</th>
+                    <th className="col-2">Ataque esp.</th>
+                    <th className="col-2">Defensa esp.</th>
+                    <th className="col-2">Velocidad</th>
                   </tr>
                   <tr>
                     <td>
@@ -392,12 +385,12 @@ const PokeducatorWikiNaturaleza = () => {
                     <td bgcolor="#cafda4">Sube</td>
                   </tr>
                   <tr bgcolor="#dbdbff">
-                    <th>Naturaleza</th>
-                    <th>Ataque</th>
-                    <th>Defensa</th>
-                    <th>Ataque especial</th>
-                    <th>Defensa especial</th>
-                    <th>Velocidad</th>
+                    <th className="col-2">Naturaleza</th>
+                    <th className="col-2">Ataque</th>
+                    <th className="col-2">Defensa</th>
+                    <th className="col-2">Ataque esp.</th>
+                    <th className="col-2">Defensa esp.</th>
+                    <th className="col-2">Velocidad</th>
                   </tr>
                   <tr>
                     <td>
@@ -463,12 +456,12 @@ const PokeducatorWikiNaturaleza = () => {
                     <td bgcolor="#cafda4">Sube</td>
                   </tr>
                   <tr bgcolor="#dbdbff">
-                    <th>Naturaleza</th>
-                    <th>Ataque</th>
-                    <th>Defensa</th>
-                    <th>Ataque especial</th>
-                    <th>Defensa especial</th>
-                    <th>Velocidad</th>
+                    <th className="col-2">Naturaleza</th>
+                    <th className="col-2">Ataque</th>
+                    <th className="col-2">Defensa</th>
+                    <th className="col-2">Ataque esp.</th>
+                    <th className="col-2">Defensa esp.</th>
+                    <th className="col-2">Velocidad</th>
                   </tr>
                   <tr>
                     <td>
@@ -540,9 +533,10 @@ const PokeducatorWikiNaturaleza = () => {
                 <h1 id="herencia_mediante_crianza">Herencia de la naturaleza mediante crianza</h1><hr />
               </div>
               <div className="herencia_mediante_crianza descripcion">
-                <p>En la crianza Pokémon, desde Pokémon Esmeralda, si la madre lleva equipada una piedra eterna, la probabilidad de que la cría herede la naturaleza de la madre será de un 50%. Si la crianza es con un Ditto y es éste quien lleva la piedra eterna, la probabilidad será de un 50% de que la naturaleza la herede de Ditto, incluso si el otro Pokémon también lleva una piedra eterna. Eso sí, la piedra eterna solo tiene efecto si los padres vienen de juegos en el mismo idioma.</p><br />
-                <p>A partir de Pokémon Oro HeartGold y Pokémon Plata SoulSilver, la piedra eterna puede llevarla cualquiera de los dos padres y la naturaleza podrá heredarse de quien la lleve equipada en un 50%. Si ambos la llevan equipada, la probabilidad se reparte a partes iguales entre heredar la naturaleza del padre, de la madre, u otra cualquiera (aproximadamente el 33% de probabilidades para cada opción), por lo que si ambos tienen la misma naturaleza, la probabilidad de que sea la de sus padres aumentaría al 66%. Aquí se suma un segundo requisito para que la piedra eterna tenga efecto: que los padres tengan el mismo entrenador original (no puede estar alguno intercambiado del entrenador de otro videojuego).</p><br />
-                <p>Por último, desde Pokémon Negro 2 y Pokémon Blanco 2 y en los juegos de la sexta generación, la cría siempre heredará la naturaleza del padre que lleve una piedra eterna equipada (es decir, en este caso la probabilidad sería del 100%). Y si ambos llevan la piedra eterna, la naturaleza será la de uno de los dos padres con la misma probabilidad para cada uno (50%).</p><br />
+                <img className="rounded float-start img-fluid p-2" style={{width: "400px"}}  src="https://tearlily.files.wordpress.com/2012/03/pikachu-s-emotion-pokemon-18757136-1050-809.jpg" alt="Video Juegos Pokémon" />
+                <p>En la crianza Pokémon, desde <a className="links" href="/wiki/juegos-pokemon">Pokémon Esmeralda</a>, si la madre lleva equipada una piedra eterna, la probabilidad de que la cría herede la naturaleza de la madre será de un 50%. Si la crianza es con un <a className="links" href="/pokemon/132">Ditto</a> y es éste quien lleva la piedra eterna, la probabilidad será de un 50% de que la naturaleza la herede de Ditto, incluso si el otro <a className="links" href="/pokemons">Pokémon</a> también lleva una piedra eterna. Eso sí, la piedra eterna solo tiene efecto si los padres vienen de juegos en el mismo idioma.</p><br />
+                <p>A partir de <a className="links" href="/wiki/juegos-pokemon">Pokémon Oro HeartGold y Pokémon Plata SoulSilver</a>, la piedra eterna puede llevarla cualquiera de los dos padres y la naturaleza podrá heredarse de quien la lleve equipada en un 50%. Si ambos la llevan equipada, la probabilidad se reparte a partes iguales entre heredar la naturaleza del padre, de la madre, u otra cualquiera (aproximadamente el 33% de probabilidades para cada opción), por lo que si ambos tienen la misma naturaleza, la probabilidad de que sea la de sus padres aumentaría al 66%. Aquí se suma un segundo requisito para que la piedra eterna tenga efecto: que los padres tengan el mismo entrenador original (no puede estar alguno intercambiado del entrenador de otro videojuego).</p><br />
+                <p>Por último, desde <a className="links" href="/wiki/juegos-pokemon">Pokémon Negro 2 y Pokémon Plata 2</a> y en los juegos de la sexta generación, la cría siempre heredará la naturaleza del padre que lleve una piedra eterna equipada (es decir, en este caso la probabilidad sería del 100%). Y si ambos llevan la piedra eterna, la naturaleza será la de uno de los dos padres con la misma probabilidad para cada uno (50%).</p><br />
               </div>
               <br />
             </div>
@@ -553,3 +547,4 @@ const PokeducatorWikiNaturaleza = () => {
   );
 };
 export default PokeducatorWikiNaturaleza;
+

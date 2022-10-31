@@ -6,6 +6,7 @@ import loading from "../../../assets/img/loading.gif";
 import { mergeWithCustomize } from "webpack-merge";
 
 
+
 const PokeducatorWikiGruposHuevo = () => {
   const { store, actions } = useContext(Context);
   const [load, setLoad] = useState(true);
@@ -47,184 +48,194 @@ const PokeducatorWikiGruposHuevo = () => {
           <div className="grupos_huevo descripcion">
             <p>
               Los grupos huevo (Egg Group en inglés, タマゴグループ en japonés)
-              son categorías de determinados Pokémon que son compatibles a la
+              son categorías de determinados <a className="links" href="/pokemons">Pokémon</a> que son compatibles a la
               hora de criar entre ellos, es decir, que el resultado será un
               huevo. Si dos Pokémon no pertenecen al mismo grupo, entonces no
               son compatibles y no pueden dejar un huevo. Un Pokémon puede
               pertenecer a varios grupos huevo.
             </p>
             <br />
-            <div className="col-sm-5 m-5 ms-3">
-        <nav id="toc" data-toggle="toc" className="sticky-top">
-          <ul className="nav navbar-nav">
-            <li>
-              <a
-                onClick={() => setNum(1)}
-                className={num == 1 ? "nav-link active" : "nav-link"}
-                style={aStyles}
-                href="#grupos_huevo"
-              >
-                Grupos huevo
-              </a>
-            </li>
-            <li>
-              <a
-                onClick={() => setNum(2)}
-                className={num == 2 ? "nav-link active" : "nav-link"}
-                style={aStyles}
-                href="#cadenas_de_cria"
-              >
-                Cadenas de cría
-              </a>
-            </li>
-            <li>
-              <a
-                id="desplegable"
-                onClick={() => setNum(3)}
-                className={num == 3 ? "nav-link active" : "nav-link"}
-                style={aStyles}
-                href="#desplegable"
-              >
-                Tipos de grupos huevo
-              </a>
-              <ul className="nav navbar-nav">
-                <li>
-                  <a
-                    className="nav-link"
-                    style={subStyles}
-                    href="#ninguno"
-                  >
-                    Ninguno.
-                  </a>
-                </li>
-                <li>
-                  <a className="nav-link" style={subStyles} href="#ditto">
-                    Ditto.
-                  </a>
-                </li>
-                <li>
-                  <a
-                    className="nav-link"
-                    style={subStyles}
-                    href="#planta"
-                  >
-                    Planta.
-                  </a>
-                </li>
-                <li>
-                  <a
-                    className="nav-link"
-                    style={subStyles}
-                    href="#bicho"
-                  >
-                    Bicho.
-                  </a>
-                </li>
-                <li>
-                  <a
-                    className="nav-link"
-                    style={subStyles}
-                    href="#volador"
-                  >
-                    Volador.
-                  </a>
-                </li>
-                <li>
-                  <a
-                    className="nav-link"
-                    style={subStyles}
-                    href="#humanoide"
-                  >
-                    Humanoide.
-                  </a>
-                </li>
-                <li>
-                  <a
-                    className="nav-link"
-                    style={subStyles}
-                    href="#mineral"
-                  >
-                    Mineral.
-                  </a>
-                </li>
-                <li>
-                  <a
-                    className="nav-link"
-                    style={subStyles}
-                    href="#amorfo"
-                  >
-                    Amorfo.
-                  </a>
-                </li>
-                <li>
-                  <a
-                    className="nav-link"
-                    style={subStyles}
-                    href="#campo"
-                  >
-                    Campo.
-                  </a>
-                </li>
-                <li>
-                  <a
-                    className="nav-link"
-                    style={subStyles}
-                    href="#agua1"
-                  >
-                    Agua 1.
-                  </a>
-                </li>
-                <li>
-                  <a
-                    className="nav-link"
-                    style={subStyles}
-                    href="#agua2"
-                  >
-                    Agua 2.
-                  </a>
-                </li>
-                <li>
-                  <a
-                    className="nav-link"
-                    style={subStyles}
-                    href="#agua3"
-                  >
-                    Agua 3.
-                  </a>
-                </li>
-                <li>
-                  <a
-                    className="nav-link"
-                    style={subStyles}
-                    href="#monstruo"
-                  >
-                    Monstruo.
-                  </a>
-                </li>
-                <li>
-                  <a
-                    className="nav-link"
-                    style={subStyles}
-                    href="#hada"
-                  >
-                    Hada.
-                  </a>
-                </li>
-                <li>
-                  <a
-                    className="nav-link"
-                    style={subStyles}
-                    href="#dragon"
-                  >
-                    Dragón.
-                  </a>
-                </li>
-              </ul>
-            </li>
-          </ul>
-        </nav>
-      </div>
-      <br />
+            <div className="row">
+              <div className="col-8">
+              <div className="col-sm-5 m-5 ms-3">
+                <nav id="toc" data-toggle="toc" className="sticky-top">
+                  <ul className="nav navbar-nav">
+                    <li>
+                      <a
+                        onClick={() => setNum(1)}
+                        className={num == 1 ? "nav-link active" : "nav-link"}
+                        style={aStyles}
+                        href="#grupos_huevo"
+                      >
+                        Grupos huevo
+                      </a>
+                    </li>
+                    <li>
+                      <a
+                        onClick={() => setNum(2)}
+                        className={num == 2 ? "nav-link active" : "nav-link"}
+                        style={aStyles}
+                        href="#cadenas_de_cria"
+                      >
+                        Cadenas de cría
+                      </a>
+                    </li>
+                    <li>
+                      <a
+                        id="desplegable"
+                        onClick={() => setNum(3)}
+                        className={num == 3 ? "nav-link active" : "nav-link"}
+                        style={aStyles}
+                        href="#desplegable"
+                      >
+                        Tipos de grupos huevo
+                      </a>
+                      <ul className="nav navbar-nav">
+                        <li>
+                          <a
+                            className="nav-link"
+                            style={subStyles}
+                            href="#ninguno"
+                          >
+                            Ninguno.
+                          </a>
+                        </li>
+                        <li>
+                          <a className="nav-link" style={subStyles} href="#ditto">
+                            Ditto.
+                          </a>
+                        </li>
+                        <li>
+                          <a
+                            className="nav-link"
+                            style={subStyles}
+                            href="#planta"
+                          >
+                            Planta.
+                          </a>
+                        </li>
+                        <li>
+                          <a
+                            className="nav-link"
+                            style={subStyles}
+                            href="#bicho"
+                          >
+                            Bicho.
+                          </a>
+                        </li>
+                        <li>
+                          <a
+                            className="nav-link"
+                            style={subStyles}
+                            href="#volador"
+                          >
+                            Volador.
+                          </a>
+                        </li>
+                        <li>
+                          <a
+                            className="nav-link"
+                            style={subStyles}
+                            href="#humanoide"
+                          >
+                            Humanoide.
+                          </a>
+                        </li>
+                        <li>
+                          <a
+                            className="nav-link"
+                            style={subStyles}
+                            href="#mineral"
+                          >
+                            Mineral.
+                          </a>
+                        </li>
+                        <li>
+                          <a
+                            className="nav-link"
+                            style={subStyles}
+                            href="#amorfo"
+                          >
+                            Amorfo.
+                          </a>
+                        </li>
+                        <li>
+                          <a
+                            className="nav-link"
+                            style={subStyles}
+                            href="#campo"
+                          >
+                            Campo.
+                          </a>
+                        </li>
+                        <li>
+                          <a
+                            className="nav-link"
+                            style={subStyles}
+                            href="#agua1"
+                          >
+                            Agua 1.
+                          </a>
+                        </li>
+                        <li>
+                          <a
+                            className="nav-link"
+                            style={subStyles}
+                            href="#agua2"
+                          >
+                            Agua 2.
+                          </a>
+                        </li>
+                        <li>
+                          <a
+                            className="nav-link"
+                            style={subStyles}
+                            href="#agua3"
+                          >
+                            Agua 3.
+                          </a>
+                        </li>
+                        <li>
+                          <a
+                            className="nav-link"
+                            style={subStyles}
+                            href="#monstruo"
+                          >
+                            Monstruo.
+                          </a>
+                        </li>
+                        <li>
+                          <a
+                            className="nav-link"
+                            style={subStyles}
+                            href="#hada"
+                          >
+                            Hada.
+                          </a>
+                        </li>
+                        <li>
+                          <a
+                            className="nav-link"
+                            style={subStyles}
+                            href="#dragon"
+                          >
+                            Dragón.
+                          </a>
+                        </li>
+                      </ul>
+                    </li>
+                  </ul>
+                </nav>
+              </div>
+
+              </div>
+              <div className="col-4">
+                <img className="float-end img-fluid" src="https://images.wikidexcdn.net/mwuploads/wikidex/6/6f/latest/20070718201559/Huevos_Pok%C3%A9mon.png" alt="Huevos Pokémon" />
+              </div>
+              
+            </div>
+            
+              <br />
           </div>
           <div className="row">
             <h1 id="cadenas_de_cria">Cadenas de cría</h1>
@@ -232,11 +243,10 @@ const PokeducatorWikiGruposHuevo = () => {
           </div>
           <div className="cadenas_de_cria descripcion">
             <p>
-              El hecho de que varios Pokémon pertenezcan a un mismo grupo huevo
-              da lugar a los movimientos huevo, que son aquellos movimientos que
+              El hecho de que varios <a className="links" href="/pokemons">Pokémon</a> pertenezcan a un mismo grupo huevo
+              da lugar a los movimientos huevo, que son aquellos que
               un Pokémon puede heredar del padre aunque no los conozca la madre.
-              En los videojuegos de la sexta generación (X/Y/RΩ/Zα), los
-              movimientos se pueden heredar tanto del padre como de la madre.
+              En los <a className="links" href="/wiki/juegos-pokemon">videojuegos</a> de la sexta generación (X/Y/RΩ/Zα), los <a className="links" href="/movimientos">movimientos</a> se pueden heredar tanto del padre como de la madre.
             </p>
             <br />
             <p>Ejemplo:</p>
@@ -341,7 +351,7 @@ const PokeducatorWikiGruposHuevo = () => {
               <br />
             </div>
             <p>
-              Además, el hecho de que varios Pokémon puedan pertenecer a dos
+              Además, el hecho de que varios <a className="links" href="/pokemons">Pokémon</a> puedan pertenecer a dos
               grupos huevo a la vez permite establecer cadenas de cría entre
               Pokémon de distintos grupos huevo, usando a un Pokémon que
               pertenezca a ambos como intermediario o "puente". Por ejemplo:
@@ -619,10 +629,9 @@ const PokeducatorWikiGruposHuevo = () => {
               <br />
             </div>
             <p>
-              De este modo, aunque Aron y Ekans no pueden criar directamente por
+              De este modo, aunque <a className="links" href="/pokemon/304">Aron</a> y <a className="links" href="/pokemon/23">Ekans</a> no pueden criar directamente por
               ser de distintos grupos huevo, el segundo puede heredar el
-              movimiento Cola férrea del primero en dos generaciones, usando a
-              Nidoran como intermediario ya que pertenece a ambos grupos.
+              movimiento Cola férrea del primero en dos generaciones, usando a <a className="links" href="/pokemon/32">Nidoram</a> como intermediario ya que pertenece a ambos grupos.
             </p>
             <br />
             <p>
@@ -649,17 +658,16 @@ const PokeducatorWikiGruposHuevo = () => {
             <p>
               Los Pokémon que pertenecen a este grupo son los que no pueden
               criar; es decir, de ninguna manera tendrían un huevo, ni siquiera
-              con un Ditto. Son los Pokémon legendarios (excepto Phione y
-              Manaphy), Ultraentes, Pokémon bebés, los Unown y, también se
-              incluyen a Nidorina y Nidoqueen (la razón es que Nidorina y
+              con un <a className="links" href="/pokemon/132">Ditto</a>. Son los Pokémon legendarios (excepto <a className="links" href="/pokemon/489">Phione</a> y <a className="links" href="/pokemon/490">Manaphy</a>), Ultraentes, Pokémon bebés, los Unown y, también se
+              incluyen a <a className="links" href="/pokemon/30">Nidorina</a> y <a className="links" href="/pokemon/31">Nidoqueen</a> (la razón es que Nidorina y
               Nidoqueen tienen un correspondiente en macho y por lo tanto, se
               usa a los machos).
             </p>
             <br />
             <p>
-              A partir de Pokémon X y Pokémon Y, los Pokémon salvajes
+              A partir de <a className="links" href="/wiki/juegos-pokemon">Pokémon X y Pokémon Y</a>, los Pokémon salvajes
               pertenecientes a este grupo huevo tienen asegurados 31 IVs en al
-              menos 3 estadísticas. En Pokémon Rubí Omega y Pokémon Zafiro Alfa,
+              menos 3 estadísticas. En <a className="links" href="/wiki/juegos-pokemon">Pokémon Rubí Omega y Pokémon Zafiro Alfa</a>,
               esta regla solo se aplica a los legendarios.
             </p>
             <br />
