@@ -7,53 +7,52 @@ const PokeducatorHabilidad = () => {
   const { store, actions } = useContext(Context);
   const [load, setLoad] = useState("true");
   const [number, setNumber] = useState(0);
-  const [slice0, setSlice0] = useState(0)
-  const [slice50, setSlice50] = useState(52)
+  const [abilities, setAbilities] = useState();
  
-  setTimeout(() => {
-    setLoad(false);
-  }, 2000);
+  useEffect(() => {
+    setTimeout(() => {
+      if(load != false){
+        setLoad(false);
+        setAbilities(store.ability_data)
+        }
+    }, 2000);
+  },[])
+
 
   return (
     <div className="App container align-items-center">
       <div className="row d-flex justify-content-end mt-4">
-        <div className="col-sm-6 text-start">
-        {slice0>0 ?  <button
+      <input
+          type="text"
+          name="search"
+          onChange={(event) =>
+            event.target.value.length > 2
+              ? setAbilities(
+                  store.ability_data.filter((ability) =>
+                  ability.name.toUpperCase().includes(event.target.value.toUpperCase())
+                  )
+                )
+              : setAbilities(store.ability_data)
+          }
+        />
+      <div className="col-sm-6 text-start">
+          <button
             className=" btn-sm mx-3 float-start w-25 buttonPokemonInfo"
             onClick={() => {
-              if (slice0  == 0){
-              }
-              else if (slice0 == 1144 && slice50 == 1154 ){
-                setSlice0(1092)
-                setSlice50(1144)
-                
-              }
-              else{
-                setSlice0(slice0 -52) 
-                setSlice50(slice50 - 52)
-              }
+              number > 49 ? setNumber(number - 50) : setNumber(0);
             }}
           >
             Anterior
-          </button> : ""}
+          </button>
         </div>
 
         <div className="col-sm-6 text-end">
           <button
             className="btn-sm mx-3 float-end w-25 buttonPokemonInfo"
             onClick={() => {
-              if(slice50 >= 1144){
-                setSlice0(1144)
-                setSlice50(780)
-              }
-              else if (slice50 > 260){
-  
-              }
-              else{
-                setSlice0(slice0 +52) 
-                setSlice50(slice50 + 52)
-              }
-              console.log(slice50)
+              number > abilities.length - 100
+                ? setNumber(abilities.length - 50)
+                : setNumber(number + 50);
             }}
           >
             Siguiente
@@ -80,7 +79,7 @@ const PokeducatorHabilidad = () => {
                 </tr>
               </thead>
               <tbody>
-                {store.ability_data.slice(slice0, slice50).map((habilidad, i) => (
+                {abilities?.slice(number, number+50).map((habilidad, i) => (
                   <tr data-index={i}>
                     <td>
                       <a className="links" href={`/habilidad/${habilidad.id}`}>
