@@ -39,6 +39,7 @@ const PokeducatorObjetoInfo = () => {
     margin: "auto",
   };
 
+  
   setTimeout(() => {
     setLoad(false);
   }, time[randomtime]);

@@ -7,16 +7,35 @@ const PokeducatorObjetos = () => {
   const { store, actions } = useContext(Context);
   const [load, setLoad] = useState("true");
   const [number, setNumber] = useState(0);
-  const [slice0, setSlice0] = useState(0)
-  const [slice50, setSlice50] = useState(52)
+  const [items, setItems] = useState();
 
-  setTimeout(() => {
-    setLoad(false);
-  }, 1000);
+  useEffect(() => {
+    setTimeout(() => {
+      if (load != false) {
+        setLoad(false);
+        setItems(store.item_data);
+        console.log(store.item_data)
+      }
+    }, 2000);
+  },[])
+
 
   return (
     <div className="App container">
       <div className="d-flex flex-column justify-content-center ">
+        <input
+          type="text"
+          name="search"
+          onChange={(event) =>
+            event.target.value.length > 2
+              ? setItems(
+                  store.item_data.filter((item) =>
+                    item.name.toUpperCase().includes(event.target.value.toUpperCase())
+                  )
+                )
+              : setItems(store.item_data)
+          }
+        />
         {load ? (
           <div className="container align-items-center">
             <img
@@ -29,46 +48,27 @@ const PokeducatorObjetos = () => {
           <>
             <div className="row d-flex justify-content-center mt-3">
               <div className="col-sm-6 text-start">
-                {slice0>0 ?  <button
-            className=" btn-sm mx-3 float-start w-25 buttonPokemonInfo"
-            onClick={() => {
-              if (slice0  == 0){
-              }
-              else if (slice0 == 1144 && slice50 == 1154 ){
-                setSlice0(1092)
-                setSlice50(1144)
-                
-              }
-              else{
-                setSlice0(slice0 -52) 
-                setSlice50(slice50 - 52)
-              }
-            }}
-          >
-            Anterior
-          </button> : ""}
-        </div>
+                <button
+                  className=" btn-sm mx-3 float-start w-25 buttonPokemonInfo"
+                  onClick={() => {
+                    number > 49 ? setNumber(number - 50) : setNumber(0);
+                  }}
+                >
+                  Anterior
+                </button>
+              </div>
 
-        <div className="col-sm-6 text-end">
-          <button
-            className="btn-sm mx-3 float-end w-25 buttonPokemonInfo"
-            onClick={() => {
-              if(slice50 >= 1600){
-                setSlice0()
-                setSlice50()
-              }
-              else if (slice50 > 1600){
-  
-              }
-              else{
-                setSlice0(slice0 +52) 
-                setSlice50(slice50 + 52)
-              }
-              console.log(slice50)
-            }}
-          >
-            Siguiente
-          </button>
+              <div className="col-sm-6 text-end">
+                <button
+                  className="btn-sm mx-3 float-end w-25 buttonPokemonInfo"
+                  onClick={() => {
+                    number > items.length - 100
+                      ? setNumber(items.length - 50)
+                      : setNumber(number + 50);
+                  }}
+                >
+                  Siguiente
+                </button>
               </div>
             </div>
 
@@ -83,7 +83,7 @@ const PokeducatorObjetos = () => {
                   </tr>
                 </thead>
                 <tbody>
-                  {store.item_data.slice(slice0, slice50).map((objeto) => (
+                  {items?.slice(number, number+50).map((objeto) => (
                     <tr>
                       <td>
                         <a className="links" href={`/objeto/${objeto.id}`}>

@@ -23,13 +23,11 @@ import volador_img from "../../assets/img/tiposimg/volador.png";
 import desconocido_img from "../../assets/img/tiposimg/desconocido.png";
 import sombra_img from "../../assets/img/tiposimg/sombra.png";
 
-
 const PokeducatorMovimientos = () => {
   const { store, actions } = useContext(Context);
-  const [num, setNum] = useState(0);
   const [load, setLoad] = useState(true);
-  const [slice0, setSlice0] = useState(0)
-  const [slice50, setSlice50] = useState(52)
+  const [number, setNumber] = useState(0);
+  const [moves, setMoves] = useState();
 
   let time = [2000, 3000, 4000, 5000];
   let randomtime = Math.floor(Math.random() * time.length);
@@ -41,50 +39,50 @@ const PokeducatorMovimientos = () => {
     margin: "auto",
   };
 
-  setTimeout(() => {
-    setLoad(false);
-  }, time[randomtime]);
+  useEffect(() => {
+    setTimeout(() => {
+      if (load != false) {
+        setLoad(false);
+        setMoves(store.move_data);
+      }
+    }, time[randomtime]);
+  },[])
+
 
   return (
     <div className="App container align-items-center">
       <div className="row d-flex justify-content-end mt-4">
+        <input
+          type="text"
+          name="search"
+          onChange={(event) =>
+            event.target.value.length > 2
+              ? setMoves(
+                  store.move_data.filter((move) =>
+                    move.name.toUpperCase().includes(event.target.value.toUpperCase())
+                  )
+                )
+              : setMoves(store.move_data)
+          }
+        />
         <div className="col-sm-6 text-start">
-         {slice0>0 ?  <button
+          <button
             className=" btn-sm mx-3 float-start w-25 buttonPokemonInfo"
             onClick={() => {
-              if (slice0  == 0){
-              }
-              else if (slice0 == 1144 && slice50 == 1154 ){
-                setSlice0(1092)
-                setSlice50(1144)
-                
-              }
-              else{
-                setSlice0(slice0 -52) 
-                setSlice50(slice50 - 52)
-              }
+              number > 49 ? setNumber(number - 50) : setNumber(0);
             }}
           >
             Anterior
-          </button> : ""}
+          </button>
         </div>
 
         <div className="col-sm-6 text-end">
           <button
             className="btn-sm mx-3 float-end w-25 buttonPokemonInfo"
             onClick={() => {
-              if(slice50 >= 1144){
-                setSlice0(1144)
-                setSlice50(780)
-              }
-              else if (slice50 > 780){
-  
-              }
-              else{
-                setSlice0(slice0 +52) 
-                setSlice50(slice50 + 52)
-              }
-              
+              number > moves.length - 100
+                ? setNumber(moves.length - 50)
+                : setNumber(number + 50);
             }}
           >
             Siguiente
@@ -104,81 +102,91 @@ const PokeducatorMovimientos = () => {
           <table className="table table-responsive mt-4">
             <thead className="text-capitalize tablaTitulos">
               <tr>
-                <th scope="col">
-                  Nombre
-                </th>
-                <th scope="col">
-                  Tipo
-                </th>
-                <th scope="col">
-                  Poder
-                </th>
-                <th scope="col">
-                  Precisión
-                </th>
-                <th scope="col">
-                  PP
-                </th>
+                <th scope="col">Nombre</th>
+                <th scope="col">Tipo</th>
+                <th scope="col">Poder</th>
+                <th scope="col">Precisión</th>
+                <th scope="col">PP</th>
               </tr>
             </thead>
 
             <tbody>
-              {store.move_data.slice(slice0, slice50).map((move) => (
+              {moves?.slice(number, number+50).map((move) => (
                 <tr data-index={move.id}>
                   <td>
                     <a className="links" href={`/movimiento/${move.id}`}>
                       {move.name}
                     </a>
                   </td>
-                  
+
                   <td>
-                    {move.type == "normal"
-                    ? <img className="tipoImg" src={normal_img} alt="normal" />
-                    : move.type == "fighting"
-                    ? <img className="tipoImg" src={lucha_img} alt="normal" />
-                    : move.type == "flying"
-                    ? <img className="tipoImg" src={volador_img} alt="normal" />
-                    : move.type == "poison"
-                    ? <img className="tipoImg" src={veneno_img} alt="normal" />
-                    : move.type == "ground"
-                    ? <img className="tipoImg" src={tierra_img} alt="normal" />
-                    : move.type == "rock"
-                    ? <img className="tipoImg" src={roca_img} alt="normal" />
-                    : move.type == "ghost"
-                    ? <img className="tipoImg" src={fantasma_img} alt="normal" />
-                    : move.type == "steel"
-                    ? <img className="tipoImg" src={acero_img} alt="normal" />
-                    : move.type == "fire"
-                    ? <img className="tipoImg" src={fuego_img} alt="normal" />
-                    : move.type == "water"
-                    ? <img className="tipoImg" src={agua_img} alt="normal" />
-                    : move.type == "grass"
-                    ? <img className="tipoImg" src={planta_img} alt="normal" />
-                    : move.type == "electric"
-                    ? <img className="tipoImg" src={electrico_img} alt="normal" />
-                    : move.type == "phsychic"
-                    ? <img className="tipoImg" src={psiquico_img} alt="normal" />
-                    : move.type == "ice"
-                    ? <img className="tipoImg" src={hielo_img} alt="normal" />
-                    : move.type == "dragon"
-                    ? <img className="tipoImg" src={dragon_img} alt="normal" />
-                    : move.type == "dark"
-                    ? <img className="tipoImg" src={siniestro_img} alt="normal" />
-                    : move.type == "fairy"
-                    ? <img className="tipoImg" src={hada_img} alt="normal" />
-                    : move.type == "unknown"
-                    ? <img className="tipoImg" src={desconocido_img} alt="normal" />
-                    : move.type == "shadow"
-                    ? <img className="tipoImg" src={sombra_img} alt="normal" />
-                    : move.type == "bug"
-                    ? <img className="tipoImg" src={bicho_img} alt="normal" /> :""}
-                    
+                    {move.type == "normal" ? (
+                      <img className="tipoImg" src={normal_img} alt="normal" />
+                    ) : move.type == "fighting" ? (
+                      <img className="tipoImg" src={lucha_img} alt="normal" />
+                    ) : move.type == "flying" ? (
+                      <img className="tipoImg" src={volador_img} alt="normal" />
+                    ) : move.type == "poison" ? (
+                      <img className="tipoImg" src={veneno_img} alt="normal" />
+                    ) : move.type == "ground" ? (
+                      <img className="tipoImg" src={tierra_img} alt="normal" />
+                    ) : move.type == "rock" ? (
+                      <img className="tipoImg" src={roca_img} alt="normal" />
+                    ) : move.type == "ghost" ? (
+                      <img
+                        className="tipoImg"
+                        src={fantasma_img}
+                        alt="normal"
+                      />
+                    ) : move.type == "steel" ? (
+                      <img className="tipoImg" src={acero_img} alt="normal" />
+                    ) : move.type == "fire" ? (
+                      <img className="tipoImg" src={fuego_img} alt="normal" />
+                    ) : move.type == "water" ? (
+                      <img className="tipoImg" src={agua_img} alt="normal" />
+                    ) : move.type == "grass" ? (
+                      <img className="tipoImg" src={planta_img} alt="normal" />
+                    ) : move.type == "electric" ? (
+                      <img
+                        className="tipoImg"
+                        src={electrico_img}
+                        alt="normal"
+                      />
+                    ) : move.type == "phsychic" ? (
+                      <img
+                        className="tipoImg"
+                        src={psiquico_img}
+                        alt="normal"
+                      />
+                    ) : move.type == "ice" ? (
+                      <img className="tipoImg" src={hielo_img} alt="normal" />
+                    ) : move.type == "dragon" ? (
+                      <img className="tipoImg" src={dragon_img} alt="normal" />
+                    ) : move.type == "dark" ? (
+                      <img
+                        className="tipoImg"
+                        src={siniestro_img}
+                        alt="normal"
+                      />
+                    ) : move.type == "fairy" ? (
+                      <img className="tipoImg" src={hada_img} alt="normal" />
+                    ) : move.type == "unknown" ? (
+                      <img
+                        className="tipoImg"
+                        src={desconocido_img}
+                        alt="normal"
+                      />
+                    ) : move.type == "shadow" ? (
+                      <img className="tipoImg" src={sombra_img} alt="normal" />
+                    ) : move.type == "bug" ? (
+                      <img className="tipoImg" src={bicho_img} alt="normal" />
+                    ) : (
+                      ""
+                    )}
                   </td>
-                  <td >{move.power ? move.power : "-"}</td>
-                  <td >
-                    {move.accuracy ? move.accuracy : "-"}
-                  </td>
-                  <td >{move.pp ? move.pp : "-"}</td>
+                  <td>{move.power ? move.power : "-"}</td>
+                  <td>{move.accuracy ? move.accuracy : "-"}</td>
+                  <td>{move.pp ? move.pp : "-"}</td>
                 </tr>
               ))}
             </tbody>

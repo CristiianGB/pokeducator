@@ -256,7 +256,7 @@ def all():
 @api.route("/allmovabi/<int:pokemon_id>", methods=["GET"])
 def allmoves(pokemon_id):
     moves = []
-    rows = Pokemon_Move.query.filter_by(pokemon_id=1)
+    rows = Pokemon_Move.query.filter_by(pokemon_id=pokemon_id)
     rows = list(map(lambda x: x.serialize(), rows))
     for i in rows:
         move = Moves.query.filter_by(move_id=i["move_id"]).first().serialize()
@@ -312,5 +312,7 @@ def store():
     natures = list(map(lambda x: x.serialize(), natures))
     pokemons = Pokemon.query.order_by(Pokemon.id.asc())
     pokemons = list(map(lambda x: x.serialize(), pokemons))
+
+
     
     return jsonify({"pokemons": pokemons, "abilities": abilities, "moves": moves, "items": items, "natures": natures}), 200
