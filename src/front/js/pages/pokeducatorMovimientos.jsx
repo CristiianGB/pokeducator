@@ -46,59 +46,67 @@ const PokeducatorMovimientos = () => {
         setMoves(store.move_data);
       }
     }, time[randomtime]);
-  },[])
+  }, []);
 
+  console.log(store.move_data);
 
   return (
     <div className="App container align-items-center">
-      <div className="row d-flex justify-content-end mt-4">
-        <input
-          type="text"
-          name="search"
-          onChange={(event) =>
-            event.target.value.length > 2
-              ? setMoves(
-                  store.move_data.filter((move) =>
-                    move.name.toUpperCase().includes(event.target.value.toUpperCase())
-                  )
-                )
-              : setMoves(store.move_data)
-          }
-        />
-        <div className="col-sm-6 text-start">
-          <button
-            className=" btn-sm mx-3 float-start w-25 buttonPokemonInfo"
-            onClick={() => {
-              number > 49 ? setNumber(number - 50) : setNumber(0);
-            }}
-          >
-            Anterior
-          </button>
+      {load ? (
+        <div className="container align-items-center">
+          <img className="centred img-fluid" src={loading} alt="Cargando..." />
         </div>
+      ) : (
+        <>
+          {/* BUSCADOR Y BOTONES */}
+          <div className="d-flex align-items-center mt-3">
+            <div className="col-sm-4 text-start">
+              <button
+                className="buttonPokemonInfo"
+                onClick={() => {
+                  number > 49 ? setNumber(number - 50) : setNumber(0);
+                }}
+              >
+                Anterior
+              </button>
+            </div>
 
-        <div className="col-sm-6 text-end">
-          <button
-            className="btn-sm mx-3 float-end w-25 buttonPokemonInfo"
-            onClick={() => {
-              number > moves.length - 100
-                ? setNumber(moves.length - 50)
-                : setNumber(number + 50);
-            }}
-          >
-            Siguiente
-          </button>
-        </div>
-      </div>
-      <div className="pokegallery">
-        {load ? (
-          <div className="container align-items-center">
-            <img
-              className="centred img-fluid"
-              src={loading}
-              alt="Cargando..."
-            />
+            <div className="col-sm-4">
+              <div className="border-bottom">
+                <input
+                  type="text"
+                  className="form-control text-center border-0"
+                  id="buscador"
+                  placeholder="BUSCAR MOVIMIENTO"
+                  onChange={(event) =>
+                    event.target.value.length > 2
+                      ? setMoves(
+                          store.move_data.filter((move) =>
+                            move.name
+                              .toUpperCase()
+                              .includes(event.target.value.toUpperCase())
+                          )
+                        )
+                      : setMoves(store.move_data)
+                  }
+                />
+              </div>
+            </div>
+
+            <div className="col-sm-4 text-end">
+              <button
+                className="btn buttonPokemonInfo"
+                onClick={() => {
+                  number > moves.length - 100
+                    ? setNumber(moves.length - 50)
+                    : setNumber(number + 50);
+                }}
+              >
+                Siguiente
+              </button>
+            </div>
           </div>
-        ) : (
+          {/* TABLA DE MOVIMIENTOS */}
           <table className="table table-responsive mt-4">
             <thead className="text-capitalize tablaTitulos">
               <tr>
@@ -111,14 +119,13 @@ const PokeducatorMovimientos = () => {
             </thead>
 
             <tbody>
-              {moves?.slice(number, number+50).map((move) => (
-                <tr data-index={move.id}>
+              {moves?.slice(number, number + 50).map((move) => (
+                <tr data-index={move.id} className="align-middle">
                   <td>
                     <a className="links" href={`/movimiento/${move.id}`}>
                       {move.name}
                     </a>
                   </td>
-
                   <td>
                     {move.type == "normal" ? (
                       <img className="tipoImg" src={normal_img} alt="normal" />
@@ -152,7 +159,7 @@ const PokeducatorMovimientos = () => {
                         src={electrico_img}
                         alt="normal"
                       />
-                    ) : move.type == "phsychic" ? (
+                    ) : move.type == "psychic" ? (
                       <img
                         className="tipoImg"
                         src={psiquico_img}
@@ -184,6 +191,7 @@ const PokeducatorMovimientos = () => {
                       ""
                     )}
                   </td>
+                  <td>{move.description}</td>
                   <td>{move.power ? move.power : "-"}</td>
                   <td>{move.accuracy ? move.accuracy : "-"}</td>
                   <td>{move.pp ? move.pp : "-"}</td>
@@ -191,8 +199,8 @@ const PokeducatorMovimientos = () => {
               ))}
             </tbody>
           </table>
-        )}
-      </div>
+        </>
+      )}
     </div>
   );
 };
