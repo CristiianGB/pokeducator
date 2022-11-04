@@ -26,7 +26,6 @@ import volador_img from "../../assets/img/tiposimg/volador.png";
 import desconocido_img from "../../assets/img/tiposimg/desconocido.png";
 import sombra_img from "../../assets/img/tiposimg/sombra.png";
 
-
 const PokeducatorPokemonInfo = () => {
   const { store, actions } = useContext(Context);
   const [num, setNum] = useState(0);
@@ -50,48 +49,51 @@ const PokeducatorPokemonInfo = () => {
     actions.FindOnePokemon(params.theid);
   }, []);
 
-  let tipoPokemon = store.single_pokemon_data.pokemon?.type.map((elemento) => (
-    elemento == "normal"
-  ? <img className="tipoImg mx-1" src={normal_img} alt="normal" />
-  : elemento == "fighting"
-  ? <img className="tipoImg mx-1" src={lucha_img} alt="normal" />
-  : elemento == "flying"
-  ? <img className="tipoImg mx-1" src={volador_img} alt="normal" />
-  : elemento == "poison"
-  ? <img className="tipoImg mx-1" src={veneno_img} alt="normal" />
-  : elemento == "ground"
-  ? <img className="tipoImg mx-1" src={tierra_img} alt="normal" />
-  : elemento == "rock"
-  ? <img className="tipoImg mx-1" src={roca_img} alt="normal" />
-  : elemento == "ghost"
-  ? <img className="tipoImg mx-1" src={fantasma_img} alt="normal" />
-  : elemento == "steel"
-  ? <img className="tipoImg mx-1" src={acero_img} alt="normal" />
-  : elemento == "fire"
-  ? <img className="tipoImg mx-1" src={fuego_img} alt="normal" />
-  : elemento == "water"
-  ? <img className="tipoImg mx-1" src={agua_img} alt="normal" />
-  : elemento == "grass"
-  ? <img className="tipoImg mx-1" src={planta_img} alt="normal" />
-  : elemento == "electric"
-  ? <img className="tipoImg mx-1" src={electrico_img} alt="normal" />
-  : elemento == "phsychic"
-  ? <img className="tipoImg mx-1" src={psiquico_img} alt="normal" />
-  : elemento == "ice"
-  ? <img className="tipoImg mx-1" src={hielo_img} alt="normal" />
-  : elemento == "dragon"
-  ? <img className="tipoImg mx-1" src={dragon_img} alt="normal" />
-  : elemento == "dark"
-  ? <img className="tipoImg mx-1" src={siniestro_img} alt="normal" />
-  : elemento == "fairy"
-  ? <img className="tipoImg mx-1" src={hada_img} alt="normal" />
-  : elemento == "unknown"
-  ? <img className="tipoImg mx-1" src={desconocido_img} alt="normal" />
-  : elemento == "shadow"
-  ? <img className="tipoImg mx-1" src={sombra_img} alt="normal" />
-  : elemento == "bug"
-  ? <img className="tipoImg mx-1" src={bicho_img} alt="normal" /> :""
-  ));
+  let tipoPokemon = store.single_pokemon_data.pokemon?.type.map((elemento) =>
+    elemento == "normal" ? (
+      <img className="tipoImg mx-1" src={normal_img} alt="normal" />
+    ) : elemento == "fighting" ? (
+      <img className="tipoImg mx-1" src={lucha_img} alt="normal" />
+    ) : elemento == "flying" ? (
+      <img className="tipoImg mx-1" src={volador_img} alt="normal" />
+    ) : elemento == "poison" ? (
+      <img className="tipoImg mx-1" src={veneno_img} alt="normal" />
+    ) : elemento == "ground" ? (
+      <img className="tipoImg mx-1" src={tierra_img} alt="normal" />
+    ) : elemento == "rock" ? (
+      <img className="tipoImg mx-1" src={roca_img} alt="normal" />
+    ) : elemento == "ghost" ? (
+      <img className="tipoImg mx-1" src={fantasma_img} alt="normal" />
+    ) : elemento == "steel" ? (
+      <img className="tipoImg mx-1" src={acero_img} alt="normal" />
+    ) : elemento == "fire" ? (
+      <img className="tipoImg mx-1" src={fuego_img} alt="normal" />
+    ) : elemento == "water" ? (
+      <img className="tipoImg mx-1" src={agua_img} alt="normal" />
+    ) : elemento == "grass" ? (
+      <img className="tipoImg mx-1" src={planta_img} alt="normal" />
+    ) : elemento == "electric" ? (
+      <img className="tipoImg mx-1" src={electrico_img} alt="normal" />
+    ) : elemento == "psychic" ? (
+      <img className="tipoImg mx-1" src={psiquico_img} alt="normal" />
+    ) : elemento == "ice" ? (
+      <img className="tipoImg mx-1" src={hielo_img} alt="normal" />
+    ) : elemento == "dragon" ? (
+      <img className="tipoImg mx-1" src={dragon_img} alt="normal" />
+    ) : elemento == "dark" ? (
+      <img className="tipoImg mx-1" src={siniestro_img} alt="normal" />
+    ) : elemento == "fairy" ? (
+      <img className="tipoImg mx-1" src={hada_img} alt="normal" />
+    ) : elemento == "unknown" ? (
+      <img className="tipoImg mx-1" src={desconocido_img} alt="normal" />
+    ) : elemento == "shadow" ? (
+      <img className="tipoImg mx-1" src={sombra_img} alt="normal" />
+    ) : elemento == "bug" ? (
+      <img className="tipoImg mx-1" src={bicho_img} alt="normal" />
+    ) : (
+      ""
+    )
+  );
 
   return (
     <div className="containe container_section">
@@ -108,7 +110,6 @@ const PokeducatorPokemonInfo = () => {
           <>
             <div className="container align-items-center">
               {/* POKEMON BOTONES */}
-
               <div className="row justify-content-center mt-3">
                 <div className="col-sm-6">
                   {params.theid == 1 ? (
@@ -153,9 +154,12 @@ const PokeducatorPokemonInfo = () => {
                 {/* DIV IZQ */}
                 <div className="col-md-6">
                   {/* POKEMON IMAGEN */}
-                  <div className="pokemon_img">
+                  <div
+                    className={`text-center background_${store.single_pokemon_data.pokemon.type[0]}`}
+                  >
                     <img
                       className="img-fluid"
+                      style={{ width: "400px" }}
                       src={store.single_pokemon_data.pokemon.img}
                       alt={
                         store.single_pokemon_data.pokemon.name +
@@ -178,7 +182,21 @@ const PokeducatorPokemonInfo = () => {
                           {store.single_pokemon_data.pokemon.stats?.map(
                             (objeto) => (
                               <tr className="d-flex text-center align-items-center">
-                                <td className="col-3 fs-6">{objeto.name == "atk" ? "Ataque": objeto.name == "defens" ? "Defensa" : objeto.name == "ps" ? "HP" : objeto.name == "sp_atk" ? "Ataque Esp." : objeto.name == "sp_defens" ? "Defensa Esp." : objeto.name == "spd" ? "Velocidad" :"" }</td>
+                                <td className="col-3 fs-6">
+                                  {objeto.name == "atk"
+                                    ? "Ataque"
+                                    : objeto.name == "defens"
+                                    ? "Defensa"
+                                    : objeto.name == "ps"
+                                    ? "HP"
+                                    : objeto.name == "sp_atk"
+                                    ? "Ataque Esp."
+                                    : objeto.name == "sp_defens"
+                                    ? "Defensa Esp."
+                                    : objeto.name == "spd"
+                                    ? "Velocidad"
+                                    : ""}
+                                </td>
                                 <td className="col-6">
                                   <div className="progress">
                                     <div
@@ -204,7 +222,7 @@ const PokeducatorPokemonInfo = () => {
 
                 {/* DIV DRCH */}
                 <div className="col-md-6 d-flex flex-column justify-content-around m-0 info_pokemon">
-                  <div className="bg-light rounded-4 p-2 div_descripcion mt-5">
+                  <div className="bg-light rounded-4 p-2 div_descripcion">
                     <h5>{store.single_pokemon_data.pokemon.description}</h5>
                   </div>
                   {/* INFO ADICIONAL */}
@@ -220,25 +238,31 @@ const PokeducatorPokemonInfo = () => {
                           <li>
                             <p className="fw-bold fs-5 text-white">Altura</p>
                             <p className="fw-bold">
-                              {store.single_pokemon_data.pokemon.height} PokePulgadas
+                              {store.single_pokemon_data.pokemon.height}{" "}
+                              PokePulgadas
                             </p>
                           </li>
                           <li>
                             <p className="fw-bold fs-5 text-white">Peso</p>
                             <p className="fw-bold">
-                              {store.single_pokemon_data.pokemon.weight} PokeKilos
+                              {store.single_pokemon_data.pokemon.weight}{" "}
+                              PokeKilos
                             </p>
                           </li>
                         </ul>
                       </div>
                       <div className="col-6">
                         <ul>
-                          
                           <li>
                             <p className="fw-bold fs-5 text-white">Habilidad</p>
                             {store.single_pokemon_data.abilities?.map(
                               (elemento) => (
-                                <a className="linksPokemon" href={`/habilidad/${elemento.id}`}><p className="fw-bold">{elemento.name}</p></a> 
+                                <a
+                                  className="linksPokemon"
+                                  href={`/habilidad/${elemento.id}`}
+                                >
+                                  <p className="fw-bold">{elemento.name}</p>
+                                </a>
                               )
                             )}
                           </li>
@@ -275,28 +299,17 @@ const PokeducatorPokemonInfo = () => {
               </div>
 
               {/* POKEMON MOVIMIENTOS */}
-
               <div className="rounded-4">
                 <div className="table-responsive rounded-3">
                   <table className="table">
                     <thead>
-                    <tr>
-                <th scope="col">
-                  Nombre
-                </th>
-                <th scope="col">
-                  Tipo
-                </th>
-                <th scope="col">
-                  Poder
-                </th>
-                <th scope="col">
-                  Precisión
-                </th>
-                <th scope="col">
-                  PP
-                </th>
-              </tr>
+                      <tr>
+                        <th scope="col">Nombre</th>
+                        <th scope="col">Tipo</th>
+                        <th scope="col">Poder</th>
+                        <th scope="col">Precisión</th>
+                        <th scope="col">PP</th>
+                      </tr>
                     </thead>
                     <tbody>
                       {store.single_pokemon_data.moves.map((objeto) => (
@@ -310,56 +323,133 @@ const PokeducatorPokemonInfo = () => {
                             </a>
                           </td>
                           <td>
-                            {objeto.type == "normal"
-                ? <img className="tipoImg " src={normal_img} alt="normal" />
-                : objeto.type == "fighting"
-                ? <img className="tipoImg " src={lucha_img} alt="normal" />
-                : objeto.type == "flying"
-                ? <img className="tipoImg " src={volador_img} alt="normal" />
-                : objeto.type == "poison"
-                ? <img className="tipoImg " src={veneno_img} alt="normal" />
-                : objeto.type == "ground"
-                ? <img className="tipoImg " src={tierra_img} alt="normal" />
-                : objeto.type == "rock"
-                ? <img className="tipoImg " src={roca_img} alt="normal" />
-                : objeto.type == "ghost"
-                ? <img className="tipoImg " src={fantasma_img} alt="normal" />
-                : objeto.type == "steel"
-                ? <img className="tipoImg " src={acero_img} alt="normal" />
-                : objeto.type == "fire"
-                ? <img className="tipoImg " src={fuego_img} alt="normal" />
-                : objeto.type == "water"
-                ? <img className="tipoImg " src={agua_img} alt="normal" />
-                : objeto.type == "grass"
-                ? <img className="tipoImg " src={planta_img} alt="normal" />
-                : objeto.type == "electric"
-                ? <img className="tipoImg " src={electrico_img} alt="normal" />
-                : objeto.type == "phsychic"
-                ? <img className="tipoImg " src={psiquico_img} alt="normal" />
-                : objeto.type == "ice"
-                ? <img className="tipoImg " src={hielo_img} alt="normal" />
-                : objeto.type == "dragon"
-                ? <img className="tipoImg " src={dragon_img} alt="normal" />
-                : objeto.type == "dark"
-                ? <img className="tipoImg " src={siniestro_img} alt="normal" />
-                : objeto.type == "fairy"
-                ? <img className="tipoImg " src={hada_img} alt="normal" />
-                : objeto.type == "unknown"
-                ? <img className="tipoImg " src={desconocido_img} alt="normal" />
-                : objeto.type == "shadow"
-                ? <img className="tipoImg " src={sombra_img} alt="normal" />
-                : objeto.type == "bug"
-                ? <img className="tipoImg " src={bicho_img} alt="normal" /> :""}
+                            {objeto.type == "normal" ? (
+                              <img
+                                className="tipoImg "
+                                src={normal_img}
+                                alt="normal"
+                              />
+                            ) : objeto.type == "fighting" ? (
+                              <img
+                                className="tipoImg "
+                                src={lucha_img}
+                                alt="normal"
+                              />
+                            ) : objeto.type == "flying" ? (
+                              <img
+                                className="tipoImg "
+                                src={volador_img}
+                                alt="normal"
+                              />
+                            ) : objeto.type == "poison" ? (
+                              <img
+                                className="tipoImg "
+                                src={veneno_img}
+                                alt="normal"
+                              />
+                            ) : objeto.type == "ground" ? (
+                              <img
+                                className="tipoImg "
+                                src={tierra_img}
+                                alt="normal"
+                              />
+                            ) : objeto.type == "rock" ? (
+                              <img
+                                className="tipoImg "
+                                src={roca_img}
+                                alt="normal"
+                              />
+                            ) : objeto.type == "ghost" ? (
+                              <img
+                                className="tipoImg "
+                                src={fantasma_img}
+                                alt="normal"
+                              />
+                            ) : objeto.type == "steel" ? (
+                              <img
+                                className="tipoImg "
+                                src={acero_img}
+                                alt="normal"
+                              />
+                            ) : objeto.type == "fire" ? (
+                              <img
+                                className="tipoImg "
+                                src={fuego_img}
+                                alt="normal"
+                              />
+                            ) : objeto.type == "water" ? (
+                              <img
+                                className="tipoImg "
+                                src={agua_img}
+                                alt="normal"
+                              />
+                            ) : objeto.type == "grass" ? (
+                              <img
+                                className="tipoImg "
+                                src={planta_img}
+                                alt="normal"
+                              />
+                            ) : objeto.type == "electric" ? (
+                              <img
+                                className="tipoImg "
+                                src={electrico_img}
+                                alt="normal"
+                              />
+                            ) : objeto.type == "psychic" ? (
+                              <img
+                                className="tipoImg "
+                                src={psiquico_img}
+                                alt="normal"
+                              />
+                            ) : objeto.type == "ice" ? (
+                              <img
+                                className="tipoImg "
+                                src={hielo_img}
+                                alt="normal"
+                              />
+                            ) : objeto.type == "dragon" ? (
+                              <img
+                                className="tipoImg "
+                                src={dragon_img}
+                                alt="normal"
+                              />
+                            ) : objeto.type == "dark" ? (
+                              <img
+                                className="tipoImg "
+                                src={siniestro_img}
+                                alt="normal"
+                              />
+                            ) : objeto.type == "fairy" ? (
+                              <img
+                                className="tipoImg "
+                                src={hada_img}
+                                alt="normal"
+                              />
+                            ) : objeto.type == "unknown" ? (
+                              <img
+                                className="tipoImg "
+                                src={desconocido_img}
+                                alt="normal"
+                              />
+                            ) : objeto.type == "shadow" ? (
+                              <img
+                                className="tipoImg "
+                                src={sombra_img}
+                                alt="normal"
+                              />
+                            ) : objeto.type == "bug" ? (
+                              <img
+                                className="tipoImg "
+                                src={bicho_img}
+                                alt="normal"
+                              />
+                            ) : (
+                              ""
+                            )}
                           </td>
-                          <td >
-                            {objeto.power ? objeto.power : "-"}
-                          </td>
-                          <td >
-                            {objeto.accuracy ? objeto.accuracy : "-"}
-                          </td>
-                          <td >
-                            {objeto.pp ? objeto.pp : "-"}
-                          </td>
+                          <td>{objeto.power ? objeto.power : "-"}</td>
+                          <td>{objeto.accuracy ? objeto.accuracy : "-"}</td>
+                          <td>{objeto.pp ? objeto.pp : "-"}</td>
                         </tr>
                       ))}
                     </tbody>

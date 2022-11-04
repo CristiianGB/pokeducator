@@ -8,68 +8,78 @@ const PokeducatorHabilidad = () => {
   const [load, setLoad] = useState("true");
   const [number, setNumber] = useState(0);
   const [abilities, setAbilities] = useState();
- 
+
   useEffect(() => {
     setTimeout(() => {
-      if(load != false){
+      if (load != false) {
         setLoad(false);
-        setAbilities(store.ability_data)
-        }
+        setAbilities(store.ability_data);
+      }
     }, 2000);
-  },[])
-
+  }, []);
 
   return (
     <div className="App container align-items-center">
-      <div className="row d-flex justify-content-end mt-4">
-      <input
-          type="text"
-          name="search"
-          onChange={(event) =>
-            event.target.value.length > 2
-              ? setAbilities(
-                  store.ability_data.filter((ability) =>
-                  ability.name.toUpperCase().includes(event.target.value.toUpperCase())
-                  )
-                )
-              : setAbilities(store.ability_data)
-          }
-        />
-      <div className="col-sm-6 text-start">
-          <button
-            className=" btn-sm mx-3 float-start w-25 buttonPokemonInfo"
-            onClick={() => {
-              number > 49 ? setNumber(number - 50) : setNumber(0);
-            }}
-          >
-            Anterior
-          </button>
-        </div>
+      {store.ability_data ? (
+        load ? (
+          <div className="container align-items-center">
+            <img
+              className="centred img-fluid"
+              src={loading}
+              alt="Cargando..."
+            />
+          </div>
+        ) : (
+          <>
+            {/* BUSCADOR Y BOTONES */}
+            <div className="d-flex align-items-center mt-3">
+              <div className="col-sm-4 text-start">
+                <button
+                  className="buttonPokemonInfo"
+                  onClick={() => {
+                    number > 49 ? setNumber(number - 50) : setNumber(0);
+                  }}
+                >
+                  Anterior
+                </button>
+              </div>
 
-        <div className="col-sm-6 text-end">
-          <button
-            className="btn-sm mx-3 float-end w-25 buttonPokemonInfo"
-            onClick={() => {
-              number > abilities.length - 100
-                ? setNumber(abilities.length - 50)
-                : setNumber(number + 50);
-            }}
-          >
-            Siguiente
-          </button>
-        </div>
-      </div>
-      <div className="pokegallery">
-        {store.ability_data ? (
-          load ? (
-            <div className="container align-items-center">
-              <img
-                className="centred img-fluid"
-                src={loading}
-                alt="Cargando..."
-              />
+              <div className="col-sm-4">
+                <div className="border-bottom">
+                  <input
+                    type="text"
+                    className="form-control text-center border-0"
+                    id="buscador"
+                    placeholder="BUSCAR HABILIDAD"
+                    onChange={(event) =>
+                      event.target.value.length > 2
+                        ? setAbilities(
+                            store.ability_data.filter((ability) =>
+                              ability.name
+                                .toUpperCase()
+                                .includes(event.target.value.toUpperCase())
+                            )
+                          )
+                        : setAbilities(store.ability_data)
+                    }
+                  />
+                </div>
+              </div>
+
+              <div className="col-sm-4 text-end">
+                <button
+                  className="btn buttonPokemonInfo"
+                  onClick={() => {
+                    number > abilities.length - 100
+                      ? setNumber(abilities.length - 50)
+                      : setNumber(number + 50);
+                  }}
+                >
+                  Siguiente
+                </button>
+              </div>
             </div>
-          ) : (
+            {/* TABLA DE HABILIDADES */}
             <table className="table table-responsive mt-4">
               <thead>
                 <tr>
@@ -79,7 +89,7 @@ const PokeducatorHabilidad = () => {
                 </tr>
               </thead>
               <tbody>
-                {abilities?.slice(number, number+50).map((habilidad, i) => (
+                {abilities?.slice(number, number + 50).map((habilidad, i) => (
                   <tr data-index={i}>
                     <td>
                       <a className="links" href={`/habilidad/${habilidad.id}`}>
@@ -144,11 +154,11 @@ const PokeducatorHabilidad = () => {
                 ))}
               </tbody>
             </table>
-          )
-        ) : (
-          ""
-        )}
-      </div>
+          </>
+        )
+      ) : (
+        ""
+      )}
     </div>
   );
 };
