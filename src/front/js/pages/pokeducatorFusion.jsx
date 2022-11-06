@@ -33,6 +33,198 @@ const PokeducatorFusion = () => {
   let time = [2000, 3000, 4000, 5000];
   let randomtime = Math.floor(Math.random() * time.length);
 
+
+  const type = (option) => {
+    
+    return  option.type == "normal" ? (
+      <span>
+        {option.name}{" "}
+        <img
+          className="tipoImgFusion mx-1"
+          src={normal_img}
+          alt="normal"
+        />
+      </span>
+    ) : option.type == "fighting" ? (
+      <span>
+        {option.name}
+        <img
+          className="tipoImgFusion mx-1"
+          src={lucha_img}
+          alt="normal"
+        />
+      </span>
+    ) : option.type == "flying" ? (
+      <span>
+        {option.name}
+        <img
+          className="tipoImgFusion mx-1"
+          src={volador_img}
+          alt="normal"
+        />
+      </span>
+    ) : option.type == "poison" ? (
+      <span>
+        {option.name}
+        <img
+          className="tipoImgFusion mx-1"
+          src={veneno_img}
+          alt="normal"
+        />
+      </span>
+    ) : option.type == "ground" ? (
+      <span>
+        {option.name}
+        <img
+          className="tipoImgFusion mx-1"
+          src={tierra_img}
+          alt="normal"
+        />
+      </span>
+    ) : option.type == "rock" ? (
+      <span>
+        {option.name}
+        <img
+          className="tipoImgFusion mx-1"
+          src={roca_img}
+          alt="normal"
+        />
+      </span>
+    ) : option.type == "ghost" ? (
+      <span>
+        {option.name}
+        <img
+          className="tipoImgFusion mx-1"
+          src={fantasma_img}
+          alt="normal"
+        />
+      </span>
+    ) : option.type == "steel" ? (
+      <span>
+        {option.name}
+        <img
+          className="tipoImgFusion mx-1"
+          src={acero_img}
+          alt="normal"
+        />
+      </span>
+    ) : option.type == "fire" ? (
+      <span>
+        {option.name}
+        <img
+          className="tipoImgFusion mx-1"
+          src={fuego_img}
+          alt="normal"
+        />
+      </span>
+    ) : option.type == "water" ? (
+      <span>
+        {option.name}
+        <img
+          className="tipoImgFusion mx-1"
+          src={agua_img}
+          alt="normal"
+        />
+      </span>
+    ) : option.type == "grass" ? (
+      <span>
+        {option.name}
+        <img
+          className="tipoImgFusion mx-1"
+          src={planta_img}
+          alt="normal"
+        />
+      </span>
+    ) : option.type == "electric" ? (
+      <span>
+        {option.name}
+        <img
+          className="tipoImgFusion mx-1"
+          src={electrico_img}
+          alt="normal"
+        />
+      </span>
+    ) : option.type == "phsychic" ? (
+      <span>
+        {option.name}
+        <img
+          className="tipoImgFusion mx-1"
+          src={psiquico_img}
+          alt="normal"
+        />
+      </span>
+    ) : option.type == "ice" ? (
+      <span>
+        {option.name}
+        <img
+          className="tipoImgFusion mx-1"
+          src={hielo_img}
+          alt="normal"
+        />
+      </span>
+    ) : option.type == "dragon" ? (
+      <span>
+        {option.name}
+        <img
+          className="tipoImgFusion mx-1"
+          src={dragon_img}
+          alt="normal"
+        />
+      </span>
+    ) : option.type == "dark" ? (
+      <span>
+        {option.name}
+        <img
+          className="tipoImgFusion mx-1"
+          src={siniestro_img}
+          alt="normal"
+        />
+      </span>
+    ) : option.type == "fairy" ? (
+      <span>
+        {option.name}
+        <img
+          className="tipoImgFusion mx-1"
+          src={hada_img}
+          alt="normal"
+        />
+      </span>
+    ) : option.type == "unknown" ? (
+      <span>
+        {option.name}
+        <img
+          className="tipoImgFusion mx-1"
+          src={desconocido_img}
+          alt="normal"
+        />
+      </span>
+    ) : option.type == "shadow" ? (
+      <span>
+        {option.name}
+        <img
+          className="tipoImgFusion mx-1"
+          src={sombra_img}
+          alt="normal"
+        />
+      </span>
+    ) : option.type == "bug" ? (
+      <span>
+        {option.name}
+        <img
+          className="tipoImgFusion mx-1"
+          src={bicho_img}
+          alt="normal"
+        />
+      </span>
+    ) : (
+      ""
+    )
+  
+  }
+
+
+
+
   const handleChange = (id) => {
     let pokemon = store.pokemon_data.find((pokemon) => pokemon.id == id);
     if (pokemon) {
@@ -211,189 +403,7 @@ const PokeducatorFusion = () => {
                           components={{ DropdownIndicator }}
                           options={store.move_data}
                           getOptionLabel={(option) =>
-                            option.type == "normal" ? (
-                              <span>
-                                {option.name}{" "}
-                                <img
-                                  className="tipoImgFusion mx-1"
-                                  src={normal_img}
-                                  alt="normal"
-                                />
-                              </span>
-                            ) : option.type == "fighting" ? (
-                              <span>
-                                {option.name}
-                                <img
-                                  className="tipoImgFusion mx-1"
-                                  src={lucha_img}
-                                  alt="normal"
-                                />
-                              </span>
-                            ) : option.type == "flying" ? (
-                              <span>
-                                {option.name}
-                                <img
-                                  className="tipoImgFusion mx-1"
-                                  src={volador_img}
-                                  alt="normal"
-                                />
-                              </span>
-                            ) : option.type == "poison" ? (
-                              <span>
-                                {option.name}
-                                <img
-                                  className="tipoImgFusion mx-1"
-                                  src={veneno_img}
-                                  alt="normal"
-                                />
-                              </span>
-                            ) : option.type == "ground" ? (
-                              <span>
-                                {option.name}
-                                <img
-                                  className="tipoImgFusion mx-1"
-                                  src={tierra_img}
-                                  alt="normal"
-                                />
-                              </span>
-                            ) : option.type == "rock" ? (
-                              <span>
-                                {option.name}
-                                <img
-                                  className="tipoImgFusion mx-1"
-                                  src={roca_img}
-                                  alt="normal"
-                                />
-                              </span>
-                            ) : option.type == "ghost" ? (
-                              <span>
-                                {option.name}
-                                <img
-                                  className="tipoImgFusion mx-1"
-                                  src={fantasma_img}
-                                  alt="normal"
-                                />
-                              </span>
-                            ) : option.type == "steel" ? (
-                              <span>
-                                {option.name}
-                                <img
-                                  className="tipoImgFusion mx-1"
-                                  src={acero_img}
-                                  alt="normal"
-                                />
-                              </span>
-                            ) : option.type == "fire" ? (
-                              <span>
-                                {option.name}
-                                <img
-                                  className="tipoImgFusion mx-1"
-                                  src={fuego_img}
-                                  alt="normal"
-                                />
-                              </span>
-                            ) : option.type == "water" ? (
-                              <span>
-                                {option.name}
-                                <img
-                                  className="tipoImgFusion mx-1"
-                                  src={agua_img}
-                                  alt="normal"
-                                />
-                              </span>
-                            ) : option.type == "grass" ? (
-                              <span>
-                                {option.name}
-                                <img
-                                  className="tipoImgFusion mx-1"
-                                  src={planta_img}
-                                  alt="normal"
-                                />
-                              </span>
-                            ) : option.type == "electric" ? (
-                              <span>
-                                {option.name}
-                                <img
-                                  className="tipoImgFusion mx-1"
-                                  src={electrico_img}
-                                  alt="normal"
-                                />
-                              </span>
-                            ) : option.type == "phsychic" ? (
-                              <span>
-                                {option.name}
-                                <img
-                                  className="tipoImgFusion mx-1"
-                                  src={psiquico_img}
-                                  alt="normal"
-                                />
-                              </span>
-                            ) : option.type == "ice" ? (
-                              <span>
-                                {option.name}
-                                <img
-                                  className="tipoImgFusion mx-1"
-                                  src={hielo_img}
-                                  alt="normal"
-                                />
-                              </span>
-                            ) : option.type == "dragon" ? (
-                              <span>
-                                {option.name}
-                                <img
-                                  className="tipoImgFusion mx-1"
-                                  src={dragon_img}
-                                  alt="normal"
-                                />
-                              </span>
-                            ) : option.type == "dark" ? (
-                              <span>
-                                {option.name}
-                                <img
-                                  className="tipoImgFusion mx-1"
-                                  src={siniestro_img}
-                                  alt="normal"
-                                />
-                              </span>
-                            ) : option.type == "fairy" ? (
-                              <span>
-                                {option.name}
-                                <img
-                                  className="tipoImgFusion mx-1"
-                                  src={hada_img}
-                                  alt="normal"
-                                />
-                              </span>
-                            ) : option.type == "unknown" ? (
-                              <span>
-                                {option.name}
-                                <img
-                                  className="tipoImgFusion mx-1"
-                                  src={desconocido_img}
-                                  alt="normal"
-                                />
-                              </span>
-                            ) : option.type == "shadow" ? (
-                              <span>
-                                {option.name}
-                                <img
-                                  className="tipoImgFusion mx-1"
-                                  src={sombra_img}
-                                  alt="normal"
-                                />
-                              </span>
-                            ) : option.type == "bug" ? (
-                              <span>
-                                {option.name}
-                                <img
-                                  className="tipoImgFusion mx-1"
-                                  src={bicho_img}
-                                  alt="normal"
-                                />
-                              </span>
-                            ) : (
-                              ""
-                            )
+                            type(option)
                           }
                           getOptionValue={(option) => option.name}
                         />
@@ -404,189 +414,7 @@ const PokeducatorFusion = () => {
                           components={{ DropdownIndicator }}
                           options={store.move_data}
                           getOptionLabel={(option) =>
-                            option.type == "normal" ? (
-                              <span>
-                                {option.name}{" "}
-                                <img
-                                  className="tipoImgFusion mx-1"
-                                  src={normal_img}
-                                  alt="normal"
-                                />
-                              </span>
-                            ) : option.type == "fighting" ? (
-                              <span>
-                                {option.name}
-                                <img
-                                  className="tipoImgFusion mx-1"
-                                  src={lucha_img}
-                                  alt="normal"
-                                />
-                              </span>
-                            ) : option.type == "flying" ? (
-                              <span>
-                                {option.name}
-                                <img
-                                  className="tipoImgFusion mx-1"
-                                  src={volador_img}
-                                  alt="normal"
-                                />
-                              </span>
-                            ) : option.type == "poison" ? (
-                              <span>
-                                {option.name}
-                                <img
-                                  className="tipoImgFusion mx-1"
-                                  src={veneno_img}
-                                  alt="normal"
-                                />
-                              </span>
-                            ) : option.type == "ground" ? (
-                              <span>
-                                {option.name}
-                                <img
-                                  className="tipoImgFusion mx-1"
-                                  src={tierra_img}
-                                  alt="normal"
-                                />
-                              </span>
-                            ) : option.type == "rock" ? (
-                              <span>
-                                {option.name}
-                                <img
-                                  className="tipoImgFusion mx-1"
-                                  src={roca_img}
-                                  alt="normal"
-                                />
-                              </span>
-                            ) : option.type == "ghost" ? (
-                              <span>
-                                {option.name}
-                                <img
-                                  className="tipoImgFusion mx-1"
-                                  src={fantasma_img}
-                                  alt="normal"
-                                />
-                              </span>
-                            ) : option.type == "steel" ? (
-                              <span>
-                                {option.name}
-                                <img
-                                  className="tipoImgFusion mx-1"
-                                  src={acero_img}
-                                  alt="normal"
-                                />
-                              </span>
-                            ) : option.type == "fire" ? (
-                              <span>
-                                {option.name}
-                                <img
-                                  className="tipoImgFusion mx-1"
-                                  src={fuego_img}
-                                  alt="normal"
-                                />
-                              </span>
-                            ) : option.type == "water" ? (
-                              <span>
-                                {option.name}
-                                <img
-                                  className="tipoImgFusion mx-1"
-                                  src={agua_img}
-                                  alt="normal"
-                                />
-                              </span>
-                            ) : option.type == "grass" ? (
-                              <span>
-                                {option.name}
-                                <img
-                                  className="tipoImgFusion mx-1"
-                                  src={planta_img}
-                                  alt="normal"
-                                />
-                              </span>
-                            ) : option.type == "electric" ? (
-                              <span>
-                                {option.name}
-                                <img
-                                  className="tipoImgFusion mx-1"
-                                  src={electrico_img}
-                                  alt="normal"
-                                />
-                              </span>
-                            ) : option.type == "phsychic" ? (
-                              <span>
-                                {option.name}
-                                <img
-                                  className="tipoImgFusion mx-1"
-                                  src={psiquico_img}
-                                  alt="normal"
-                                />
-                              </span>
-                            ) : option.type == "ice" ? (
-                              <span>
-                                {option.name}
-                                <img
-                                  className="tipoImgFusion mx-1"
-                                  src={hielo_img}
-                                  alt="normal"
-                                />
-                              </span>
-                            ) : option.type == "dragon" ? (
-                              <span>
-                                {option.name}
-                                <img
-                                  className="tipoImgFusion mx-1"
-                                  src={dragon_img}
-                                  alt="normal"
-                                />
-                              </span>
-                            ) : option.type == "dark" ? (
-                              <span>
-                                {option.name}
-                                <img
-                                  className="tipoImgFusion mx-1"
-                                  src={siniestro_img}
-                                  alt="normal"
-                                />
-                              </span>
-                            ) : option.type == "fairy" ? (
-                              <span>
-                                {option.name}
-                                <img
-                                  className="tipoImgFusion mx-1"
-                                  src={hada_img}
-                                  alt="normal"
-                                />
-                              </span>
-                            ) : option.type == "unknown" ? (
-                              <span>
-                                {option.name}
-                                <img
-                                  className="tipoImgFusion mx-1"
-                                  src={desconocido_img}
-                                  alt="normal"
-                                />
-                              </span>
-                            ) : option.type == "shadow" ? (
-                              <span>
-                                {option.name}
-                                <img
-                                  className="tipoImgFusion mx-1"
-                                  src={sombra_img}
-                                  alt="normal"
-                                />
-                              </span>
-                            ) : option.type == "bug" ? (
-                              <span>
-                                {option.name}
-                                <img
-                                  className="tipoImgFusion mx-1"
-                                  src={bicho_img}
-                                  alt="normal"
-                                />
-                              </span>
-                            ) : (
-                              ""
-                            )
+                            type(option)
                           }
                           getOptionValue={(option) => option.name}
                         />
@@ -599,189 +427,7 @@ const PokeducatorFusion = () => {
                           components={{ DropdownIndicator }}
                           options={store.move_data}
                           getOptionLabel={(option) =>
-                            option.type == "normal" ? (
-                              <span>
-                                {option.name}{" "}
-                                <img
-                                  className="tipoImgFusion mx-1"
-                                  src={normal_img}
-                                  alt="normal"
-                                />
-                              </span>
-                            ) : option.type == "fighting" ? (
-                              <span>
-                                {option.name}
-                                <img
-                                  className="tipoImgFusion mx-1"
-                                  src={lucha_img}
-                                  alt="normal"
-                                />
-                              </span>
-                            ) : option.type == "flying" ? (
-                              <span>
-                                {option.name}
-                                <img
-                                  className="tipoImgFusion mx-1"
-                                  src={volador_img}
-                                  alt="normal"
-                                />
-                              </span>
-                            ) : option.type == "poison" ? (
-                              <span>
-                                {option.name}
-                                <img
-                                  className="tipoImgFusion mx-1"
-                                  src={veneno_img}
-                                  alt="normal"
-                                />
-                              </span>
-                            ) : option.type == "ground" ? (
-                              <span>
-                                {option.name}
-                                <img
-                                  className="tipoImgFusion mx-1"
-                                  src={tierra_img}
-                                  alt="normal"
-                                />
-                              </span>
-                            ) : option.type == "rock" ? (
-                              <span>
-                                {option.name}
-                                <img
-                                  className="tipoImgFusion mx-1"
-                                  src={roca_img}
-                                  alt="normal"
-                                />
-                              </span>
-                            ) : option.type == "ghost" ? (
-                              <span>
-                                {option.name}
-                                <img
-                                  className="tipoImgFusion mx-1"
-                                  src={fantasma_img}
-                                  alt="normal"
-                                />
-                              </span>
-                            ) : option.type == "steel" ? (
-                              <span>
-                                {option.name}
-                                <img
-                                  className="tipoImgFusion mx-1"
-                                  src={acero_img}
-                                  alt="normal"
-                                />
-                              </span>
-                            ) : option.type == "fire" ? (
-                              <span>
-                                {option.name}
-                                <img
-                                  className="tipoImgFusion mx-1"
-                                  src={fuego_img}
-                                  alt="normal"
-                                />
-                              </span>
-                            ) : option.type == "water" ? (
-                              <span>
-                                {option.name}
-                                <img
-                                  className="tipoImgFusion mx-1"
-                                  src={agua_img}
-                                  alt="normal"
-                                />
-                              </span>
-                            ) : option.type == "grass" ? (
-                              <span>
-                                {option.name}
-                                <img
-                                  className="tipoImgFusion mx-1"
-                                  src={planta_img}
-                                  alt="normal"
-                                />
-                              </span>
-                            ) : option.type == "electric" ? (
-                              <span>
-                                {option.name}
-                                <img
-                                  className="tipoImgFusion mx-1"
-                                  src={electrico_img}
-                                  alt="normal"
-                                />
-                              </span>
-                            ) : option.type == "phsychic" ? (
-                              <span>
-                                {option.name}
-                                <img
-                                  className="tipoImgFusion mx-1"
-                                  src={psiquico_img}
-                                  alt="normal"
-                                />
-                              </span>
-                            ) : option.type == "ice" ? (
-                              <span>
-                                {option.name}
-                                <img
-                                  className="tipoImgFusion mx-1"
-                                  src={hielo_img}
-                                  alt="normal"
-                                />
-                              </span>
-                            ) : option.type == "dragon" ? (
-                              <span>
-                                {option.name}
-                                <img
-                                  className="tipoImgFusion mx-1"
-                                  src={dragon_img}
-                                  alt="normal"
-                                />
-                              </span>
-                            ) : option.type == "dark" ? (
-                              <span>
-                                {option.name}
-                                <img
-                                  className="tipoImgFusion mx-1"
-                                  src={siniestro_img}
-                                  alt="normal"
-                                />
-                              </span>
-                            ) : option.type == "fairy" ? (
-                              <span>
-                                {option.name}
-                                <img
-                                  className="tipoImgFusion mx-1"
-                                  src={hada_img}
-                                  alt="normal"
-                                />
-                              </span>
-                            ) : option.type == "unknown" ? (
-                              <span>
-                                {option.name}
-                                <img
-                                  className="tipoImgFusion mx-1"
-                                  src={desconocido_img}
-                                  alt="normal"
-                                />
-                              </span>
-                            ) : option.type == "shadow" ? (
-                              <span>
-                                {option.name}
-                                <img
-                                  className="tipoImgFusion mx-1"
-                                  src={sombra_img}
-                                  alt="normal"
-                                />
-                              </span>
-                            ) : option.type == "bug" ? (
-                              <span>
-                                {option.name}
-                                <img
-                                  className="tipoImgFusion mx-1"
-                                  src={bicho_img}
-                                  alt="normal"
-                                />
-                              </span>
-                            ) : (
-                              ""
-                            )
+                            type(option)
                           }
                           getOptionValue={(option) => option.name}
                         />
@@ -792,189 +438,7 @@ const PokeducatorFusion = () => {
                           components={{ DropdownIndicator }}
                           options={store.move_data}
                           getOptionLabel={(option) =>
-                            option.type == "normal" ? (
-                              <span>
-                                {option.name}{" "}
-                                <img
-                                  className="tipoImgFusion mx-1"
-                                  src={normal_img}
-                                  alt="normal"
-                                />
-                              </span>
-                            ) : option.type == "fighting" ? (
-                              <span>
-                                {option.name}
-                                <img
-                                  className="tipoImgFusion mx-1"
-                                  src={lucha_img}
-                                  alt="normal"
-                                />
-                              </span>
-                            ) : option.type == "flying" ? (
-                              <span>
-                                {option.name}
-                                <img
-                                  className="tipoImgFusion mx-1"
-                                  src={volador_img}
-                                  alt="normal"
-                                />
-                              </span>
-                            ) : option.type == "poison" ? (
-                              <span>
-                                {option.name}
-                                <img
-                                  className="tipoImgFusion mx-1"
-                                  src={veneno_img}
-                                  alt="normal"
-                                />
-                              </span>
-                            ) : option.type == "ground" ? (
-                              <span>
-                                {option.name}
-                                <img
-                                  className="tipoImgFusion mx-1"
-                                  src={tierra_img}
-                                  alt="normal"
-                                />
-                              </span>
-                            ) : option.type == "rock" ? (
-                              <span>
-                                {option.name}
-                                <img
-                                  className="tipoImgFusion mx-1"
-                                  src={roca_img}
-                                  alt="normal"
-                                />
-                              </span>
-                            ) : option.type == "ghost" ? (
-                              <span>
-                                {option.name}
-                                <img
-                                  className="tipoImgFusion mx-1"
-                                  src={fantasma_img}
-                                  alt="normal"
-                                />
-                              </span>
-                            ) : option.type == "steel" ? (
-                              <span>
-                                {option.name}
-                                <img
-                                  className="tipoImgFusion mx-1"
-                                  src={acero_img}
-                                  alt="normal"
-                                />
-                              </span>
-                            ) : option.type == "fire" ? (
-                              <span>
-                                {option.name}
-                                <img
-                                  className="tipoImgFusion mx-1"
-                                  src={fuego_img}
-                                  alt="normal"
-                                />
-                              </span>
-                            ) : option.type == "water" ? (
-                              <span>
-                                {option.name}
-                                <img
-                                  className="tipoImgFusion mx-1"
-                                  src={agua_img}
-                                  alt="normal"
-                                />
-                              </span>
-                            ) : option.type == "grass" ? (
-                              <span>
-                                {option.name}
-                                <img
-                                  className="tipoImgFusion mx-1"
-                                  src={planta_img}
-                                  alt="normal"
-                                />
-                              </span>
-                            ) : option.type == "electric" ? (
-                              <span>
-                                {option.name}
-                                <img
-                                  className="tipoImgFusion mx-1"
-                                  src={electrico_img}
-                                  alt="normal"
-                                />
-                              </span>
-                            ) : option.type == "phsychic" ? (
-                              <span>
-                                {option.name}
-                                <img
-                                  className="tipoImgFusion mx-1"
-                                  src={psiquico_img}
-                                  alt="normal"
-                                />
-                              </span>
-                            ) : option.type == "ice" ? (
-                              <span>
-                                {option.name}
-                                <img
-                                  className="tipoImgFusion mx-1"
-                                  src={hielo_img}
-                                  alt="normal"
-                                />
-                              </span>
-                            ) : option.type == "dragon" ? (
-                              <span>
-                                {option.name}
-                                <img
-                                  className="tipoImgFusion mx-1"
-                                  src={dragon_img}
-                                  alt="normal"
-                                />
-                              </span>
-                            ) : option.type == "dark" ? (
-                              <span>
-                                {option.name}
-                                <img
-                                  className="tipoImgFusion mx-1"
-                                  src={siniestro_img}
-                                  alt="normal"
-                                />
-                              </span>
-                            ) : option.type == "fairy" ? (
-                              <span>
-                                {option.name}
-                                <img
-                                  className="tipoImgFusion mx-1"
-                                  src={hada_img}
-                                  alt="normal"
-                                />
-                              </span>
-                            ) : option.type == "unknown" ? (
-                              <span>
-                                {option.name}
-                                <img
-                                  className="tipoImgFusion mx-1"
-                                  src={desconocido_img}
-                                  alt="normal"
-                                />
-                              </span>
-                            ) : option.type == "shadow" ? (
-                              <span>
-                                {option.name}
-                                <img
-                                  className="tipoImgFusion mx-1"
-                                  src={sombra_img}
-                                  alt="normal"
-                                />
-                              </span>
-                            ) : option.type == "bug" ? (
-                              <span>
-                                {option.name}
-                                <img
-                                  className="tipoImgFusion mx-1"
-                                  src={bicho_img}
-                                  alt="normal"
-                                />
-                              </span>
-                            ) : (
-                              ""
-                            )
+                            type(option)
                           }
                           getOptionValue={(option) => option.name}
                         />
@@ -1114,189 +578,7 @@ const PokeducatorFusion = () => {
                           components={{ DropdownIndicator }}
                           options={store.move_data}
                           getOptionLabel={(option) =>
-                            option.type == "normal" ? (
-                              <span>
-                                {option.name}{" "}
-                                <img
-                                  className="tipoImgFusion mx-1"
-                                  src={normal_img}
-                                  alt="normal"
-                                />
-                              </span>
-                            ) : option.type == "fighting" ? (
-                              <span>
-                                {option.name}
-                                <img
-                                  className="tipoImgFusion mx-1"
-                                  src={lucha_img}
-                                  alt="normal"
-                                />
-                              </span>
-                            ) : option.type == "flying" ? (
-                              <span>
-                                {option.name}
-                                <img
-                                  className="tipoImgFusion mx-1"
-                                  src={volador_img}
-                                  alt="normal"
-                                />
-                              </span>
-                            ) : option.type == "poison" ? (
-                              <span>
-                                {option.name}
-                                <img
-                                  className="tipoImgFusion mx-1"
-                                  src={veneno_img}
-                                  alt="normal"
-                                />
-                              </span>
-                            ) : option.type == "ground" ? (
-                              <span>
-                                {option.name}
-                                <img
-                                  className="tipoImgFusion mx-1"
-                                  src={tierra_img}
-                                  alt="normal"
-                                />
-                              </span>
-                            ) : option.type == "rock" ? (
-                              <span>
-                                {option.name}
-                                <img
-                                  className="tipoImgFusion mx-1"
-                                  src={roca_img}
-                                  alt="normal"
-                                />
-                              </span>
-                            ) : option.type == "ghost" ? (
-                              <span>
-                                {option.name}
-                                <img
-                                  className="tipoImgFusion mx-1"
-                                  src={fantasma_img}
-                                  alt="normal"
-                                />
-                              </span>
-                            ) : option.type == "steel" ? (
-                              <span>
-                                {option.name}
-                                <img
-                                  className="tipoImgFusion mx-1"
-                                  src={acero_img}
-                                  alt="normal"
-                                />
-                              </span>
-                            ) : option.type == "fire" ? (
-                              <span>
-                                {option.name}
-                                <img
-                                  className="tipoImgFusion mx-1"
-                                  src={fuego_img}
-                                  alt="normal"
-                                />
-                              </span>
-                            ) : option.type == "water" ? (
-                              <span>
-                                {option.name}
-                                <img
-                                  className="tipoImgFusion mx-1"
-                                  src={agua_img}
-                                  alt="normal"
-                                />
-                              </span>
-                            ) : option.type == "grass" ? (
-                              <span>
-                                {option.name}
-                                <img
-                                  className="tipoImgFusion mx-1"
-                                  src={planta_img}
-                                  alt="normal"
-                                />
-                              </span>
-                            ) : option.type == "electric" ? (
-                              <span>
-                                {option.name}
-                                <img
-                                  className="tipoImgFusion mx-1"
-                                  src={electrico_img}
-                                  alt="normal"
-                                />
-                              </span>
-                            ) : option.type == "phsychic" ? (
-                              <span>
-                                {option.name}
-                                <img
-                                  className="tipoImgFusion mx-1"
-                                  src={psiquico_img}
-                                  alt="normal"
-                                />
-                              </span>
-                            ) : option.type == "ice" ? (
-                              <span>
-                                {option.name}
-                                <img
-                                  className="tipoImgFusion mx-1"
-                                  src={hielo_img}
-                                  alt="normal"
-                                />
-                              </span>
-                            ) : option.type == "dragon" ? (
-                              <span>
-                                {option.name}
-                                <img
-                                  className="tipoImgFusion mx-1"
-                                  src={dragon_img}
-                                  alt="normal"
-                                />
-                              </span>
-                            ) : option.type == "dark" ? (
-                              <span>
-                                {option.name}
-                                <img
-                                  className="tipoImgFusion mx-1"
-                                  src={siniestro_img}
-                                  alt="normal"
-                                />
-                              </span>
-                            ) : option.type == "fairy" ? (
-                              <span>
-                                {option.name}
-                                <img
-                                  className="tipoImgFusion mx-1"
-                                  src={hada_img}
-                                  alt="normal"
-                                />
-                              </span>
-                            ) : option.type == "unknown" ? (
-                              <span>
-                                {option.name}
-                                <img
-                                  className="tipoImgFusion mx-1"
-                                  src={desconocido_img}
-                                  alt="normal"
-                                />
-                              </span>
-                            ) : option.type == "shadow" ? (
-                              <span>
-                                {option.name}
-                                <img
-                                  className="tipoImgFusion mx-1"
-                                  src={sombra_img}
-                                  alt="normal"
-                                />
-                              </span>
-                            ) : option.type == "bug" ? (
-                              <span>
-                                {option.name}
-                                <img
-                                  className="tipoImgFusion mx-1"
-                                  src={bicho_img}
-                                  alt="normal"
-                                />
-                              </span>
-                            ) : (
-                              ""
-                            )
+                            console.log(type(option))
                           }
                           getOptionValue={(option) => option.name}
                         />
@@ -1307,189 +589,7 @@ const PokeducatorFusion = () => {
                           components={{ DropdownIndicator }}
                           options={store.move_data}
                           getOptionLabel={(option) =>
-                            option.type == "normal" ? (
-                              <span>
-                                {option.name}{" "}
-                                <img
-                                  className="tipoImgFusion mx-1"
-                                  src={normal_img}
-                                  alt="normal"
-                                />
-                              </span>
-                            ) : option.type == "fighting" ? (
-                              <span>
-                                {option.name}
-                                <img
-                                  className="tipoImgFusion mx-1"
-                                  src={lucha_img}
-                                  alt="normal"
-                                />
-                              </span>
-                            ) : option.type == "flying" ? (
-                              <span>
-                                {option.name}
-                                <img
-                                  className="tipoImgFusion mx-1"
-                                  src={volador_img}
-                                  alt="normal"
-                                />
-                              </span>
-                            ) : option.type == "poison" ? (
-                              <span>
-                                {option.name}
-                                <img
-                                  className="tipoImgFusion mx-1"
-                                  src={veneno_img}
-                                  alt="normal"
-                                />
-                              </span>
-                            ) : option.type == "ground" ? (
-                              <span>
-                                {option.name}
-                                <img
-                                  className="tipoImgFusion mx-1"
-                                  src={tierra_img}
-                                  alt="normal"
-                                />
-                              </span>
-                            ) : option.type == "rock" ? (
-                              <span>
-                                {option.name}
-                                <img
-                                  className="tipoImgFusion mx-1"
-                                  src={roca_img}
-                                  alt="normal"
-                                />
-                              </span>
-                            ) : option.type == "ghost" ? (
-                              <span>
-                                {option.name}
-                                <img
-                                  className="tipoImgFusion mx-1"
-                                  src={fantasma_img}
-                                  alt="normal"
-                                />
-                              </span>
-                            ) : option.type == "steel" ? (
-                              <span>
-                                {option.name}
-                                <img
-                                  className="tipoImgFusion mx-1"
-                                  src={acero_img}
-                                  alt="normal"
-                                />
-                              </span>
-                            ) : option.type == "fire" ? (
-                              <span>
-                                {option.name}
-                                <img
-                                  className="tipoImgFusion mx-1"
-                                  src={fuego_img}
-                                  alt="normal"
-                                />
-                              </span>
-                            ) : option.type == "water" ? (
-                              <span>
-                                {option.name}
-                                <img
-                                  className="tipoImgFusion mx-1"
-                                  src={agua_img}
-                                  alt="normal"
-                                />
-                              </span>
-                            ) : option.type == "grass" ? (
-                              <span>
-                                {option.name}
-                                <img
-                                  className="tipoImgFusion mx-1"
-                                  src={planta_img}
-                                  alt="normal"
-                                />
-                              </span>
-                            ) : option.type == "electric" ? (
-                              <span>
-                                {option.name}
-                                <img
-                                  className="tipoImgFusion mx-1"
-                                  src={electrico_img}
-                                  alt="normal"
-                                />
-                              </span>
-                            ) : option.type == "phsychic" ? (
-                              <span>
-                                {option.name}
-                                <img
-                                  className="tipoImgFusion mx-1"
-                                  src={psiquico_img}
-                                  alt="normal"
-                                />
-                              </span>
-                            ) : option.type == "ice" ? (
-                              <span>
-                                {option.name}
-                                <img
-                                  className="tipoImgFusion mx-1"
-                                  src={hielo_img}
-                                  alt="normal"
-                                />
-                              </span>
-                            ) : option.type == "dragon" ? (
-                              <span>
-                                {option.name}
-                                <img
-                                  className="tipoImgFusion mx-1"
-                                  src={dragon_img}
-                                  alt="normal"
-                                />
-                              </span>
-                            ) : option.type == "dark" ? (
-                              <span>
-                                {option.name}
-                                <img
-                                  className="tipoImgFusion mx-1"
-                                  src={siniestro_img}
-                                  alt="normal"
-                                />
-                              </span>
-                            ) : option.type == "fairy" ? (
-                              <span>
-                                {option.name}
-                                <img
-                                  className="tipoImgFusion mx-1"
-                                  src={hada_img}
-                                  alt="normal"
-                                />
-                              </span>
-                            ) : option.type == "unknown" ? (
-                              <span>
-                                {option.name}
-                                <img
-                                  className="tipoImgFusion mx-1"
-                                  src={desconocido_img}
-                                  alt="normal"
-                                />
-                              </span>
-                            ) : option.type == "shadow" ? (
-                              <span>
-                                {option.name}
-                                <img
-                                  className="tipoImgFusion mx-1"
-                                  src={sombra_img}
-                                  alt="normal"
-                                />
-                              </span>
-                            ) : option.type == "bug" ? (
-                              <span>
-                                {option.name}
-                                <img
-                                  className="tipoImgFusion mx-1"
-                                  src={bicho_img}
-                                  alt="normal"
-                                />
-                              </span>
-                            ) : (
-                              ""
-                            )
+                            type(option)
                           }
                           getOptionValue={(option) => option.name}
                         />
@@ -1502,189 +602,7 @@ const PokeducatorFusion = () => {
                           components={{ DropdownIndicator }}
                           options={store.move_data}
                           getOptionLabel={(option) =>
-                            option.type == "normal" ? (
-                              <span>
-                                {option.name}{" "}
-                                <img
-                                  className="tipoImgFusion mx-1"
-                                  src={normal_img}
-                                  alt="normal"
-                                />
-                              </span>
-                            ) : option.type == "fighting" ? (
-                              <span>
-                                {option.name}
-                                <img
-                                  className="tipoImgFusion mx-1"
-                                  src={lucha_img}
-                                  alt="normal"
-                                />
-                              </span>
-                            ) : option.type == "flying" ? (
-                              <span>
-                                {option.name}
-                                <img
-                                  className="tipoImgFusion mx-1"
-                                  src={volador_img}
-                                  alt="normal"
-                                />
-                              </span>
-                            ) : option.type == "poison" ? (
-                              <span>
-                                {option.name}
-                                <img
-                                  className="tipoImgFusion mx-1"
-                                  src={veneno_img}
-                                  alt="normal"
-                                />
-                              </span>
-                            ) : option.type == "ground" ? (
-                              <span>
-                                {option.name}
-                                <img
-                                  className="tipoImgFusion mx-1"
-                                  src={tierra_img}
-                                  alt="normal"
-                                />
-                              </span>
-                            ) : option.type == "rock" ? (
-                              <span>
-                                {option.name}
-                                <img
-                                  className="tipoImgFusion mx-1"
-                                  src={roca_img}
-                                  alt="normal"
-                                />
-                              </span>
-                            ) : option.type == "ghost" ? (
-                              <span>
-                                {option.name}
-                                <img
-                                  className="tipoImgFusion mx-1"
-                                  src={fantasma_img}
-                                  alt="normal"
-                                />
-                              </span>
-                            ) : option.type == "steel" ? (
-                              <span>
-                                {option.name}
-                                <img
-                                  className="tipoImgFusion mx-1"
-                                  src={acero_img}
-                                  alt="normal"
-                                />
-                              </span>
-                            ) : option.type == "fire" ? (
-                              <span>
-                                {option.name}
-                                <img
-                                  className="tipoImgFusion mx-1"
-                                  src={fuego_img}
-                                  alt="normal"
-                                />
-                              </span>
-                            ) : option.type == "water" ? (
-                              <span>
-                                {option.name}
-                                <img
-                                  className="tipoImgFusion mx-1"
-                                  src={agua_img}
-                                  alt="normal"
-                                />
-                              </span>
-                            ) : option.type == "grass" ? (
-                              <span>
-                                {option.name}
-                                <img
-                                  className="tipoImgFusion mx-1"
-                                  src={planta_img}
-                                  alt="normal"
-                                />
-                              </span>
-                            ) : option.type == "electric" ? (
-                              <span>
-                                {option.name}
-                                <img
-                                  className="tipoImgFusion mx-1"
-                                  src={electrico_img}
-                                  alt="normal"
-                                />
-                              </span>
-                            ) : option.type == "phsychic" ? (
-                              <span>
-                                {option.name}
-                                <img
-                                  className="tipoImgFusion mx-1"
-                                  src={psiquico_img}
-                                  alt="normal"
-                                />
-                              </span>
-                            ) : option.type == "ice" ? (
-                              <span>
-                                {option.name}
-                                <img
-                                  className="tipoImgFusion mx-1"
-                                  src={hielo_img}
-                                  alt="normal"
-                                />
-                              </span>
-                            ) : option.type == "dragon" ? (
-                              <span>
-                                {option.name}
-                                <img
-                                  className="tipoImgFusion mx-1"
-                                  src={dragon_img}
-                                  alt="normal"
-                                />
-                              </span>
-                            ) : option.type == "dark" ? (
-                              <span>
-                                {option.name}
-                                <img
-                                  className="tipoImgFusion mx-1"
-                                  src={siniestro_img}
-                                  alt="normal"
-                                />
-                              </span>
-                            ) : option.type == "fairy" ? (
-                              <span>
-                                {option.name}
-                                <img
-                                  className="tipoImgFusion mx-1"
-                                  src={hada_img}
-                                  alt="normal"
-                                />
-                              </span>
-                            ) : option.type == "unknown" ? (
-                              <span>
-                                {option.name}
-                                <img
-                                  className="tipoImgFusion mx-1"
-                                  src={desconocido_img}
-                                  alt="normal"
-                                />
-                              </span>
-                            ) : option.type == "shadow" ? (
-                              <span>
-                                {option.name}
-                                <img
-                                  className="tipoImgFusion mx-1"
-                                  src={sombra_img}
-                                  alt="normal"
-                                />
-                              </span>
-                            ) : option.type == "bug" ? (
-                              <span>
-                                {option.name}
-                                <img
-                                  className="tipoImgFusion mx-1"
-                                  src={bicho_img}
-                                  alt="normal"
-                                />
-                              </span>
-                            ) : (
-                              ""
-                            )
+                            type(option)
                           }
                           getOptionValue={(option) => option.name}
                         />
@@ -1695,189 +613,7 @@ const PokeducatorFusion = () => {
                           components={{ DropdownIndicator }}
                           options={store.move_data}
                           getOptionLabel={(option) =>
-                            option.type == "normal" ? (
-                              <span>
-                                {option.name}{" "}
-                                <img
-                                  className="tipoImgFusion mx-1"
-                                  src={normal_img}
-                                  alt="normal"
-                                />
-                              </span>
-                            ) : option.type == "fighting" ? (
-                              <span>
-                                {option.name}
-                                <img
-                                  className="tipoImgFusion mx-1"
-                                  src={lucha_img}
-                                  alt="normal"
-                                />
-                              </span>
-                            ) : option.type == "flying" ? (
-                              <span>
-                                {option.name}
-                                <img
-                                  className="tipoImgFusion mx-1"
-                                  src={volador_img}
-                                  alt="normal"
-                                />
-                              </span>
-                            ) : option.type == "poison" ? (
-                              <span>
-                                {option.name}
-                                <img
-                                  className="tipoImgFusion mx-1"
-                                  src={veneno_img}
-                                  alt="normal"
-                                />
-                              </span>
-                            ) : option.type == "ground" ? (
-                              <span>
-                                {option.name}
-                                <img
-                                  className="tipoImgFusion mx-1"
-                                  src={tierra_img}
-                                  alt="normal"
-                                />
-                              </span>
-                            ) : option.type == "rock" ? (
-                              <span>
-                                {option.name}
-                                <img
-                                  className="tipoImgFusion mx-1"
-                                  src={roca_img}
-                                  alt="normal"
-                                />
-                              </span>
-                            ) : option.type == "ghost" ? (
-                              <span>
-                                {option.name}
-                                <img
-                                  className="tipoImgFusion mx-1"
-                                  src={fantasma_img}
-                                  alt="normal"
-                                />
-                              </span>
-                            ) : option.type == "steel" ? (
-                              <span>
-                                {option.name}
-                                <img
-                                  className="tipoImgFusion mx-1"
-                                  src={acero_img}
-                                  alt="normal"
-                                />
-                              </span>
-                            ) : option.type == "fire" ? (
-                              <span>
-                                {option.name}
-                                <img
-                                  className="tipoImgFusion mx-1"
-                                  src={fuego_img}
-                                  alt="normal"
-                                />
-                              </span>
-                            ) : option.type == "water" ? (
-                              <span>
-                                {option.name}
-                                <img
-                                  className="tipoImgFusion mx-1"
-                                  src={agua_img}
-                                  alt="normal"
-                                />
-                              </span>
-                            ) : option.type == "grass" ? (
-                              <span>
-                                {option.name}
-                                <img
-                                  className="tipoImgFusion mx-1"
-                                  src={planta_img}
-                                  alt="normal"
-                                />
-                              </span>
-                            ) : option.type == "electric" ? (
-                              <span>
-                                {option.name}
-                                <img
-                                  className="tipoImgFusion mx-1"
-                                  src={electrico_img}
-                                  alt="normal"
-                                />
-                              </span>
-                            ) : option.type == "phsychic" ? (
-                              <span>
-                                {option.name}
-                                <img
-                                  className="tipoImgFusion mx-1"
-                                  src={psiquico_img}
-                                  alt="normal"
-                                />
-                              </span>
-                            ) : option.type == "ice" ? (
-                              <span>
-                                {option.name}
-                                <img
-                                  className="tipoImgFusion mx-1"
-                                  src={hielo_img}
-                                  alt="normal"
-                                />
-                              </span>
-                            ) : option.type == "dragon" ? (
-                              <span>
-                                {option.name}
-                                <img
-                                  className="tipoImgFusion mx-1"
-                                  src={dragon_img}
-                                  alt="normal"
-                                />
-                              </span>
-                            ) : option.type == "dark" ? (
-                              <span>
-                                {option.name}
-                                <img
-                                  className="tipoImgFusion mx-1"
-                                  src={siniestro_img}
-                                  alt="normal"
-                                />
-                              </span>
-                            ) : option.type == "fairy" ? (
-                              <span>
-                                {option.name}
-                                <img
-                                  className="tipoImgFusion mx-1"
-                                  src={hada_img}
-                                  alt="normal"
-                                />
-                              </span>
-                            ) : option.type == "unknown" ? (
-                              <span>
-                                {option.name}
-                                <img
-                                  className="tipoImgFusion mx-1"
-                                  src={desconocido_img}
-                                  alt="normal"
-                                />
-                              </span>
-                            ) : option.type == "shadow" ? (
-                              <span>
-                                {option.name}
-                                <img
-                                  className="tipoImgFusion mx-1"
-                                  src={sombra_img}
-                                  alt="normal"
-                                />
-                              </span>
-                            ) : option.type == "bug" ? (
-                              <span>
-                                {option.name}
-                                <img
-                                  className="tipoImgFusion mx-1"
-                                  src={bicho_img}
-                                  alt="normal"
-                                />
-                              </span>
-                            ) : (
-                              ""
-                            )
+                            type(option)
                           }
                           getOptionValue={(option) => option.name}
                         />
