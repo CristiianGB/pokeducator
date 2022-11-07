@@ -191,7 +191,6 @@ const PokeducatorMovimientos = () => {
                       ""
                     )}
                   </td>
-                  <td>{move.description}</td>
                   <td>{move.power ? move.power : "-"}</td>
                   <td>{move.accuracy ? move.accuracy : "-"}</td>
                   <td>{move.pp ? move.pp : "-"}</td>
