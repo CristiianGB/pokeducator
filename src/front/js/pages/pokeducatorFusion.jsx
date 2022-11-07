@@ -491,7 +491,7 @@ const PokeducatorFusion = () => {
                       })}
                   </h4>
                   {pokemon2 ? (
-                    <a href={`/pokemon/${pokemon?.id}`}>
+                    <a href={`/pokemon/${pokemon2?.id}`}>
                       <img
                         className="fusionFoto"
                         src={pokemon2?.img}
