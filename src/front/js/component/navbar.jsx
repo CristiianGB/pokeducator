@@ -151,7 +151,7 @@ export const Navbar = () => {
                 </a>
               </li>
               <li>
-                <a className="dropdown-item" onClick={logOut()} href="/">
+                <a className="dropdown-item" onClick={()=>logOut()} href="/">
                   Cerrar Sesión
                 </a>
               </li>

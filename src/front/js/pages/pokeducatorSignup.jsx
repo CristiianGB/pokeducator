@@ -15,7 +15,7 @@ const PokeducatorSignup = (props) => {
   let navigate = useNavigate();
   // hacer signup en actions y llamar a actions desde aqui
   const handleSignup = async () => {
-    const resp = await fetch("https://3001-cristiiangb-pokeducator-73e233qubis.ws-eu75.gitpod.io/api/signup", {
+    const resp = await fetch("https://3001-cristiiangb-pokeducator-b599gavfzv3.ws-eu75.gitpod.io/api/signup", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({

@@ -29,165 +29,332 @@ const PokeducatorFusion = () => {
   const { store, actions } = useContext(Context);
   const [pokemon, setPokemon] = useState();
   const [pokemon2, setPokemon2] = useState();
+  const [pokemon3, setPokemon3] = useState();
   const [load, setLoad] = useState(true);
+  const [natur1, setNatur1] = useState();
+  const [natur2, setNatur2] = useState();
+  const [natur3, setNatur3] = useState();
+  const [ability1, setAbility1] = useState();
+  const [ability2, setAbility2] = useState();
+  const [ability3, setAbility3] = useState();
+  const [mov11, setMov11] = useState();
+  const [mov12, setMov12] = useState();
+  const [mov13, setMov13] = useState();
+  const [mov14, setMov14] = useState();
+  const [mov21, setMov21] = useState();
+  const [mov22, setMov22] = useState();
+  const [mov23, setMov23] = useState();
+  const [mov24, setMov24] = useState();
+  const [mov31, setMov31] = useState();
+  const [mov32, setMov32] = useState();
+  const [mov33, setMov33] = useState();
+  const [mov34, setMov34] = useState();
+  const [ani, setAni] = useState();
+
+  let name1
+  let name2
+  let name3
+  let types =[]
+  let abilitys = []
+  let natures = []
+  let moves = []
+  let movesFus = []
+  let height 
+  let weight
+  let group_name = []
+  let Fus_group_name = []
+  let url 
+  let atk 
+  let ps
+  let defens 
+  let sp_atk 
+  let sp_defens 
+  let spd 
+
+
+  function PokeFus() {
+    window.scrollTo({top: 0, left: 0, behavior: 'smooth'});
+
+    pokemon.name.length <= 3 ? name1 = pokemon.name : pokemon.name <= 6 ? name1 = pokemon.name.slice(0, Math.round(pokemon.name.length/2)) : name1 = pokemon.name.slice(0, 4)
+    pokemon2.name.length <= 3 ? name2 = pokemon2.name : pokemon2.name <= 6 ? name2 = pokemon2.name.slice(Math.round(pokemon2.name.length/2), pokemon2.name.length) : name2 = pokemon2.name.slice(3, pokemon2.name.length)
+    name3 = name1+name2
+console.log(name3)
+    pokemon.type.map((object)=>{
+      types.push(object)
+    })
+    pokemon2.type.map((object)=>{
+      types.push(object)
+    })
+
+    pokemon.group_name.map((object)=>{
+      group_name.push(object)
+    })
+
+    pokemon2.group_name.map((object)=>{
+      group_name.push(object)
+    })
+
+    group_name.map((object)=>{
+      Fus_group_name.indexOf(object) >= 0 ? "" : Fus_group_name.push(object)
+    })
+    console.log(Fus_group_name)
+    if(types.length > 2){
+      for (let i = 0; types.length > 2; i++){
+        let num = Math.floor(Math.random() * types.length)
+        types = types.splice(num,num)
+      }
+    }
+    
+    abilitys = [ability1, ability2]
+    let num = Math.floor(Math.random() * abilitys.length)
+    setAbility3(abilitys[num])
+
+    natures = [natur1, natur2]
+    num = Math.floor(Math.random() * natures.length)
+    setNatur3(natures[num])
+    console.log(natures)
+    height = pokemon.height + pokemon2.height
+    height = Math.floor(Math.random() * ((height+20) - (height-20) + 1) + (height-20))
+
+    weight = pokemon.weight + pokemon2.weight
+    weight = Math.floor(Math.random() * ((weight+20) - (weight-20) + 1) + (weight-20))
+
+    moves = [mov11, mov12, mov13, mov14, mov21, mov22, mov23, mov24]
+    for (let i = 0; movesFus.length < 4; i++){
+      let num = Math.floor(Math.random() * moves.length)
+      movesFus.push(moves[num])
+      movesFus.indexOf(moves[num]) >= 0 ? "" : movesFus.push(moves[num])
+
+    }
+    setMov31(movesFus[0])
+    setMov32(movesFus[1])
+    setMov33(movesFus[2])
+    setMov34(movesFus[3])
+
+    let stats = ["atk", "defens" ,"ps" ,"sp_atk" ,"sp_defens","spd"]
+    let statsFus = [
+      {base_stat:0, name:"atk"},
+      {base_stat:0, name:"defens"},
+      {base_stat:0, name:"ps"},
+      {base_stat:0, name:"sp_atk"},
+      {base_stat:0, name:"sp_defens"},
+      {base_stat:0, name:"spd"},
+    ]
+    stats.map((stat)=>{
+        let num1
+        let num2
+        let min 
+        let max
+        let statRel
+
+        pokemon.stats.map((object)=>{
+          object.name == stat ? num1 = object.base_stat : ""
+        })
+
+        pokemon2.stats.map((object)=>{
+          object.name == stat ? num2 = object.base_stat : ""
+        })
+
+        if(num1 <= num2){
+          min = num1
+          max = num2 
+        }else{
+          min = num2 
+          max = num1
+        }
+
+        statRel =  Math.floor(Math.random() * (max - min + 1) + min)
+
+        stat == "atk" ? atk = statRel : stat == "defens" ? defens = statRel : stat == "ps" ? ps = statRel : stat == "sp_atk" ? sp_atk = statRel : stat == "sp_defens" ? sp_defens = statRel : stat == "spd" ? spd = statRel : ""
+        statsFus.map((object)=>{
+          object.name == stat ? object.base_stat = statRel : ""
+
+        })
+
+     
+
+    })
+
+    url = `https://images.alexonsager.net/pokemon/fused/${pokemon.id}/${pokemon.id}.${pokemon2.id}.png`
+
+    let pokeFus = {
+      group_name: Fus_group_name,
+      height: height,
+      weight: weight,
+      stats: statsFus,
+      img: url,
+      name: name3, 
+      type: types,
+
+    }
+
+    const resp = fetch(
+      "https://3001-cristiiangb-pokeducator-h42c65xlsag.ws-eu74.gitpod.io/api/createPokemonFusion",
+      {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          group_name: Fus_group_name,
+          height: height,
+          weight: weight,
+          ps: ps,
+          atk: atk,
+          defens: defens,
+          sp_defens: sp_defens,
+          sp_atk: sp_atk,
+          spd: spd,
+          img: url,
+          name: name3, 
+          type: types,
+          nature: natur3, 
+          ability: ability3,
+          learning: movesFus
+        })
+      })
+
+
+
+
+
+    setPokemon3(pokeFus)
+    setTimeout(()=>{
+      setAni("a")
+
+    }, 10)
+    setTimeout(()=>{
+      console.log(ability3)
+      console.log(pokemon3)
+      console.log(natur3)
+    }, 3000)
+  }
+
+  function Fusion() {
+
+    let count = 0;
+    let arr = [
+      natur1,
+      natur2,
+      ability1,
+      ability2,
+      mov11,
+      mov12,
+      mov13,
+      mov14,
+      mov21,
+      mov22,
+      mov23,
+      mov24,
+      pokemon,
+      pokemon2
+    ];
+    arr.map((object, i) => {
+      object == null ? "" : object == "fallo" ? "" : count++;
+    });
+console.log(count)
+    count > 1 ?  PokeFus() : "";
+
+    natur1 == null ? setNatur1("fallo") : "";
+    natur2 == null ? setNatur2("fallo") : "";
+    ability1 == null ? setAbility1("fallo") : "";
+    ability2 == null ? setAbility2("fallo") : "";
+    mov11 == null ? setMov11("fallo") : "";
+    mov12 == null ? setMov12("fallo") : "";
+    mov13 == null ? setMov13("fallo") : "";
+    mov14 == null ? setMov14("fallo") : "";
+    mov21 == null ? setMov21("fallo") : "";
+    mov22 == null ? setMov22("fallo") : "";
+    mov23 == null ? setMov23("fallo") : "";
+    mov24 == null ? setMov24("fallo") : "";
+  }
+  let pokes = store.pokemon_data.slice(0,151)
   let time = [2000, 3000, 4000, 5000];
   let randomtime = Math.floor(Math.random() * time.length);
 
-
   const type = (option) => {
-    
-    return  option.type == "normal" ? (
+    return option.type == "normal" ? (
       <span>
         {option.name}{" "}
-        <img
-          className="tipoImgFusion mx-1"
-          src={normal_img}
-          alt="normal"
-        />
+        <img className="tipoImgFusion mx-1" src={normal_img} alt="normal" />
       </span>
     ) : option.type == "fighting" ? (
       <span>
         {option.name}
-        <img
-          className="tipoImgFusion mx-1"
-          src={lucha_img}
-          alt="normal"
-        />
+        <img className="tipoImgFusion mx-1" src={lucha_img} alt="normal" />
       </span>
     ) : option.type == "flying" ? (
       <span>
         {option.name}
-        <img
-          className="tipoImgFusion mx-1"
-          src={volador_img}
-          alt="normal"
-        />
+        <img className="tipoImgFusion mx-1" src={volador_img} alt="normal" />
       </span>
     ) : option.type == "poison" ? (
       <span>
         {option.name}
-        <img
-          className="tipoImgFusion mx-1"
-          src={veneno_img}
-          alt="normal"
-        />
+        <img className="tipoImgFusion mx-1" src={veneno_img} alt="normal" />
       </span>
     ) : option.type == "ground" ? (
       <span>
         {option.name}
-        <img
-          className="tipoImgFusion mx-1"
-          src={tierra_img}
-          alt="normal"
-        />
+        <img className="tipoImgFusion mx-1" src={tierra_img} alt="normal" />
       </span>
     ) : option.type == "rock" ? (
       <span>
         {option.name}
-        <img
-          className="tipoImgFusion mx-1"
-          src={roca_img}
-          alt="normal"
-        />
+        <img className="tipoImgFusion mx-1" src={roca_img} alt="normal" />
       </span>
     ) : option.type == "ghost" ? (
       <span>
         {option.name}
-        <img
-          className="tipoImgFusion mx-1"
-          src={fantasma_img}
-          alt="normal"
-        />
+        <img className="tipoImgFusion mx-1" src={fantasma_img} alt="normal" />
       </span>
     ) : option.type == "steel" ? (
       <span>
         {option.name}
-        <img
-          className="tipoImgFusion mx-1"
-          src={acero_img}
-          alt="normal"
-        />
+        <img className="tipoImgFusion mx-1" src={acero_img} alt="normal" />
       </span>
     ) : option.type == "fire" ? (
       <span>
         {option.name}
-        <img
-          className="tipoImgFusion mx-1"
-          src={fuego_img}
-          alt="normal"
-        />
+        <img className="tipoImgFusion mx-1" src={fuego_img} alt="normal" />
       </span>
     ) : option.type == "water" ? (
       <span>
         {option.name}
-        <img
-          className="tipoImgFusion mx-1"
-          src={agua_img}
-          alt="normal"
-        />
+        <img className="tipoImgFusion mx-1" src={agua_img} alt="normal" />
       </span>
     ) : option.type == "grass" ? (
       <span>
         {option.name}
-        <img
-          className="tipoImgFusion mx-1"
-          src={planta_img}
-          alt="normal"
-        />
+        <img className="tipoImgFusion mx-1" src={planta_img} alt="normal" />
       </span>
     ) : option.type == "electric" ? (
       <span>
         {option.name}
-        <img
-          className="tipoImgFusion mx-1"
-          src={electrico_img}
-          alt="normal"
-        />
+        <img className="tipoImgFusion mx-1" src={electrico_img} alt="normal" />
       </span>
     ) : option.type == "phsychic" ? (
       <span>
         {option.name}
-        <img
-          className="tipoImgFusion mx-1"
-          src={psiquico_img}
-          alt="normal"
-        />
+        <img className="tipoImgFusion mx-1" src={psiquico_img} alt="normal" />
       </span>
     ) : option.type == "ice" ? (
       <span>
         {option.name}
-        <img
-          className="tipoImgFusion mx-1"
-          src={hielo_img}
-          alt="normal"
-        />
+        <img className="tipoImgFusion mx-1" src={hielo_img} alt="normal" />
       </span>
     ) : option.type == "dragon" ? (
       <span>
         {option.name}
-        <img
-          className="tipoImgFusion mx-1"
-          src={dragon_img}
-          alt="normal"
-        />
+        <img className="tipoImgFusion mx-1" src={dragon_img} alt="normal" />
       </span>
     ) : option.type == "dark" ? (
       <span>
         {option.name}
-        <img
-          className="tipoImgFusion mx-1"
-          src={siniestro_img}
-          alt="normal"
-        />
+        <img className="tipoImgFusion mx-1" src={siniestro_img} alt="normal" />
       </span>
     ) : option.type == "fairy" ? (
       <span>
         {option.name}
-        <img
-          className="tipoImgFusion mx-1"
-          src={hada_img}
-          alt="normal"
-        />
+        <img className="tipoImgFusion mx-1" src={hada_img} alt="normal" />
       </span>
     ) : option.type == "unknown" ? (
       <span>
@@ -201,29 +368,17 @@ const PokeducatorFusion = () => {
     ) : option.type == "shadow" ? (
       <span>
         {option.name}
-        <img
-          className="tipoImgFusion mx-1"
-          src={sombra_img}
-          alt="normal"
-        />
+        <img className="tipoImgFusion mx-1" src={sombra_img} alt="normal" />
       </span>
     ) : option.type == "bug" ? (
       <span>
         {option.name}
-        <img
-          className="tipoImgFusion mx-1"
-          src={bicho_img}
-          alt="normal"
-        />
+        <img className="tipoImgFusion mx-1" src={bicho_img} alt="normal" />
       </span>
     ) : (
       ""
-    )
-  
-  }
-
-
-
+    );
+  };
 
   const handleChange = (id) => {
     let pokemon = store.pokemon_data.find((pokemon) => pokemon.id == id);
@@ -277,6 +432,119 @@ const PokeducatorFusion = () => {
         </div>
       ) : (
         <div className="container align-items-center">
+          <div className={`row cartasFusion justify-content-center ${pokemon3 == null ? " d-none" : ""} ${ani != null ? " anim2" : "anim"} `} >
+          <div className="col-md-5  text-center  " >
+              <div className="p-2">
+                <div className="card rounded ">
+                  {pokemon ? (
+                    <h4 className="my-3 me-2 text-capitalize">
+                      {name3}
+                    </h4>
+                  ) : (
+                    ""
+                  )}
+                  <h4>
+                    {tipos
+                      .filter((a) => pokemon3?.type.includes(a.tipo))
+                      .map((tipos) => {
+                        return (
+                          <img
+                            className="tipoImg mx-1"
+                            src={tipos.foto}
+                            alt="foto de tipo"
+                          />
+                        );
+                      })}
+                  </h4>
+                  {pokemon3 ? (
+                
+                      <img
+                        className="fusionFoto"
+                        src={pokemon3?.img}
+                        alt="foto pokemon"
+                      />
+                 
+                  ) : (
+                    ""
+                  )}
+                  <div className="card-body  ">
+                    {pokemon3 ? (
+                      <div className="stats_pokemon mt-3 mb-3 ">
+                        <div className="table-responsive rounded-3 tablaStatsFusion">
+                          <table className="table ">
+                            <thead>
+                              <th scope="col">Estadísticas</th>
+                            </thead>
+                            <tbody>
+                              {pokemon3?.stats?.map((objeto) => (
+                                <tr className="d-flex text-center align-items-center">
+                                  <td className="col-3 ">
+                                    {objeto.name == "atk"
+                                      ? "Ataque"
+                                      : objeto.name == "defens"
+                                      ? "Defensa"
+                                      : objeto.name == "ps"
+                                      ? "HP"
+                                      : objeto.name == "sp_atk"
+                                      ? "Ataque Esp."
+                                      : objeto.name == "sp_defens"
+                                      ? "Defensa Esp."
+                                      : objeto.name == "spd"
+                                      ? "Velocidad"
+                                      : ""}
+                                  </td>
+                                  <td className="col-6 mt-2">
+                                    <div className="progress">
+                                      <div
+                                        className="progress-bar"
+                                        role="progressbar"
+                                        style={{
+                                          width: `${objeto.base_stat/2}%`,
+                                        }}
+                                      ></div>
+                                    </div>
+                                  </td>
+                                  <td className="col-3 fs-6">
+                                    {objeto.base_stat}
+                                  </td>
+                                </tr>
+                              ))}
+                            </tbody>
+                          </table>
+                        </div>
+                      </div>
+                    ) : (
+                      ""
+                    )}
+                    <div className="row">
+                      <div className="col-sm-6">
+                        <h4 type="text">{ability3?.name}</h4>
+                      </div>
+                      <div className="col-sm-6">
+                      <h4 type="text">{natur3?.name}</h4>
+                      </div>
+                    </div>
+                    <div className="row mt-3">
+                      <div className="col-md-6">
+                      <h4 type="text">{mov31?.name}</h4>
+                      </div>
+                      <div className="col-md-6">
+                      <h4 type="text">{mov32?.name}</h4>
+                      </div>
+                    </div>
+                    <div className="row mt-3">
+                      <div className="col-md-6">
+                      <h4 type="text">{mov33?.name}</h4>
+                      </div>
+                      <div className="col-md-6">
+                      <h4 type="text">{mov34?.name}</h4>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
           <div className="row cartasFusion">
             <div className="col-md-5 text-center ">
               <div className="p-2">
@@ -288,7 +556,7 @@ const PokeducatorFusion = () => {
                   aria-label="Default select example"
                 >
                   <option defaultValue>Selecciona Pokemon</option>
-                  {store.pokemon_data.map((objeto) => (
+                  {pokes.map((objeto) => (
                     <option value={objeto.id}>
                       {objeto.name} #{objeto.id}
                     </option>
@@ -377,82 +645,139 @@ const PokeducatorFusion = () => {
                     )}
                     <div className="row">
                       <div className="col-sm-6">
-                        <Select
-                          components={{ DropdownIndicator }}
-                          placeholder="Habilidad"
-                          options={store.ability_data}
-                          getOptionLabel={(option) => option.name}
-                          getOptionValue={(option) => option.name}
-                        />
+                        <div className={ability1 == "fallo"
+                                ? "fallo"
+                                : ""}>
+                          <Select
+                            components={{ DropdownIndicator }}
+                            placeholder={
+                              ability1 == "fallo"
+                                ? "Seleccione Habilidad"
+                                : "Habilidad"
+                            }
+                            id={ability1 == "fallo" ? "fallo" : ""}
+                            options={store.ability_data}
+                            getOptionLabel={(option) => option.name}
+                            getOptionValue={(option) => option.name}
+                            onChange={(option) => setAbility1(option)}
+                          />
+                          </div>
                       </div>
                       <div className="col-sm-6">
+                        <div className={
+                            natur1 == "fallo"
+                              ? "fallo"
+                              : ""
+                          }>
                         <Select
                           components={{ DropdownIndicator }}
-                          placeholder="Naturaleza"
+                          placeholder={
+                            natur1 == "fallo"
+                              ? "Seleccione Naturaleza"
+                              : "Naturaleza"
+                          }
                           options={store.nature_data}
                           getOptionLabel={(option) => option.name}
                           getOptionValue={(option) => option.name}
+                          onChange={(option) => setNatur1(option)}
                         />
+                        </div>
                       </div>
                     </div>
                     <div className="row mt-3">
                       <div className="col-md-6">
+                        <div className={
+                            mov11 == "fallo"
+                              ? "fallo"
+                              : ""
+                          }>
                         <Select
-                          placeholder="Movimiento"
-                          ceholder="Movimiento"
+                          placeholder={
+                            mov11 == "fallo"
+                              ? "Seleccione Movimiento"
+                              : "Movimiento"
+                          }
                           components={{ DropdownIndicator }}
                           options={store.move_data}
-                          getOptionLabel={(option) =>
-                            type(option)
-                          }
+                          getOptionLabel={(option) => type(option)}
                           getOptionValue={(option) => option.name}
+                          onChange={(option) =>
+                            setMov11(option)}
                         />
+                        </div> 
                       </div>
                       <div className="col-md-6">
+                        <div className={
+                            mov12 == "fallo"
+                              ? "fallo"
+                              : ""
+                          }>
                         <Select
-                          placeholder="Movimiento"
+                          placeholder={
+                            mov12 == "fallo"
+                              ? "Seleccione Movimiento"
+                              : "Movimiento"
+                          }
                           components={{ DropdownIndicator }}
                           options={store.move_data}
-                          getOptionLabel={(option) =>
-                            type(option)
-                          }
+                          getOptionLabel={(option) => type(option)}
                           getOptionValue={(option) => option.name}
+                          onChange={(option) => setMov12(option)}
                         />
+                        </div>
                       </div>
                     </div>
                     <div className="row mt-3">
                       <div className="col-md-6">
+                        <div className={
+                            mov13 == "fallo"
+                              ? "fallo"
+                              : ""
+                          }>
                         <Select
-                          placeholder="Movimiento"
+                          placeholder={
+                            mov13 == "fallo"
+                              ? "Seleccione Movimiento"
+                              : "Movimiento"
+                          }
                           components={{ DropdownIndicator }}
                           options={store.move_data}
-                          getOptionLabel={(option) =>
-                            type(option)
-                          }
+                          getOptionLabel={(option) => type(option)}
                           getOptionValue={(option) => option.name}
+                          onChange={(option) => setMov13(option)}
                         />
+                        </div>
                       </div>
                       <div className="col-md-6">
+                        <div className={
+                            mov14 == "fallo"
+                              ? "fallo"
+                              : ""
+                          }>
                         <Select
-                          placeholder="Movimiento"
+                          placeholder={
+                            mov14 == "fallo"
+                              ? "Seleccione Movimiento"
+                              : "Movimiento"
+                          }
                           components={{ DropdownIndicator }}
                           options={store.move_data}
-                          getOptionLabel={(option) =>
-                            type(option)
-                          }
+                          getOptionLabel={(option) => type(option)}
                           getOptionValue={(option) => option.name}
+                          onChange={(option) => setMov14(option)}
                         />
+                        </div>
                       </div>
                     </div>
                   </div>
                 </div>
               </div>
             </div>
-              <div class="col-md-2 text-center align-self-center">
-                <div class="pokeballFusionPage">
-                  <div class="pokeballFusionPage__button"></div>
-                </div>
+            <div class="col-md-2 text-center align-self-center">
+              <div class="pokeballFusionPage" onClick={() => Fusion()}>
+                <div class="pokeballFusionPage__button"></div>
               </div>
+            </div>
             <div className="col-md-5 text-center ">
               <div className="p-2">
                 <select
@@ -463,7 +788,7 @@ const PokeducatorFusion = () => {
                   aria-label="Default select example"
                 >
                   <option defaultValue>Selecciona Pokemon</option>
-                  {store.pokemon_data.map((objeto) => (
+                  {pokes.map((objeto) => (
                     <option value={objeto.id}>
                       {objeto.name} #{objeto.id}
                     </option>
@@ -491,7 +816,7 @@ const PokeducatorFusion = () => {
                       })}
                   </h4>
                   {pokemon2 ? (
-                    <a href={`/pokemon/${pokemon2?.id}`}>
+                    <a href={`/pokemon/${pokemon?.id}`}>
                       <img
                         className="fusionFoto"
                         src={pokemon2?.img}
@@ -552,71 +877,130 @@ const PokeducatorFusion = () => {
                     )}
                     <div className="row">
                       <div className="col-sm-6">
+                        <div className={
+                            ability2 == "fallo"
+                              ? "fallo"
+                              : ""
+                          }>
                         <Select
                           components={{ DropdownIndicator }}
-                          placeholder="Habilidad"
+                          placeholder={
+                            ability2 == "fallo"
+                              ? "Seleccione Habilidad"
+                              : "Habilidad"
+                          }
                           options={store.ability_data}
                           getOptionLabel={(option) => option.name}
                           getOptionValue={(option) => option.name}
+                          onChange={(option) => setAbility2(option)}
                         />
+                        </div>
                       </div>
                       <div className="col-sm-6">
+                        <div className={
+                            natur2 == "fallo"
+                              ? "fallo"
+                              : ""
+                          }>
                         <Select
                           components={{ DropdownIndicator }}
-                          placeholder="Naturaleza"
+                          placeholder={
+                            natur2 == "fallo"
+                              ? "Seleccione Naturaleza"
+                              : "Naturaleza"
+                          }
                           options={store.nature_data}
                           getOptionLabel={(option) => option.name}
                           getOptionValue={(option) => option.name}
+                          onChange={(option) => setNatur2(option)}
                         />
+                        </div>
                       </div>
                     </div>
                     <div className="row mt-3">
                       <div className="col-md-6">
+                        <div className={
+                            mov21 == "fallo"
+                              ? "fallo"
+                              : ""
+                          }>
                         <Select
-                          placeholder="Movimiento"
+                          placeholder={
+                            mov21 == "fallo"
+                              ? "Seleccione Movimiento"
+                              : "Movimiento"
+                          }
                           ceholder="Movimiento"
                           components={{ DropdownIndicator }}
                           options={store.move_data}
-                          getOptionLabel={(option) =>
-                            console.log(type(option))
-                          }
+                          getOptionLabel={(option) => type(option)}
                           getOptionValue={(option) => option.name}
+                          onChange={(option) =>
+                             setMov21(option)}
                         />
+                        </div>
                       </div>
                       <div className="col-md-6">
+                        <div className={
+                            mov22 == "fallo"
+                              ? "fallo"
+                              : ""
+                          }>
                         <Select
-                          placeholder="Movimiento"
+                          placeholder={
+                            mov22 == "fallo"
+                              ? "Seleccione Movimiento"
+                              : "Movimiento"
+                          }
                           components={{ DropdownIndicator }}
                           options={store.move_data}
-                          getOptionLabel={(option) =>
-                            type(option)
-                          }
+                          getOptionLabel={(option) => type(option)}
                           getOptionValue={(option) => option.name}
+                          onChange={(option) => setMov22(option)}
                         />
+                        </div>
                       </div>
                     </div>
                     <div className="row mt-3">
                       <div className="col-md-6">
+                        <div className={
+                            mov23 == "fallo"
+                              ? "fallo"
+                              : ""
+                          }>
                         <Select
-                          placeholder="Movimiento"
+                          placeholder={
+                            mov23 == "fallo"
+                              ? "Seleccione Movimiento"
+                              : "Movimiento"
+                          }
                           components={{ DropdownIndicator }}
                           options={store.move_data}
-                          getOptionLabel={(option) =>
-                            type(option)
-                          }
+                          getOptionLabel={(option) => type(option)}
                           getOptionValue={(option) => option.name}
+                          onChange={(option) => setMov23(option)}
                         />
+                        </div>
                       </div>
                       <div className="col-md-6">
+                        <div className={
+                            mov24 == "fallo"
+                              ? "fallo"
+                              : ""
+                          }>
                         <Select
-                          placeholder="Movimiento"
+                          placeholder={
+                            mov24 == "fallo"
+                              ? "Seleccione Movimiento"
+                              : "Movimiento"
+                          }
                           components={{ DropdownIndicator }}
                           options={store.move_data}
-                          getOptionLabel={(option) =>
-                            type(option)
-                          }
+                          getOptionLabel={(option) => type(option)}
                           getOptionValue={(option) => option.name}
+                          onChange={(option) => setMov24(option)}
                         />
+                        </div>
                       </div>
                     </div>
                   </div>
