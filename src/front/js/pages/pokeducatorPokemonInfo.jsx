@@ -34,12 +34,16 @@ const PokeducatorPokemonInfo = () => {
   let time = [2000, 3000, 4000, 5000];
   let randomtime = Math.floor(Math.random() * time.length);
 
-  const aStyles = { fontSize: "18px" };
-  const subStyles = { fontSize: "15px" };
-  const tableStyle = {
-    width: "300px",
-    margin: "auto",
-  };
+  const alturaMetros = (altura) => {
+    let height_obtained = parseFloat(altura) * 0.1
+    return height_obtained.toFixed(2)
+  }
+  
+  const pesoKilos = (peso) => {
+    let weight_obtained = parseFloat(peso) * 0.1
+    return weight_obtained.toFixed(2)
+  }
+
 
   setTimeout(() => {
     setLoad(false);
@@ -238,15 +242,15 @@ const PokeducatorPokemonInfo = () => {
                           <li>
                             <p className="fw-bold fs-5 text-white">Altura</p>
                             <p className="fw-bold">
-                              {store.single_pokemon_data.pokemon.height}{" "}
-                              PokePulgadas
+                              {alturaMetros(store.single_pokemon_data.pokemon.height)}{" "}
+                              m
                             </p>
                           </li>
                           <li>
                             <p className="fw-bold fs-5 text-white">Peso</p>
                             <p className="fw-bold">
-                              {store.single_pokemon_data.pokemon.weight}{" "}
-                              PokeKilos
+                              {pesoKilos(store.single_pokemon_data.pokemon.weight)}{" "}
+                              Kg
                             </p>
                           </li>
                         </ul>

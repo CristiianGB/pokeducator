@@ -3,10 +3,6 @@ from sqlalchemy.dialects.postgresql import ARRAY
 
 db = SQLAlchemy()        
 
-class Favorites(db.Model):
-    pokemon_id = db.Column(db.Integer, primary_key=True, unique=True) #Mejor que esto yo pondria una unica pero sin relacion y otra linea que especifique a que pertenece
-    pokemontype = db.Column(db.String(2), nullable=False, unique=False)
-    user_id = db.Column(db.Integer, db.ForeignKey("user.id"), unique=False, nullable=False )
 
 class User(db.Model):
     id = db.Column(db.Integer, primary_key=True, unique=True)
@@ -15,10 +11,8 @@ class User(db.Model):
     last_name = db.Column(db.String(30), nullable=False, unique=False)
     email = db.Column(db.String(120), unique=True, nullable=False)
     img = db.Column(db.String(300), nullable=True)
-    is_active = db.Column(db.Boolean(), unique=False, nullable=False, default=True)
+    is_active = db.Column(db.Boolean(), unique=False, nullable=True, default=True)
     password = db.Column(db.String(80), unique=False, nullable=False)
-
- 
 
     def __repr__(self):
         return f'<User {self.email} >'
@@ -32,25 +26,75 @@ class User(db.Model):
             "email": self.email
         }
 
+class Favorites(db.Model):
+    pokemon_id = db.Column(db.Integer, primary_key=True, unique=True) #Mejor que esto yo pondria una unica pero sin relacion y otra linea que especifique a que pertenece
+    pokemontype = db.Column(db.String(2), nullable=False, unique=False)
+    user_id = db.Column(db.Integer, db.ForeignKey("user.id"), unique=False, nullable=False )
+
 
 
 class Pokemon_Fusion(db.Model):
-    pokemon_id = db.Column(db.Integer, primary_key=True, unique= True) 
-    name = db.Column(db.String(120), nullable=False, unique=False)
-    atk = db.Column(db.Integer, unique=False, nullable=False)
-    defe = db.Column(db.Integer, unique=False, nullable=False)
-    sDf = db.Column(db.Integer, unique=False, nullable=False)
+    pokemon_id_fusion = db.Column(db.Integer, primary_key=True, unique=True) 
+    id_fusion = db.Column(db.Integer, nullable=False, unique=True) 
+    order_fusion = db.Column(db.Integer, nullable=False, unique=False) 
+    name_fusion = db.Column(db.String(120), nullable=False, unique=False)
+    description_fusion = db.Column(db.String(300), nullable=True, unique=False)
+    img_fusion = db.Column(db.String(201), nullable=False, unique=False)
+    type_fusion = db.Column(ARRAY(db.String(300)))
+    weight_fusion = db.Column(db.Integer, nullable=False, unique=False) 
+    height_fusion = db.Column(db.Integer, nullable=False, unique=False) 
+    ps_fusion = db.Column(db.Integer, nullable=False, unique=False) 
+    spd_fusion = db.Column(db.Integer, nullable=False, unique=False) 
+    sp_defens_fusion = db.Column(db.Integer, nullable=False, unique=False) 
+    sp_atk_fusion = db.Column(db.Integer, nullable=False, unique=False) 
+    defens_fusion = db.Column(db.Integer, nullable=False, unique=False) 
+    atk_fusion = db.Column(db.Integer, nullable=False, unique=False) 
     
     def __repr__(self):
         return self.name
 
+    def findone_fusion(self):
+        return {
+            "pokemon_id_fusion": self.pokemon_id_fusion
+        }
+
     def serialize(self):
         return {
-            "name": self.name,
-            "atk": self.atk,
-            "defe": self.defe,
-            "sDf" : self.sDf,
-        }
+            "id_fusion": self.id_fusion,
+            "order_fusion": self.order_fusion,
+            "name_fusion": self.name_fusion,
+            "description_fusion": self.description_fusion,
+            "stats_fusion": {
+                "ps_fusion":{
+                "name":"ps",
+                "base_stat": self.ps,
+                },
+                "spd_fusion":{
+                "name":"spd",
+                "base_stat": self.spd,
+                },
+                "sp_defens_fusion":{
+                "name":"sp_defens",
+                "base_stat": self.sp_defens,
+                },
+                "sp_atk_fusion":{
+                "name":"sp_atk",
+                "base_stat": self.sp_atk,
+                },
+                "defens_fusion":{
+                "name":"defens",
+                "base_stat": self.defens,
+                },
+                "atk_fusion":{
+                "name":"atk",
+                "base_stat": self.atk,
+                },
+            },
+            "img_fusion": self.img,
+            "type_fusion": self.type,           
+            "weight_fusion": self.weight,
+            "height_fusion": self.height
+            }
 
 
 class Pokemon_Move(db.Model):
@@ -213,7 +257,7 @@ class Pokemon(db.Model):
         return {
             "pokemon_id": self.pokemon_id
         }
-
+    
     def serialize(self):
         return {
             "id": self.id,

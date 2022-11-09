@@ -1,10 +1,16 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { Link } from "react-router-dom";
 import logo from "../../assets/img/logo_pokeducator.png";
 import "../../styles/navbarStyles.css";
+import { Context } from "../store/appContext.jsx";
 
 export const Navbar = () => {
+  const {store, actions} = useContext(Context)
   const [dorpdownVisible, setDropdownVisible] = useState(false);
+
+  const logOut = () => {
+		localStorage.removeItem("token")
+	}
 
   return (
     <nav className="navbar navbar-expand-lg navbar-light bg-light">
@@ -107,51 +113,13 @@ export const Navbar = () => {
               ) : null}
             </li>
           </ul>
-          {/* <!-- Left links --> */}
         </div>
-        {/* <!-- Collapsible wrapper --> */}
-
         {/* <!-- Right elements --> */}
         <div className="d-flex align-items-center">
           {/* <!-- Icon --> */}
-          {/* <!-- Notifications --> */}
-          <div className="dropdown dropdown-toggle">
-            <a
-              className="text-reset me-3  hidden-arrow"
-              href="#"
-              id="navbarDropdownMenuLink"
-              role="button"
-              data-mdb-toggle="dropdown"
-              aria-expanded="false"
-            >
-              <i className="fas fa-bell"></i>
-              <span className="badge rounded-pill badge-notification bg-danger">
-                1
-              </span>
-            </a>
-            <ul
-              className="dropdown-menu dropdown-menu-end"
-              aria-labelledby="navbarDropdownMenuLink"
-            >
-              <li>
-                <a className="dropdown-item" href="#">
-                  Some news
-                </a>
-              </li>
-              <li>
-                <a className="dropdown-item" href="#">
-                  Another news
-                </a>
-              </li>
-              <li>
-                <a className="dropdown-item" href="#">
-                  Something else here
-                </a>
-              </li>
-            </ul>
-          </div>
           {/* <!-- Avatar --> */}
-          <div className="dropdown ms-2">
+          {store.token ? (
+            <div className="dropdown ms-2">
             <a
               className="dropdown-toggle d-flex align-items-center"
               href="#"
@@ -161,7 +129,7 @@ export const Navbar = () => {
               aria-expanded="false"
             >
               <img
-                src="https://mdbcdn.b-cdn.net/img/new/avatars/2.webp"
+                src="https://mdbcdn.b-cdn.net/img/new/avatars/2.webp" //imagen perfil
                 className="rounded-circle"
                 height="25"
                 alt="Black and White Portrait of a Man"
@@ -173,22 +141,23 @@ export const Navbar = () => {
               aria-labelledby="navbarDropdownMenuAvatar"
             >
               <li>
-                <a className="dropdown-item" href="#">
-                  My profile
+                <a className="dropdown-item" href="/perfil">
+                  Perfil
                 </a>
               </li>
               <li>
-                <a className="dropdown-item" href="#">
-                  Settings
+                <a className="dropdown-item" href="/soporte">
+                  Soporte
                 </a>
               </li>
               <li>
-                <a className="dropdown-item" href="#">
-                  Logout
+                <a className="dropdown-item" onClick={logOut()} href="/">
+                  Cerrar Sesión
                 </a>
               </li>
             </ul>
           </div>
+          ) : <a href="/login"><button className="buttonPokemonInfoNavbar my-1">Iniciar Sesión</button></a>}
         </div>
         {/* <!-- Right elements --> */}
       </div>
