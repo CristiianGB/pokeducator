@@ -1,16 +1,10 @@
-"""
-This module takes care of starting the API Server, Loading the DB and Adding the endpoints
-"""
 from flask import Flask, request, jsonify, url_for, Blueprint
-from api.models import db, User, Favorites, Pokemon, Nature, Pokemon_Fusion, Moves, Pokemon_Move, Ability, Item, Pokemon_Ability
+from api.models import db, User, Favorites, Pokemon, Nature, Pokemon_fusion, Moves, Pokemon_Move, Ability, Item, Pokemon_Ability, Pokemon_Fusion_Nature, Pokemon_Fusion_Move, Pokemon_Fusion_Ability
 from api.utils import generate_sitemap, APIException
 from flask_jwt_extended import JWTManager, create_access_token, jwt_required, get_jwt_identity
 from sqlalchemy import inspect
 
 api = Blueprint('api', __name__)
-
-
-
 
 @api.route("/login", methods = ["POST"])
 def login():
@@ -46,9 +40,16 @@ def token_access():
     
     return jsonify(user.serialize()), 200
 
+@api.route("/updateProfilePicture", methods=["PUT"])
+@jwt_required()
+def updateProfilePicture():
+    current_user_id = get_jwt_identity()
+    user = User.query.get(current_user_id)
+    img = request.json.get("img", None)
+    user.img = img
 
-
-
+    db.session.commit()
+    return jsonify(user.serialize()), 200
 
 @api.route("/createPokemon", methods=["POST"])
 def createPokemon():
@@ -91,9 +92,75 @@ def createPokemon():
 
     db.session.commit()
 
+    # if (learning):
+    #
+    #    for i in learning:
+    #        move = db.session.query(Moves).filter_by(id=i).first().findone()
+    #        pokemon = db.session.query(Pokemon).filter_by(name=name).first().findone()
+    #        pokemove = Pokemon_Move(pokemon_id=pokemon["pokemon_id"], move_id=move["move_id"])
+    #        db.session.add(pokemove)
+    #        db.session.commit()
+    return jsonify({"pokemon": "a"}), 200
 
-    #if (learning):
-    #    
+
+@api.route("/createPokemonFusion", methods=["POST"])
+def createPokemonFusion():
+
+    name = request.json.get("name", None)
+    img = request.json.get("img", None)
+    type = request.json.get("type", None)
+    weight = request.json.get("weight", None)
+    height = request.json.get("height", None)
+    atk = request.json.get("atk", None)
+    sp_atk = request.json.get("sp_atk", None)
+    defens = request.json.get("defens", None)
+    sp_defens = request.json.get("sp_defens", None)
+    ps = request.json.get("ps", None)
+    spd = request.json.get("spd", None)
+    learning = request.json.get("learning", None)
+    nature = request.json.get("nature", None)
+    ability = request.json.get("ability", None)
+    group_name = request.json.get("group_name", None)
+
+    pokemon = Pokemon_fusion(name=name, ps=ps, atk=atk, sp_atk=sp_atk, spd=spd, defens=defens, sp_defens=sp_defens, img=img,
+                             type=type, weight=weight, height=height, group_name=group_name)
+    db.session.add(pokemon)
+
+    db.session.commit()
+
+    if (learning):
+        fusion = db.session.query(Pokemon_fusion).order_by(
+            Pokemon_fusion.pokemon_id.desc()).findone()
+        print(fusion)
+        for i in learning:
+            move = db.session.query(Moves).filter_by(
+                id=i).first().findone()
+            pokemove = Pokemon_fusion_Move(
+                pokemon_id=fusion["pokemon_id"], move_id=move["move_id"])
+            db.session.add(pokemove)
+            db.session.commit()
+
+    if (nature):
+        fusion = db.session.query(Pokemon_fusion).order_by(
+            Pokemon_fusion.pokemon_id.desc()).findone()
+        natureFus = db.session.query(Nature).filter_by(
+            id=nature).first().findone()
+        pokenature = Pokemon_fusion_Nature(
+            pokemon_id=fusion["pokemon_id"], nature_id=natureFus["nature_id"])
+        db.session.add(pokenature)
+        db.session.commit()
+    if (ability):
+        fusion = db.session.query(Pokemon_fusion).order_by(
+            Pokemon_fusion.pokemon_id.desc()).findone()
+        abilityFus = db.session.query(Ability).filter_by(
+            id=ability).first().findone()
+        pokeability = Pokemon_fusion_Ability(
+            pokemon_id=fusion["pokemon_id"], ability_id=abilityFus["ability_id"])
+        db.session.add(pokeability)
+        db.session.commit()
+
+    # if (learning):
+    #
     #    for i in learning:
     #        move = db.session.query(Moves).filter_by(id=i).first().findone()
     #        pokemon = db.session.query(Pokemon).filter_by(name=name).first().findone()
@@ -137,20 +204,17 @@ def createMove():
     db.session.add(move)
     db.session.commit()
 
-
     if (learning):
         move = db.session.query(Moves).filter_by(
-        name=name).first().findone()
+            name=name).first().findone()
         print(move)
         for i in learning:
             pokemon = db.session.query(Pokemon).filter_by(
-                    name=i).first().findone()
+                name=i).first().findone()
             pokemove = Pokemon_Move(
                 pokemon_id=pokemon["pokemon_id"], move_id=move["move_id"])
             db.session.add(pokemove)
             db.session.commit()
-   
-
 
     return jsonify({"move": "a"}), 200
 
@@ -174,7 +238,8 @@ def createAbility():
 
     for a, b in replacements:
         if (description):
-            description = description.replace(a, b).replace(a.upper(), b.upper())
+            description = description.replace(
+                a, b).replace(a.upper(), b.upper())
             description = description.replace("\n", " ")
 
     ability = Ability(id=id, name=name,
@@ -212,34 +277,35 @@ def createItem():
     description = request.json.get("description", None)
     img = request.json.get("img", None)
 
-    if(id):
+    if (id):
         for a, b in replacements:
-                if (description):
-                    description = description.replace(a, b).replace(a.upper(), b.upper())
-                    description = description.replace("\n", " ")
+            if (description):
+                description = description.replace(
+                    a, b).replace(a.upper(), b.upper())
+                description = description.replace("\n", " ")
 
-        item = Item(id=id, name=name, description=description, cost=cost, img=img)
+        item = Item(id=id, name=name, description=description,
+                    cost=cost, img=img)
         db.session.add(item)
 
         db.session.commit()
-        
+
     return jsonify({"item": "item"}), 200
 
 
 @api.route("/createNature", methods=["POST"])
 def createNature():
-    
+
     name = request.json.get("name", None)
     id = request.json.get("id", None)
     decrease_stat = request.json.get("decrease_stat", None)
     increase_stat = request.json.get("increase_stat", None)
-    
+
     nature = Nature(id=id, name=name, decrease_stat=decrease_stat,
                     increase_stat=increase_stat)
     db.session.add(nature)
     db.session.commit()
     return jsonify({"nature": "nature"}), 200
-
 
 @api.route("/all", methods=["GET"])
 def all():
@@ -271,19 +337,22 @@ def allmoves(pokemon_id):
     for i in rows:
         ability = Ability.query.filter_by(
             ability_id=i["ability_id"]).first().serialize()
-        
+
         abilities.append(ability)
-    return jsonify({"pokemon":pokemon, "abilities": abilities, "moves":moves}), 200
+    return jsonify({"pokemon": pokemon, "abilities": abilities, "moves": moves}), 200
+
 
 @api.route("/item/<int:item_id>", methods=["GET"])
 def item(item_id):
     item = Item.query.filter_by(id=item_id).first().serialize()
-    return jsonify({"item":item}), 200
+    return jsonify({"item": item}), 200
+
 
 @api.route("/move/<int:move_id>", methods=["GET"])
 def move(move_id):
     move = Moves.query.filter_by(id=move_id).first().serialize()
-    return jsonify({"move":move}), 200
+    return jsonify({"move": move}), 200
+
 
 @api.route("/ability/<int:ability_id>", methods=["GET"])
 def ability(ability_id):
@@ -294,9 +363,9 @@ def ability(ability_id):
     for i in rows:
         pokemon = Pokemon.query.filter_by(
             pokemon_id=i["pokemon_id"]).first().serialize()
-        
+
         pokemons.append(pokemon)
-    return jsonify({"ability":ability, "pokemons":pokemons}), 200
+    return jsonify({"ability": ability, "pokemons": pokemons}), 200
 
 
 @api.route("/store", methods=["GET"])
@@ -312,6 +381,4 @@ def store():
     pokemons = Pokemon.query.order_by(Pokemon.id.asc())
     pokemons = list(map(lambda x: x.serialize(), pokemons))
 
-
-    
     return jsonify({"pokemons": pokemons, "abilities": abilities, "moves": moves, "items": items, "natures": natures}), 200
