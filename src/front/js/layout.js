@@ -3,6 +3,7 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { Navbar } from "./component/navbar.jsx";
 import { Footer } from "./component/footer.jsx";
 import PokeducatorPokemonInfo from "./pages/pokeducatorPokemonInfo.jsx";
+import PokeducatorLogin from "./pages/pokeducatorLogin.jsx";
 import PokeducatorWikiGuarderia from "./pages/pokeducatorWiki/pokeducatorWikiGuarderia.jsx";
 import PokeducatorWikiLanding from "./pages/pokeducatorWiki/pokeducatorWikiLanding.jsx";
 import PokeducatorObjetos from "./pages/pokeducatorObjetos.jsx";
@@ -24,6 +25,8 @@ import PokeducatorHabilidad from "./pages/pokeducatorHabilidades.jsx";
 import PokeducatorHabilidadInfo from "./pages/pokeducatorHabilidadInfo.jsx";
 import PokeducatorInfo from "./pages/pokeducatorInfo.jsx";
 import PokeducatorFusion from "./pages/pokeducatorFusion.jsx";
+import PokeducatorSignup from "./pages/pokeducatorSignup.jsx";
+import PokeducatorPerfil from "./pages/pokeducatorPerfil.jsx";
 
 
 //create your first component
@@ -39,6 +42,9 @@ const Layout = () => {
           <Navbar />
           <Routes>
             <Route element={<PokeducatorPokemonInfo />} path={"/pokemon/:theid"} />
+            <Route element={<PokeducatorLogin />} path={"/login"} />
+            <Route element={<PokeducatorSignup />} path={"/signup"} />
+            <Route element={<PokeducatorPerfil />} path={"/perfil"} />
             <Route element={<PokeducatorObjetoInfo />} path={"/objeto/:theid"} />
             <Route element={<PokeducatorMovimientoInfo />} path={"/movimiento/:theid"} />
             <Route element={<PokeducatorHabilidadInfo />} path={"/habilidad/:theid"} />

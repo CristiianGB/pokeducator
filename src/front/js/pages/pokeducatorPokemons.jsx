@@ -36,7 +36,6 @@ const PokeducatorPokemons = () => {
     setTimeout(() => {
       if (load != false && !pokemons) {
         setLoad(false);
-        console.log(load);
         setPokemons(store.pokemon_data);
       }
     }, time[randomtime]);
@@ -58,20 +57,19 @@ const PokeducatorPokemons = () => {
               <button
                 className="buttonPokemonInfo"
                 onClick={() => {
-                  number > 49 ? setNumber(number - 50) : setNumber(0);
+                  number > 49 ? setNumber(number - 52) : setNumber(0);
                 }}
               >
                 Anterior
               </button>
             </div>
-
             <div className="col-sm-4">
               <div className="border-bottom">
                 <input
                   type="text"
                   className="form-control text-center border-0"
                   id="buscador"
-                  placeholder="BUSCAR POKÉMON"
+                  placeholder="Elijo a..."
                   onChange={(event) =>
                     event.target.value.length > 2
                       ? setPokemons(
@@ -89,9 +87,9 @@ const PokeducatorPokemons = () => {
               <button
                 className="btn buttonPokemonInfo"
                 onClick={() => {
-                  number > pokemons.length - 100
-                    ? setNumber(pokemons.length - 50)
-                    : setNumber(number + 50);
+                  number > pokemons.length - 104
+                    ? setNumber(pokemons.length - 52)
+                    : setNumber(number + 52);
                 }}
               >
                 Siguiente
@@ -99,7 +97,7 @@ const PokeducatorPokemons = () => {
             </div>
           </div>
           <div className="pokegallery">
-            {pokemons?.slice(number, number + 50).map((pokemon, i) => (
+            {pokemons?.slice(number, number + 52).map((pokemon, i) => (
               <div className="col-md-3" id={pokemon.id} key={pokemon.id}>
                 <div className="card bg-light m-4 cardPokemon">
                   <a href={`/pokemon/${pokemon.id}`}>
