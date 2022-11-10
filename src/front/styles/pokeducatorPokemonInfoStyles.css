@@ -1,160 +1,168 @@
 .background_steel {
   background: linear-gradient(
     0deg,
-    hsla(240, 11%, 70%, 1) 10%,
-    hsla(0, 0%, 100%, 1) 100%
+    hsla(240, 11%, 70%, 1) 20%,
+    hsla(0, 0%, 100%, 1) 60%
   );
 }
 
 .background_water {
   background: linear-gradient(
     0deg,
-    hsla(209, 100%, 59%, 1) 10%,
-    hsla(0, 0%, 100%, 1) 100%
+    hsla(209, 100%, 59%, 1) 20%,
+    hsla(0, 0%, 100%, 1) 60%
   );
 }
 
 .background_bug {
   background: linear-gradient(
     0deg,
-    hsla(67, 73%, 43%, 1) 10%,
-    hsla(0, 0%, 100%, 1) 100%
+    hsla(67, 73%, 43%, 1) 20%,
+    hsla(0, 0%, 100%, 1) 60%
   );
 }
 
 .background_unknown {
   background: linear-gradient(
     0deg,
-    hsla(188, 100%, 50%, 1) 10%,
-    hsla(0, 0%, 100%, 1) 100%
+    hsla(188, 100%, 50%, 1) 20%,
+    hsla(0, 0%, 100%, 1) 60%
   );
 }
 
 .background_dragon {
   background: linear-gradient(
     0deg,
-    hsla(247, 92%, 70%, 1) 10%,
-    hsla(0, 0%, 100%, 1) 100%
+    hsla(247, 92%, 70%, 1) 20%,
+    hsla(0, 0%, 100%, 1) 60%
   );
 }
 
 .background_electric {
   background: linear-gradient(
     0deg,
-    hsla(47, 100%, 60%, 1) 10%,
-    hsla(0, 0%, 100%, 1) 100%
+    hsla(47, 100%, 60%, 1) 20%,
+    hsla(0, 0%, 100%, 1) 60%
   );
 }
 
 .background_ghost {
   background: linear-gradient(
     0deg,
-    hsla(241, 39%, 29%, 1) 10%,
-    hsla(0, 0%, 100%, 1) 100%
+    hsla(241, 39%, 29%, 1) 20%,
+    hsla(0, 0%, 100%, 1) 60%
   );
 }
 
 .background_fire {
   background: linear-gradient(
     0deg,
-    hsla(10, 99%, 55%, 1) 10%,
-    hsla(0, 0%, 100%, 1) 100%
+    hsla(20, 99%, 55%, 1) 20%,
+    hsla(0, 0%, 100%, 1) 60%
   );
 }
 
 .background_fairy {
   background: linear-gradient(
     0deg,
-    hsla(300, 100%, 84%, 1) 10%,
-    hsla(0, 0%, 100%, 1) 100%
+    hsla(300, 100%, 84%, 1) 20%,
+    hsla(0, 0%, 100%, 1) 60%
   );
 }
 
 .background_ice {
   background: linear-gradient(
     0deg,
-    hsla(195, 100%, 73%, 1) 10%,
-    hsla(0, 0%, 100%, 1) 100%
+    hsla(195, 100%, 73%, 1) 20%,
+    hsla(0, 0%, 100%, 1) 60%
   );
 }
 
 .background_fighting {
   background: linear-gradient(
     0deg,
-    hsla(8, 50%, 52%, 1) 10%,
-    hsla(0, 0%, 100%, 1) 100%
+    hsla(8, 50%, 52%, 1) 20%,
+    hsla(0, 0%, 100%, 1) 60%
   );
 }
 
 .background_normal {
   background: linear-gradient(
     0deg,
-    hsla(46, 11%, 70%, 1) 10%,
-    hsla(0, 0%, 100%, 1) 100%
+    hsla(46, 11%, 70%, 1) 20%,
+    hsla(0, 0%, 100%, 1) 60%
   );
 }
 
 .background_grass {
   background: linear-gradient(
     0deg,
-    hsla(102, 55%, 57%, 1) 10%,
-    hsla(0, 0%, 100%, 1) 100%
+    hsla(102, 55%, 57%, 1) 20%,
+    hsla(0, 0%, 100%, 1) 60%
   );
 }
 
 .background_psychic {
   background: linear-gradient(
     0deg,
-    hsla(334, 100%, 67%, 1) 10%,
-    hsla(0, 0%, 100%, 1) 100%
+    hsla(334, 100%, 67%, 1) 20%,
+    hsla(0, 0%, 100%, 1) 60%
   );
 }
 
 .background_rock {
   background: linear-gradient(
     0deg,
-    hsla(47, 39%, 57%, 1) 10%,
-    hsla(0, 0%, 100%, 1) 100%
+    hsla(47, 39%, 57%, 1) 20%,
+    hsla(0, 0%, 100%, 1) 60%
   );
 }
 
 .background_dark {
   background: linear-gradient(
     0deg,
-    hsla(20, 29%, 36%, 1) 10%,
-    hsla(0, 0%, 100%, 1) 100%
+    hsla(20, 29%, 36%, 1) 20%,
+    hsla(0, 0%, 100%, 1) 60%
   );
 }
 
 .background_shadow {
   background: linear-gradient(
     0deg,
-    hsla(240, 36%, 46%, 1) 10%,
-    hsla(0, 0%, 100%, 1) 100%
+    hsla(240, 36%, 46%, 1) 20%,
+    hsla(0, 0%, 100%, 1) 60%
   );
 }
 
 .background_ground {
   background: linear-gradient(
     0deg,
-    hsla(46, 67%, 60%, 1) 10%,
-    hsla(0, 0%, 100%, 1) 100%
+    hsla(46, 67%, 60%, 1) 20%,
+    hsla(0, 0%, 100%, 1) 60%
   );
 }
 
 .background_poison {
   background: linear-gradient(
     0deg,
-    hsla(311, 41%, 44%, 1) 10%,
-    hsla(0, 0%, 100%, 1) 100%
+    hsla(311, 41%, 44%, 1) 20%,
+    hsla(0, 0%, 100%, 1) 60%
   );
 }
 
 .background_flying {
   background: linear-gradient(
     0deg,
-    hsla(218, 100%, 71%, 1) 10%,
-    hsla(0, 0%, 100%, 1) 100%
+    hsla(218, 100%, 71%, 1) 20%,
+    hsla(0, 0%, 100%, 1) 60%
+  );
+}
+
+.div_evolucion {
+  background: linear-gradient(
+    0deg,
+    hsla(0, 0%, 61%, 1) 20%,
+    hsla(210, 17%, 98%, 1) 60%
   );
 }
 

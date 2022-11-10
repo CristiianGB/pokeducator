@@ -1,8 +1,8 @@
 """empty message
 
-Revision ID: 3740f72596d2
+Revision ID: 708e3ed447f3
 Revises: 
-Create Date: 2022-11-09 19:33:43.361344
+Create Date: 2022-11-10 21:46:04.312577
 
 """
 from alembic import op
@@ -10,7 +10,7 @@ import sqlalchemy as sa
 from sqlalchemy.dialects import postgresql
 
 # revision identifiers, used by Alembic.
-revision = '3740f72596d2'
+revision = '708e3ed447f3'
 down_revision = None
 branch_labels = None
 depends_on = None
@@ -75,6 +75,8 @@ def upgrade():
     sa.Column('shiny', sa.String(length=122), nullable=True),
     sa.Column('type', postgresql.ARRAY(sa.String(length=300)), nullable=True),
     sa.Column('group_name', postgresql.ARRAY(sa.String(length=300)), nullable=True),
+    sa.Column('weakness', postgresql.ARRAY(sa.String(length=300)), nullable=True),
+    sa.Column('evolution', postgresql.ARRAY(sa.String(length=300)), nullable=True),
     sa.Column('url', sa.String(length=123), nullable=False),
     sa.Column('weight', sa.Integer(), nullable=False),
     sa.Column('height', sa.Integer(), nullable=False),

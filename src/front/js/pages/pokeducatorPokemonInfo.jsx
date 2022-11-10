@@ -4,7 +4,6 @@ import { useParams } from "react-router-dom";
 import "../../styles/pokeducatorPokemonInfoStyles.css";
 import { Context } from "../store/appContext.jsx";
 import loading from "../../assets/img/loading.gif";
-import "../../styles/pokemonTypes.css";
 import acero_img from "../../assets/img/tiposimg/acero.png";
 import agua_img from "../../assets/img/tiposimg/agua.png";
 import bicho_img from "../../assets/img/tiposimg/bicho.png";
@@ -34,16 +33,12 @@ const PokeducatorPokemonInfo = () => {
   let time = [2000, 3000, 4000, 5000];
   let randomtime = Math.floor(Math.random() * time.length);
 
-  const alturaMetros = (altura) => {
-    let height_obtained = parseFloat(altura) * 0.1
-    return height_obtained.toFixed(2)
-  }
-  
-  const pesoKilos = (peso) => {
-    let weight_obtained = parseFloat(peso) * 0.1
-    return weight_obtained.toFixed(2)
-  }
-
+  const aStyles = { fontSize: "18px" };
+  const subStyles = { fontSize: "15px" };
+  const tableStyle = {
+    width: "300px",
+    margin: "auto",
+  };
 
   setTimeout(() => {
     setLoad(false);
@@ -99,6 +94,63 @@ const PokeducatorPokemonInfo = () => {
     )
   );
 
+  let tipoDebilidad = store.single_pokemon_data.pokemon?.weakness.map(
+    (elemento) =>
+      elemento == "normal" ? (
+        <img className="tipoImg mx-1" src={normal_img} alt="normal" />
+      ) : elemento == "fighting" ? (
+        <img className="tipoImg mx-1" src={lucha_img} alt="normal" />
+      ) : elemento == "flying" ? (
+        <img className="tipoImg mx-1" src={volador_img} alt="normal" />
+      ) : elemento == "poison" ? (
+        <img className="tipoImg mx-1" src={veneno_img} alt="normal" />
+      ) : elemento == "ground" ? (
+        <img className="tipoImg mx-1" src={tierra_img} alt="normal" />
+      ) : elemento == "rock" ? (
+        <img className="tipoImg mx-1" src={roca_img} alt="normal" />
+      ) : elemento == "ghost" ? (
+        <img className="tipoImg mx-1" src={fantasma_img} alt="normal" />
+      ) : elemento == "steel" ? (
+        <img className="tipoImg mx-1" src={acero_img} alt="normal" />
+      ) : elemento == "fire" ? (
+        <img className="tipoImg mx-1" src={fuego_img} alt="normal" />
+      ) : elemento == "water" ? (
+        <img className="tipoImg mx-1" src={agua_img} alt="normal" />
+      ) : elemento == "grass" ? (
+        <img className="tipoImg mx-1" src={planta_img} alt="normal" />
+      ) : elemento == "electric" ? (
+        <img className="tipoImg mx-1" src={electrico_img} alt="normal" />
+      ) : elemento == "psychic" ? (
+        <img className="tipoImg mx-1" src={psiquico_img} alt="normal" />
+      ) : elemento == "ice" ? (
+        <img className="tipoImg mx-1" src={hielo_img} alt="normal" />
+      ) : elemento == "dragon" ? (
+        <img className="tipoImg mx-1" src={dragon_img} alt="normal" />
+      ) : elemento == "dark" ? (
+        <img className="tipoImg mx-1" src={siniestro_img} alt="normal" />
+      ) : elemento == "fairy" ? (
+        <img className="tipoImg mx-1" src={hada_img} alt="normal" />
+      ) : elemento == "unknown" ? (
+        <img className="tipoImg mx-1" src={desconocido_img} alt="normal" />
+      ) : elemento == "shadow" ? (
+        <img className="tipoImg mx-1" src={sombra_img} alt="normal" />
+      ) : elemento == "bug" ? (
+        <img className="tipoImg mx-1" src={bicho_img} alt="normal" />
+      ) : (
+        ""
+      )
+  );
+
+  const alturaMetros = (altura) => {
+    let height_obtained = parseFloat(altura) * 0.1;
+    return height_obtained.toFixed(2);
+  };
+
+  const pesoKilos = (peso) => {
+    let weight_obtained = parseFloat(peso) * 0.1;
+    return weight_obtained.toFixed(2);
+  };
+
   return (
     <div className="containe container_section">
       {store.single_pokemon_data ? (
@@ -114,8 +166,8 @@ const PokeducatorPokemonInfo = () => {
           <>
             <div className="container align-items-center">
               {/* POKEMON BOTONES */}
-              <div className="row justify-content-center mt-3">
-                <div className="col-sm-6">
+              <div className="d-flex justify-content-between mt-3">
+                <div className="col-sm-6 text-start">
                   {params.theid == 1 ? (
                     ""
                   ) : (
@@ -159,7 +211,7 @@ const PokeducatorPokemonInfo = () => {
                 <div className="col-md-6">
                   {/* POKEMON IMAGEN */}
                   <div
-                    className={`text-center background_${store.single_pokemon_data.pokemon.type[0]}`}
+                    className={`rounded-circle text-center background_${store.single_pokemon_data.pokemon.type[0]}`}
                   >
                     <img
                       className="img-fluid"
@@ -207,7 +259,7 @@ const PokeducatorPokemonInfo = () => {
                                       className="progress-bar"
                                       role="progressbar"
                                       style={{
-                                        width: `${objeto.base_stat}%`,
+                                        width: `${objeto.base_stat / 1.5}%`,
                                       }}
                                     ></div>
                                   </div>
@@ -242,15 +294,19 @@ const PokeducatorPokemonInfo = () => {
                           <li>
                             <p className="fw-bold fs-5 text-white">Altura</p>
                             <p className="fw-bold">
-                              {alturaMetros(store.single_pokemon_data.pokemon.height)}{" "}
-                              m
+                              {pesoKilos(
+                                store.single_pokemon_data.pokemon.weight
+                              )}{" "}
+                              Kg
                             </p>
                           </li>
                           <li>
                             <p className="fw-bold fs-5 text-white">Peso</p>
                             <p className="fw-bold">
-                              {pesoKilos(store.single_pokemon_data.pokemon.weight)}{" "}
-                              Kg
+                              {alturaMetros(
+                                store.single_pokemon_data.pokemon.height
+                              )}{" "}
+                              m
                             </p>
                           </li>
                         </ul>
@@ -280,23 +336,40 @@ const PokeducatorPokemonInfo = () => {
                   </div>
                   <div className="bg-light p-2 rounded-4 div_debilidades">
                     <h4 className="fw-bold">DEBILIDADES</h4>
-                    <div>tipo</div>
+                    <div>{tipoDebilidad}</div>
                   </div>
                   <div className="bg-light p-2 rounded-4 div_tipo">
-                    <h4 className="fw-bold">EVOLUCIONES</h4>
-                    <div className="d-flex flex-row justify-content-around">
-                      <div
-                        className="rounded-circle bg-secondary"
-                        style={{ width: "150px", height: "150px" }}
-                      ></div>
-                      <div
-                        className="rounded-circle bg-secondary"
-                        style={{ width: "150px", height: "150px" }}
-                      ></div>
-                      <div
-                        className="rounded-circle bg-secondary"
-                        style={{ width: "150px", height: "150px" }}
-                      ></div>
+                    <div>
+                      <h4 className="fw-bold">EVOLUCIONES</h4>
+                    </div>
+                    <div className="d-flex justify-content-around">
+                      {store.single_pokemon_data.pokemon.evolution.map(
+                        (elemento) =>
+                          store.pokemon_data.map((objeto) =>
+                            objeto.name == elemento ? (
+                              <div
+                                className="rounded-circle text-center div_evolucion"
+                                style={{
+                                  width: "150px",
+                                  height: "150px",
+                                }}
+                              >
+                                <a
+                                  className="links"
+                                  href={`/pokemon/${objeto.id}`}
+                                >
+                                  <img
+                                    className="img-fluid"
+                                    src={objeto.img}
+                                    alt={objeto.name}
+                                  />
+                                </a>
+                              </div>
+                            ) : (
+                              ""
+                            )
+                          )
+                      )}
                     </div>
                   </div>
                 </div>

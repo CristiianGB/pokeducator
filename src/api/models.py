@@ -285,6 +285,8 @@ class Pokemon(db.Model):
     shiny = db.Column(db.String(122), nullable=True, unique=False)
     type = db.Column(ARRAY(db.String(300)))
     group_name = db.Column(ARRAY(db.String(300)))
+    weakness = db.Column(ARRAY(db.String(300)))
+    evolution = db.Column(ARRAY(db.String(300)))
     url = db.Column(db.String(123), nullable=False, unique=True)
     weight = db.Column(db.Integer, nullable=False, unique=False) 
     height = db.Column(db.Integer, nullable=False, unique=False) 
@@ -342,8 +344,8 @@ class Pokemon(db.Model):
             "height": self.height,
             "url": self.url,
             "group_name": self.group_name,
-            
-          
+            "evolution": self.evolution,
+            "weakness": self.weakness
             }
     
 
