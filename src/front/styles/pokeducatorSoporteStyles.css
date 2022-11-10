@@ -1,0 +1,10 @@
+.submitBoton {
+  max-width: 80px;
+  display: flex;
+}
+.infoPanel {
+  position: relative;
+  left: 400px;
+  max-width: 34rem;
+  top: 50px;
+}
