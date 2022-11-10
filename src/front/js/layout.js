@@ -14,8 +14,8 @@ import PokeducatorWikiGenero from "./pages/pokeducatorWiki/pokeducatorWikiGenero
 import PokeducatorWikiSeries from "./pages/pokeducatorWiki/pokeducatorWikiSeries.jsx";
 import PokeducatorWikiJuegos from "./pages/pokeducatorWiki/pokeducatorWikiJuegos.jsx";
 import PokeducatorWikiNaturaleza from "./pages/pokeducatorWiki/pokeducatorWikiNaturaleza.jsx";
-import PokeducatorObjetoInfo from "./pages/pokeducatorObjetoInfo.jsx"
-import PokeducatorMovimientoInfo from "./pages/pokeducatorMovimientoInfo.jsx"
+import PokeducatorObjetoInfo from "./pages/pokeducatorObjetoInfo.jsx";
+import PokeducatorMovimientoInfo from "./pages/pokeducatorMovimientoInfo.jsx";
 import PokeducatorPokemons from "./pages/pokeducatorPokemons.jsx";
 import PokeducatorLandingPage from "./pages/pokeducatorLandingPage.jsx";
 import PokeducatorProfilePage from "./pages/pokeducatorProfilePage.jsx";
@@ -27,7 +27,7 @@ import PokeducatorInfo from "./pages/pokeducatorInfo.jsx";
 import PokeducatorFusion from "./pages/pokeducatorFusion.jsx";
 import PokeducatorSignup from "./pages/pokeducatorSignup.jsx";
 import PokeducatorPerfil from "./pages/pokeducatorPerfil.jsx";
-
+import PokeducatorSoporte from "./pages/pokeducatorSoporte.jsx";
 
 //create your first component
 const Layout = () => {
@@ -41,27 +41,33 @@ const Layout = () => {
         <ScrollToTop>
           <Navbar />
           <Routes>
-            <Route element={<PokeducatorPokemonInfo />} path={"/pokemon/:theid"} />
+            <Route
+              element={<PokeducatorPokemonInfo />}
+              path={"/pokemon/:theid"}
+            />
             <Route element={<PokeducatorLogin />} path={"/login"} />
             <Route element={<PokeducatorSignup />} path={"/signup"} />
             <Route element={<PokeducatorPerfil />} path={"/perfil"} />
-            <Route element={<PokeducatorObjetoInfo />} path={"/objeto/:theid"} />
-            <Route element={<PokeducatorMovimientoInfo />} path={"/movimiento/:theid"} />
-            <Route element={<PokeducatorHabilidadInfo />} path={"/habilidad/:theid"} />
+            <Route
+              element={<PokeducatorObjetoInfo />}
+              path={"/objeto/:theid"}
+            />
+            <Route
+              element={<PokeducatorMovimientoInfo />}
+              path={"/movimiento/:theid"}
+            />
+            <Route
+              element={<PokeducatorHabilidadInfo />}
+              path={"/habilidad/:theid"}
+            />
             <Route element={<PokeducatorHabilidad />} path={"/habilidades"} />
             <Route element={<PokeducatorFusion />} path={"/fusion"} />
             <Route
               element={<PokeducatorWikiGuarderia />}
               path="/wiki/guarderia-pokemon"
             />
-            <Route
-              element={<PokeducatorInfo />}
-              path="/info"
-            />
-            <Route
-              element={<PokeducatorWikiLanding />}
-              path="/wiki"
-            />
+            <Route element={<PokeducatorInfo />} path="/info" />
+            <Route element={<PokeducatorWikiLanding />} path="/wiki" />
             <Route
               element={<PokeducatorWikiSeries />}
               path="/wiki/series-pokemon"
@@ -70,6 +76,7 @@ const Layout = () => {
               element={<PokeducatorWikiJuegos />}
               path="/wiki/juegos-pokemon"
             />
+            <Route element={<PokeducatorSoporte />} path={"/soporte"} />
             <Route
               element={<PokeducatorWikiCrianza />}
               path="/wiki/crianza-pokemon"
