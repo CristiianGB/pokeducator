@@ -534,11 +534,7 @@ const PokeducatorWikiCrianza = () => {
                       </td>
                       <td rowSpan={2}>+</td>
                       <td>
-                        <a
-                          href="https://static.wikia.nocookie.net/espokemon/images/0/01/Ditto_XY.png"
-                          className="image"
-                          title="Ditto"
-                        >
+                        <a href="/pokemon/132" className="image" title="Ditto">
                           <img
                             alt="Ditto"
                             src="https://static.wikia.nocookie.net/espokemon/images/0/01/Ditto_XY.png/"
@@ -550,10 +546,7 @@ const PokeducatorWikiCrianza = () => {
                       </td>
                       <td rowSpan={2}>=</td>
                       <td>
-                        <a
-                          href="https://static.wikia.nocookie.net/espokemon/images/2/20/Squirtle_XY.png"
-                          className=" lazyloaded"
-                        >
+                        <a href="/pokemon/7" className=" lazyloaded">
                           <img
                             alt="Squirtle"
                             src="https://static.wikia.nocookie.net/espokemon/images/2/20/Squirtle_XY.png"
@@ -607,9 +600,12 @@ const PokeducatorWikiCrianza = () => {
                   </a>{" "}
                   dentro de la región de Alola, gracias a la característica de
                   este entorno adquieren una forma y tipos distintos al de su
-                  contraparte regional original. El uso de la piedra eterna es
-                  primordial para conseguir crías con su forma original dentro
-                  de esta región.
+                  contraparte regional original. El uso de la{" "}
+                  <a className="links" href="/objeto/206">
+                    Piedra Eterna
+                  </a>{" "}
+                  es primordial para conseguir crías con su forma original
+                  dentro de esta región.
                 </p>
                 <br />
                 <p>
@@ -624,8 +620,11 @@ const PokeducatorWikiCrianza = () => {
                   , nacerá otro Rattata de Alola, sin importar el género del
                   padre o madre (ya que los genes de Alola predominan sobre los
                   de otra región y siempre nacerá un pokémon forma Alola). Pero
-                  al utilizar la piedra eterna la cría obtendrá la forma del
-                  padre equipado con este{" "}
+                  al utilizar la{" "}
+                  <a className="links" href="/objeto/206">
+                    Piedra Eterna
+                  </a>{" "}
+                  la cría obtendrá la forma del padre equipado con este{" "}
                   <a className="links" href="/objetos">
                     objeto
                   </a>
@@ -648,7 +647,7 @@ const PokeducatorWikiCrianza = () => {
                       <tr>
                         <td>
                           <a
-                            href="https://static.wikia.nocookie.net/espokemon/images/c/c6/Rattata_XY.png"
+                            href="/pokemon/91"
                             className="image"
                             title="Rattata"
                           >
@@ -663,7 +662,7 @@ const PokeducatorWikiCrianza = () => {
                         <td rowSpan={2}>+</td>
                         <td>
                           <a
-                            href="https://static.wikia.nocookie.net/espokemon/images/7/7d/Rattata_de_Alola_SL.png"
+                            href="/pokemon/10091"
                             className="image"
                             title="Rattata de Alola"
                           >
@@ -678,10 +677,7 @@ const PokeducatorWikiCrianza = () => {
                         </td>
                         <td rowSpan={2}>=</td>
                         <td>
-                          <a
-                            href="https://static.wikia.nocookie.net/espokemon/images/7/7d/Rattata_de_Alola_SL.png"
-                            className=" lazyloaded"
-                          >
+                          <a href="/pokemon/10091" className=" lazyloaded">
                             <img
                               alt="Rattata de Alola"
                               src="https://static.wikia.nocookie.net/espokemon/images/7/7d/Rattata_de_Alola_SL.png"
@@ -705,7 +701,10 @@ const PokeducatorWikiCrianza = () => {
                             <a className="links" href="/pokemon/10091">
                               Rattata-Alola
                             </a>{" "}
-                            + Piedaeterna
+                            +{" "}
+                            <a className="links" href="/objeto/206">
+                              Piedra Eterna
+                            </a>
                           </p>
                         </td>
                         <td>
@@ -769,9 +768,12 @@ const PokeducatorWikiCrianza = () => {
                     Pokémon
                   </a>{" "}
                   que pertenecen a ella se muestran aquí: al dejar en la
-                  guardería dos Pokémon para que se críen, el anciano de fuera
-                  del edificio que cuida de ellos dirá una frase que da una idea
-                  de si los Pokémon pondrán o no un huevo y cuanto tardarán:
+                  <a className="links" href="/wiki/guarderia-pokemon">
+                    guardería
+                  </a>{" "}
+                  dos Pokémon para que se críen, el anciano de fuera del
+                  edificio que cuida de ellos dirá una frase que da una idea de
+                  si los Pokémon pondrán o no un huevo y cuanto tardarán:
                 </p>
                 <br />
                 <ul>
@@ -794,18 +796,27 @@ const PokeducatorWikiCrianza = () => {
                 </ul>
                 <br />
                 <p>
-                  En Pokémon Diamante y Perla, hay una función del Pokéreloj que
-                  dice exactamente lo mismo, se llama "Medidor de amor de
-                  Luvdisc", donde dos Luvdisc están en la pantalla, y, después
-                  de dejar dos{" "}
+                  En{" "}
+                  <a className="links" href="/wiki/juegos-pokemon">
+                    Pokémon Diamante y Pokémon Perla
+                  </a>
+                  , hay una función del Pokéreloj que dice exactamente lo mismo,
+                  se llama "Medidor de amor de Luvdisc", donde dos{" "}
+                  <a className="links" href="/pokemon/370">
+                    Luvdisc
+                  </a>{" "}
+                  están en la pantalla, y, después de dejar dos{" "}
                   <a className="links" href="/pokemons">
                     Pokémon
                   </a>{" "}
                   en la guardería y accionar la función, se acercarán, se
                   tocarán (y se darán un beso), o no se acercarán nada. Cuanto
                   más se acerquen, más probabilidades habrá de que pongan un
-                  huevo. Esta función solo se consigue por evento. En Pokémon
-                  Platino la puedes conseguir si atrapas 5{" "}
+                  huevo. Esta función solo se consigue por evento. En{" "}
+                  <a className="links" href="/wiki/juegos-pokemon">
+                    Pokémon Platino
+                  </a>{" "}
+                  la puedes conseguir si atrapas 5{" "}
                   <a className="links" href="/pokemons">
                     Pokémon
                   </a>{" "}
@@ -828,7 +839,7 @@ const PokeducatorWikiCrianza = () => {
                   <a className="links" href="/pokemons">
                     Pokémon
                   </a>{" "}
-                  con
+                  con{" "}
                   <a className="links" href="/movimientos">
                     movimientos
                   </a>{" "}
@@ -847,7 +858,7 @@ const PokeducatorWikiCrianza = () => {
                   </a>{" "}
                   que nacieron de huevo pueden tener mejores IV's que sus
                   padres. Y por último las crías podrán salir con movimientos
-                  huevo, que son los
+                  huevo, que son los{" "}
                   <a className="links" href="/movimientos">
                     movimientos
                   </a>{" "}
@@ -910,9 +921,19 @@ const PokeducatorWikiCrianza = () => {
                     Pokémon
                   </a>{" "}
                   de otras regiones se debe hace intercambio en la Terminal
-                  Global. Por ejemplo, un Ditto de Japón criando con un Pidgeot
-                  de España tendría más posibilidades de que el Pidgey que nazca
-                  sea variocolor que si ambos fueran del mismo país.
+                  Global. Por ejemplo, un{" "}
+                  <a className="links" href="/pokemon/132">
+                    Ditto
+                  </a>{" "}
+                  de Japón criando con un{" "}
+                  <a className="links" href="/pokemon/18">
+                    Pidgeot
+                  </a>{" "}
+                  de España tendría más posibilidades de que el{" "}
+                  <a className="links" href="/pokemon/16">
+                    Pidgey
+                  </a>{" "}
+                  que nazca sea variocolor que si ambos fueran del mismo país.
                 </p>
                 <br />
               </div>
@@ -998,7 +1019,7 @@ const PokeducatorWikiCrianza = () => {
                       <tr>
                         <td rowSpan={2}>
                           <a
-                            href="https://static.wikia.nocookie.net/espokemon/images/a/a8/Pichu_XY.png"
+                            href="/pokemon/172"
                             className="image"
                             title="Pichu"
                           >
@@ -1012,7 +1033,7 @@ const PokeducatorWikiCrianza = () => {
                         </td>
                         <td rowSpan={2}>
                           <a
-                            href="https://static.wikia.nocookie.net/espokemon/images/7/7e/Cleffa_XY.png"
+                            href="/pokemon/173"
                             className="image"
                             title="Cleffa"
                           >
@@ -1026,7 +1047,7 @@ const PokeducatorWikiCrianza = () => {
                         </td>
                         <td rowSpan={2}>
                           <a
-                            href="https://static.wikia.nocookie.net/espokemon/images/a/ac/Igglybuff_XY.png"
+                            href="/pokemon/174"
                             className="image"
                             title="Igglybuff"
                           >
@@ -1040,7 +1061,7 @@ const PokeducatorWikiCrianza = () => {
                         </td>
                         <td rowSpan={2}>
                           <a
-                            href="https://static.wikia.nocookie.net/espokemon/images/5/58/Smoochum_XY.png"
+                            href="/pokemon/238"
                             className="image"
                             title="Smoochum"
                           >
@@ -1054,7 +1075,7 @@ const PokeducatorWikiCrianza = () => {
                         </td>
                         <td rowSpan={2}>
                           <a
-                            href="https://static.wikia.nocookie.net/espokemon/images/b/bb/Elekid_XY.png"
+                            href="/pokemon/239"
                             className="image"
                             title="Elekid"
                           >
@@ -1068,7 +1089,7 @@ const PokeducatorWikiCrianza = () => {
                         </td>
                         <td rowSpan={2}>
                           <a
-                            href="https://static.wikia.nocookie.net/espokemon/images/7/73/Magby_XY.png"
+                            href="/pokemon/240"
                             className="image"
                             title="Magby"
                           >
@@ -1082,7 +1103,7 @@ const PokeducatorWikiCrianza = () => {
                         </td>
                         <td rowSpan={2}>
                           <a
-                            href="https://static.wikia.nocookie.net/espokemon/images/c/ce/Togepi_XY.png"
+                            href="/pokemon/175"
                             className="image"
                             title="Togepi"
                           >
@@ -1096,7 +1117,7 @@ const PokeducatorWikiCrianza = () => {
                         </td>
                         <td rowSpan={2}>
                           <a
-                            href="https://static.wikia.nocookie.net/espokemon/images/2/22/Tyrogue_XY.png"
+                            href="/pokemon/236"
                             className="image"
                             title="Tyrogue"
                           >
@@ -1167,7 +1188,7 @@ const PokeducatorWikiCrianza = () => {
                       <tr>
                         <td rowSpan={2}>
                           <a
-                            href="https://static.wikia.nocookie.net/espokemon/images/2/2c/Azurill_XY.png"
+                            href="/pokemon/298"
                             className="image"
                             title="Azurrill"
                           >
@@ -1181,7 +1202,7 @@ const PokeducatorWikiCrianza = () => {
                         </td>
                         <td rowSpan={2}>
                           <a
-                            href="https://static.wikia.nocookie.net/espokemon/images/e/e0/Wynaut_XY.png"
+                            href="/pokemon/360"
                             className="image"
                             title="Wynaut"
                           >
@@ -1261,7 +1282,7 @@ const PokeducatorWikiCrianza = () => {
                       <tr>
                         <td rowSpan={2}>
                           <a
-                            href="https://static.wikia.nocookie.net/espokemon/images/e/e7/Munchlax_XY.png"
+                            href="/pokemon/446"
                             className="image"
                             title="Munchlax"
                           >
@@ -1275,7 +1296,7 @@ const PokeducatorWikiCrianza = () => {
                         </td>
                         <td rowSpan={2}>
                           <a
-                            href="https://static.wikia.nocookie.net/espokemon/images/b/b6/Budew_XY.png"
+                            href="/pokemon/406"
                             className="image"
                             title="Budew"
                           >
@@ -1289,7 +1310,7 @@ const PokeducatorWikiCrianza = () => {
                         </td>
                         <td rowSpan={2}>
                           <a
-                            href="https://static.wikia.nocookie.net/espokemon/images/f/f8/Chingling_XY.png"
+                            href="/pokemon/433"
                             className="image"
                             title="Chingling"
                           >
@@ -1303,7 +1324,7 @@ const PokeducatorWikiCrianza = () => {
                         </td>
                         <td rowSpan={2}>
                           <a
-                            href="https://static.wikia.nocookie.net/espokemon/images/a/aa/Bonsly_XY.png/"
+                            href="/pokemon/438"
                             className="image"
                             title="Bonsly"
                           >
@@ -1317,7 +1338,7 @@ const PokeducatorWikiCrianza = () => {
                         </td>
                         <td rowSpan={2}>
                           <a
-                            href="https://static.wikia.nocookie.net/espokemon/images/3/38/Mime_Jr._XY.png/"
+                            href="/pokemon/439"
                             className="image"
                             title="Mime Jr."
                           >
@@ -1331,7 +1352,7 @@ const PokeducatorWikiCrianza = () => {
                         </td>
                         <td rowSpan={2}>
                           <a
-                            href="https://static.wikia.nocookie.net/espokemon/images/a/a3/Happiny_XY.png/"
+                            href="/pokemon/440"
                             className="image"
                             title="Happiny"
                           >
@@ -1345,7 +1366,7 @@ const PokeducatorWikiCrianza = () => {
                         </td>
                         <td rowSpan={2}>
                           <a
-                            href="https://static.wikia.nocookie.net/espokemon/images/e/e1/Mantyke_XY.png/"
+                            href="/pokemon/458"
                             className="image"
                             title="Mantyke"
                           >
@@ -1405,7 +1426,7 @@ const PokeducatorWikiCrianza = () => {
                       <tr>
                         <td>
                           <a
-                            href="https://static.wikia.nocookie.net/espokemon/images/7/7b/Tyranitar_XY.png"
+                            href="/pokemon/248"
                             className="image"
                             title="Tyranitar"
                           >
@@ -1420,7 +1441,7 @@ const PokeducatorWikiCrianza = () => {
                         <td rowSpan={2}>+</td>
                         <td>
                           <a
-                            href="https://static.wikia.nocookie.net/espokemon/images/d/d9/Feraligatr_XY.png"
+                            href="/pokemon/160"
                             className="image"
                             title="Feraliagtr"
                           >
@@ -1435,10 +1456,7 @@ const PokeducatorWikiCrianza = () => {
                         </td>
                         <td rowSpan={2}>=</td>
                         <td>
-                          <a
-                            href="https://static.wikia.nocookie.net/espokemon/images/e/e3/Totodile_XY.png/"
-                            className=" lazyloaded"
-                          >
+                          <a href="/pokemon/158" className=" lazyloaded">
                             <img
                               alt="Totodile"
                               src="https://static.wikia.nocookie.net/espokemon/images/e/e3/Totodile_XY.png/"
