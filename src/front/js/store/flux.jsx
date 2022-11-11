@@ -18,39 +18,59 @@ const getState = ({ getStore, getActions, setStore }) => {
       favorites: [],
       user_id: null,
       equipos: [],
+      votes_pokemons: [],
     },
     actions: {
       login: async (username, password) => {
         const store = getStore();
 
-        const resp = fetch(
-          "https://3001-cristiiangb-pokeducator-ogri8b36lql.ws-eu75.gitpod.io/api/login/" +
-            username +
-            "/" +
-            password
+
+        const resp =  fetch(
+          "https://3001-cristiiangb-pokeducator-fj8djhd7o3d.ws-eu75.gitpod.io/api/login/"+username+"/"+password
+     
+          
         )
           .then((resp) => {
             return resp.json();
           })
           .then((data) => {
+          
             localStorage.setItem("token", data.token);
             localStorage.setItem("user_id", data.user_id);
-
+ 
             setStore({ token: data.token });
             setStore({ user_id: data.user_id });
           });
+
+      },
+      votes: async () => {
+        const store = getStore();
+        const resp =  fetch(
+          "https://3001-cristiiangb-pokeducator-fj8djhd7o3d.ws-eu75.gitpod.io/api/votes"
+        )
+          .then((resp) => {
+            return resp.json();
+          })
+          .then((data) => {
+
+            setStore({ votes_pokemons: data.votes });
+          });
+
       },
       getProfile: () => {
+        
+        
         const token = localStorage.token;
-        console.log(token);
+        console.log(token)
         fetch(
-          "https://3001-cristiiangb-pokeducator-ogri8b36lql.ws-eu75.gitpod.io/api/protected",
+          "https://3001-cristiiangb-pokeducator-fj8djhd7o3d.ws-eu75.gitpod.io/api/protected",
           {
             method: "GET",
             headers: {
               "Content-Type": "application/json",
               Authorization: "Bearer " + localStorage.token,
             },
+           
           }
         )
           .then((resp) => {
@@ -58,7 +78,7 @@ const getState = ({ getStore, getActions, setStore }) => {
           })
           .then((data) => {
             data.msg ? "" : getActions().idStorage(localStorage.user_id);
-
+            
             return setStore({ user: data });
           });
       },
@@ -165,6 +185,8 @@ const getState = ({ getStore, getActions, setStore }) => {
         sortedData.map((pokemon) => {
           let description = pokemon.description;
           let group_name = pokemon.group_name;
+          let evolution = pokemon.evolution;
+          let weakness = pokemon.weakness;
           let height = pokemon.height;
           let order = pokemon.order;
           let atk;
@@ -224,7 +246,7 @@ const getState = ({ getStore, getActions, setStore }) => {
           });
 
           const resp = fetch(
-            "https://3001-cristiiangb-pokeducator-ogri8b36lql.ws-eu75.gitpod.io/api/createPokemon",
+            "https://3001-cristiiangb-pokeducator-fj8djhd7o3d.ws-eu75.gitpod.io/api/createPokemon",
             {
               method: "POST",
               headers: { "Content-Type": "application/json" },
@@ -247,6 +269,8 @@ const getState = ({ getStore, getActions, setStore }) => {
                 order: order,
                 learning: learning,
                 group_name: group_name,
+                evolution: evolution,
+                weakness: weakness,
               }),
             }
           );
@@ -279,7 +303,7 @@ const getState = ({ getStore, getActions, setStore }) => {
                 })
                 .finally(() => {
                   fetch(
-                    "https://3001-cristiiangb-pokeducator-ogri8b36lql.ws-eu75.gitpod.io/api/createItem",
+                    "https://3001-cristiiangb-pokeducator-fj8djhd7o3d.ws-eu75.gitpod.io/api/createItem",
                     {
                       method: "POST",
                       headers: { "Content-Type": "application/json" },
@@ -299,7 +323,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 
       saveDbonStore: () => {
         fetch(
-          "https://3001-cristiiangb-pokeducator-ogri8b36lql.ws-eu75.gitpod.io/api/store"
+          "https://3001-cristiiangb-pokeducator-fj8djhd7o3d.ws-eu75.gitpod.io/api/store"
         )
           .then((response) => response.json())
           .then((store) => {
@@ -331,7 +355,7 @@ const getState = ({ getStore, getActions, setStore }) => {
       },
       addAll: () => {
         fetch(
-          "https://3001-cristiiangb-pokeducator-ogri8b36lql.ws-eu75.gitpod.io/api/storeid/" +
+          "https://3001-cristiiangb-pokeducator-fj8djhd7o3d.ws-eu75.gitpod.io/api/storeid/" +
             1
         )
           .then((response) => response.json())
@@ -352,7 +376,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 
       FindOnePokemon: (pokemon_id) => {
         fetch(
-          "https://3001-cristiiangb-pokeducator-ogri8b36lql.ws-eu75.gitpod.io/api/allmovabi/" +
+          "https://3001-cristiiangb-pokeducator-fj8djhd7o3d.ws-eu75.gitpod.io/api/allmovabi/" +
             pokemon_id
         )
           .then((response) => response.json())
@@ -368,7 +392,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 
       addequipofus: (pokemon_fusion_id, num) => {
         fetch(
-          "https://3001-cristiiangb-pokeducator-ogri8b36lql.ws-eu75.gitpod.io/api/addequipofus",
+          "https://3001-cristiiangb-pokeducator-fj8djhd7o3d.ws-eu75.gitpod.io/api/addequipofus",
           {
             method: "POST",
             headers: { "Content-Type": "application/json" },
@@ -377,12 +401,11 @@ const getState = ({ getStore, getActions, setStore }) => {
               pokemon_fusion_id: pokemon_fusion_id,
               num: num,
             }),
-          }
-        );
+          })
       },
       addequipo: (pokemon_id, num) => {
         fetch(
-          "https://3001-cristiiangb-pokeducator-ogri8b36lql.ws-eu75.gitpod.io/api/addequipo",
+          "https://3001-cristiiangb-pokeducator-fj8djhd7o3d.ws-eu75.gitpod.io/api/addequipo",
           {
             method: "POST",
             headers: { "Content-Type": "application/json" },
@@ -391,13 +414,12 @@ const getState = ({ getStore, getActions, setStore }) => {
               pokemon_id: pokemon_id,
               num: num,
             }),
-          }
-        );
+          })
       },
-
+      
       FindOneFusion: (pokemon_id) => {
         fetch(
-          "https://3001-cristiiangb-pokeducator-ogri8b36lql.ws-eu75.gitpod.io/api/allmovabifus/" +
+          "https://3001-cristiiangb-pokeducator-fj8djhd7o3d.ws-eu75.gitpod.io/api/allmovabifus/" +
             pokemon_id
         )
           .then((response) => response.json())
@@ -412,7 +434,8 @@ const getState = ({ getStore, getActions, setStore }) => {
       },
       FindOneItem: (item_id) => {
         fetch(
-          "https://3001-cristiiangb-pokeducator-ogri8b36lql.ws-eu75.gitpod.io/api/item/"+item_id
+          "https://3001-cristiiangb-pokeducator-fj8djhd7o3d.ws-eu75.gitpod.io/api/item/" +
+            item_id
         )
           .then((response) => response.json())
           .then((item) => {
@@ -421,7 +444,7 @@ const getState = ({ getStore, getActions, setStore }) => {
       },
       FindOneMove: (move_id) => {
         fetch(
-          "https://3001-cristiiangb-pokeducator-ogri8b36lql.ws-eu75.gitpod.io/api/move/" +
+          "https://3001-cristiiangb-pokeducator-fj8djhd7o3d.ws-eu75.gitpod.io/api/move/" +
             move_id
         )
           .then((response) => response.json())
@@ -440,11 +463,12 @@ const getState = ({ getStore, getActions, setStore }) => {
       idStorage: (id) => {
         setStore({ user_id: id });
         fetch(
-          "https://3001-cristiiangb-pokeducator-ogri8b36lql.ws-eu75.gitpod.io/api/storeid/" +
+          "https://3001-cristiiangb-pokeducator-fj8djhd7o3d.ws-eu75.gitpod.io/api/storeid/" +
             id
         )
           .then((response) => response.json())
           .then((store) => {
+
             let votes = [];
             store.votes.map((object) => {
               votes.push(object.pokemon_id);
@@ -455,14 +479,14 @@ const getState = ({ getStore, getActions, setStore }) => {
             });
             setStore({ votes: votes });
             setStore({ favorites: favorites });
-            setStore({ equipos: store.equipos });
+            setStore({ equipos: store.equipos})
           });
       },
       addVote: async (pokemon_id) => {
         const vote = getStore().votes;
         let id = getStore().user_id;
         const resp = await fetch(
-          "https://3001-cristiiangb-pokeducator-ogri8b36lql.ws-eu75.gitpod.io/api/addvote",
+          "https://3001-cristiiangb-pokeducator-fj8djhd7o3d.ws-eu75.gitpod.io/api/addvote",
           {
             method: "POST",
             headers: { "Content-Type": "application/json" },
@@ -482,22 +506,21 @@ const getState = ({ getStore, getActions, setStore }) => {
         let user_id = getStore().user_id;
 
         fetch(
-          process.env.BACKEND_URL +
-            "api/deletevote/" +
+          "https://3001-cristiiangb-pokeducator-fj8djhd7o3d.ws-eu75.gitpod.io/api/deletevote/" +
             pokemon_id +
             "/" +
             user_id
         )
           .then((response) => response.json())
           .then((store) => {
+       
             setStore({ votes: store.votes });
           });
       },
       deletefavorite: async (pokemon_id) => {
         let user_id = getStore().user_id;
         fetch(
-          process.env.BACKEND_URL +
-            "api/deletefavorite/" +
+          "https://3001-cristiiangb-pokeducator-fj8djhd7o3d.ws-eu75.gitpod.io/api/deletefavorite/" +
             pokemon_id +
             "/" +
             user_id
@@ -512,7 +535,7 @@ const getState = ({ getStore, getActions, setStore }) => {
         const favorite = getStore().favorites;
         let id = getStore().user_id;
         const resp = await fetch(
-          "https://3001-cristiiangb-pokeducator-ogri8b36lql.ws-eu75.gitpod.io/api/addfavorite",
+          "https://3001-cristiiangb-pokeducator-fj8djhd7o3d.ws-eu75.gitpod.io/api/addfavorite",
           {
             method: "POST",
             headers: { "Content-Type": "application/json" },
@@ -530,7 +553,7 @@ const getState = ({ getStore, getActions, setStore }) => {
       },
       FindOneAbility: (ability_id) => {
         fetch(
-          "https://3001-cristiiangb-pokeducator-ogri8b36lql.ws-eu75.gitpod.io/api/ability/" +
+          "https://3001-cristiiangb-pokeducator-fj8djhd7o3d.ws-eu75.gitpod.io/api/ability/" +
             ability_id
         )
           .then((response) => response.json())
@@ -561,7 +584,7 @@ const getState = ({ getStore, getActions, setStore }) => {
       },
       saveMoveonDb: () => {
         //hacer un bucle for aqui que el offset sea i y aumente de 50 en 50
-        fetch("https://pokeapi.co/api/v2/move/?offset=0&limit=100")
+        fetch("https://pokeapi.co/api/v2/move/?offset=800&limit=100")
           .then((response) => response.json())
           .then((data) => {
             return getActions().saveDb(data);
@@ -606,7 +629,7 @@ const getState = ({ getStore, getActions, setStore }) => {
             });
           setTimeout(() => {
             fetch(
-              "https://3001-cristiiangb-pokeducator-ogri8b36lql.ws-eu75.gitpod.io/api/createMove",
+              "https://3001-cristiiangb-pokeducator-fj8djhd7o3d.ws-eu75.gitpod.io/api/createMove",
               {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
@@ -651,7 +674,7 @@ const getState = ({ getStore, getActions, setStore }) => {
                 })
                 .finally(() => {
                   fetch(
-                    "https://3001-cristiiangb-pokeducator-ogri8b36lql.ws-eu75.gitpod.io/api/createNature",
+                    "https://3001-cristiiangb-pokeducator-fj8djhd7o3d.ws-eu75.gitpod.io/api/createNature",
                     {
                       method: "POST",
                       headers: { "Content-Type": "application/json" },
@@ -697,7 +720,7 @@ const getState = ({ getStore, getActions, setStore }) => {
                 })
                 .finally(() => {
                   fetch(
-                    "https://3001-cristiiangb-pokeducator-ogri8b36lql.ws-eu75.gitpod.io/api/createAbility",
+                    "https://3001-cristiiangb-pokeducator-fj8djhd7o3d.ws-eu75.gitpod.io/api/createAbility",
                     {
                       method: "POST",
                       headers: { "Content-Type": "application/json" },
@@ -714,282 +737,6 @@ const getState = ({ getStore, getActions, setStore }) => {
             });
           });
       },
-
-      /*  pokemonFind: (next) => {
-        fetch(next ? next : "https://pokeapi.co/api/v2/pokemon/")
-          .then((response) => response.json())
-          .then((data) => {
-            setStore({ pokemon: data });
-            setStore({ pokemon_data: [] });
-            data.results.map((pokemon, i) => {
-              let new_pokemon_data = getStore().pokemon_data;
-
-              fetch(pokemon.url)
-                .then((response) => response.json())
-                .then((allpokemon) => {
-                  new_pokemon_data.push(allpokemon);
-                  if (i + 1 == new_pokemon_data.length) {
-                    new_pokemon_data = new_pokemon_data.sort(
-                      (a, b) => a.id - b.id
-                    );
-                  }
-
-                  setStore({ pokemon_data: new_pokemon_data });
-                });
-            });
-          });
-      },
-      groupFind: (next) => {
-        fetch(
-          next ? next : "https://pokeapi.co/api/v2/pokemon/?offset=0&limit=1154"
-        )
-          .then((response) => response.json())
-          .then((data) => {
-            data.results.map((pokemon, i) => {
-              fetch(pokemon.url)
-                .then((response) => response.json())
-                .then((allpokemon) => {
-                  let sprites = allpokemon.sprites;
-                  let pokemon_name = allpokemon.name;
-                  let pokemon_id = allpokemon.id;
-
-                  let new_pokemon_group = getStore().grupo_huevo_data;
-
-                  fetch(allpokemon.species.url)
-                    .then((response) => response.json())
-                    .then((egg_group) => {
-                      let description = "";
-                      let group_name = [];
-                      egg_group.egg_groups.map((group, i) => {
-                        group_name.push(group.name);
-                      });
-                      egg_group.flavor_text_entries.map((desc, i) => {
-                        if (
-                          desc.language.name == "es" &&
-                          desc.version.name == "shield"
-                        ) {
-                          description = desc.flavor_text;
-                        }
-                      });
-                      let grou = {
-                        img: sprites,
-                        group_name: group_name,
-                        pokemon_name: pokemon_name,
-                        pokemon_id: pokemon_id,
-                        description: description,
-                      };
-
-                      new_pokemon_group.push(grou);
-
-                      setStore({ grupo_huevo_data: new_pokemon_group });
-                    });
-                });
-            });
-          });
-      },
-      pokemonFindOne: (url) => {
-        fetch(url)
-          .then((response) => response.json())
-          .then((data) => {
-            setStore({ single_pokemon_data: data });
-          });
-      },
-      pokemonFindOneInData: (id) => {
-        let pokemon = getStore().pokemon_data.find((e) => e == id);
-        setStore({ pokemonFounded: pokemon });
-        if (pokemon) return true;
-        else return false;
-      },
-      pokemonDataLocalStorage: (pokemon_data) => {
-        setStore({ pokemon_data });
-      },
-      groupDataLocalStorage: (grupo_huevo_data) => {
-        setStore({ grupo_huevo_data });
-      },
-      pokemonLocalStorage: (pokemon) => {
-        setStore({ pokemon });
-      },
-      itemFind: (next) => {
-        fetch(next ? next : "https://pokeapi.co/api/v2/item/")
-          .then((response) => response.json())
-          .then((data) => {
-            setStore({ item: data });
-            setStore({ item_data: [] });
-            data.results.map((item, i) => {
-              let new_item_data = getStore().item_data;
-              fetch(item.url)
-                .then((response) => response.json())
-                .then((allitem) => {
-                  new_item_data.push(allitem);
-                  if (i + 1 == new_item_data.length) {
-                    new_item_data = new_item_data.sort((a, b) => a.id - b.id);
-                  }
-
-                  setStore({ item_data: new_item_data });
-                });
-            });
-          });
-      },
-      itemFindOne: (url) => {
-        fetch(url)
-          .then((response) => response.json())
-          .then((data) => {
-            setStore({ single_item_data: data });
-          });
-      },
-      itemFindOneInData: (id) => {
-        let item = getStore().item_data.find((e) => e == id);
-        setStore({ itemFounded: item });
-        if (item) return true;
-        else return false;
-      },
-      itemDataLocalStorage: (item_data) => {
-        setStore({ item_data });
-      },
-      itemLocalStorage: (item) => {
-        setStore({ item });
-      },
-      moveFind: (next) => {
-        fetch(next ? next : "https://pokeapi.co/api/v2/move/")
-          .then((response) => response.json())
-          .then((data) => {
-            setStore({ move: data });
-            setStore({ move_data: [] });
-            data.results.map((move, i) => {
-              let new_move_data = getStore().move_data;
-              fetch(move.url)
-                .then((response) => response.json())
-                .then((allmove) => {
-                  new_move_data.push(allmove);
-                  if (i + 1 == new_move_data.length) {
-                    new_move_data = new_move_data.sort((a, b) => a.id - b.id);
-                  }
-
-                  setStore({ move_data: new_move_data });
-                });
-            });
-          });
-      },
-      moveFindOne: (url) => {
-        fetch(url)
-          .then((response) => response.json())
-          .then((data) => {
-            setStore({ single_move_data: data });
-          });
-      },
-      moveFindOneInData: (id) => {
-        let move = getStore().move_data.find((e) => e == id);
-        setStore({ moveFounded: move });
-        if (move) return true;
-        else return false;
-      },
-      moveDataLocalStorage: (move_data) => {
-        setStore({ move_data });
-      },
-      moveLocalStorage: (move) => {
-        setStore({ move });
-      },
-      typeFind: (next) => {
-        fetch(next ? next : "https://pokeapi.co/api/v2/type/")
-          .then((response) => response.json()) //asd
-          .then((data) => {
-            setStore({ type: data });
-            setStore({ type_data: [] });
-            data.results.map((type, i) => {
-              let new_type_data = getStore().type_data;
-              fetch(type.url)
-                .then((response) => response.json())
-                .then((alltype) => {
-                  new_type_data.push(alltype);
-                  if (i + 1 == new_type_data.length) {
-                    new_type_data = new_type_data.sort((a, b) => a.id - b.id);
-                  }
-
-                  setStore({ type_data: new_type_data });
-                });
-            });
-          });
-      },
-      typeFindOne: (url) => {
-        fetch(url)
-          .then((response) => response.json())
-          .then((data) => {
-            setStore({ single_type_data: data });
-          });
-      },
-      typeDataLocalStorage: (type_data) => {
-        setStore({ type_data });
-      },
-      typeLocalStorage: (type) => {
-        setStore({ type });
-      },
-      natureFind: (next) => {
-        fetch(next ? next : "https://pokeapi.co/api/v2/nature/")
-          .then((response) => response.json())
-          .then((data) => {
-            setStore({ nature: data });
-            setStore({ nature_data: [] });
-            data.results.map((nature, i) => {
-              let new_nature_data = getStore().nature_data;
-
-              fetch(nature.url)
-                .then((response) => response.json())
-                .then((allnature) => {
-          
-
-                  new_nature_data.push(allnature);
-                  if (i + 1 == new_nature_data.length) {
-                    new_nature_data = new_nature_data.sort(
-                      (a, b) => a.id - b.id
-                    );
-                  }
-                 
-                 
-                  setStore({ nature_data: new_nature_data });
-                });
-            });
-          });
-      },
-      abilityFind: (next) => {
-        fetch(next ? next : "https://pokeapi.co/api/v2/ability/")
-          .then((response) => response.json())
-          .then((data) => {
-            setStore({ ability: data});
-            setStore({ ability_data: [] });
-            data.results.map((ability, i) => {
-              let new_ability_data = getStore().ability_data;
-
-              fetch(ability.url)
-                .then((response) => response.json())
-                .then((allability) => {
-          
-
-                  new_ability_data.push(allability);
-                  if (i + 1 == new_ability_data.length) {
-                    new_ability_data = new_ability_data.sort(
-                      (a, b) => a.id - b.id
-                    );
-                  }
-                 
-                 
-                  setStore({ ability_data: new_ability_data });
-                });
-            });
-          });
-      },
-      abilityFindOne: (url) => {
-        fetch(url)
-          .then((response) => response.json())
-          .then((data) => {
-            setStore({ single_ability_data: data });
-          });
-      },
-      abilityFindOneInData: (id) => {
-        let ability = getStore().ability_data.find((e) => e == id);
-        setStore({ abilityFounded: ability });
-        if (ability) return true;
-        else return false;
-      },*/
     },
   };
 };

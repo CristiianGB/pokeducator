@@ -40,14 +40,14 @@ def addequipofus():
     db.session.commit()
     return jsonify({"equipo": "equipo"}), 200
 
-@api.route("/votos", methods = ["GET"])
+@api.route("/votes", methods = ["GET"])
 def pokemon_votados():
-    usuario_id = request.json.get("id", None)
+  
 
-    votes = Votes.query.filter_by(user_id=usuario_id).order_by(Votes.id.asc()).limit(3)
+    votes = Pokemon_fusion.query.order_by(Pokemon_fusion.votes.desc()).limit(3)
     votes = list(map(lambda x: x.serialize(), votes ))
 
-    return jsonify({votes})
+    return jsonify({"votes":votes})
 
 @api.route("/login/<string:username>/<string:password>", methods = ["GET"])
 def login(username,password):
@@ -140,6 +140,8 @@ def createPokemon():
     spd = request.json.get("spd", None)
     learning = request.json.get("learning", None)
     group_name = request.json.get("group_name", None)
+    evolution = request.json.get("evolution", None)
+    weakness = request.json.get("weakness", None)
     for a, b in replacements:
         if (description):
             description = description.replace(
@@ -147,7 +149,7 @@ def createPokemon():
             description = description.replace("\n", " ")
 
     pokemon = Pokemon(id=id, name=name, ps=ps, atk=atk, sp_atk=sp_atk, spd=spd, defens=defens, sp_defens=sp_defens, img=img,
-                      type=type, url=url, order=order, description=description, shiny=shiny, weight=weight, height=height, group_name=group_name)
+                      type=type, url=url, order=order, description=description, shiny=shiny, weight=weight, height=height, group_name=group_name, evolution=evolution, weakness=weakness)
     db.session.add(pokemon)
 
     db.session.commit()
@@ -372,10 +374,13 @@ def addvote():
     pokemon_id = request.json.get("pokemon_id", None)
 
     vote = Votes(pokemon_id=pokemon_id, user_id=user_id)
-    pokemon = Pokemon_fusion.query.filter_by(pokemon_id=pokemon_id).first().serialize
+    pokemon = Pokemon_fusion.query.filter_by(pokemon_id=pokemon_id).first().serialize()
+    vot = pokemon["votes"] + 1
+    pokemon = Pokemon_fusion.query.filter_by(pokemon_id=pokemon_id).update(dict(votes=vot))
+
+
     print(pokemon)
-    pokemon["votes"] = pokemon["votes"] + 1
-    print(pokemon)
+
     db.session.add(vote)
     db.session.commit()
     return jsonify({"vote": "vote"}), 200
@@ -524,6 +529,10 @@ def deletevote(user_id, pokemon_id):
     db.session.commit()
     votes = Votes.query.filter_by(user_id=user_id)
     votes = list(map(lambda x: x.serialize(), votes))
+    pokemon = Pokemon_fusion.query.filter_by(pokemon_id=pokemon_id).first().serialize()
+    vot = pokemon["votes"] - 1
+    pokemon = Pokemon_fusion.query.filter_by(pokemon_id=pokemon_id).update(dict(votes=vot))
+    db.session.commit()
 
 
     return jsonify({"votes": votes}), 200

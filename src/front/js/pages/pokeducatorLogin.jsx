@@ -3,7 +3,8 @@ import { Context } from "../store/appContext.jsx";
 import "../../styles/pokeducatorLoginStyles.css";
 import { useNavigate } from "react-router-dom";
 import profesora from "../../assets/img/profesoraPokeducator.png";
-
+// import starters from "../../assets/img/starters.png"
+// import starters2 from "../../assets/img/starters2.png"
 
 const PokeducatorLogin = () => {
   const { store, actions } = useContext(Context);
@@ -13,9 +14,12 @@ const PokeducatorLogin = () => {
   let navigate = useNavigate();
 
   const handleLogin = async (username, password) => {
-    actions.login(username, password).then(()=>{
+    actions.login(username, password)
+    setTimeout(() => {
       navigate("/perfil")
-    })
+    }, 500);
+
+    ;
   };
 
   const handleSee = () => {
@@ -30,7 +34,7 @@ const PokeducatorLogin = () => {
         <div className="container py-5 h-100">
           <div className="row d-flex justify-content-center align-items-center h-100">
             <div className="col-xl-10">
-              <div className="card cardLogin text-black paddingCarta">
+              <div className="card cardLogin text-black">
                 <div className="row g-0 ">
                   <div className="col-lg-6 bordeRadius">
                     <div className="card-body p-md-5 mx-md-4">
@@ -103,12 +107,12 @@ const PokeducatorLogin = () => {
                         <div className="text-center pt-1 mb-3 pb-1 ">
                           <input
                             className="buttonPokemonInfo mb-2 "
-                            type="submit"
+                            type="button"
                             onClick={() =>
                               username && password
                                 ? handleLogin(username, password)
                                 : addEventListener(
-                                    alert("Rellena los datos")
+                                    alert("Usuario o contraseña incorrectos")
                                   )
                             }
                             name=""
@@ -118,12 +122,12 @@ const PokeducatorLogin = () => {
                             <div className="separadorBottom "></div>
                         <div className="d-flex align-items-center justify-content-center pb-4 ">
                           
-                          <p className="text-center ">
+                          <p className="text-center">
                             ¿No tienes cuenta?
                             <a href="/signup" className="mx-2 links">
                               <button
                                 type="button"
-                                className="buttonPokemonInfo pequeño mt-2"
+                                className="buttonPokemonInfo pequeño"
                                 
                               >
                                 Regístrate
@@ -154,8 +158,6 @@ const PokeducatorLogin = () => {
           </div>
         </div>
       </section>
-
-      
     </>
   );
 };
