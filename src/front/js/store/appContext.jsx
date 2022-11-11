@@ -66,11 +66,11 @@ const injectContext = (PassedComponent) => {
 				state.actions.saveMoveonDb()
 				state.actions.saveNatureonDb()
 				state.actions.saveAbilityonDb()
-				
 				state.actions.FindOnePokemon(1)
+        state.actions.saveDbonStore();
 				*/
+      state.actions.idStorage(localStorage.user_id);
       state.actions.saveDbonStore();
-      // state.actions.pokemonFindDb();
     }, []);
 
     // The initial value for the context is not null anymore, but the current state of this component,

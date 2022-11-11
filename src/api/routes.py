@@ -1,10 +1,41 @@
 from flask import Flask, request, jsonify, url_for, Blueprint
-from api.models import db, User, Favorites, Pokemon, Nature, Pokemon_fusion, Moves, Pokemon_Move, Ability, Item, Pokemon_Ability, Pokemon_Fusion_Nature, Pokemon_Fusion_Move, Pokemon_Fusion_Ability
+from api.models import db, User, Favorites, Pokemon, Nature, Pokemon_fusion, Moves, Pokemon_Move, Ability, Item, Pokemon_Ability, Pokemon_Fusion_Nature, Pokemon_Fusion_Move, Pokemon_Fusion_Ability, Votes, Favorites
 from api.utils import generate_sitemap, APIException
 from flask_jwt_extended import JWTManager, create_access_token, jwt_required, get_jwt_identity
 from sqlalchemy import inspect
 
 api = Blueprint('api', __name__)
+
+@api.route("/getequipo/<int:user_id>", methods=["GET"])
+def getequipo(user_id):
+
+    equipos = Equipo.query.filter_by(user_id=user_id)
+    equipos = list(map(lambda x: x.serialize(), equipos))
+    return jsonify({"equipos":equipos}), 200
+
+@api.route("/addequipo", methods=["POST"])
+def addequipo():
+    user_id = request.json.get("user_id", None)
+    pokemon_id = request.json.get("pokemon_id", None)
+    pokemon_fusion_id = request.json.get("pokemon_fusion_id", None)
+
+    #if(pokemon_id)
+
+
+    equipo = Equipo(pokemon_id=pokemon_id, user_id=user_id, pokemon_fusion_id=pokemon_fusion_id)
+
+    db.session.add(equipo)
+    db.session.commit()
+    return jsonify({"equipo": "equipo"}), 200
+
+@api.route("/votos", methods = ["GET"])
+def pokemon_votados():
+    usuario_id = request.json.get("id", None)
+
+    votes = Votes.query.filter_by(user_id=usuario_id).order_by(Votes.id.asc()).limit(3)
+    votes = list(map(lambda x: x.serialize(), votes ))
+
+    return jsonify({votes})
 
 @api.route("/login", methods = ["POST"])
 def login():
@@ -13,7 +44,11 @@ def login():
     user = User.query.filter_by(username=username).filter_by(password=password).first()
     if user:
         access_token = create_access_token(identity=user.id)
-        return jsonify({ "token": access_token, "user_id": user.id })
+        votes = Votes.query.filter_by(user_id=user.id)
+        votes = list(map(lambda x: x.serialize(), votes))
+        favorites = Favorites.query.filter_by(user_id=user.id)
+        favorites = list(map(lambda x: x.serialize(), favorites))
+        return jsonify({ "token": access_token, "user_id": user.id, "favorites":favorites, "votes":votes  })
         
 
 @api.route("/signup", methods = ["POST"])
@@ -35,6 +70,14 @@ def signup():
 @api.route("/protected", methods=["POST"])
 @jwt_required()
 def token_access():
+    current_user_id = get_jwt_identity()
+    user = User.query.get(current_user_id)
+    
+    return jsonify(user.serialize()), 200
+
+@api.route("/getId", methods=["POST"])
+@jwt_required()
+def getId():
     current_user_id = get_jwt_identity()
     user = User.query.get(current_user_id)
     
@@ -80,8 +123,6 @@ def createPokemon():
     spd = request.json.get("spd", None)
     learning = request.json.get("learning", None)
     group_name = request.json.get("group_name", None)
-    evolution = request.json.get("evolution", None)
-    weakness = request.json.get("weakness", None)
     for a, b in replacements:
         if (description):
             description = description.replace(
@@ -89,7 +130,7 @@ def createPokemon():
             description = description.replace("\n", " ")
 
     pokemon = Pokemon(id=id, name=name, ps=ps, atk=atk, sp_atk=sp_atk, spd=spd, defens=defens, sp_defens=sp_defens, img=img,
-                      type=type, url=url, order=order, description=description, shiny=shiny, weight=weight, height=height, group_name=group_name, evolution=evolution, weakness=weakness)
+                      type=type, url=url, order=order, description=description, shiny=shiny, weight=weight, height=height, group_name=group_name)
     db.session.add(pokemon)
 
     db.session.commit()
@@ -131,32 +172,32 @@ def createPokemonFusion():
     db.session.commit()
 
     if (learning):
-        fusion = db.session.query(Pokemon_fusion).order_by(
-            Pokemon_fusion.pokemon_id.desc()).findone()
+        fusion = Pokemon_fusion.query.order_by(
+            Pokemon_fusion.pokemon_id.desc()).first().findone()
         print(fusion)
         for i in learning:
             move = db.session.query(Moves).filter_by(
                 id=i).first().findone()
-            pokemove = Pokemon_fusion_Move(
+            pokemove = Pokemon_Fusion_Move(
                 pokemon_id=fusion["pokemon_id"], move_id=move["move_id"])
             db.session.add(pokemove)
             db.session.commit()
 
     if (nature):
-        fusion = db.session.query(Pokemon_fusion).order_by(
-            Pokemon_fusion.pokemon_id.desc()).findone()
+        fusion = Pokemon_fusion.query.order_by(
+            Pokemon_fusion.pokemon_id.desc()).first().findone()
         natureFus = db.session.query(Nature).filter_by(
             id=nature).first().findone()
-        pokenature = Pokemon_fusion_Nature(
+        pokenature = Pokemon_Fusion_Nature(
             pokemon_id=fusion["pokemon_id"], nature_id=natureFus["nature_id"])
         db.session.add(pokenature)
         db.session.commit()
     if (ability):
-        fusion = db.session.query(Pokemon_fusion).order_by(
-            Pokemon_fusion.pokemon_id.desc()).findone()
+        fusion = Pokemon_fusion.query.order_by(
+            Pokemon_fusion.pokemon_id.desc()).first().findone()
         abilityFus = db.session.query(Ability).filter_by(
             id=ability).first().findone()
-        pokeability = Pokemon_fusion_Ability(
+        pokeability = Pokemon_Fusion_Ability(
             pokemon_id=fusion["pokemon_id"], ability_id=abilityFus["ability_id"])
         db.session.add(pokeability)
         db.session.commit()
@@ -170,7 +211,6 @@ def createPokemonFusion():
     #        db.session.add(pokemove)
     #        db.session.commit()
     return jsonify({"pokemon": "a"}), 200
-
 
 @api.route("/createMove", methods=["POST"])
 def createMove():
@@ -309,6 +349,31 @@ def createNature():
     db.session.commit()
     return jsonify({"nature": "nature"}), 200
 
+@api.route("/addvote", methods=["POST"])
+def addvote():
+    user_id = request.json.get("user_id", None)
+    pokemon_id = request.json.get("pokemon_id", None)
+
+    vote = Votes(pokemon_id=pokemon_id, user_id=user_id)
+
+    db.session.add(vote)
+    db.session.commit()
+    return jsonify({"vote": "vote"}), 200
+
+@api.route("/addfavorite", methods=["POST"])
+def addfavorite():
+
+    user_id = request.json.get("user_id", None)
+    pokemon_id = request.json.get("pokemon_id", None)
+
+    favorite = Favorites(pokemon_id=pokemon_id, user_id=user_id)
+
+    db.session.add(favorite)
+    db.session.commit()
+    return jsonify({"favorite": "favorite"}), 200
+
+
+
 @api.route("/all", methods=["GET"])
 def all():
 
@@ -372,6 +437,7 @@ def ability(ability_id):
 
 @api.route("/store", methods=["GET"])
 def store():
+
     moves = Moves.query.order_by(Moves.id.asc())
     moves = list(map(lambda x: x.serialize(), moves))
     abilities = Ability.query.order_by(Ability.id.asc())
@@ -382,5 +448,20 @@ def store():
     natures = list(map(lambda x: x.serialize(), natures))
     pokemons = Pokemon.query.order_by(Pokemon.id.asc())
     pokemons = list(map(lambda x: x.serialize(), pokemons))
+    pokemonsfusion = Pokemon_fusion.query.order_by(Pokemon_fusion.pokemon_id.asc())
+    pokemonsfusion = list(map(lambda x: x.serialize(), pokemonsfusion))
 
-    return jsonify({"pokemons": pokemons, "abilities": abilities, "moves": moves, "items": items, "natures": natures}), 200
+
+    return jsonify({"pokemons": pokemons, "abilities": abilities, "moves": moves, "items": items, "natures": natures, "pokemonsfusion":pokemonsfusion}), 200
+
+@api.route("/storeid/<int:user_id>", methods=["GET"])
+def storeid(user_id):
+
+    votes = Votes.query.filter_by(user_id=user_id)
+    votes = list(map(lambda x: x.serialize(), votes))
+    favorites = Favorites.query.filter_by(user_id=user_id)
+    favorites = list(map(lambda x: x.serialize(), favorites))
+   
+
+
+    return jsonify({"favorites": favorites, "votes": votes}), 200

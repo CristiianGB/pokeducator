@@ -3,10 +3,81 @@ from sqlalchemy.dialects.postgresql import ARRAY
 
 db = SQLAlchemy()        
 
+class Equipo(db.Model):
+    id = db.Column(db.Integer, primary_key=True, unique=True) 
+    pokemon_fusion_id = db.Column(db.Integer, db.ForeignKey('pokemon_fusion.pokemon_id'), unique=False, nullable=True)
+    pokemon_id = db.Column(db.Integer, db.ForeignKey('pokemon.pokemon_id'), unique=False, nullable=True)
+    user_id = db.Column(db.Integer, db.ForeignKey('user.id'), unique=False, nullable=False)
+
+    def repr(self):
+        return
+
+    def findpoke(self):
+        return {
+            "pokemon_id": self.pokemon_id,
+            }
+
+    def finuser(self):
+        return {
+            "user_id": self.user_id
+            }
+
+    def serialize(self):
+        return {
+            "pokemon_id": self.pokemon_id,
+            "user_id": self.user_id
+            }
+
+
 class Favorites(db.Model):
-    pokemon_id = db.Column(db.Integer, primary_key=True, unique=True) #Mejor que esto yo pondria una unica pero sin relacion y otra linea que especifique a que pertenece
-    pokemontype = db.Column(db.String(2), nullable=False, unique=False)
-    user_id = db.Column(db.Integer, db.ForeignKey("user.id"), unique=False, nullable=False )
+    id = db.Column(db.Integer, primary_key=True, unique=True) 
+    pokemon_id = db.Column(db.Integer, db.ForeignKey('pokemon_fusion.pokemon_id'), unique=False, nullable=False)
+    user_id = db.Column(db.Integer, db.ForeignKey('user.id'), unique=False, nullable=False)
+
+    def repr(self):
+        return
+
+    def findpoke(self):
+        return {
+            "pokemon_id": self.pokemon_id,
+            }
+
+    def finuser(self):
+        return {
+            "user_id": self.user_id
+            }
+
+    def serialize(self):
+        return {
+            "pokemon_id": self.pokemon_id,
+            "user_id": self.user_id
+            }
+
+
+class Votes(db.Model):
+    id = db.Column(db.Integer, primary_key=True, unique=True) 
+    pokemon_id = db.Column(db.Integer, db.ForeignKey('pokemon_fusion.pokemon_id'), unique=False, nullable=False)
+    user_id = db.Column(db.Integer, db.ForeignKey('user.id'), unique=False, nullable=False)
+
+    def repr(self):
+        return
+
+    def findpoke(self):
+        return {
+            "pokemon_id": self.pokemon_id,
+            }
+
+    def finuser(self):
+        return {
+            "user_id": self.user_id
+            }
+
+    def serialize(self):
+        return {
+            "pokemon_id": self.pokemon_id,
+            "user_id": self.user_id
+            }
+
 
 class User(db.Model):
     id = db.Column(db.Integer, primary_key=True, unique=True)
@@ -60,6 +131,7 @@ class Pokemon_fusion(db.Model):
 
     def serialize(self):
         return {
+            "pokemon_id": self.pokemon_id,
             "name": self.name,
             "stats": {
                 "ps":{
@@ -95,7 +167,8 @@ class Pokemon_fusion(db.Model):
             
           
             }
-    
+
+
 
 class Pokemon_Move(db.Model):
     id = db.Column(db.Integer, primary_key=True, unique=True) 

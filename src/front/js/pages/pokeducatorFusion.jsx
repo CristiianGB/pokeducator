@@ -51,131 +51,163 @@ const PokeducatorFusion = () => {
   const [mov34, setMov34] = useState();
   const [ani, setAni] = useState();
 
-  let name1
-  let name2
-  let name3
-  let types =[]
-  let abilitys = []
-  let natures = []
-  let moves = []
-  let movesFus = []
-  let height 
-  let weight
-  let group_name = []
-  let Fus_group_name = []
-  let url 
-  let atk 
-  let ps
-  let defens 
-  let sp_atk 
-  let sp_defens 
-  let spd 
-
+  let name1;
+  let name2;
+  let name3;
+  let types = [];
+  let abilitys = [];
+  let natures = [];
+  let moves = [];
+  let movesFus = [];
+  let height;
+  let weight;
+  let group_name = [];
+  let Fus_group_name = [];
+  let url;
+  let atk;
+  let ps;
+  let defens;
+  let sp_atk;
+  let sp_defens;
+  let spd;
+  let abilityFus;
+  let natureFus;
+  let typesFus = [];
 
   function PokeFus() {
-    window.scrollTo({top: 0, left: 0, behavior: 'smooth'});
+    window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
 
-    pokemon.name.length <= 3 ? name1 = pokemon.name : pokemon.name <= 6 ? name1 = pokemon.name.slice(0, Math.round(pokemon.name.length/2)) : name1 = pokemon.name.slice(0, 4)
-    pokemon2.name.length <= 3 ? name2 = pokemon2.name : pokemon2.name <= 6 ? name2 = pokemon2.name.slice(Math.round(pokemon2.name.length/2), pokemon2.name.length) : name2 = pokemon2.name.slice(3, pokemon2.name.length)
-    name3 = name1+name2
-console.log(name3)
-    pokemon.type.map((object)=>{
-      types.push(object)
-    })
-    pokemon2.type.map((object)=>{
-      types.push(object)
-    })
+    pokemon.name.length <= 3
+      ? (name1 = pokemon.name)
+      : pokemon.name <= 6
+      ? (name1 = pokemon.name.slice(0, Math.round(pokemon.name.length / 2)))
+      : (name1 = pokemon.name.slice(0, 4));
+    pokemon2.name.length <= 3
+      ? (name2 = pokemon2.name)
+      : pokemon2.name <= 6
+      ? (name2 = pokemon2.name.slice(
+          Math.round(pokemon2.name.length / 2),
+          pokemon2.name.length
+        ))
+      : (name2 = pokemon2.name.slice(3, pokemon2.name.length));
+    name3 = name1 + name2;
+    console.log(name3);
+    pokemon.type.map((object) => {
+      types.push(object);
+    });
+    pokemon2.type.map((object) => {
+      types.push(object);
+    });
 
-    pokemon.group_name.map((object)=>{
-      group_name.push(object)
-    })
+    pokemon.group_name.map((object) => {
+      group_name.push(object);
+    });
 
-    pokemon2.group_name.map((object)=>{
-      group_name.push(object)
-    })
+    pokemon2.group_name.map((object) => {
+      group_name.push(object);
+    });
 
-    group_name.map((object)=>{
-      Fus_group_name.indexOf(object) >= 0 ? "" : Fus_group_name.push(object)
-    })
-    console.log(Fus_group_name)
-    if(types.length > 2){
-      for (let i = 0; types.length > 2; i++){
-        let num = Math.floor(Math.random() * types.length)
-        types = types.splice(num,num)
+    group_name.map((object) => {
+      Fus_group_name.indexOf(object) >= 0 ? "" : Fus_group_name.push(object);
+    });
+    console.log(Fus_group_name);
+    if (types.length > 2) {
+      for (let i = 0; typesFus.length < 2; i++) {
+        let num = Math.floor(Math.random() * types.length);
+        typesFus.indexOf(types[num]) >= 0 ? "" : typesFus.push(types[num]);
       }
+    } else {
+      typesFus = types;
     }
-    
-    abilitys = [ability1, ability2]
-    let num = Math.floor(Math.random() * abilitys.length)
-    setAbility3(abilitys[num])
 
-    natures = [natur1, natur2]
-    num = Math.floor(Math.random() * natures.length)
-    setNatur3(natures[num])
-    console.log(natures)
-    height = pokemon.height + pokemon2.height
-    height = Math.floor(Math.random() * ((height+20) - (height-20) + 1) + (height-20))
+    abilitys = [ability1, ability2];
+    let num = Math.floor(Math.random() * abilitys.length);
+    setAbility3(abilitys[num]);
+    abilityFus = abilitys[num];
 
-    weight = pokemon.weight + pokemon2.weight
-    weight = Math.floor(Math.random() * ((weight+20) - (weight-20) + 1) + (weight-20))
+    natures = [natur1, natur2];
+    num = Math.floor(Math.random() * natures.length);
+    setNatur3(natures[num]);
+    natureFus = natures[num];
+    height = pokemon.height + pokemon2.height;
+    height = Math.floor(
+      Math.random() * (height + 20 - (height - 20) + 1) + (height - 20)
+    );
 
-    moves = [mov11, mov12, mov13, mov14, mov21, mov22, mov23, mov24]
-    for (let i = 0; movesFus.length < 4; i++){
-      let num = Math.floor(Math.random() * moves.length)
-      movesFus.push(moves[num])
-      movesFus.indexOf(moves[num]) >= 0 ? "" : movesFus.push(moves[num])
+    weight = pokemon.weight + pokemon2.weight;
+    weight = Math.floor(
+      Math.random() * (weight + 20 - (weight - 20) + 1) + (weight - 20)
+    );
 
+    moves = [mov11, mov12, mov13, mov14, mov21, mov22, mov23, mov24];
+    for (let i = 0; movesFus.length < 4; i++) {
+      let num = Math.floor(Math.random() * moves.length);
+      movesFus.indexOf(moves[num]) >= 0 ? "" : movesFus.push(moves[num]);
     }
-    setMov31(movesFus[0])
-    setMov32(movesFus[1])
-    setMov33(movesFus[2])
-    setMov34(movesFus[3])
+    setMov31(movesFus[0]);
+    setMov32(movesFus[1]);
+    setMov33(movesFus[2]);
+    setMov34(movesFus[3]);
 
-    let stats = ["atk", "defens" ,"ps" ,"sp_atk" ,"sp_defens","spd"]
+    let arr = [];
+    movesFus.map((object) => {
+      arr.push(object.id);
+    });
+    movesFus = arr;
+
+    let stats = ["atk", "defens", "ps", "sp_atk", "sp_defens", "spd"];
     let statsFus = [
-      {base_stat:0, name:"atk"},
-      {base_stat:0, name:"defens"},
-      {base_stat:0, name:"ps"},
-      {base_stat:0, name:"sp_atk"},
-      {base_stat:0, name:"sp_defens"},
-      {base_stat:0, name:"spd"},
-    ]
-    stats.map((stat)=>{
-        let num1
-        let num2
-        let min 
-        let max
-        let statRel
+      { base_stat: 0, name: "atk" },
+      { base_stat: 0, name: "defens" },
+      { base_stat: 0, name: "ps" },
+      { base_stat: 0, name: "sp_atk" },
+      { base_stat: 0, name: "sp_defens" },
+      { base_stat: 0, name: "spd" },
+    ];
+    stats.map((stat) => {
+      let num1;
+      let num2;
+      let min;
+      let max;
+      let statRel;
 
-        pokemon.stats.map((object)=>{
-          object.name == stat ? num1 = object.base_stat : ""
-        })
+      pokemon.stats.map((object) => {
+        object.name == stat ? (num1 = object.base_stat) : "";
+      });
 
-        pokemon2.stats.map((object)=>{
-          object.name == stat ? num2 = object.base_stat : ""
-        })
+      pokemon2.stats.map((object) => {
+        object.name == stat ? (num2 = object.base_stat) : "";
+      });
 
-        if(num1 <= num2){
-          min = num1
-          max = num2 
-        }else{
-          min = num2 
-          max = num1
-        }
+      if (num1 <= num2) {
+        min = num1;
+        max = num2;
+      } else {
+        min = num2;
+        max = num1;
+      }
 
-        statRel =  Math.floor(Math.random() * (max - min + 1) + min)
+      statRel = Math.floor(Math.random() * (max - min + 1) + min);
 
-        stat == "atk" ? atk = statRel : stat == "defens" ? defens = statRel : stat == "ps" ? ps = statRel : stat == "sp_atk" ? sp_atk = statRel : stat == "sp_defens" ? sp_defens = statRel : stat == "spd" ? spd = statRel : ""
-        statsFus.map((object)=>{
-          object.name == stat ? object.base_stat = statRel : ""
+      stat == "atk"
+        ? (atk = statRel)
+        : stat == "defens"
+        ? (defens = statRel)
+        : stat == "ps"
+        ? (ps = statRel)
+        : stat == "sp_atk"
+        ? (sp_atk = statRel)
+        : stat == "sp_defens"
+        ? (sp_defens = statRel)
+        : stat == "spd"
+        ? (spd = statRel)
+        : "";
+      statsFus.map((object) => {
+        object.name == stat ? (object.base_stat = statRel) : "";
+      });
+    });
 
-        })
-
-     
-
-    })
-
-    url = `https://images.alexonsager.net/pokemon/fused/${pokemon.id}/${pokemon.id}.${pokemon2.id}.png`
+    url = `https://images.alexonsager.net/pokemon/fused/${pokemon.id}/${pokemon.id}.${pokemon2.id}.png`;
 
     let pokeFus = {
       group_name: Fus_group_name,
@@ -183,13 +215,14 @@ console.log(name3)
       weight: weight,
       stats: statsFus,
       img: url,
-      name: name3, 
-      type: types,
+      name: name3,
+      type: typesFus,
+    };
 
-    }
+    actions.addfus(pokeFus);
 
     const resp = fetch(
-      "https://3001-cristiiangb-pokeducator-h42c65xlsag.ws-eu74.gitpod.io/api/createPokemonFusion",
+      "https://3001-cristiiangb-pokeducator-y4jl5qg0obb.ws-eu75.gitpod.io/api/createPokemonFusion",
       {
         method: "POST",
         headers: { "Content-Type": "application/json" },
@@ -204,32 +237,27 @@ console.log(name3)
           sp_atk: sp_atk,
           spd: spd,
           img: url,
-          name: name3, 
-          type: types,
-          nature: natur3, 
-          ability: ability3,
-          learning: movesFus
-        })
-      })
+          name: name3,
+          type: typesFus,
+          nature: natureFus.id,
+          ability: abilityFus.id,
+          learning: movesFus,
+        }),
+      }
+    );
 
-
-
-
-
-    setPokemon3(pokeFus)
-    setTimeout(()=>{
-      setAni("a")
-
-    }, 10)
-    setTimeout(()=>{
-      console.log(ability3)
-      console.log(pokemon3)
-      console.log(natur3)
-    }, 3000)
+    setPokemon3(pokeFus);
+    setTimeout(() => {
+      setAni("a");
+    }, 10);
+    setTimeout(() => {
+      console.log(ability3);
+      console.log(pokemon3);
+      console.log(natur3);
+    }, 3000);
   }
 
   function Fusion() {
-
     let count = 0;
     let arr = [
       natur1,
@@ -245,13 +273,13 @@ console.log(name3)
       mov23,
       mov24,
       pokemon,
-      pokemon2
+      pokemon2,
     ];
     arr.map((object, i) => {
       object == null ? "" : object == "fallo" ? "" : count++;
     });
-console.log(count)
-    count > 1 ?  PokeFus() : "";
+    console.log(count);
+    count > 1 ? PokeFus() : "";
 
     natur1 == null ? setNatur1("fallo") : "";
     natur2 == null ? setNatur2("fallo") : "";
@@ -266,7 +294,7 @@ console.log(count)
     mov23 == null ? setMov23("fallo") : "";
     mov24 == null ? setMov24("fallo") : "";
   }
-  let pokes = store.pokemon_data.slice(0,151)
+  let pokes = store.pokemon_data.slice(0, 151);
   let time = [2000, 3000, 4000, 5000];
   let randomtime = Math.floor(Math.random() * time.length);
 
@@ -432,14 +460,16 @@ console.log(count)
         </div>
       ) : (
         <div className="container align-items-center">
-          <div className={`row cartasFusion justify-content-center ${pokemon3 == null ? " d-none" : ""} ${ani != null ? " anim2" : "anim"} `} >
-          <div className="col-md-5  text-center  " >
+          <div
+            className={`row cartasFusion justify-content-center ${
+              pokemon3 == null ? " d-none" : ""
+            } ${ani != null ? " anim2" : "anim"} `}
+          >
+            <div className="col-md-5  text-center  ">
               <div className="p-2">
                 <div className="card rounded ">
                   {pokemon ? (
-                    <h4 className="my-3 me-2 text-capitalize">
-                      {name3}
-                    </h4>
+                    <h4 className="my-3 me-2 text-capitalize">{name3}</h4>
                   ) : (
                     ""
                   )}
@@ -457,13 +487,11 @@ console.log(count)
                       })}
                   </h4>
                   {pokemon3 ? (
-                
-                      <img
-                        className="fusionFoto"
-                        src={pokemon3?.img}
-                        alt="foto pokemon"
-                      />
-                 
+                    <img
+                      className="fusionFoto"
+                      src={pokemon3?.img}
+                      alt="foto pokemon"
+                    />
                   ) : (
                     ""
                   )}
@@ -499,7 +527,7 @@ console.log(count)
                                         className="progress-bar"
                                         role="progressbar"
                                         style={{
-                                          width: `${objeto.base_stat/2}%`,
+                                          width: `${objeto.base_stat / 2}%`,
                                         }}
                                       ></div>
                                     </div>
@@ -521,23 +549,23 @@ console.log(count)
                         <h4 type="text">{ability3?.name}</h4>
                       </div>
                       <div className="col-sm-6">
-                      <h4 type="text">{natur3?.name}</h4>
+                        <h4 type="text">{natur3?.name}</h4>
                       </div>
                     </div>
                     <div className="row mt-3">
                       <div className="col-md-6">
-                      <h4 type="text">{mov31?.name}</h4>
+                        <h4 type="text">{mov31?.name}</h4>
                       </div>
                       <div className="col-md-6">
-                      <h4 type="text">{mov32?.name}</h4>
+                        <h4 type="text">{mov32?.name}</h4>
                       </div>
                     </div>
                     <div className="row mt-3">
                       <div className="col-md-6">
-                      <h4 type="text">{mov33?.name}</h4>
+                        <h4 type="text">{mov33?.name}</h4>
                       </div>
                       <div className="col-md-6">
-                      <h4 type="text">{mov34?.name}</h4>
+                        <h4 type="text">{mov34?.name}</h4>
                       </div>
                     </div>
                   </div>
@@ -645,9 +673,7 @@ console.log(count)
                     )}
                     <div className="row">
                       <div className="col-sm-6">
-                        <div className={ability1 == "fallo"
-                                ? "fallo"
-                                : ""}>
+                        <div className={ability1 == "fallo" ? "fallo" : ""}>
                           <Select
                             components={{ DropdownIndicator }}
                             placeholder={
@@ -661,111 +687,90 @@ console.log(count)
                             getOptionValue={(option) => option.name}
                             onChange={(option) => setAbility1(option)}
                           />
-                          </div>
+                        </div>
                       </div>
                       <div className="col-sm-6">
-                        <div className={
-                            natur1 == "fallo"
-                              ? "fallo"
-                              : ""
-                          }>
-                        <Select
-                          components={{ DropdownIndicator }}
-                          placeholder={
-                            natur1 == "fallo"
-                              ? "Seleccione Naturaleza"
-                              : "Naturaleza"
-                          }
-                          options={store.nature_data}
-                          getOptionLabel={(option) => option.name}
-                          getOptionValue={(option) => option.name}
-                          onChange={(option) => setNatur1(option)}
-                        />
+                        <div className={natur1 == "fallo" ? "fallo" : ""}>
+                          <Select
+                            components={{ DropdownIndicator }}
+                            placeholder={
+                              natur1 == "fallo"
+                                ? "Seleccione Naturaleza"
+                                : "Naturaleza"
+                            }
+                            options={store.nature_data}
+                            getOptionLabel={(option) => option.name}
+                            getOptionValue={(option) => option.name}
+                            onChange={(option) => setNatur1(option)}
+                          />
                         </div>
                       </div>
                     </div>
                     <div className="row mt-3">
                       <div className="col-md-6">
-                        <div className={
-                            mov11 == "fallo"
-                              ? "fallo"
-                              : ""
-                          }>
-                        <Select
-                          placeholder={
-                            mov11 == "fallo"
-                              ? "Seleccione Movimiento"
-                              : "Movimiento"
-                          }
-                          components={{ DropdownIndicator }}
-                          options={store.move_data}
-                          getOptionLabel={(option) => type(option)}
-                          getOptionValue={(option) => option.name}
-                          onChange={(option) =>
-                            setMov11(option)}
-                        />
-                        </div> 
+                        <div className={mov11 == "fallo" ? "fallo" : ""}>
+                          <Select
+                            placeholder={
+                              mov11 == "fallo"
+                                ? "Seleccione Movimiento"
+                                : "Movimiento"
+                            }
+                            components={{ DropdownIndicator }}
+                            options={store.move_data}
+                            getOptionLabel={(option) => type(option)}
+                            getOptionValue={(option) => option.name}
+                            onChange={(option) => setMov11(option)}
+                          />
+                        </div>
                       </div>
                       <div className="col-md-6">
-                        <div className={
-                            mov12 == "fallo"
-                              ? "fallo"
-                              : ""
-                          }>
-                        <Select
-                          placeholder={
-                            mov12 == "fallo"
-                              ? "Seleccione Movimiento"
-                              : "Movimiento"
-                          }
-                          components={{ DropdownIndicator }}
-                          options={store.move_data}
-                          getOptionLabel={(option) => type(option)}
-                          getOptionValue={(option) => option.name}
-                          onChange={(option) => setMov12(option)}
-                        />
+                        <div className={mov12 == "fallo" ? "fallo" : ""}>
+                          <Select
+                            placeholder={
+                              mov12 == "fallo"
+                                ? "Seleccione Movimiento"
+                                : "Movimiento"
+                            }
+                            components={{ DropdownIndicator }}
+                            options={store.move_data}
+                            getOptionLabel={(option) => type(option)}
+                            getOptionValue={(option) => option.name}
+                            onChange={(option) => setMov12(option)}
+                          />
                         </div>
                       </div>
                     </div>
                     <div className="row mt-3">
                       <div className="col-md-6">
-                        <div className={
-                            mov13 == "fallo"
-                              ? "fallo"
-                              : ""
-                          }>
-                        <Select
-                          placeholder={
-                            mov13 == "fallo"
-                              ? "Seleccione Movimiento"
-                              : "Movimiento"
-                          }
-                          components={{ DropdownIndicator }}
-                          options={store.move_data}
-                          getOptionLabel={(option) => type(option)}
-                          getOptionValue={(option) => option.name}
-                          onChange={(option) => setMov13(option)}
-                        />
+                        <div className={mov13 == "fallo" ? "fallo" : ""}>
+                          <Select
+                            placeholder={
+                              mov13 == "fallo"
+                                ? "Seleccione Movimiento"
+                                : "Movimiento"
+                            }
+                            components={{ DropdownIndicator }}
+                            options={store.move_data}
+                            getOptionLabel={(option) => type(option)}
+                            getOptionValue={(option) => option.name}
+                            onChange={(option) => setMov13(option)}
+                          />
                         </div>
                       </div>
                       <div className="col-md-6">
-                        <div className={
-                            mov14 == "fallo"
-                              ? "fallo"
-                              : ""
-                          }>
-                        <Select
-                          placeholder={
-                            mov14 == "fallo"
-                              ? "Seleccione Movimiento"
-                              : "Movimiento"
-                          }
-                          components={{ DropdownIndicator }}
-                          options={store.move_data}
-                          getOptionLabel={(option) => type(option)}
-                          getOptionValue={(option) => option.name}
-                          onChange={(option) => setMov14(option)}
-                        />
+                        <div className={mov14 == "fallo" ? "fallo" : ""}>
+                          <Select
+                            placeholder={
+                              mov14 == "fallo"
+                                ? "Seleccione Movimiento"
+                                : "Movimiento"
+                            }
+                            components={{ DropdownIndicator }}
+                            options={store.move_data}
+                            getOptionLabel={(option) => type(option)}
+                            getOptionValue={(option) => option.name}
+                            onChange={(option) => setMov14(option)}
+                          />
                         </div>
                       </div>
                     </div>
@@ -877,129 +882,104 @@ console.log(count)
                     )}
                     <div className="row">
                       <div className="col-sm-6">
-                        <div className={
-                            ability2 == "fallo"
-                              ? "fallo"
-                              : ""
-                          }>
-                        <Select
-                          components={{ DropdownIndicator }}
-                          placeholder={
-                            ability2 == "fallo"
-                              ? "Seleccione Habilidad"
-                              : "Habilidad"
-                          }
-                          options={store.ability_data}
-                          getOptionLabel={(option) => option.name}
-                          getOptionValue={(option) => option.name}
-                          onChange={(option) => setAbility2(option)}
-                        />
+                        <div className={ability2 == "fallo" ? "fallo" : ""}>
+                          <Select
+                            components={{ DropdownIndicator }}
+                            placeholder={
+                              ability2 == "fallo"
+                                ? "Seleccione Habilidad"
+                                : "Habilidad"
+                            }
+                            options={store.ability_data}
+                            getOptionLabel={(option) => option.name}
+                            getOptionValue={(option) => option.name}
+                            onChange={(option) => setAbility2(option)}
+                          />
                         </div>
                       </div>
                       <div className="col-sm-6">
-                        <div className={
-                            natur2 == "fallo"
-                              ? "fallo"
-                              : ""
-                          }>
-                        <Select
-                          components={{ DropdownIndicator }}
-                          placeholder={
-                            natur2 == "fallo"
-                              ? "Seleccione Naturaleza"
-                              : "Naturaleza"
-                          }
-                          options={store.nature_data}
-                          getOptionLabel={(option) => option.name}
-                          getOptionValue={(option) => option.name}
-                          onChange={(option) => setNatur2(option)}
-                        />
+                        <div className={natur2 == "fallo" ? "fallo" : ""}>
+                          <Select
+                            components={{ DropdownIndicator }}
+                            placeholder={
+                              natur2 == "fallo"
+                                ? "Seleccione Naturaleza"
+                                : "Naturaleza"
+                            }
+                            options={store.nature_data}
+                            getOptionLabel={(option) => option.name}
+                            getOptionValue={(option) => option.name}
+                            onChange={(option) => setNatur2(option)}
+                          />
                         </div>
                       </div>
                     </div>
                     <div className="row mt-3">
                       <div className="col-md-6">
-                        <div className={
-                            mov21 == "fallo"
-                              ? "fallo"
-                              : ""
-                          }>
-                        <Select
-                          placeholder={
-                            mov21 == "fallo"
-                              ? "Seleccione Movimiento"
-                              : "Movimiento"
-                          }
-                          ceholder="Movimiento"
-                          components={{ DropdownIndicator }}
-                          options={store.move_data}
-                          getOptionLabel={(option) => type(option)}
-                          getOptionValue={(option) => option.name}
-                          onChange={(option) =>
-                             setMov21(option)}
-                        />
+                        <div className={mov21 == "fallo" ? "fallo" : ""}>
+                          <Select
+                            placeholder={
+                              mov21 == "fallo"
+                                ? "Seleccione Movimiento"
+                                : "Movimiento"
+                            }
+                            ceholder="Movimiento"
+                            components={{ DropdownIndicator }}
+                            options={store.move_data}
+                            getOptionLabel={(option) => type(option)}
+                            getOptionValue={(option) => option.name}
+                            onChange={(option) => setMov21(option)}
+                          />
                         </div>
                       </div>
                       <div className="col-md-6">
-                        <div className={
-                            mov22 == "fallo"
-                              ? "fallo"
-                              : ""
-                          }>
-                        <Select
-                          placeholder={
-                            mov22 == "fallo"
-                              ? "Seleccione Movimiento"
-                              : "Movimiento"
-                          }
-                          components={{ DropdownIndicator }}
-                          options={store.move_data}
-                          getOptionLabel={(option) => type(option)}
-                          getOptionValue={(option) => option.name}
-                          onChange={(option) => setMov22(option)}
-                        />
+                        <div className={mov22 == "fallo" ? "fallo" : ""}>
+                          <Select
+                            placeholder={
+                              mov22 == "fallo"
+                                ? "Seleccione Movimiento"
+                                : "Movimiento"
+                            }
+                            components={{ DropdownIndicator }}
+                            options={store.move_data}
+                            getOptionLabel={(option) => type(option)}
+                            getOptionValue={(option) => option.name}
+                            onChange={(option) => setMov22(option)}
+                          />
                         </div>
                       </div>
                     </div>
                     <div className="row mt-3">
                       <div className="col-md-6">
-                        <div className={
-                            mov23 == "fallo"
-                              ? "fallo"
-                              : ""
-                          }>
-                        <Select
-                          placeholder={
-                            mov23 == "fallo"
-                              ? "Seleccione Movimiento"
-                              : "Movimiento"
-                          }
-                          components={{ DropdownIndicator }}
-                          options={store.move_data}
-                          getOptionLabel={(option) => type(option)}
-                          getOptionValue={(option) => option.name}
-                          onChange={(option) => setMov23(option)}
-                        />
+                        <div className={mov23 == "fallo" ? "fallo" : ""}>
+                          <Select
+                            placeholder={
+                              mov23 == "fallo"
+                                ? "Seleccione Movimiento"
+                                : "Movimiento"
+                            }
+                            components={{ DropdownIndicator }}
+                            options={store.move_data}
+                            getOptionLabel={(option) => type(option)}
+                            getOptionValue={(option) => option.name}
+                            onChange={(option) => setMov23(option)}
+                          />
                         </div>
                       </div>
                       <div className="col-md-6">
-                        <div className={
-                            mov24 == "fallo"
-                              ? "fallo"
-                              : ""
-                          }>
-                        <Select
-                          placeholder={
-                            mov24 == "fallo"
-                              ? "Seleccione Movimiento"
-                              : "Movimiento"
-                          }
-                          components={{ DropdownIndicator }}
-                          options={store.move_data}
-                          getOptionLabel={(option) => type(option)}
-                          getOptionValue={(option) => option.name}
-                          onChange={(option) => setMov24(option)}
-                        />
+                        <div className={mov24 == "fallo" ? "fallo" : ""}>
+                          <Select
+                            placeholder={
+                              mov24 == "fallo"
+                                ? "Seleccione Movimiento"
+                                : "Movimiento"
+                            }
+                            components={{ DropdownIndicator }}
+                            options={store.move_data}
+                            getOptionLabel={(option) => type(option)}
+                            getOptionValue={(option) => option.name}
+                            onChange={(option) => setMov24(option)}
+                          />
                         </div>
                       </div>
                     </div>
