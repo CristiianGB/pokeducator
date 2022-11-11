@@ -1,7 +1,7 @@
   
 import os
 from flask_admin import Admin
-from .models import db, User, Favorites, Pokemon, Nature, Pokemon_fusion, Moves, Pokemon_Move, Ability, Item, Pokemon_Ability, Pokemon_Fusion_Nature, Pokemon_Fusion_Move, Pokemon_Fusion_Ability
+from .models import db, User, Favorites, Pokemon, Nature, Pokemon_fusion, Moves, Pokemon_Move, Ability, Item, Pokemon_Ability, Pokemon_Fusion_Nature, Pokemon_Fusion_Move, Pokemon_Fusion_Ability, Votes, Favorites
 from flask_admin.contrib.sqla import ModelView
 
 def setup_admin(app):
@@ -23,6 +23,7 @@ def setup_admin(app):
     admin.add_view(ModelView(Pokemon_Fusion_Move, db.session))
     admin.add_view(ModelView(Pokemon_Fusion_Nature, db.session))
     admin.add_view(ModelView(Pokemon_fusion, db.session))
-
+    admin.add_view(ModelView(Votes, db.session))
+    admin.add_view(ModelView(Favorites, db.session))
     # You can duplicate that line to add mew models
     # admin.add_view(ModelView(YourModelName, db.session))

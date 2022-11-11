@@ -142,7 +142,14 @@ const PokeducatorFusion = () => {
     moves = [mov11, mov12, mov13, mov14, mov21, mov22, mov23, mov24];
     for (let i = 0; movesFus.length < 4; i++) {
       let num = Math.floor(Math.random() * moves.length);
-      movesFus.indexOf(moves[num]) >= 0 ? "" : movesFus.push(moves[num]);
+      movesFus.push(moves[num]) 
+      let count = 0
+      let mov = []
+      moves.map((element,i)=>{
+        i != num ? mov.push(element):""
+      })
+      moves = mov
+      //movesFus.indexOf(moves[num]) >= 0 ? "" : movesFus.push(moves[num]); si quisieras que no se borre y que no salga repetido 
     }
     setMov31(movesFus[0]);
     setMov32(movesFus[1]);
@@ -222,7 +229,7 @@ const PokeducatorFusion = () => {
     actions.addfus(pokeFus);
 
     const resp = fetch(
-      "https://3001-cristiiangb-pokeducator-kwfch41y14d.ws-eu75.gitpod.io/api/createPokemonFusion",
+      "https://3001-cristiiangb-pokeducator-fj8djhd7o3d.ws-eu75.gitpod.io/api/createPokemonFusion",
       {
         method: "POST",
         headers: { "Content-Type": "application/json" },
@@ -249,7 +256,7 @@ const PokeducatorFusion = () => {
     setPokemon3(pokeFus);
     setTimeout(() => {
       setAni("a");
-    }, 10);
+    }, 1000);
     setTimeout(() => {
       console.log(ability3);
       console.log(pokemon3);
@@ -584,7 +591,7 @@ const PokeducatorFusion = () => {
                   aria-label="Default select example"
                 >
                   <option defaultValue>Selecciona Pokemon</option>
-                  {pokes.map((objeto) => (
+                  {pokes.slice(0,151).map((objeto) => (
                     <option value={objeto.id}>
                       {objeto.name} #{objeto.id}
                     </option>
@@ -793,7 +800,8 @@ const PokeducatorFusion = () => {
                   aria-label="Default select example"
                 >
                   <option defaultValue>Selecciona Pokemon</option>
-                  {pokes.map((objeto) => (
+                  {pokes.slice(0,151).map((objeto) => (
+                    
                     <option value={objeto.id}>
                       {objeto.name} #{objeto.id}
                     </option>
