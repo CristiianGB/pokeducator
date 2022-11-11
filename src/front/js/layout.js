@@ -49,7 +49,7 @@ const Layout = () => {
             />
             <Route
               element={<PokeducatorFusionInfo />}
-              path={"/fusioninfo/:theid"}
+              path={"/fusion/:theid"}
             />
             <Route element={<PokeducatorLogin />} path={"/login"} />
             <Route element={<PokeducatorFusiones />} path={"/fusiones"} />

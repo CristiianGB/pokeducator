@@ -70,6 +70,7 @@ const injectContext = (PassedComponent) => {
         state.actions.saveDbonStore()
 				*/
       state.actions.idStorage(localStorage.user_id);
+      
       state.actions.saveDbonStore()
 
 

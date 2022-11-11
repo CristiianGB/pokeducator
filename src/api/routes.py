@@ -37,7 +37,7 @@ def pokemon_votados():
 
     return jsonify({votes})
 
-@api.route("/login", methods = ["POST"])
+@api.route("/login", methods = ["GET"])
 def login():
     username = request.json.get("username", None)
     password = request.json.get("password", None)

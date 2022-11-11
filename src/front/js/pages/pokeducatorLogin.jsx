@@ -31,7 +31,7 @@ const PokeducatorLogin = () => {
         <div className="container py-5 h-100">
           <div className="row d-flex justify-content-center align-items-center h-100">
             <div className="col-xl-10">
-              <div className="card cardLogin text-black">
+              <div className="card cardLogin text-black paddingCarta">
                 <div className="row g-0 ">
                   <div className="col-lg-6 bordeRadius">
                     <div className="card-body p-md-5 mx-md-4">
@@ -109,7 +109,7 @@ const PokeducatorLogin = () => {
                               username && password
                                 ? handleLogin(username, password)
                                 : addEventListener(
-                                    alert("Usuario o contraseña incorrectos")
+                                    alert("Rellena los datos")
                                   )
                             }
                             name=""
@@ -119,12 +119,12 @@ const PokeducatorLogin = () => {
                             <div className="separadorBottom "></div>
                         <div className="d-flex align-items-center justify-content-center pb-4 ">
                           
-                          <p className="text-center">
+                          <p className="text-center ">
                             ¿No tienes cuenta?
                             <a href="/signup" className="mx-2 links">
                               <button
                                 type="button"
-                                className="buttonPokemonInfo pequeño"
+                                className="buttonPokemonInfo pequeño mt-2"
                                 
                               >
                                 Regístrate
