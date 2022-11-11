@@ -122,7 +122,7 @@ const PokeducatorPerfil = () => {
     // let url = document.getElementById("modalFoto");
     let url = picProfile;
     const resp = await fetch(
-      "https://3001-cristiiangb-pokeducator-7yne1ttdf09.ws-eu75.gitpod.io/api/updateProfilePicture",
+      "https://pokeducator.herokuapp.com/api/updateProfilePicture",
       {
         method: "PUT",
         headers: {
@@ -463,54 +463,90 @@ const PokeducatorPerfil = () => {
                       <div className="row equipoFotosPerfil d-flex justify-content-around text-center">
                         <div className="col-2">
                           {pokemon1 ? (
-                            <img className="equipoFotosPerfil" src={pokemon1.img} />
+                            <img
+                              className="equipoFotosPerfil"
+                              src={pokemon1.img}
+                            />
                           ) : linea1 ? (
-                            <img className="equipoFotosPerfil" src={linea1.equipo.img} />
+                            <img
+                              className="equipoFotosPerfil"
+                              src={linea1.equipo.img}
+                            />
                           ) : (
                             ""
                           )}
                         </div>
                         <div className="col-2">
                           {pokemon2 ? (
-                            <img className="equipoFotosPerfil" src={pokemon2.img} />
+                            <img
+                              className="equipoFotosPerfil"
+                              src={pokemon2.img}
+                            />
                           ) : linea2 ? (
-                            <img className="equipoFotosPerfil" src={linea2.equipo.img} />
+                            <img
+                              className="equipoFotosPerfil"
+                              src={linea2.equipo.img}
+                            />
                           ) : (
                             ""
                           )}
                         </div>
                         <div className="col-2">
                           {pokemon3 ? (
-                            <img className="equipoFotosPerfil" src={pokemon3.img} />
+                            <img
+                              className="equipoFotosPerfil"
+                              src={pokemon3.img}
+                            />
                           ) : linea3 ? (
-                            <img className="equipoFotosPerfil" src={linea3.equipo.img} />
+                            <img
+                              className="equipoFotosPerfil"
+                              src={linea3.equipo.img}
+                            />
                           ) : (
                             ""
                           )}
                         </div>
                         <div className="col-2">
                           {pokemon4 ? (
-                            <img className="equipoFotosPerfil" src={pokemon4.img} />
+                            <img
+                              className="equipoFotosPerfil"
+                              src={pokemon4.img}
+                            />
                           ) : linea4 ? (
-                            <img className="equipoFotosPerfil" src={linea4.equipo.img} />
+                            <img
+                              className="equipoFotosPerfil"
+                              src={linea4.equipo.img}
+                            />
                           ) : (
                             ""
                           )}
                         </div>
                         <div className="col-2">
                           {pokemon5 ? (
-                            <img className="equipoFotosPerfil" src={pokemon5.img} />
+                            <img
+                              className="equipoFotosPerfil"
+                              src={pokemon5.img}
+                            />
                           ) : linea5 ? (
-                            <img className="equipoFotosPerfil" src={linea5.equipo.img} />
+                            <img
+                              className="equipoFotosPerfil"
+                              src={linea5.equipo.img}
+                            />
                           ) : (
                             ""
                           )}
                         </div>
                         <div className="col-2">
                           {pokemon6 ? (
-                            <img className="equipoFotosPerfil" src={pokemon6.img} />
+                            <img
+                              className="equipoFotosPerfil"
+                              src={pokemon6.img}
+                            />
                           ) : linea6 ? (
-                            <img className="equipoFotosPerfil" src={linea6.equipo.img} />
+                            <img
+                              className="equipoFotosPerfil"
+                              src={linea6.equipo.img}
+                            />
                           ) : (
                             ""
                           )}
@@ -520,18 +556,8 @@ const PokeducatorPerfil = () => {
                   </div>
                 </div>
                 {/* VOTACIONES */}
-                <div className="row my-2">
-                  <div className="col">
-                    <div className="card mb-4 mb-md-0 p-3">
-                      <h4>Ultimas votaciones</h4>
-                      <div className="d-flex justify-content-around">
-                        <div className="col-3 bg-info">1</div>
-                        <div className="col-3 bg-info">2</div>
-                        <div className="col-3 bg-info">3</div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
+                
+                
               </div>
             </div>
           </div>

@@ -74,7 +74,7 @@ const injectContext = (PassedComponent) => {
 				state.actions.FindOnePokemon(1)
         state.actions.saveDbonStore()
 				*/
-        state.actions.saveDbonStore();
+        state.actions.saveMoveonDb()
         state.actions.getProfile();
   
     }, []);
