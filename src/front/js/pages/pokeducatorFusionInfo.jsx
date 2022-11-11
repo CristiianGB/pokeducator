@@ -28,6 +28,8 @@ import sombra_img from "../../assets/img/tiposimg/sombra.png";
 const PokeducatorFusionInfo = () => {
   const { store, actions } = useContext(Context);
   const [num, setNum] = useState(0);
+  const [father, setFather] = useState(0);
+  const [mom, setMom] = useState(0);
   const [load, setLoad] = useState(true);
   const params = useParams();
   let time = [2000, 3000, 4000, 5000];
@@ -47,51 +49,50 @@ const PokeducatorFusionInfo = () => {
   useEffect(() => {
     actions.FindOneFusion(params.theid);
   }, []);
-
   let tipoPokemon = store.single_fusion_data.pokemon?.type.map((elemento) =>
-    elemento == "normal" ?  (
-        <img className="tipoImg mx-1" src={normal_img} alt="normal" />
-      ) : elemento == "fighting" ? (
-        <img className="tipoImg mx-1" src={lucha_img} alt="normal" />
-      ) : elemento == "flying" ? (
-        <img className="tipoImg mx-1" src={volador_img} alt="normal" />
-      ) : elemento == "poison" ? (
-        <img className="tipoImg mx-1" src={veneno_img} alt="normal" />
-      ) : elemento == "ground" ? (
-        <img className="tipoImg mx-1" src={tierra_img} alt="normal" />
-      ) : elemento == "rock" ? (
-        <img className="tipoImg mx-1" src={roca_img} alt="normal" />
-      ) : elemento == "ghost" ? (
-        <img className="tipoImg mx-1" src={fantasma_img} alt="normal" />
-      ) : elemento == "steel" ? (
-        <img className="tipoImg mx-1" src={acero_img} alt="normal" />
-      ) : elemento == "fire" ? (
-        <img className="tipoImg mx-1" src={fuego_img} alt="normal" />
-      ) : elemento == "water" ? (
-        <img className="tipoImg mx-1" src={agua_img} alt="normal" />
-      ) : elemento == "grass" ? (
-        <img className="tipoImg mx-1" src={planta_img} alt="normal" />
-      ) : elemento == "electric" ? (
-        <img className="tipoImg mx-1" src={electrico_img} alt="normal" />
-      ) : elemento == "psychic" ? (
-        <img className="tipoImg mx-1" src={psiquico_img} alt="normal" />
-      ) : elemento == "ice" ? (
-        <img className="tipoImg mx-1" src={hielo_img} alt="normal" />
-      ) : elemento == "dragon" ? (
-        <img className="tipoImg mx-1" src={dragon_img} alt="normal" />
-      ) : elemento == "dark" ? (
-        <img className="tipoImg mx-1" src={siniestro_img} alt="normal" />
-      ) : elemento == "fairy" ? (
-        <img className="tipoImg mx-1" src={hada_img} alt="normal" />
-      ) : elemento == "unknown" ? (
-        <img className="tipoImg mx-1" src={desconocido_img} alt="normal" />
-      ) : elemento == "shadow" ? (
-        <img className="tipoImg mx-1" src={sombra_img} alt="normal" />
-      ) : elemento == "bug" ? (
-        <img className="tipoImg mx-1" src={bicho_img} alt="normal" />
-      ) : (
-        ""
-      )
+    elemento == "normal" ? (
+      <img className="tipoImg mx-1" src={normal_img} alt="normal" />
+    ) : elemento == "fighting" ? (
+      <img className="tipoImg mx-1" src={lucha_img} alt="normal" />
+    ) : elemento == "flying" ? (
+      <img className="tipoImg mx-1" src={volador_img} alt="normal" />
+    ) : elemento == "poison" ? (
+      <img className="tipoImg mx-1" src={veneno_img} alt="normal" />
+    ) : elemento == "ground" ? (
+      <img className="tipoImg mx-1" src={tierra_img} alt="normal" />
+    ) : elemento == "rock" ? (
+      <img className="tipoImg mx-1" src={roca_img} alt="normal" />
+    ) : elemento == "ghost" ? (
+      <img className="tipoImg mx-1" src={fantasma_img} alt="normal" />
+    ) : elemento == "steel" ? (
+      <img className="tipoImg mx-1" src={acero_img} alt="normal" />
+    ) : elemento == "fire" ? (
+      <img className="tipoImg mx-1" src={fuego_img} alt="normal" />
+    ) : elemento == "water" ? (
+      <img className="tipoImg mx-1" src={agua_img} alt="normal" />
+    ) : elemento == "grass" ? (
+      <img className="tipoImg mx-1" src={planta_img} alt="normal" />
+    ) : elemento == "electric" ? (
+      <img className="tipoImg mx-1" src={electrico_img} alt="normal" />
+    ) : elemento == "psychic" ? (
+      <img className="tipoImg mx-1" src={psiquico_img} alt="normal" />
+    ) : elemento == "ice" ? (
+      <img className="tipoImg mx-1" src={hielo_img} alt="normal" />
+    ) : elemento == "dragon" ? (
+      <img className="tipoImg mx-1" src={dragon_img} alt="normal" />
+    ) : elemento == "dark" ? (
+      <img className="tipoImg mx-1" src={siniestro_img} alt="normal" />
+    ) : elemento == "fairy" ? (
+      <img className="tipoImg mx-1" src={hada_img} alt="normal" />
+    ) : elemento == "unknown" ? (
+      <img className="tipoImg mx-1" src={desconocido_img} alt="normal" />
+    ) : elemento == "shadow" ? (
+      <img className="tipoImg mx-1" src={sombra_img} alt="normal" />
+    ) : elemento == "bug" ? (
+      <img className="tipoImg mx-1" src={bicho_img} alt="normal" />
+    ) : (
+      ""
+    )
   );
 
   let tipoDebilidad = store.single_fusion_data.pokemon?.weakness?.map(
@@ -184,18 +185,18 @@ const PokeducatorFusionInfo = () => {
                 </div>
 
                 <div className="col-sm-6 text-end">
-                {params.theid >= store.pokemon_fusion_data.length ? (
+                  {params.theid >= store.pokemon_fusion_data.length ? (
                     ""
                   ) : (
-                  <a
-                    href={
-                      params.theid < store.pokemon_fusion_data.length
-                        ? `/fusioninfo/${parseInt(params.theid) + 1}`
-                        : ""
-                    }
-                  >
-                    <button className="buttonPokemonInfo">siguiente</button>
-                  </a>
+                    <a
+                      href={
+                        params.theid < store.pokemon_fusion_data.length
+                          ? `/fusioninfo/${parseInt(params.theid) + 1}`
+                          : ""
+                      }
+                    >
+                      <button className="buttonPokemonInfo">siguiente</button>
+                    </a>
                   )}
                 </div>
               </div>
@@ -203,10 +204,10 @@ const PokeducatorFusionInfo = () => {
               {/* POKEMON NAME */}
               <div className="pokemon_name d-flex text-center text-uppercase">
                 <span className="order_pokemon">
-                  {store.single_fusion_data.pokemon.id}
+                  {store.single_fusion_data?.pokemon.id}
                 </span>
                 <h1 className="fw-bold">
-                  {store.single_fusion_data.pokemon.name}
+                  {store.single_fusion_data?.pokemon.name}
                 </h1>
               </div>
 
@@ -282,10 +283,7 @@ const PokeducatorFusionInfo = () => {
 
                 {/* DIV DRCH */}
                 <div className="col-md-6 d-flex flex-column m-0 info_pokemon">
-                  <div className="bg-light p-2 rounded-4 div_tipo">
-                    <h4 className="fw-bold">Tipo</h4>
-                    <div>{tipoPokemon}</div>
-                  </div>
+                  
                   {/* INFO ADICIONAL */}
                   <div
                     className={`bg-primary bg-gradient rounded-4 p-2 div_info_adicional`}
@@ -321,24 +319,82 @@ const PokeducatorFusionInfo = () => {
                           <li>
                             <p className="fw-bold fs-5 text-white">Habilidad</p>
                             {
-                              
-                                <a
-                                  className="linksPokemon"
-                                  href={`/habilidad/${store.single_fusion_data.ability?.id}`}
-                                >
-                                  <p className="fw-bold">{store.single_fusion_data.ability?.name}</p>
-                                </a>
-                              
+                              <a
+                                className="linksPokemon"
+                                href={`/habilidad/${store.single_fusion_data.ability?.id}`}
+                              >
+                                <p className="fw-bold">
+                                  {store.single_fusion_data.ability?.name}
+                                </p>
+                              </a>
                             }
-                            <p className="fw-bold fs-5 text-white">Naturaleza</p>
-                            <p className="fw-bold">{store.single_fusion_data.nature?.name}</p>
+                            <p className="fw-bold fs-5 text-white">
+                              Naturaleza
+                            </p>
+                            <p className="fw-bold">
+                              {store.single_fusion_data.nature?.name}
+                            </p>
                           </li>
                         </ul>
                       </div>
                     </div>
                   </div>
-                  
-                  
+                  <div className="bg-light p-2 rounded-4 div_tipo">
+                    <h4 className="fw-bold">Tipo</h4>
+                    <div>{tipoPokemon}</div>
+                  </div>
+
+                  <div className="bg-light p-2 rounded-4 div_tipo">
+                    <div>
+                      <h4 className="fw-bold">PADRES</h4>
+                    </div>
+                    <div className="d-flex justify-content-around">
+                      {store.single_fusion_data.father ? (
+                        <div
+                          className="rounded-circle text-center div_evolucion"
+                          style={{
+                            width: "150px",
+                            height: "150px",
+                          }}
+                        >
+                          <a
+                            className="links"
+                            href={`/pokemon/${store.single_fusion_data.father?.id}`}
+                          >
+                            <img
+                              className="img-fluid"
+                              src={store.single_fusion_data.father?.img}
+                              alt={store.single_fusion_data.father?.name}
+                            />
+                          </a>
+                        </div>
+                      ) : (
+                        ""
+                      )}
+                      {store.single_fusion_data.mom ? (
+                        <div
+                          className="rounded-circle text-center div_evolucion"
+                          style={{
+                            width: "150px",
+                            height: "150px",
+                          }}
+                        >
+                          <a
+                            className="links"
+                            href={`/pokemon/${store.single_fusion_data.mom?.id}`}
+                          >
+                            <img
+                              className="img-fluid"
+                              src={store.single_fusion_data.mom?.img}
+                              alt={store.single_fusion_data.mom?.name}
+                            />
+                          </a>
+                        </div>
+                      ) : (
+                        ""
+                      )}
+                    </div>
+                  </div>
                 </div>
               </div>
 

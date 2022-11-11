@@ -125,6 +125,8 @@ class Pokemon_fusion(db.Model):
     defens = db.Column(db.Integer, nullable=False, unique=False) 
     atk = db.Column(db.Integer, nullable=False, unique=False) 
     votes = db.Column(db.Integer, default=0, nullable=False, unique=False) 
+    father = db.Column(db.Integer, db.ForeignKey('pokemon.pokemon_id'), unique=False, nullable=False)
+    mom = db.Column(db.Integer, db.ForeignKey('pokemon.pokemon_id'), unique=False, nullable=False)
     
     def __repr__(self):
         return self.name
@@ -170,6 +172,8 @@ class Pokemon_fusion(db.Model):
             "weight": self.weight,
             "height": self.height,
             "group_name": self.group_name,
+            "father": self.father,
+            "mom": self.mom
             
           
             }
