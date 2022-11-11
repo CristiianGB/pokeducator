@@ -183,9 +183,14 @@ def createPokemonFusion():
     nature = request.json.get("nature", None)
     ability = request.json.get("ability", None)
     group_name = request.json.get("group_name", None)
+    father = request.json.get("father", None)
+    mom = request.json.get("mom", None)
+
+    fat = Pokemon.query.filter_by(id=father).first().findone()
+    mo = Pokemon.query.filter_by(id=mom).first().findone()
 
     pokemon = Pokemon_fusion(name=name, ps=ps, atk=atk, sp_atk=sp_atk, spd=spd, defens=defens, sp_defens=sp_defens, img=img,
-                             type=type, weight=weight, height=height, group_name=group_name)
+                             type=type, weight=weight, height=height, group_name=group_name, mom=mo["pokemon_id"], father=fat["pokemon_id"])
     db.session.add(pokemon)
 
     db.session.commit()
@@ -446,7 +451,9 @@ def allmovabifus(pokemon_id):
     ability = Ability.query.filter_by(ability_id=ability["ability_id"]).first().serialize()
     nature = Pokemon_Fusion_Nature.query.filter_by(pokemon_id=pokemon_id).first().serialize()
     nature = Nature.query.filter_by(nature_id=nature["nature_id"]).first().serialize()
-    return jsonify({"pokemon": pokemon, "ability": ability, "moves": moves, "nature":nature}), 200
+    father = Pokemon.query.filter_by(pokemon_id=pokemon["father"]).first().serialize()
+    mom = Pokemon.query.filter_by(pokemon_id=pokemon["mom"]).first().serialize()
+    return jsonify({"pokemon": pokemon, "ability": ability, "moves": moves, "nature":nature, "father":father, "mom":mom}), 200
 
 @api.route("/item/<int:item_id>", methods=["GET"])
 def item(item_id):
