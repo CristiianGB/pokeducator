@@ -17,53 +17,53 @@ const getState = ({ getStore, getActions, setStore }) => {
       votes: [],
       favorites: [],
       user_id: null,
+      equipos: [],
     },
     actions: {
       login: async (username, password) => {
         const store = getStore();
 
-        const resp = await fetch(
-          "https://3001-cristiiangb-pokeducator-fj8djhd7o3d.ws-eu75.gitpod.io/api/login",
-          {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({
-              username: username,
-              password: password,
-            }),
-          }
-        );
-        if (!resp.ok) throw Error("There was a problem in the login request");
-        if (resp.status === 401) {
-          throw "Invalid credentials";
-        } else if (resp.status === 400) {
-          throw "Invalid username or password format";
-          
-        }
 
-        const data = await resp.json();
-        localStorage.setItem("token", data.token);
-        localStorage.setItem("user_id", data.user_id);
-        setStore({ token: data.token });
-        setStore({ user_id: data.user_id });
-        return true;
+        const resp =  fetch(
+          "https://3001-cristiiangb-pokeducator-fj8djhd7o3d.ws-eu75.gitpod.io/api/login/"+username+"/"+password
+     
+          
+        )
+          .then((resp) => {
+            return resp.json();
+          })
+          .then((data) => {
+          
+            localStorage.setItem("token", data.token);
+            localStorage.setItem("user_id", data.user_id);
+ 
+            setStore({ token: data.token });
+            setStore({ user_id: data.user_id });
+          });
+
       },
       getProfile: () => {
+        
+        
         const token = localStorage.token;
+        console.log(token)
         fetch(
           "https://3001-cristiiangb-pokeducator-fj8djhd7o3d.ws-eu75.gitpod.io/api/protected",
           {
-            method: "POST",
+            method: "GET",
             headers: {
               "Content-Type": "application/json",
               Authorization: "Bearer " + localStorage.token,
             },
+           
           }
         )
           .then((resp) => {
             return resp.json();
           })
           .then((data) => {
+            data.msg ? "" : getActions().idStorage(localStorage.user_id);
+            
             return setStore({ user: data });
           });
       },
@@ -312,6 +312,7 @@ const getState = ({ getStore, getActions, setStore }) => {
             setStore({ favorites: store.favorites });
           });
       },
+
       FindOnePokemon: (pokemon_id) => {
         fetch(
           "https://3001-cristiiangb-pokeducator-fj8djhd7o3d.ws-eu75.gitpod.io/api/allmovabi/" +
@@ -327,6 +328,34 @@ const getState = ({ getStore, getActions, setStore }) => {
             setStore({ single_pokemon_data: pokemon });
           });
       },
+
+      addequipofus: (pokemon_fusion_id, num) => {
+        fetch(
+          "https://3001-cristiiangb-pokeducator-fj8djhd7o3d.ws-eu75.gitpod.io/api/addequipofus",
+          {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({
+              user_id: getStore().user_id,
+              pokemon_fusion_id: pokemon_fusion_id,
+              num: num,
+            }),
+          })
+      },
+      addequipo: (pokemon_id, num) => {
+        fetch(
+          "https://3001-cristiiangb-pokeducator-fj8djhd7o3d.ws-eu75.gitpod.io/api/addequipo",
+          {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({
+              user_id: getStore().user_id,
+              pokemon_id: pokemon_id,
+              num: num,
+            }),
+          })
+      },
+      
       FindOneFusion: (pokemon_id) => {
         fetch(
           "https://3001-cristiiangb-pokeducator-fj8djhd7o3d.ws-eu75.gitpod.io/api/allmovabifus/" +
@@ -378,7 +407,7 @@ const getState = ({ getStore, getActions, setStore }) => {
         )
           .then((response) => response.json())
           .then((store) => {
-            console.log(store);
+
             let votes = [];
             store.votes.map((object) => {
               votes.push(object.pokemon_id);
@@ -388,7 +417,8 @@ const getState = ({ getStore, getActions, setStore }) => {
               favorites.push(object.pokemon_id);
             });
             setStore({ votes: votes });
-            setStore({ favorites: store.favorites });
+            setStore({ favorites: favorites });
+            setStore({ equipos: store.equipos})
           });
       },
       addVote: async (pokemon_id) => {
