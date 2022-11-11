@@ -14,9 +14,12 @@ const PokeducatorLogin = () => {
   let navigate = useNavigate();
 
   const handleLogin = async (username, password) => {
-    actions.login(username, password).then(() => {
-      navigate("/perfil");
-    });
+    actions.login(username, password)
+    setTimeout(() => {
+      navigate("/perfil")
+    }, 500);
+
+    ;
   };
 
   const handleSee = () => {
@@ -104,7 +107,7 @@ const PokeducatorLogin = () => {
                         <div className="text-center pt-1 mb-3 pb-1 ">
                           <input
                             className="buttonPokemonInfo mb-2 "
-                            type="submit"
+                            type="button"
                             onClick={() =>
                               username && password
                                 ? handleLogin(username, password)

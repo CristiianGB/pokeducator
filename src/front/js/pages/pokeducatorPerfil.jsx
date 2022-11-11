@@ -389,7 +389,7 @@ const PokeducatorPerfil = () => {
                    
                     
                     {pokemon1 ? (<img src={pokemon1.img}/>) : linea1 ? (<img src={linea1.equipo.img}/>):""}
-                    
+                
                            </div>
                     <div className="col-2">                    
                     {pokemon2 ? (<img src={pokemon2.img}/>) : linea2 ? (<img src={linea2.equipo.img}/>):""}

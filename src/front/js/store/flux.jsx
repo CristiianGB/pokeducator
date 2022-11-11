@@ -79,10 +79,49 @@ const getState = ({ getStore, getActions, setStore }) => {
                 .then((pokeinfo) => {
                   let description;
                   let group_name = [];
+                  let evolution;
+                  let weakness;
+
+                  pokeinfo.types.map((elemento) =>
+                    elemento.slot == 1
+                      ? fetch(elemento.type.url)
+                          .then((response) => response.json())
+                          .then((debilidad) => {
+                            let debil = [];
+                            debilidad.damage_relations.double_damage_from.map(
+                              (elemento) => debil.push(elemento.name)
+                            );
+                            weakness = { weakness: debil };
+                          })
+                      : ""
+                  );
 
                   fetch(pokeinfo.species.url)
                     .then((response) => response.json())
                     .then((speci) => {
+                      let evol = [];
+                      fetch(speci.evolution_chain.url)
+                        .then((response) => response.json())
+                        .then((evoluciones) => {
+                          evoluciones.chain.species.name
+                            ? evol.push(evoluciones.chain.species.name)
+                            : "";
+                          evoluciones.chain.evolves_to[0]?.species?.name
+                            ? evol.push(
+                                evoluciones.chain.evolves_to[0]?.species?.name
+                              )
+                            : "";
+                          evoluciones.chain.evolves_to[0]?.evolves_to[0]
+                            ?.species?.name
+                            ? evol.push(
+                                evoluciones.chain.evolves_to[0]?.evolves_to[0]
+                                  ?.species?.name
+                              )
+                            : console.log(evoluciones.chain);
+                        });
+
+                      evolution = { evolution: evol };
+
                       speci.flavor_text_entries.map((descri) => {
                         if (
                           descri.language.name == "es" &&
@@ -98,9 +137,12 @@ const getState = ({ getStore, getActions, setStore }) => {
                       });
                       group_name = { group_name: group_name };
                     })
+
                     .finally(() => {
                       Object.assign(pokeinfo, description);
                       Object.assign(pokeinfo, group_name);
+                      Object.assign(pokeinfo, evolution);
+                      Object.assign(pokeinfo, weakness);
 
                       new_pokemon_data.push(pokeinfo);
                       setStore({ pokemon_data: new_pokemon_data });
@@ -128,6 +170,8 @@ const getState = ({ getStore, getActions, setStore }) => {
         sortedData.map((pokemon) => {
           let description = pokemon.description;
           let group_name = pokemon.group_name;
+          let evolution = pokemon.evolution;
+          let weakness = pokemon.weakness;
           let height = pokemon.height;
           let order = pokemon.order;
           let atk;
@@ -210,6 +254,8 @@ const getState = ({ getStore, getActions, setStore }) => {
                 order: order,
                 learning: learning,
                 group_name: group_name,
+                evolution: evolution,
+                weakness: weakness,
               }),
             }
           );

@@ -140,6 +140,8 @@ def createPokemon():
     spd = request.json.get("spd", None)
     learning = request.json.get("learning", None)
     group_name = request.json.get("group_name", None)
+    evolution = request.json.get("evolution", None)
+    weakness = request.json.get("weakness", None)
     for a, b in replacements:
         if (description):
             description = description.replace(
@@ -147,7 +149,7 @@ def createPokemon():
             description = description.replace("\n", " ")
 
     pokemon = Pokemon(id=id, name=name, ps=ps, atk=atk, sp_atk=sp_atk, spd=spd, defens=defens, sp_defens=sp_defens, img=img,
-                      type=type, url=url, order=order, description=description, shiny=shiny, weight=weight, height=height, group_name=group_name)
+                      type=type, url=url, order=order, description=description, shiny=shiny, weight=weight, height=height, group_name=group_name, evolution=evolution, weakness=weakness)
     db.session.add(pokemon)
 
     db.session.commit()
