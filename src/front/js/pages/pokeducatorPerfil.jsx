@@ -2,16 +2,16 @@ import React, { useState, useEffect, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import { Context } from "../store/appContext.jsx";
 import "../../styles/pokeducatorPerfilStyles.css";
-import { Link } from "react-router-dom";
 
 const PokeducatorPerfil = () => {
   const { store, actions } = useContext(Context);
   const [user, setUser] = useState({});
+  const [votos, setVotos] = useState([]);
 
   let navigate = useNavigate();
 
   useEffect(() => {
-    if (!store.token) {
+    if (!localStorage.token) {
       navigate("/login");
     } else {
       actions.getProfile();
@@ -25,11 +25,19 @@ const PokeducatorPerfil = () => {
 
   const [picProfile, setPicProfile] = useState("");
 
+  // useEffect(()=>{
+  //   fetch("https://3001-cristiiangb-pokeducator-tv6vrml7okb.ws-eu75.gitpod.io/api/votos")
+  //   .then((response) => response.json())
+  //         .then((data) => {
+  //           setVotos(data)
+  //         });
+  // }, [])
+
   const handleSubmit = async () => {
     // let url = document.getElementById("modalFoto");
     let url = picProfile;
     const resp = await fetch(
-      "https://3001-cristiiangb-pokeducator-2oc1ugj4apt.ws-eu75.gitpod.io/api/updateProfilePicture",
+      "https://3001-cristiiangb-pokeducator-y4jl5qg0obb.ws-eu75.gitpod.io/api/updateProfilePicture",
       {
         method: "PUT",
         headers: {

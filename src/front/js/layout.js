@@ -17,6 +17,7 @@ import PokeducatorWikiNaturaleza from "./pages/pokeducatorWiki/pokeducatorWikiNa
 import PokeducatorObjetoInfo from "./pages/pokeducatorObjetoInfo.jsx";
 import PokeducatorMovimientoInfo from "./pages/pokeducatorMovimientoInfo.jsx";
 import PokeducatorPokemons from "./pages/pokeducatorPokemons.jsx";
+import PokeducatorFusiones from "./pages/pokeducatorFusiones.jsx";
 import PokeducatorLandingPage from "./pages/pokeducatorLandingPage.jsx";
 import PokeducatorProfilePage from "./pages/pokeducatorProfilePage.jsx";
 import injectContext from "./store/appContext.jsx";
@@ -46,6 +47,7 @@ const Layout = () => {
               path={"/pokemon/:theid"}
             />
             <Route element={<PokeducatorLogin />} path={"/login"} />
+            <Route element={<PokeducatorFusiones />} path={"/fusiones"} />
             <Route element={<PokeducatorSignup />} path={"/signup"} />
             <Route element={<PokeducatorPerfil />} path={"/perfil"} />
             <Route

@@ -5,12 +5,12 @@ import "../../styles/navbarStyles.css";
 import { Context } from "../store/appContext.jsx";
 
 export const Navbar = () => {
-  const {store, actions} = useContext(Context)
+  const { store, actions } = useContext(Context);
   const [dorpdownVisible, setDropdownVisible] = useState(false);
 
   const logOut = () => {
-		localStorage.removeItem("token")
-	}
+    localStorage.removeItem("token");
+  };
 
   return (
     <nav className="navbar navbar-expand-lg navbar-light bg-light">
@@ -62,24 +62,26 @@ export const Navbar = () => {
                 Objetos
               </a>
             </li>
-            <li onMouseEnter={() => setDropdownVisible(true)}
-            onMouseLeave={() => setDropdownVisible(false)}
-            className="nav-item position-relative">
-              <Link
-                className="nav-link dropdown-toggle"
-                to="/wiki"
-              >
+            <li
+              onMouseEnter={() => setDropdownVisible(true)}
+              onMouseLeave={() => setDropdownVisible(false)}
+              className="nav-item position-relative"
+            >
+              <Link className="nav-link dropdown-toggle" to="/wiki">
                 Wiki
               </Link>
               {dorpdownVisible ? (
                 <ul className="position-absolute desplegable_wiki">
-				          <li>
+                  <li>
                     <Link className="dropdown-item" to="/wiki/crianza-pokemon">
                       Crianza Pokémon
                     </Link>
                   </li>
                   <li>
-                    <Link className="dropdown-item" to="/wiki/guarderia-pokemon">
+                    <Link
+                      className="dropdown-item"
+                      to="/wiki/guarderia-pokemon"
+                    >
                       Guardería Pokémon
                     </Link>
                   </li>
@@ -94,7 +96,10 @@ export const Navbar = () => {
                     </Link>
                   </li>
                   <li>
-                    <Link className="dropdown-item" to="/wiki/naturaleza-pokemon">
+                    <Link
+                      className="dropdown-item"
+                      to="/wiki/naturaleza-pokemon"
+                    >
                       Naturaleza Pokémon
                     </Link>
                   </li>
@@ -105,7 +110,10 @@ export const Navbar = () => {
                     </Link>
                   </li>
                   <li>
-                    <Link className="dropdown-item mb-2" to="/wiki/series-pokemon">
+                    <Link
+                      className="dropdown-item mb-2"
+                      to="/wiki/series-pokemon"
+                    >
                       Series Pokémon
                     </Link>
                   </li>
@@ -118,46 +126,56 @@ export const Navbar = () => {
         <div className="d-flex align-items-center">
           {/* <!-- Icon --> */}
           {/* <!-- Avatar --> */}
-          {store.token ? (
+          {localStorage.token ? (
             <div className="dropdown ms-2">
-            <a
-              className="dropdown-toggle d-flex align-items-center"
-              href="#"
-              id="navbarDropdownMenuAvatar"
-              role="button"
-              data-mdb-toggle="dropdown"
-              aria-expanded="false"
-            >
-              <img
-                src="https://mdbcdn.b-cdn.net/img/new/avatars/2.webp" //imagen perfil
-                className="rounded-circle"
-                height="25"
-                alt="Black and White Portrait of a Man"
-                loading="lazy"
-              />
+              <a
+                className="dropdown-toggle d-flex align-items-center"
+                href="#"
+                id="navbarDropdownMenuAvatar"
+                role="button"
+                data-mdb-toggle="dropdown"
+                aria-expanded="false"
+              >
+                <img
+                  src="https://mdbcdn.b-cdn.net/img/new/avatars/2.webp" //imagen perfil
+                  className="rounded-circle"
+                  height="25"
+                  alt="Black and White Portrait of a Man"
+                  loading="lazy"
+                />
+              </a>
+              <ul
+                className="dropdown-menu dropdown-menu-end"
+                aria-labelledby="navbarDropdownMenuAvatar"
+              >
+                <li>
+                  <a className="dropdown-item" href="/perfil">
+                    Perfil
+                  </a>
+                </li>
+                <li>
+                  <a className="dropdown-item" href="/soporte">
+                    Soporte
+                  </a>
+                </li>
+                <li>
+                  <a
+                    className="dropdown-item"
+                    onClick={() => logOut()}
+                    href="/"
+                  >
+                    Cerrar Sesión
+                  </a>
+                </li>
+              </ul>
+            </div>
+          ) : (
+            <a href="/login">
+              <button className="buttonPokemonInfoNavbar my-1">
+                Iniciar Sesión
+              </button>
             </a>
-            <ul
-              className="dropdown-menu dropdown-menu-end"
-              aria-labelledby="navbarDropdownMenuAvatar"
-            >
-              <li>
-                <a className="dropdown-item" href="/perfil">
-                  Perfil
-                </a>
-              </li>
-              <li>
-                <a className="dropdown-item" href="/soporte">
-                  Soporte
-                </a>
-              </li>
-              <li>
-                <a className="dropdown-item" onClick={()=>logOut()} href="/">
-                  Cerrar Sesión
-                </a>
-              </li>
-            </ul>
-          </div>
-          ) : <a href="/login"><button className="buttonPokemonInfoNavbar my-1">Iniciar Sesión</button></a>}
+          )}
         </div>
         {/* <!-- Right elements --> */}
       </div>
