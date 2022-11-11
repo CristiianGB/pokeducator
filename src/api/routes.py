@@ -1,28 +1,40 @@
 from flask import Flask, request, jsonify, url_for, Blueprint
-from api.models import db, User, Favorites, Pokemon, Nature, Pokemon_fusion, Moves, Pokemon_Move, Ability, Item, Pokemon_Ability, Pokemon_Fusion_Nature, Pokemon_Fusion_Move, Pokemon_Fusion_Ability, Votes, Favorites
+from api.models import db, User, Favorites, Pokemon, Nature, Pokemon_fusion, Moves, Pokemon_Move, Ability, Item, Pokemon_Ability, Pokemon_Fusion_Nature, Pokemon_Fusion_Move, Pokemon_Fusion_Ability, Votes, Equipo, Favorites
 from api.utils import generate_sitemap, APIException
 from flask_jwt_extended import JWTManager, create_access_token, jwt_required, get_jwt_identity
 from sqlalchemy import inspect
 
 api = Blueprint('api', __name__)
 
-@api.route("/getequipo/<int:user_id>", methods=["GET"])
-def getequipo(user_id):
 
-    equipos = Equipo.query.filter_by(user_id=user_id)
-    equipos = list(map(lambda x: x.serialize(), equipos))
-    return jsonify({"equipos":equipos}), 200
 
 @api.route("/addequipo", methods=["POST"])
 def addequipo():
     user_id = request.json.get("user_id", None)
     pokemon_id = request.json.get("pokemon_id", None)
+    num = request.json.get("num", None)
+
+    prub = Equipo.query.filter_by(user_id=user_id, linea=num).first()
+    if(prub):
+        db.session.delete(prub)
+        db.session.commit()
+    equipo = Equipo(user_id=user_id, pokemon_id=pokemon_id, linea=num)
+
+    db.session.add(equipo)
+    db.session.commit()
+    return jsonify({"equipo": "equipo"}), 200
+
+@api.route("/addequipofus", methods=["POST"])
+def addequipofus():
+    user_id = request.json.get("user_id", None)
     pokemon_fusion_id = request.json.get("pokemon_fusion_id", None)
+    num = request.json.get("num", None)
 
-    #if(pokemon_id)
-
-
-    equipo = Equipo(pokemon_id=pokemon_id, user_id=user_id, pokemon_fusion_id=pokemon_fusion_id)
+    prub = Equipo.query.filter_by(user_id=user_id, linea=num).first()
+    if(prub):
+        db.session.delete(prub)
+        db.session.commit()
+    equipo = Equipo(user_id=user_id, pokemon_fusion_id=pokemon_fusion_id, linea=num)
 
     db.session.add(equipo)
     db.session.commit()
@@ -37,10 +49,9 @@ def pokemon_votados():
 
     return jsonify({votes})
 
-@api.route("/login", methods = ["POST"])
-def login():
-    username = request.json.get("username", None)
-    password = request.json.get("password", None)
+@api.route("/login/<string:username>/<string:password>", methods = ["GET"])
+def login(username,password):
+
     user = User.query.filter_by(username=username, password=password).first()
     print(username)
     print(password)
@@ -51,8 +62,7 @@ def login():
         votes = list(map(lambda x: x.serialize(), votes))
         favorites = Favorites.query.filter_by(user_id=user.id)
         favorites = list(map(lambda x: x.serialize(), favorites))
-        print(favorites)
-        print(votes)
+
         return jsonify({ "token": access_token, "user_id": user.id, "favorites":favorites, "votes":votes  })
         
 
@@ -72,10 +82,12 @@ def signup():
         db.session.commit()
         return jsonify({"user":new_user.serialize()})
    
-@api.route("/protected", methods=["POST"])
+@api.route("/protected", methods=["GET"])
 @jwt_required()
 def token_access():
+   
     current_user_id = get_jwt_identity()
+    print(current_user_id)
     user = User.query.get(current_user_id)
     
     return jsonify(user.serialize()), 200
@@ -385,7 +397,7 @@ def all():
  #   pokemon = Pokemon.query.order_by(Pokemon.id.asc())
   #  pokemon = list(map(lambda x: x.serialize(), pokemon))
     # print(pokemon)
-    all = Votes.query.order_by(Votes.pokemon_id.asc())
+    all = Equipo.query.order_by(Equipo.user_id.asc())
     all = list(map(lambda x: x.serialize(), all))
     return jsonify(all), 200
 
@@ -480,10 +492,12 @@ def storeid(user_id):
     votes = list(map(lambda x: x.serialize(), votes))
     favorites = Favorites.query.filter_by(user_id=user_id)
     favorites = list(map(lambda x: x.serialize(), favorites))
-   
+    equipos = Equipo.query.filter_by(user_id=user_id)
+    equipos = list(map(lambda x: x.serialize(), equipos))
 
 
-    return jsonify({"favorites": favorites, "votes": votes}), 200
+
+    return jsonify({"favorites": favorites, "votes": votes, "equipos":equipos}), 200
 
 @api.route("/deletevote/<int:pokemon_id>/<int:user_id>")
 def deletevote(user_id, pokemon_id):

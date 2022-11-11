@@ -8,6 +8,8 @@ class Equipo(db.Model):
     pokemon_fusion_id = db.Column(db.Integer, db.ForeignKey('pokemon_fusion.pokemon_id'), unique=False, nullable=True)
     pokemon_id = db.Column(db.Integer, db.ForeignKey('pokemon.pokemon_id'), unique=False, nullable=True)
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'), unique=False, nullable=False)
+    linea = db.Column(db.Integer, nullable=False, unique=False) 
+
 
     def repr(self):
         return
@@ -25,7 +27,9 @@ class Equipo(db.Model):
     def serialize(self):
         return {
             "pokemon_id": self.pokemon_id,
-            "user_id": self.user_id
+            "pokemon_fusion_id": self.pokemon_fusion_id,
+            "user_id": self.user_id,
+            "linea": self.linea,
             }
 
 

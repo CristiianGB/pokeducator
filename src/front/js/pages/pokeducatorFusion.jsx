@@ -976,18 +976,7 @@ const PokeducatorFusion = () => {
                       </div>
                       <div className="col-md-6">
                         <div className={mov24 == "fallo" ? "fallo" : ""}>
-                          <Select
-                            placeholder={
-                              mov24 == "fallo"
-                                ? "Seleccione Movimiento"
-                                : "Movimiento"
-                            }
-                            components={{ DropdownIndicator }}
-                            options={store.move_data}
-                            getOptionLabel={(option) => type(option)}
-                            getOptionValue={(option) => option.name}
-                            onChange={(option) => setMov24(option)}
-                          />
+                          Souta
                         </div>
                       </div>
                     </div>

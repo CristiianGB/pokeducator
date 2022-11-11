@@ -1,21 +1,75 @@
 import React, { useState, useEffect, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import { Context } from "../store/appContext.jsx";
+import Select from "react-select";
 import "../../styles/pokeducatorPerfilStyles.css";
-
+const DropdownIndicator = () => {
+  return <></>;
+};
 const PokeducatorPerfil = () => {
   const { store, actions } = useContext(Context);
   const [user, setUser] = useState({});
-  const [votos, setVotos] = useState([]);
+  const [pokemon1, setPokemon1] = useState();
+  const [pokemon2, setPokemon2] = useState();
+  const [pokemon3, setPokemon3] = useState();
+  const [pokemon4, setPokemon4] = useState();
+  const [pokemon5, setPokemon5] = useState();
+  const [pokemon6, setPokemon6] = useState();
+  const [linea1, setLinea1] = useState();
+  const [linea2, setLinea2] = useState();
+  const [linea3, setLinea3] = useState();
+  const [linea4, setLinea4] = useState();
+  const [linea5, setLinea5] = useState();
+  const [linea6, setLinea6] = useState();
 
+
+
+  const [votos, setVotos] = useState([]);
+  if(pokemon1 ){
+    let num = 1
+    setLinea1("")
+    pokemon1?.description ? actions.addequipo(pokemon1?.id, num)   :actions.addequipofus(pokemon1.pokemon_id, num)
+  }
+  if(pokemon2){
+    let num = 2
+    setLinea2("")
+    pokemon2?.description ? actions.addequipo(pokemon2?.id, num)   :actions.addequipofus(pokemon2.pokemon_id, num)
+  }
+    if(pokemon3){
+    let num = 3
+        setLinea3("")
+    pokemon3?.description ? actions.addequipo(pokemon3?.id, num)   :actions.addequipofus(pokemon3.pokemon_id, num)
+  }
+  if(pokemon4){
+    let num = 4
+        setLinea4("")
+    pokemon4?.description ? actions.addequipo(pokemon4?.id, num)   :actions.addequipofus(pokemon4.pokemon_id, num)
+  }
+  if(pokemon5){
+    let num = 5
+        setLinea5("")
+    pokemon5?.description ? actions.addequipo(pokemon5?.id, num)   :actions.addequipofus(pokemon5.pokemon_id, num)
+  }
+  if(pokemon6){
+    let num = 6
+        setLinea6("")
+    pokemon6?.description ? actions.addequipo(pokemon6?.id, num)   :actions.addequipofus(pokemon6.pokemon_id, num)
+  }
   let navigate = useNavigate();
+
+
+
 
   useEffect(() => {
     if (!localStorage.token) {
       navigate("/login");
     } else {
       actions.getProfile();
+      store.equipos?.map((object)=>{
+        object.linea == 1 ? setLinea1(object): object.linea == 2 ? setLinea2(object): object.linea == 3 ? setLinea3(object): object.linea == 4 ? setLinea4(object): object.linea == 5 ? setLinea5(object): object.linea == 6 ? setLinea6(object):""
+      })
     }
+    
   }, []);
 
   useEffect(() => {
@@ -66,8 +120,7 @@ const PokeducatorPerfil = () => {
 
   const iconoTrue = "icono fas fa-check-circle";
   const iconoFalse = "icono far fa-check-circle";
-  console.log(store.user + "store.user")
-  console.log(user + "user")
+
   return (
     <section style={{ backgroundColor: "#eee" }}>
       <div className="container py-3">
@@ -243,12 +296,55 @@ const PokeducatorPerfil = () => {
                 <div className="card mb-4 mb-md-0 p-3">
                   <h4>Mis Equipos</h4>
                   <div className="d-flex justify-content-around text-center">
-                    <div className="col-2">1</div>
-                    <div className="col-2">2</div>
-                    <div className="col-2">3</div>
-                    <div className="col-2">4</div>
-                    <div className="col-2">5</div>
-                    <div className="col-2">6</div>
+                    <div className="col-2">
+                            <Select
+                            placeholder="Seleccione Pokemon"
+                            components={{ DropdownIndicator }}
+                            options={store.pokemon_data.concat(store.pokemon_fusion_data)}
+                            getOptionLabel={(option) => linea1 ? linea1 != "" ? linea1.name:option.name:option.name}
+                            getOptionValue={(option) => linea1 ? linea1 != "" ? linea1.name:option.name:option.name}
+                            onChange={(option) => setPokemon1(option)}
+                          /></div>
+                    <div className="col-2"><Select
+                            placeholder="Seleccione Pokemon"
+                            components={{ DropdownIndicator }}
+                            options={store.pokemon_data.concat(store.pokemon_fusion_data)}
+                            getOptionLabel={(option) => linea2 ? linea2 != "" ? linea2.name:option.name:option.name}
+                            getOptionValue={(option) => linea2 ? linea2 != "" ? linea2.name:option.name:option.name}
+                            onChange={(option) => setPokemon2(option)}
+                          /></div>
+                    <div className="col-2"><Select
+                            placeholder="Seleccione Pokemon"
+                            components={{ DropdownIndicator }}
+                            options={store.pokemon_data.concat(store.pokemon_fusion_data)}
+                            getOptionLabel={(option) => linea3 ? linea3 != "" ? linea3.name:option.name:option.name}
+                            getOptionValue={(option) => linea3 ? linea3 != "" ? linea3.name:option.name:option.name}
+                            onChange={(option) => setPokemon3(option)}
+                          /></div>
+                    <div className="col-2"><Select
+                            placeholder="Seleccione Pokemon"
+                            components={{ DropdownIndicator }}
+                            options={store.pokemon_data.concat(store.pokemon_fusion_data)}
+                            getOptionLabel={(option) => linea4 ? linea4 != "" ? linea4.name:option.name:option.name}
+                            getOptionValue={(option) => linea4 ? linea4 != "" ? linea4.name:option.name:option.name}
+                            onChange={(option) => setPokemon4(option)}
+                          /></div>
+                    <div className="col-2"><Select
+                            placeholder="Seleccione Pokemon"
+                            components={{ DropdownIndicator }}
+                            options={store.pokemon_data.concat(store.pokemon_fusion_data)}
+                            getOptionLabel={(option) => linea5 ? linea5 != "" ? linea5.name:option.name:option.name}
+                            getOptionValue={(option) => linea5 ? linea5 != "" ? linea5.name:option.name:option.name}
+                            onChange={(option) => ()=>setPokemon5(option)}
+                          /></div>
+                    <div className="col-2"><Select
+                            placeholder="Seleccione Pokemon"
+                            components={{ DropdownIndicator }}
+                            options={store.pokemon_data.concat(store.pokemon_fusion_data)}
+                            getOptionLabel={(option) => linea6 ? linea6 != "" ? linea6.name:option.name:option.name}
+                            getOptionValue={(option) => linea6 ? linea6 != "" ? linea6.name:option.name:option.name}
+                            onChange={(option) => setPokemon6(option)}
+                          /></div>
                   </div>
                 </div>
               </div>

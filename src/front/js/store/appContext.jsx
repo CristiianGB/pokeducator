@@ -61,6 +61,9 @@ const injectContext = (PassedComponent) => {
 			
 				NO TOCAR NINGUNO DE LOS COMENTADOS
 
+      state.actions.saveDbonStore()
+      state.actions.getProfile()
+
 				state.actions.pokemonFindDb()
 				state.actions.saveItemonDb()
 				state.actions.saveMoveonDb()
@@ -69,8 +72,8 @@ const injectContext = (PassedComponent) => {
 				state.actions.FindOnePokemon(1)
         state.actions.saveDbonStore()
 				*/
-      state.actions.idStorage(localStorage.user_id);
-      state.actions.saveDbonStore()
+        state.actions.saveDbonStore()
+        state.actions.getProfile()
 
 
     }, []);
