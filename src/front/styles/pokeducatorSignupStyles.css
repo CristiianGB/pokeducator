@@ -1,4 +1,7 @@
-
+.vh-100 {
+  height: 150vh!important;
+  margin-bottom: 200px;
+}
 .divSignup {
     background-image: url("https://movimentorpg.com.br/wp-content/uploads/2021/05/professor-oak-1024x576.jpg");
     padding-top: 80px;
@@ -8,7 +11,9 @@
     background-position: 20%;
     max-height: 800px;
   }
-  
+.redondearIzquierdo{
+  border-radius: 40px;
+}
   .form-register {
     width: 400px;
     background: #24303c;

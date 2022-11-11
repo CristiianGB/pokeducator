@@ -23,39 +23,34 @@ const getState = ({ getStore, getActions, setStore }) => {
       login: async (username, password) => {
         const store = getStore();
 
-
-        const resp =  fetch(
-          "https://3001-cristiiangb-pokeducator-fj8djhd7o3d.ws-eu75.gitpod.io/api/login/"+username+"/"+password
-     
-          
+        const resp = fetch(
+          "https://3001-cristiiangb-pokeducator-ogri8b36lql.ws-eu75.gitpod.io/api/login/" +
+            username +
+            "/" +
+            password
         )
           .then((resp) => {
             return resp.json();
           })
           .then((data) => {
-          
             localStorage.setItem("token", data.token);
             localStorage.setItem("user_id", data.user_id);
- 
+
             setStore({ token: data.token });
             setStore({ user_id: data.user_id });
           });
-
       },
       getProfile: () => {
-        
-        
         const token = localStorage.token;
-        console.log(token)
+        console.log(token);
         fetch(
-          "https://3001-cristiiangb-pokeducator-fj8djhd7o3d.ws-eu75.gitpod.io/api/protected",
+          "https://3001-cristiiangb-pokeducator-ogri8b36lql.ws-eu75.gitpod.io/api/protected",
           {
             method: "GET",
             headers: {
               "Content-Type": "application/json",
               Authorization: "Bearer " + localStorage.token,
             },
-           
           }
         )
           .then((resp) => {
@@ -63,7 +58,7 @@ const getState = ({ getStore, getActions, setStore }) => {
           })
           .then((data) => {
             data.msg ? "" : getActions().idStorage(localStorage.user_id);
-            
+
             return setStore({ user: data });
           });
       },
@@ -79,10 +74,49 @@ const getState = ({ getStore, getActions, setStore }) => {
                 .then((pokeinfo) => {
                   let description;
                   let group_name = [];
+                  let evolution;
+                  let weakness;
+
+                  pokeinfo.types.map((elemento) =>
+                    elemento.slot == 1
+                      ? fetch(elemento.type.url)
+                          .then((response) => response.json())
+                          .then((debilidad) => {
+                            let debil = [];
+                            debilidad.damage_relations.double_damage_from.map(
+                              (elemento) => debil.push(elemento.name)
+                            );
+                            weakness = { weakness: debil };
+                          })
+                      : ""
+                  );
 
                   fetch(pokeinfo.species.url)
                     .then((response) => response.json())
                     .then((speci) => {
+                      let evol = [];
+                      fetch(speci.evolution_chain.url)
+                        .then((response) => response.json())
+                        .then((evoluciones) => {
+                          evoluciones.chain.species.name
+                            ? evol.push(evoluciones.chain.species.name)
+                            : "";
+                          evoluciones.chain.evolves_to[0]?.species?.name
+                            ? evol.push(
+                                evoluciones.chain.evolves_to[0]?.species?.name
+                              )
+                            : "";
+                          evoluciones.chain.evolves_to[0]?.evolves_to[0]
+                            ?.species?.name
+                            ? evol.push(
+                                evoluciones.chain.evolves_to[0]?.evolves_to[0]
+                                  ?.species?.name
+                              )
+                            : console.log(evoluciones.chain);
+                        });
+
+                      evolution = { evolution: evol };
+
                       speci.flavor_text_entries.map((descri) => {
                         if (
                           descri.language.name == "es" &&
@@ -98,9 +132,12 @@ const getState = ({ getStore, getActions, setStore }) => {
                       });
                       group_name = { group_name: group_name };
                     })
+
                     .finally(() => {
                       Object.assign(pokeinfo, description);
                       Object.assign(pokeinfo, group_name);
+                      Object.assign(pokeinfo, evolution);
+                      Object.assign(pokeinfo, weakness);
 
                       new_pokemon_data.push(pokeinfo);
                       setStore({ pokemon_data: new_pokemon_data });
@@ -187,7 +224,7 @@ const getState = ({ getStore, getActions, setStore }) => {
           });
 
           const resp = fetch(
-            "https://3001-cristiiangb-pokeducator-fj8djhd7o3d.ws-eu75.gitpod.io/api/createPokemon",
+            "https://3001-cristiiangb-pokeducator-ogri8b36lql.ws-eu75.gitpod.io/api/createPokemon",
             {
               method: "POST",
               headers: { "Content-Type": "application/json" },
@@ -242,7 +279,7 @@ const getState = ({ getStore, getActions, setStore }) => {
                 })
                 .finally(() => {
                   fetch(
-                    "https://3001-cristiiangb-pokeducator-fj8djhd7o3d.ws-eu75.gitpod.io/api/createItem",
+                    "https://3001-cristiiangb-pokeducator-ogri8b36lql.ws-eu75.gitpod.io/api/createItem",
                     {
                       method: "POST",
                       headers: { "Content-Type": "application/json" },
@@ -262,7 +299,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 
       saveDbonStore: () => {
         fetch(
-          "https://3001-cristiiangb-pokeducator-fj8djhd7o3d.ws-eu75.gitpod.io/api/store"
+          "https://3001-cristiiangb-pokeducator-ogri8b36lql.ws-eu75.gitpod.io/api/store"
         )
           .then((response) => response.json())
           .then((store) => {
@@ -294,7 +331,7 @@ const getState = ({ getStore, getActions, setStore }) => {
       },
       addAll: () => {
         fetch(
-          "https://3001-cristiiangb-pokeducator-fj8djhd7o3d.ws-eu75.gitpod.io/api/storeid/" +
+          "https://3001-cristiiangb-pokeducator-ogri8b36lql.ws-eu75.gitpod.io/api/storeid/" +
             1
         )
           .then((response) => response.json())
@@ -315,7 +352,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 
       FindOnePokemon: (pokemon_id) => {
         fetch(
-          "https://3001-cristiiangb-pokeducator-fj8djhd7o3d.ws-eu75.gitpod.io/api/allmovabi/" +
+          "https://3001-cristiiangb-pokeducator-ogri8b36lql.ws-eu75.gitpod.io/api/allmovabi/" +
             pokemon_id
         )
           .then((response) => response.json())
@@ -331,7 +368,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 
       addequipofus: (pokemon_fusion_id, num) => {
         fetch(
-          "https://3001-cristiiangb-pokeducator-fj8djhd7o3d.ws-eu75.gitpod.io/api/addequipofus",
+          "https://3001-cristiiangb-pokeducator-ogri8b36lql.ws-eu75.gitpod.io/api/addequipofus",
           {
             method: "POST",
             headers: { "Content-Type": "application/json" },
@@ -340,11 +377,12 @@ const getState = ({ getStore, getActions, setStore }) => {
               pokemon_fusion_id: pokemon_fusion_id,
               num: num,
             }),
-          })
+          }
+        );
       },
       addequipo: (pokemon_id, num) => {
         fetch(
-          "https://3001-cristiiangb-pokeducator-fj8djhd7o3d.ws-eu75.gitpod.io/api/addequipo",
+          "https://3001-cristiiangb-pokeducator-ogri8b36lql.ws-eu75.gitpod.io/api/addequipo",
           {
             method: "POST",
             headers: { "Content-Type": "application/json" },
@@ -353,12 +391,13 @@ const getState = ({ getStore, getActions, setStore }) => {
               pokemon_id: pokemon_id,
               num: num,
             }),
-          })
+          }
+        );
       },
-      
+
       FindOneFusion: (pokemon_id) => {
         fetch(
-          "https://3001-cristiiangb-pokeducator-fj8djhd7o3d.ws-eu75.gitpod.io/api/allmovabifus/" +
+          "https://3001-cristiiangb-pokeducator-ogri8b36lql.ws-eu75.gitpod.io/api/allmovabifus/" +
             pokemon_id
         )
           .then((response) => response.json())
@@ -373,8 +412,7 @@ const getState = ({ getStore, getActions, setStore }) => {
       },
       FindOneItem: (item_id) => {
         fetch(
-          "https://3001-cristiiangb-pokeducator-fj8djhd7o3d.ws-eu75.gitpod.io/api/item/" +
-            item_id
+          "https://3001-cristiiangb-pokeducator-ogri8b36lql.ws-eu75.gitpod.io/api/item/"+item_id
         )
           .then((response) => response.json())
           .then((item) => {
@@ -383,7 +421,7 @@ const getState = ({ getStore, getActions, setStore }) => {
       },
       FindOneMove: (move_id) => {
         fetch(
-          "https://3001-cristiiangb-pokeducator-fj8djhd7o3d.ws-eu75.gitpod.io/api/move/" +
+          "https://3001-cristiiangb-pokeducator-ogri8b36lql.ws-eu75.gitpod.io/api/move/" +
             move_id
         )
           .then((response) => response.json())
@@ -402,12 +440,11 @@ const getState = ({ getStore, getActions, setStore }) => {
       idStorage: (id) => {
         setStore({ user_id: id });
         fetch(
-          "https://3001-cristiiangb-pokeducator-fj8djhd7o3d.ws-eu75.gitpod.io/api/storeid/" +
+          "https://3001-cristiiangb-pokeducator-ogri8b36lql.ws-eu75.gitpod.io/api/storeid/" +
             id
         )
           .then((response) => response.json())
           .then((store) => {
-
             let votes = [];
             store.votes.map((object) => {
               votes.push(object.pokemon_id);
@@ -418,14 +455,14 @@ const getState = ({ getStore, getActions, setStore }) => {
             });
             setStore({ votes: votes });
             setStore({ favorites: favorites });
-            setStore({ equipos: store.equipos})
+            setStore({ equipos: store.equipos });
           });
       },
       addVote: async (pokemon_id) => {
         const vote = getStore().votes;
         let id = getStore().user_id;
         const resp = await fetch(
-          "https://3001-cristiiangb-pokeducator-fj8djhd7o3d.ws-eu75.gitpod.io/api/addvote",
+          "https://3001-cristiiangb-pokeducator-ogri8b36lql.ws-eu75.gitpod.io/api/addvote",
           {
             method: "POST",
             headers: { "Content-Type": "application/json" },
@@ -445,21 +482,22 @@ const getState = ({ getStore, getActions, setStore }) => {
         let user_id = getStore().user_id;
 
         fetch(
-          "https://3001-cristiiangb-pokeducator-fj8djhd7o3d.ws-eu75.gitpod.io/api/deletevote/" +
+          process.env.BACKEND_URL +
+            "api/deletevote/" +
             pokemon_id +
             "/" +
             user_id
         )
           .then((response) => response.json())
           .then((store) => {
-       
             setStore({ votes: store.votes });
           });
       },
       deletefavorite: async (pokemon_id) => {
         let user_id = getStore().user_id;
         fetch(
-          "https://3001-cristiiangb-pokeducator-fj8djhd7o3d.ws-eu75.gitpod.io/api/deletefavorite/" +
+          process.env.BACKEND_URL +
+            "api/deletefavorite/" +
             pokemon_id +
             "/" +
             user_id
@@ -474,7 +512,7 @@ const getState = ({ getStore, getActions, setStore }) => {
         const favorite = getStore().favorites;
         let id = getStore().user_id;
         const resp = await fetch(
-          "https://3001-cristiiangb-pokeducator-fj8djhd7o3d.ws-eu75.gitpod.io/api/addfavorite",
+          "https://3001-cristiiangb-pokeducator-ogri8b36lql.ws-eu75.gitpod.io/api/addfavorite",
           {
             method: "POST",
             headers: { "Content-Type": "application/json" },
@@ -492,7 +530,7 @@ const getState = ({ getStore, getActions, setStore }) => {
       },
       FindOneAbility: (ability_id) => {
         fetch(
-          "https://3001-cristiiangb-pokeducator-fj8djhd7o3d.ws-eu75.gitpod.io/api/ability/" +
+          "https://3001-cristiiangb-pokeducator-ogri8b36lql.ws-eu75.gitpod.io/api/ability/" +
             ability_id
         )
           .then((response) => response.json())
@@ -523,7 +561,7 @@ const getState = ({ getStore, getActions, setStore }) => {
       },
       saveMoveonDb: () => {
         //hacer un bucle for aqui que el offset sea i y aumente de 50 en 50
-        fetch("https://pokeapi.co/api/v2/move/?offset=800&limit=100")
+        fetch("https://pokeapi.co/api/v2/move/?offset=0&limit=100")
           .then((response) => response.json())
           .then((data) => {
             return getActions().saveDb(data);
@@ -568,7 +606,7 @@ const getState = ({ getStore, getActions, setStore }) => {
             });
           setTimeout(() => {
             fetch(
-              "https://3001-cristiiangb-pokeducator-fj8djhd7o3d.ws-eu75.gitpod.io/api/createMove",
+              "https://3001-cristiiangb-pokeducator-ogri8b36lql.ws-eu75.gitpod.io/api/createMove",
               {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
@@ -613,7 +651,7 @@ const getState = ({ getStore, getActions, setStore }) => {
                 })
                 .finally(() => {
                   fetch(
-                    "https://3001-cristiiangb-pokeducator-fj8djhd7o3d.ws-eu75.gitpod.io/api/createNature",
+                    "https://3001-cristiiangb-pokeducator-ogri8b36lql.ws-eu75.gitpod.io/api/createNature",
                     {
                       method: "POST",
                       headers: { "Content-Type": "application/json" },
@@ -659,7 +697,7 @@ const getState = ({ getStore, getActions, setStore }) => {
                 })
                 .finally(() => {
                   fetch(
-                    "https://3001-cristiiangb-pokeducator-fj8djhd7o3d.ws-eu75.gitpod.io/api/createAbility",
+                    "https://3001-cristiiangb-pokeducator-ogri8b36lql.ws-eu75.gitpod.io/api/createAbility",
                     {
                       method: "POST",
                       headers: { "Content-Type": "application/json" },

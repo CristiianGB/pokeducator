@@ -13,7 +13,12 @@
   border-radius: 5px;
   text-align: center;
 }
+.equipoFotosPerfil{
+  
+    object-fit: contain;
+    width: 100%;
 
+}
 .cambioFoto {
   position: absolute;
   top: 50%;

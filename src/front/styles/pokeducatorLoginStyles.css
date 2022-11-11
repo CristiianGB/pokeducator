@@ -327,7 +327,9 @@ tool-tip {
   background-position: 20%;
   min-height: 900px;
 }
-
+.paddingCarta{
+  padding: 35px;
+}
 .form-login {
   width: 400px;
     height: 340px;

@@ -19,7 +19,6 @@ import PokeducatorMovimientoInfo from "./pages/pokeducatorMovimientoInfo.jsx";
 import PokeducatorPokemons from "./pages/pokeducatorPokemons.jsx";
 import PokeducatorFusiones from "./pages/pokeducatorFusiones.jsx";
 import PokeducatorLandingPage from "./pages/pokeducatorLandingPage.jsx";
-import PokeducatorProfilePage from "./pages/pokeducatorProfilePage.jsx";
 import injectContext from "./store/appContext.jsx";
 import ScrollToTop from "./component/scrollToTop.jsx";
 import PokeducatorHabilidad from "./pages/pokeducatorHabilidades.jsx";
@@ -49,7 +48,7 @@ const Layout = () => {
             />
             <Route
               element={<PokeducatorFusionInfo />}
-              path={"/fusioninfo/:theid"}
+              path={"/fusion/:theid"}
             />
             <Route element={<PokeducatorLogin />} path={"/login"} />
             <Route element={<PokeducatorFusiones />} path={"/fusiones"} />
@@ -104,7 +103,6 @@ const Layout = () => {
             <Route element={<PokeducatorObjetos />} path="/objetos" />
             <Route element={<PokeducatorMovimientos />} path="/movimientos" />
             <Route element={<PokeducatorLandingPage />} path="/" />
-            <Route element={<PokeducatorProfilePage />} path="/perfil" />
           </Routes>
           <Footer />
         </ScrollToTop>
