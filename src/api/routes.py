@@ -372,7 +372,10 @@ def addvote():
     pokemon_id = request.json.get("pokemon_id", None)
 
     vote = Votes(pokemon_id=pokemon_id, user_id=user_id)
-
+    pokemon = Pokemon_fusion.query.filter_by(pokemon_id=pokemon_id).first().serialize
+    print(pokemon)
+    pokemon["votes"] = pokemon["votes"] + 1
+    print(pokemon)
     db.session.add(vote)
     db.session.commit()
     return jsonify({"vote": "vote"}), 200
@@ -494,10 +497,22 @@ def storeid(user_id):
     favorites = list(map(lambda x: x.serialize(), favorites))
     equipos = Equipo.query.filter_by(user_id=user_id)
     equipos = list(map(lambda x: x.serialize(), equipos))
+    equiposall = []
+    for i in equipos:
+        print(i)
+        if(i["pokemon_fusion_id"] != None):
+
+            equipo = Pokemon_fusion.query.filter_by(pokemon_id=i["pokemon_fusion_id"]).first().serialize()
+            equiposall.append({"equipo":equipo, "linea":i["linea"]})
+        if(i["pokemon_id"] != None):
+            equipo = Pokemon.query.filter_by(id=i["pokemon_id"]).first().serialize()
+            print(equipo)
+            equiposall.append({"equipo":equipo, "linea":i["linea"]})
 
 
 
-    return jsonify({"favorites": favorites, "votes": votes, "equipos":equipos}), 200
+
+    return jsonify({"favorites": favorites, "votes": votes, "equipos":equiposall}), 200
 
 @api.route("/deletevote/<int:pokemon_id>/<int:user_id>")
 def deletevote(user_id, pokemon_id):

@@ -124,6 +124,7 @@ class Pokemon_fusion(db.Model):
     sp_atk = db.Column(db.Integer, nullable=False, unique=False) 
     defens = db.Column(db.Integer, nullable=False, unique=False) 
     atk = db.Column(db.Integer, nullable=False, unique=False) 
+    votes = db.Column(db.Integer, default=0, nullable=False, unique=False) 
     
     def __repr__(self):
         return self.name
@@ -135,6 +136,7 @@ class Pokemon_fusion(db.Model):
 
     def serialize(self):
         return {
+            "votes": self.votes,
             "pokemon_id": self.pokemon_id,
             "name": self.name,
             "stats": {
