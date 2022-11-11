@@ -19,7 +19,7 @@ const PokeducatorPerfil = () => {
   }, []);
 
   useEffect(() => {
-    setUser(store.user);
+    setUser(store?.user);
     setPicProfile(store?.user?.img);
   }, [store.user]);
 
@@ -37,12 +37,12 @@ const PokeducatorPerfil = () => {
     // let url = document.getElementById("modalFoto");
     let url = picProfile;
     const resp = await fetch(
-      "https://3001-cristiiangb-pokeducator-y4jl5qg0obb.ws-eu75.gitpod.io/api/updateProfilePicture",
+      "https://3001-cristiiangb-pokeducator-kwfch41y14d.ws-eu75.gitpod.io/api/updateProfilePicture",
       {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",
-          Authorization: "Bearer " + store.token,
+          Authorization: "Bearer " + localStorage.token,
         },
         body: JSON.stringify({
           img: url,
@@ -66,7 +66,8 @@ const PokeducatorPerfil = () => {
 
   const iconoTrue = "icono fas fa-check-circle";
   const iconoFalse = "icono far fa-check-circle";
-
+  console.log(store.user + "store.user")
+  console.log(user + "user")
   return (
     <section style={{ backgroundColor: "#eee" }}>
       <div className="container py-3">
@@ -87,8 +88,8 @@ const PokeducatorPerfil = () => {
               <div className="card-body text-center">
                 <div className="imagen_perfil">
                   <img
-                    src="https://upload.wikimedia.org/wikipedia/commons/8/87/Avatar_poe84it.png"
-                    // src={picProfile}
+                    
+                    src={picProfile}
                     alt="avatar"
                     className="rounded-circle img-fluid"
                     style={{ width: "150px" }}
@@ -147,6 +148,7 @@ const PokeducatorPerfil = () => {
                           <button
                             type="submit"
                             className="btn btn-primary"
+                            data-bs-dismiss="modal"
                             onClick={handleSubmit}
                           >
                             Guardar
