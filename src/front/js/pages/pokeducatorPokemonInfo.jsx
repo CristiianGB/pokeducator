@@ -150,7 +150,7 @@ const PokeducatorPokemonInfo = () => {
     let weight_obtained = parseFloat(peso) * 0.1;
     return weight_obtained.toFixed(2);
   };
-
+  console.log(store.single_pokemon_data)
   return (
     <div className="containe container_section">
       {store.single_pokemon_data ? (

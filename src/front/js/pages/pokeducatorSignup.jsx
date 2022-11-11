@@ -1,12 +1,13 @@
 import React, { useState, useEffect, useContext } from "react";
 import PropTypes from "prop-types";
-import { Link, useNavigate, useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { Context } from "../store/appContext.jsx";
 import "../../styles/pokeducatorSignupStyles.css";
 
 const PokeducatorSignup = (props) => {
   const { store, actions } = useContext(Context);
   const params = useParams();
+  const [passwordCheck, setPasswordCheck] = useState("");
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [email, setEmail] = useState("");
@@ -16,7 +17,7 @@ const PokeducatorSignup = (props) => {
   // hacer signup en actions y llamar a actions desde aqui
   const handleSignup = async () => {
     const resp = await fetch(
-      "https://3001-cristiiangb-pokeducator-fj8djhd7o3d.ws-eu75.gitpod.io/api/signup",
+      "https://3001-cristiiangb-pokeducator-ogri8b36lql.ws-eu75.gitpod.io/api/signup",
       {
         method: "POST",
         headers: { "Content-Type": "application/json" },
@@ -42,83 +43,196 @@ const PokeducatorSignup = (props) => {
     //also you should set your user into the store using the setStore function
 
     // localStorage.setItem("jwt-token", data.token);
-    navigate("/perfil");
   };
 
   return (
-    <div className="divSignup">
-      <section className="form-register">
-        <h4>Formulario Registro</h4>
-        <input
-          className="controls"
+    // style="background-color: #eee;"
+    <section class="vh-100 divLogin">
+      <div class="container h-100">
+        <div class="row d-flex justify-content-center align-items-center h-100">
+          <div class="col-lg-12 col-xl-11">
+            {/* // style="border-radius: 25px;" */}
+            <div class="card text-black">
+              <div class="card-body p-md-5">
+                <div class="row justify-content-center">
+                  <div class="col-md-10 col-lg-6 col-xl-5 order-2 order-lg-1">
+                    <p class="text-center h1 fw-bold mb-5 mx-1 mx-md-4 mt-4">
+                      Únete a Pokeducator!
+                    </p>
+
+                    <form class="mx-1 mx-md-4">
+                      {/* className=""
           type="text"
           name="usuario"
           id="usuario"
           placeholder="Elige nombre de Usuario"
           onChange={(e) => {
             setUsername(e.target.value);
-          }}
-        />
-        <input
-          className="controls"
-          type="text"
-          name="first_name"
-          id="first_name"
-          placeholder="Ingresa tu Nombre"
-          onChange={(e) => {
-            setFirstName(e.target.value);
-          }}
-        />
-        <input
-          className="controls"
-          type="text"
-          name="last_name"
-          id="last_name"
-          placeholder="Ingresa tu Apellido"
-          onChange={(e) => {
-            setLastName(e.target.value);
-          }}
-        />
-        <input
-          className="controls"
-          type="email"
-          name="correo"
-          id="correo"
-          placeholder="No olvides el Correo electrónico"
-          onChange={(e) => {
-            setEmail(e.target.value);
-          }}
-        />
-        <input
-          className="controls"
-          type="password"
-          name="contraseña"
-          id="password"
-          placeholder="Por último una Contraseña"
-          onChange={(e) => {
-            setPassword(e.target.value);
-          }}
-        />
-        <p className="separadorBottom terminosYCondiciones">
-          Al registrarse validará{" "}
-          <a href="https://www.laps4.com/comunidad/threads/los-10-troll-mandamientos.343028/">
-            Terminos y Condiciones
-          </a>
-        </p>
-        <button
-          className="botons buttonPokemonInfo"
-          onClick={() => {
-            handleSignup();
-          }}
-          value="Registrar"
-        >
-          Registrar
-        </button>
-        <p>
-          <Link to="/login">Ya tengo cuenta.</Link>
-        </p>
-      </section>
-    </div>
+          }} */}
+                      <div class="d-flex flex-row align-items-center mb-4">
+                        <i class="fas fa-user fa-lg me-3 fa-fw"></i>
+                        <div class="form-outline flex-fill mb-0">
+                          <input
+                            type="text"
+                            id="form3Example1c"
+                            class="form-control"
+                            name="usuario"
+                            onChange={(e) => {
+                              setUsername(e.target.value);
+                            }}
+                          />
+                          <label class="form-label" for="form3Example1c">
+                            Usuario
+                          </label>
+                        </div>
+                      </div>
+                      <div class="d-flex flex-row align-items-center mb-4">
+                        <i class="fas fa-id-card fa-lg me-3 fa-fw"></i>
+                        <div class="form-outline flex-fill mb-0">
+                          <input
+                            type="text"
+                            id="form3Example1c"
+                            name="nombre"
+                            onChange={(e) => {
+                              setFirstName(e.target.value);
+                            }}
+                            class="form-control"
+                          />
+                          <label class="form-label" for="form3Example1c">
+                            Tu Nombre
+                          </label>
+                        </div>
+                      </div>
+                      <div class="d-flex flex-row align-items-center mb-4">
+                        <i class="far fa-id-card fa-lg me-3 fa-fw"></i>
+                        <div class="form-outline flex-fill mb-0">
+                          <input
+                            type="text"
+                            id="form3Example1c"
+                            class="form-control"
+                            name="last_name"
+                            onChange={(e) => {
+                              setLastName(e.target.value);
+                            }}
+                          />
+                          <label class="form-label" for="form3Example1c">
+                            Tu Apellido
+                          </label>
+                        </div>
+                      </div>
+                      <div class="d-flex flex-row align-items-center mb-4">
+                        <i class="fas fa-envelope fa-lg me-3 fa-fw"></i>
+                        <div class="form-outline flex-fill mb-0">
+                          <input
+                            type="email"
+                            id="form3Example3c"
+                            class="form-control"
+                            name="correo"
+                            onChange={(e) => {
+                              setEmail(e.target.value);
+                            }}
+                          />
+                          <label class="form-label" for="form3Example3c">
+                            Tu correo
+                          </label>
+                        </div>
+                      </div>
+
+                      <div class="d-flex flex-row align-items-center mb-4">
+                        <i class="fas fa-lock fa-lg me-3 fa-fw"></i>
+                        <div class="form-outline flex-fill mb-0">
+                          <input
+                            type="password"
+                            id="form3Example4c"
+                            class="form-control"
+                            name="contraseña"
+                            onChange={(e) => {
+                              setPassword(e.target.value);
+                            }}
+                          />
+                          <label class="form-label" for="form3Example4c">
+                            Tu Contraseña
+                          </label>
+                        </div>
+                      </div>
+
+                      <div class="d-flex flex-row align-items-center mb-4">
+                        <i class="fas fa-key fa-lg me-3 fa-fw"></i>
+                        <div class="form-outline flex-fill mb-0">
+                          <input
+                            type="password"
+                            id="form3Example4cd"
+                            class="form-control"
+                            onChange={(e) => {
+                              setPasswordCheck(e.target.value);
+                            }}
+                          />
+                          <label class="form-label" for="form3Example4cd">
+                            Repite tu Contraseña
+                          </label>
+                        </div>
+                      </div>
+
+                      <div class="form-check d-flex justify-content-center mb-5">
+                        <input
+                          class="form-check-input me-2"
+                          type="checkbox"
+                          value=""
+                          id="form2Example3c"
+                        />
+                        <label class="form-check-label" for="form2Example3">
+                          Estoy de acuerdo con los{" "}
+                          <a
+                            className="links"
+                            href="https://www.pokemon.com/es/condiciones-de-uso/"
+                          >
+                            Términos de servicio
+                          </a>
+                        </label>
+                      </div>
+
+                      <div class="d-flex justify-content-center mx-4 mb-3 mb-lg-4 separadorBottom pb-4">
+                        <button
+                          type="button"
+                          class="btn botons buttonPokemonInfo"
+                          onClick={() => {
+                            handleSignup();
+                            navigate("/login");
+                          }}
+                          value="Registrar"
+                        >
+                          Registrar
+                        </button>
+                      </div>
+                      <a className="links" href="/login">
+                        <p className=" text-center">Ya tengo cuenta.</p>
+                      </a>
+                    </form>
+                  </div>
+                  <div class="redondearIzquierdo col-md-10 col-lg-6 col-xl-7 d-flex text-center justify-content-center align-items-center flex-column order-1 order-lg-2 gradient-custom-2">
+                    <h4 className="mb-4 text-white margenTop">
+                      Con una cuenta del Club de Entrenadores Pokémon puedes:
+                    </h4>
+                    <p className=" text-white text-center">
+                      Con una cuenta del Club de Entrenadores Pokémon puedes:
+                      ¡Acceder a aplicaciones de Pokémon, suscribirte a
+                      boletines informativos y mucho más! Si ya tienes una
+                      cuenta, por favor, inicia sesión ahora.
+                    </p>
+                    <img
+                      width="40%"
+                      src="https://i.gifer.com/WiCJ.gif"
+                      class="img-fluid"
+                      alt="Pikachu saludo"
+                    />
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
   );
 };
 

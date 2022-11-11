@@ -158,10 +158,7 @@ export const Footer = () => (
 
     {/* <!-- Copyright --> style={{width: "18px"}}*/}
     <div className="text-center p-4 footerCopy">
-      © 2021 Copyright:
-      <a className="text-reset fw-bold" href="https://mdbootstrap.com/">
-        MDBootstrap.com
-      </a>
+      © 2021 Copyright
     </div>
     {/* <!-- Copyright --> */}
   </footer>
