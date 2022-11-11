@@ -29,6 +29,7 @@ import PokeducatorFusion from "./pages/pokeducatorFusion.jsx";
 import PokeducatorSignup from "./pages/pokeducatorSignup.jsx";
 import PokeducatorPerfil from "./pages/pokeducatorPerfil.jsx";
 import PokeducatorSoporte from "./pages/pokeducatorSoporte.jsx";
+import PokeducatorFusionInfo from "./pages/pokeducatorFusionInfo.jsx";
 
 //create your first component
 const Layout = () => {
@@ -45,6 +46,10 @@ const Layout = () => {
             <Route
               element={<PokeducatorPokemonInfo />}
               path={"/pokemon/:theid"}
+            />
+            <Route
+              element={<PokeducatorFusionInfo />}
+              path={"/fusioninfo/:theid"}
             />
             <Route element={<PokeducatorLogin />} path={"/login"} />
             <Route element={<PokeducatorFusiones />} path={"/fusiones"} />

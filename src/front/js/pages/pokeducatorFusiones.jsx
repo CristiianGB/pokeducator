@@ -116,7 +116,7 @@ const PokeducatorFusiones = () => {
                 key={pokemon.pokemon_id}
               >
                 <div className="card bg-light m-4 cardPokemon">
-                  <a href={`/pokemon/${pokemon.pokemon_id}`}>
+                  <a href={`/fusioninfo/${pokemon.pokemon_id}`}>
                     <img
                       style={{
                         width: "100px",
@@ -129,7 +129,7 @@ const PokeducatorFusiones = () => {
                   </a>
                   <div className="">
                     <h5 className="nombrePokemon">{pokemon.name}</h5>
-                    {store.token != null ? (
+                    {store.user_id != null ? (
                       <>
                         <button
                           onClick={() => {

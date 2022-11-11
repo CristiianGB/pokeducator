@@ -41,13 +41,18 @@ def pokemon_votados():
 def login():
     username = request.json.get("username", None)
     password = request.json.get("password", None)
-    user = User.query.filter_by(username=username).filter_by(password=password).first()
+    user = User.query.filter_by(username=username, password=password).first()
+    print(username)
+    print(password)
+    print(user)
     if user:
         access_token = create_access_token(identity=user.id)
         votes = Votes.query.filter_by(user_id=user.id)
         votes = list(map(lambda x: x.serialize(), votes))
         favorites = Favorites.query.filter_by(user_id=user.id)
         favorites = list(map(lambda x: x.serialize(), favorites))
+        print(favorites)
+        print(votes)
         return jsonify({ "token": access_token, "user_id": user.id, "favorites":favorites, "votes":votes  })
         
 
@@ -380,7 +385,7 @@ def all():
  #   pokemon = Pokemon.query.order_by(Pokemon.id.asc())
   #  pokemon = list(map(lambda x: x.serialize(), pokemon))
     # print(pokemon)
-    all = Pokemon_Move.query.filter_by(pokemon_id=1)
+    all = Votes.query.order_by(Votes.pokemon_id.asc())
     all = list(map(lambda x: x.serialize(), all))
     return jsonify(all), 200
 
@@ -408,6 +413,20 @@ def allmoves(pokemon_id):
         abilities.append(ability)
     return jsonify({"pokemon": pokemon, "abilities": abilities, "moves": moves}), 200
 
+@api.route("/allmovabifus/<int:pokemon_id>", methods=["GET"])
+def allmovabifus(pokemon_id):
+    moves = []
+    rows = Pokemon_Fusion_Move.query.filter_by(pokemon_id=pokemon_id)
+    rows = list(map(lambda x: x.serialize(), rows))
+    for i in rows:
+        move = Moves.query.filter_by(move_id=i["move_id"]).first().serialize()
+        moves.append(move)
+    pokemon = Pokemon_fusion.query.filter_by(pokemon_id=pokemon_id).first().serialize()
+    ability = Pokemon_Fusion_Ability.query.filter_by(pokemon_id=pokemon_id).first().serialize()
+    ability = Ability.query.filter_by(ability_id=ability["ability_id"]).first().serialize()
+    nature = Pokemon_Fusion_Nature.query.filter_by(pokemon_id=pokemon_id).first().serialize()
+    nature = Nature.query.filter_by(nature_id=nature["nature_id"]).first().serialize()
+    return jsonify({"pokemon": pokemon, "ability": ability, "moves": moves, "nature":nature}), 200
 
 @api.route("/item/<int:item_id>", methods=["GET"])
 def item(item_id):
@@ -465,3 +484,33 @@ def storeid(user_id):
 
 
     return jsonify({"favorites": favorites, "votes": votes}), 200
+
+@api.route("/deletevote/<int:pokemon_id>/<int:user_id>")
+def deletevote(user_id, pokemon_id):
+
+
+   
+    votes = Votes.query.filter_by(user_id=user_id, pokemon_id=pokemon_id).first()
+    db.session.delete(votes)
+    db.session.commit()
+    votes = Votes.query.filter_by(user_id=user_id)
+    votes = list(map(lambda x: x.serialize(), votes))
+
+
+    return jsonify({"votes": votes}), 200
+
+@api.route("/deletefavorite/<int:pokemon_id>/<int:user_id>")
+def deletefavorite(user_id, pokemon_id):
+
+
+   
+    favorites = Favorites.query.filter_by(user_id=user_id, pokemon_id=pokemon_id).first()
+    db.session.delete(favorites)
+    db.session.commit()
+    favorites = Favorites.query.filter_by(user_id=user_id)
+    favorites = list(map(lambda x: x.serialize(), favorites))
+
+
+    return jsonify({"favorites": favorites}), 200
+
+
