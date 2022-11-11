@@ -7,6 +7,7 @@ import { Context } from "../store/appContext.jsx";
 export const Navbar = () => {
   const { store, actions } = useContext(Context);
   const [dorpdownVisible, setDropdownVisible] = useState(false);
+  const [dorpdownVisible2, setDropdownVisible2] = useState(false);
 
   const logOut = () => {
     localStorage.removeItem("token");
@@ -42,11 +43,23 @@ export const Navbar = () => {
                 Fusión
               </a>
             </li>
-            <li className="nav-item">
-              <a className="nav-link" href="/pokemons">
+            <li
+              onMouseEnter={() => setDropdownVisible2(true)}
+              onMouseLeave={() => setDropdownVisible2(false)}
+              className="nav-item position-relative"
+            >
+              <Link className="nav-link dropdown-toggle" to="/pokemon">
                 Pokémon
-              </a>
-            </li>
+              </Link>
+              {dorpdownVisible2 ? (
+                <ul className="position-absolute desplegable_wiki">
+                  <li>
+                    <Link className="dropdown-item" to="/fusiones">
+                      Fusiones Pokémon
+                    </Link>
+                  </li>
+                  </ul>
+              ) : null}</li>
             <li className="nav-item">
               <a className="nav-link" href="/habilidades">
                 Habilidades
@@ -137,7 +150,7 @@ export const Navbar = () => {
                 aria-expanded="false"
               >
                 <img
-                  src="https://mdbcdn.b-cdn.net/img/new/avatars/2.webp" //imagen perfil
+                  src="https://www.teleadhesivo.com/es/img/pokgo03-png/folder/products-detalle-png/pegatinas-coches-motos-poke-ball---pokemon.png" //imagen perfil
                   className="rounded-circle"
                   height="25"
                   alt="Black and White Portrait of a Man"

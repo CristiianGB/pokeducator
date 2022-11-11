@@ -281,8 +281,11 @@ const PokeducatorFusionInfo = () => {
                 </div>
 
                 {/* DIV DRCH */}
-                <div className="col-md-6 d-flex flex-column justify-content-around m-0 info_pokemon">
-                  
+                <div className="col-md-6 d-flex flex-column m-0 info_pokemon">
+                  <div className="bg-light p-2 rounded-4 div_tipo">
+                    <h4 className="fw-bold">Tipo</h4>
+                    <div>{tipoPokemon}</div>
+                  </div>
                   {/* INFO ADICIONAL */}
                   <div
                     className={`bg-primary bg-gradient rounded-4 p-2 div_info_adicional`}
@@ -327,28 +330,14 @@ const PokeducatorFusionInfo = () => {
                                 </a>
                               
                             }
+                            <p className="fw-bold fs-5 text-white">Naturaleza</p>
+                            <p className="fw-bold">{store.single_fusion_data.nature?.name}</p>
                           </li>
                         </ul>
                       </div>
                     </div>
                   </div>
-                  <div className="bg-light p-2 rounded-4 div_tipo">
-                    <h4 className="fw-bold">TIPO</h4>
-                    <div>{tipoPokemon}</div>
-                  </div>
-                  <div className="bg-light p-2 rounded-4 div_tipo">
-                    <h4 className="fw-bold">NATURE</h4>
-                    {
-                              
-                              <a
-                                className="linksPokemon"
-                                href={`/nature/${store.single_fusion_data.nature?.id}`}
-                              >
-                                <p className="fw-bold">{store.single_fusion_data.nature?.name}</p>
-                              </a>
-                            
-                          }
-                  </div>
+                  
                   
                 </div>
               </div>

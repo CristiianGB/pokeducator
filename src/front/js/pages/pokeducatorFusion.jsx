@@ -466,22 +466,33 @@ const PokeducatorFusion = () => {
           <img className="centred img-fluid" src={loading} alt="Cargando..." />
         </div>
       ) : (
+        
         <div className="container align-items-center">
-          <div
-            className={`row cartasFusion justify-content-center ${
+          <div className={`row cartasFusion justify-content-center pkmn__container ${
               pokemon3 == null ? " d-none" : ""
-            } ${ani != null ? " anim2" : "anim"} `}
-          >
-            <div className="col-md-5  text-center  ">
-              <div className="p-2">
-                <div className="card rounded ">
-                  {pokemon ? (
+            } ${ani != null ? " anim2" : "anim"} `}>
+              <div class="pkmn__name text-white">
+            {pokemon ? (
                     <h4 className="my-3 me-2 text-capitalize">{name3}</h4>
                   ) : (
                     ""
-                  )}
-                  <h4>
-                    {tipos
+                  )}</div>
+              <div class="pkmn__picture">
+                {pokemon3 ? (
+                    <img
+                      className="pkmn__png fusionFoto"
+                      src={pokemon3?.img}
+                      alt="foto pokemon"
+                    />
+                  ) : (
+                    ""
+                  )} 
+                			
+              </div>
+              <div class="pkmn__info">
+					
+					<div class="text-center row d-flex">
+						<div class=" col-md-6">{tipos
                       .filter((a) => pokemon3?.type.includes(a.tipo))
                       .map((tipos) => {
                         return (
@@ -491,19 +502,13 @@ const PokeducatorFusion = () => {
                             alt="foto de tipo"
                           />
                         );
-                      })}
-                  </h4>
-                  {pokemon3 ? (
-                    <img
-                      className="fusionFoto"
-                      src={pokemon3?.img}
-                      alt="foto pokemon"
-                    />
-                  ) : (
-                    ""
-                  )}
-                  <div className="card-body  ">
-                    {pokemon3 ? (
+                      })}<p class="text--small">Tipo</p></div>
+						<div class=" col-md-3">43<p class="text--small">Peso</p></div>
+						<div class=" col-md-3">4<p class="text--small">Altura</p></div>
+					</div>
+          <div className="row d-flex">
+            <div class="float-start text-center col-md-6">
+          {pokemon3 ? (
                       <div className="stats_pokemon mt-3 mb-3 ">
                         <div className="table-responsive rounded-3 tablaStatsFusion">
                           <table className="table ">
@@ -513,7 +518,7 @@ const PokeducatorFusion = () => {
                             <tbody>
                               {pokemon3?.stats?.map((objeto) => (
                                 <tr className="d-flex text-center align-items-center">
-                                  <td className="col-3 ">
+                                  <td className="col-5 ">
                                     {objeto.name == "atk"
                                       ? "Ataque"
                                       : objeto.name == "defens"
@@ -528,7 +533,7 @@ const PokeducatorFusion = () => {
                                       ? "Velocidad"
                                       : ""}
                                   </td>
-                                  <td className="col-6 mt-2">
+                                  <td className="col-5 mt-2">
                                     <div className="progress">
                                       <div
                                         className="progress-bar"
@@ -539,7 +544,7 @@ const PokeducatorFusion = () => {
                                       ></div>
                                     </div>
                                   </td>
-                                  <td className="col-3 fs-6">
+                                  <td className="col-2 fs-6">
                                     {objeto.base_stat}
                                   </td>
                                 </tr>
@@ -551,34 +556,68 @@ const PokeducatorFusion = () => {
                     ) : (
                       ""
                     )}
-                    <div className="row">
-                      <div className="col-sm-6">
-                        <h4 type="text">{ability3?.name}</h4>
-                      </div>
-                      <div className="col-sm-6">
-                        <h4 type="text">{natur3?.name}</h4>
-                      </div>
-                    </div>
-                    <div className="row mt-3">
-                      <div className="col-md-6">
-                        <h4 type="text">{mov31?.name}</h4>
-                      </div>
-                      <div className="col-md-6">
-                        <h4 type="text">{mov32?.name}</h4>
-                      </div>
-                    </div>
-                    <div className="row mt-3">
-                      <div className="col-md-6">
-                        <h4 type="text">{mov33?.name}</h4>
-                      </div>
-                      <div className="col-md-6">
-                        <h4 type="text">{mov34?.name}</h4>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
+					</div>
+					
+          <div className="text-center col-md-6 float-end marginFusion">
+						<div class="row my-3 rowFusion">
+							<div className="col-12">{mov31?.name} {tipos
+                      .filter((a) => mov31?.type.includes(a.tipo))
+                      .map((tipos) => {
+                        return (
+                          <img
+                            className="tipoImg mx-1 float-end"
+                            src={tipos.foto}
+                            alt="foto de tipo"
+                          />
+                        );
+                      })}</div>
+							
+						</div>
+            <div class="row my-3 rowFusion">
+							<div className="col-12">{mov32?.name} {tipos
+                      .filter((a) => mov31?.type.includes(a.tipo))
+                      .map((tipos) => {
+                        return (
+                          <img
+                            className="tipoImg mx-1 float-end"
+                            src={tipos.foto}
+                            alt="foto de tipo"
+                          />
+                        );
+                      })}</div>
+							
+						</div>
+            <div class="row my-3 rowFusion">
+							<div className="col-12">{mov33?.name} {tipos
+                      .filter((a) => mov31?.type.includes(a.tipo))
+                      .map((tipos) => {
+                        return (
+                          <img
+                            className="tipoImg mx-1 float-end"
+                            src={tipos.foto}
+                            alt="foto de tipo"
+                          />
+                        );
+                      })}</div>
+							
+						</div>
+            <div class="row my-3 rowFusion">
+							<div className="col-12">{mov34?.name} {tipos
+                      .filter((a) => mov31?.type.includes(a.tipo))
+                      .map((tipos) => {
+                        return (
+                          <img
+                            className="tipoImg mx-1 float-end"
+                            src={tipos.foto}
+                            alt="foto de tipo"
+                          />
+                        );
+                      })}</div>
+							
+						</div>
+					</div>
+          </div>
+				</div>
           </div>
           <div className="row cartasFusion">
             <div className="col-md-5 text-center ">
@@ -631,7 +670,7 @@ const PokeducatorFusion = () => {
                   )}
                   <div className="card-body  ">
                     {pokemon ? (
-                      <div className="stats_pokemon mt-3 mb-3 ">
+                      <div className="stats_pokemon mb-3 ">
                         <div className="table-responsive rounded-3 tablaStatsFusion">
                           <table className="table ">
                             <thead>
@@ -975,7 +1014,18 @@ const PokeducatorFusion = () => {
                       </div>
                       <div className="col-md-6">
                         <div className={mov24 == "fallo" ? "fallo" : ""}>
-                          Souta
+                        <Select
+                            placeholder={
+                              mov24 == "fallo"
+                                ? "Seleccione Movimiento"
+                                : "Movimiento"
+                            }
+                            components={{ DropdownIndicator }}
+                            options={store.move_data}
+                            getOptionLabel={(option) => type(option)}
+                            getOptionValue={(option) => option.name}
+                            onChange={(option) => setMov24(option)}
+                          />
                         </div>
                       </div>
                     </div>
