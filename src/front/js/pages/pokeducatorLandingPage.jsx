@@ -6,12 +6,11 @@ import fusion from "../../assets/img/fusion.png";
 import { Context } from "../store/appContext.jsx";
 
 function PokeducatorLandingPage() {
-  const {store, actions} = useContext(Context)
+  const { store, actions } = useContext(Context);
 
-  useEffect(()=>{
-    actions.votes()
-
-  },[])
+  useEffect(() => {
+    actions.votes();
+  }, []);
 
   return (
     <div className="container align-items-center maincontainer">
@@ -46,17 +45,17 @@ function PokeducatorLandingPage() {
         <div className="row margin">
           <div className="col-md-4 divPadre2">
             <div className="image-box1 divFotoPodio">
-            {store.votes_pokemons[1] ? (
-            <a href={`/fusioninfo/${store.votes_pokemons[1]?.pokemon_id}`}>
-                    
-                  
-              <img
-                className="card-img-top imagenPodio3 img-fluid"
-                src={store.votes_pokemons[1]?.img}
-                alt="guardería Pokémon en Pokémon Negro y Blanco"
-              />
-              </a>
-              ): ""}
+              {store.votes_pokemons[1] ? (
+                <a href={`/fusioninfo/${store.votes_pokemons[1]?.pokemon_id}`}>
+                  <img
+                    className="card-img-top imagenPodio3 img-fluid"
+                    src={store.votes_pokemons[1]?.img}
+                    alt="guardería Pokémon en Pokémon Negro y Blanco"
+                  />
+                </a>
+              ) : (
+                ""
+              )}
             </div>
             <div className="podium2 divMedalla">
               <img src={medalla2} className="medalla2" />
@@ -65,17 +64,17 @@ function PokeducatorLandingPage() {
 
           <div className="col-md-4 divPadre1 ">
             <div className="image-box2 divFotoPodio1">
-            {store.votes_pokemons[0] ? (
-            <a href={`/fusioninfo/${store.votes_pokemons[0]?.pokemon_id}`}>
-                    
-                  
-              <img
-                className="card-img-top imagenPodio3 img-fluid"
-                src={store.votes_pokemons[0]?.img}
-                alt="guardería Pokémon en Pokémon Negro y Blanco"
-              />
-              </a>
-              ): ""}
+              {store.votes_pokemons[0] ? (
+                <a href={`/fusioninfo/${store.votes_pokemons[0]?.pokemon_id}`}>
+                  <img
+                    className="card-img-top imagenPodio3 img-fluid"
+                    src={store.votes_pokemons[0]?.img}
+                    alt="guardería Pokémon en Pokémon Negro y Blanco"
+                  />
+                </a>
+              ) : (
+                ""
+              )}
             </div>
             <div className="podium1 divMedalla">
               <img src={medalla1} className="medalla1" />
@@ -84,16 +83,16 @@ function PokeducatorLandingPage() {
           <div className="col-md-4 divPadre3">
             <div className="image-box3 divFotoPodio3">
               {store.votes_pokemons[2] ? (
-            <a href={`/fusioninfo/${store.votes_pokemons[2]?.pokemon_id}`}>
-                    
-                  
-              <img
-                className="card-img-top imagenPodio3 img-fluid"
-                src={store.votes_pokemons[2]?.img}
-                alt="guardería Pokémon en Pokémon Negro y Blanco"
-              />
-              </a>
-              ): ""}
+                <a href={`/fusioninfo/${store.votes_pokemons[2]?.pokemon_id}`}>
+                  <img
+                    className="card-img-top imagenPodio3 img-fluid"
+                    src={store.votes_pokemons[2]?.img}
+                    alt="guardería Pokémon en Pokémon Negro y Blanco"
+                  />
+                </a>
+              ) : (
+                ""
+              )}
             </div>
             <div className="podium3 divMedalla">
               <img src={medalla3} className="medalla3" />
@@ -102,197 +101,47 @@ function PokeducatorLandingPage() {
         </div>
 
         <div className="equipos">
-          <div className="row teamRow">
-            <div className="col-sm perfilPadre card cardTeam text-center cardPerfil">
-              <img
-                src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/19.png"
-                alt=""
-                className="fotoPerfilEquipos"
-              />
-            </div>
-            <div className="col-sm card cardTeam text-center">
-              <a href="https://3000-cristiiangb-pokeducator-ykzxqppapc2.ws-eu71.gitpod.io/pokemon/1">
-                <img
-                  src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/1.png"
-                  alt=""
-                  className="fotoPokemonEquipos"
-                />
-              </a>
-            </div>
-            <div className="col-sm card cardTeam text-center">
-              <a href="https://3000-cristiiangb-pokeducator-ykzxqppapc2.ws-eu71.gitpod.io/pokemon/1">
-                <img
-                  src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/24.png"
-                  alt=""
-                  className="fotoPokemonEquipos"
-                />
-              </a>
-            </div>
-            <div className="col-sm card cardTeam text-center">
-              <a href="https://3000-cristiiangb-pokeducator-ykzxqppapc2.ws-eu71.gitpod.io/pokemon/1">
-                <img
-                  src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/21.png"
-                  alt=""
-                  className="fotoPokemonEquipos"
-                />
-              </a>
-            </div>
-            <div className="col-sm card cardTeam text-center">
-              <a href="https://3000-cristiiangb-pokeducator-ykzxqppapc2.ws-eu71.gitpod.io/pokemon/1">
-                <img
-                  src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/22.png"
-                  alt=""
-                  className="fotoPokemonEquipos"
-                />
-              </a>
-            </div>
-            <div className="col-sm card cardTeam text-center">
-              <a href="https://3000-cristiiangb-pokeducator-ykzxqppapc2.ws-eu71.gitpod.io/pokemon/1">
-                <img
-                  src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/23.png"
-                  alt=""
-                  className="fotoPokemonEquipos"
-                />
-              </a>
-            </div>
-            <div className="col-sm card cardTeam text-center">
-              <a href="https://3000-cristiiangb-pokeducator-ykzxqppapc2.ws-eu71.gitpod.io/pokemon/1">
-                <img
-                  src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/1.png"
-                  alt=""
-                  className="fotoPokemonEquipos"
-                />
-              </a>
-            </div>
-          </div>
-        </div>
-
-        <div className="row teamRow">
-          <div className="col-sm perfilPadre card cardPerfil cardTeam text-center">
-            <img
-              src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/19.png"
-              alt=""
-              className="fotoPerfilEquipos"
-            />
-          </div>
-          <div className="col-sm card cardTeam text-center">
-            <a href="https://3000-cristiiangb-pokeducator-ykzxqppapc2.ws-eu71.gitpod.io/pokemon/1">
-              <img
-                src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/10.png"
-                alt=""
-                className="fotoPokemonEquipos"
-              />
-            </a>
-          </div>
-          <div className="col-sm card cardTeam text-center">
-            <a href="https://3000-cristiiangb-pokeducator-ykzxqppapc2.ws-eu71.gitpod.io/pokemon/1">
-              <img
-                src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/12.png"
-                alt=""
-                className="fotoPokemonEquipos"
-              />
-            </a>
-          </div>
-          <div className="col-sm card cardTeam text-center">
-            <a href="https://3000-cristiiangb-pokeducator-ykzxqppapc2.ws-eu71.gitpod.io/pokemon/1">
-              <img
-                src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/17.png"
-                alt=""
-                className="fotoPokemonEquipos"
-              />
-            </a>
-          </div>
-          <div className="col-sm card cardTeam text-center">
-            <a href="https://3000-cristiiangb-pokeducator-ykzxqppapc2.ws-eu71.gitpod.io/pokemon/1">
-              <img
-                src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/13.png"
-                alt=""
-                className="fotoPokemonEquipos"
-              />
-            </a>
-          </div>
-          <div className="col-sm card cardTeam text-center">
-            <a href="https://3000-cristiiangb-pokeducator-ykzxqppapc2.ws-eu71.gitpod.io/pokemon/1">
-              <img
-                src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/15.png"
-                alt=""
-                className="fotoPokemonEquipos"
-              />
-            </a>
-          </div>
-          <div className="col-sm card cardTeam text-center">
-            <a href="https://3000-cristiiangb-pokeducator-ykzxqppapc2.ws-eu71.gitpod.io/pokemon/1">
-              <img
-                src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/11.png"
-                alt=""
-                className="fotoPokemonEquipos"
-              />
-            </a>
-          </div>
-        </div>
-
-        <div className="row teamRow">
-          <div className="col-sm perfilPadre card cardPerfil cardTeam text-center">
-            <img
-              src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/19.png"
-              alt=""
-              className="fotoPerfilEquipos"
-            />
-          </div>
-          <div className="col-sm card cardTeam text-center">
-            <a href="https://3000-cristiiangb-pokeducator-ykzxqppapc2.ws-eu71.gitpod.io/pokemon/1">
-              <img
-                src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/8.png"
-                alt=""
-                className="fotoPokemonEquipos"
-              />
-            </a>
-          </div>
-          <div className="col-sm card cardTeam text-center">
-            <a href="https://3000-cristiiangb-pokeducator-ykzxqppapc2.ws-eu71.gitpod.io/pokemon/1">
-              <img
-                src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/6.png"
-                alt=""
-                className="fotoPokemonEquipos"
-              />
-            </a>
-          </div>
-          <div className="col-sm card cardTeam text-center">
-            <a href="https://3000-cristiiangb-pokeducator-ykzxqppapc2.ws-eu71.gitpod.io/pokemon/1">
-              <img
-                src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/5.png"
-                alt=""
-                className="fotoPokemonEquipos"
-              />
-            </a>
-          </div>
-          <div className="col-sm card cardTeam text-center">
-            <a href="https://3000-cristiiangb-pokeducator-ykzxqppapc2.ws-eu71.gitpod.io/pokemon/1">
-              <img
-                src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/4.png"
-                alt=""
-                className="fotoPokemonEquipos"
-              />
-            </a>
-          </div>
-          <div className="col-sm card cardTeam text-center">
-            <a href="https://3000-cristiiangb-pokeducator-ykzxqppapc2.ws-eu71.gitpod.io/pokemon/1">
-              <img
-                src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/13.png"
-                alt=""
-                className="fotoPokemonEquipos"
-              />
-            </a>
-          </div>
-          <div className="col-sm card cardTeam text-center">
-            <a href="https://3000-cristiiangb-pokeducator-ykzxqppapc2.ws-eu71.gitpod.io/pokemon/1">
-              <img
-                src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/2.png"
-                alt=""
-                className="fotoPokemonEquipos"
-              />
-            </a>
-          </div>
+          {store.teams
+            ? store.teams.map((team) =>
+                team.length > 0 ? (
+                  <div className="row teamRow">
+                    {team.map((pokemon) => (
+                      pokemon.father ? (
+                        <div className="col-sm card cardTeam text-center">
+                        <a href={"fusion/"+pokemon.pokemon_id}>
+                          <img
+                            src={pokemon.img}
+                            alt=""
+                            className="fotoPokemonEquipos"
+                          />
+                        </a>
+                      </div>
+                      ) : (
+                        <div className="col-sm card cardTeam text-center">
+                        <a href={"pokemon/"+pokemon.id}>
+                          <img
+                            src={pokemon.img}
+                            alt=""
+                            className="fotoPokemonEquipos"
+                          />
+                        </a>
+                      </div>
+                      )
+                  
+                    ))}
+                   { /*<div className="col-sm perfilPadre card cardTeam text-center cardPerfil">
+                      <img
+                        src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/19.png"
+                        alt=""
+                        className="fotoPerfilEquipos"
+                      />
+                    </div>*/}
+                  </div>
+                ) : (
+                  ""
+                )
+              )
+            : ""}
         </div>
       </div>
       <div></div>

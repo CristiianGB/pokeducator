@@ -47,15 +47,104 @@ def pokemon_votados():
     votes = Pokemon_fusion.query.order_by(Pokemon_fusion.votes.desc()).limit(3)
     votes = list(map(lambda x: x.serialize(), votes ))
 
-    return jsonify({"votes":votes})
+    teams = Equipo.query.distinct(Equipo.user_id).limit(3)
+    teams = list(map(lambda x: x.serialize(), teams ))
+    team1 = [] 
+    team2 = [] 
+    team3 = []
+    count = 0
+    for i in teams:
+
+
+        equip = Equipo.query.filter_by(user_id=i["user_id"])
+        equip = list(map(lambda x: x.serialize(), equip ))
+
+        for i in equip:
+
+            if(i["pokemon_id"] ):
+                pokemon = Pokemon.query.filter_by(id=i["pokemon_id"]).first().serialize()
+                if(count == 0):
+                    team1.append(pokemon)
+                elif(count == 1):
+                    team2.append(pokemon)
+                else:
+                    team3.append(pokemon)
+            else:
+                pokemon = Pokemon_fusion.query.filter_by(pokemon_id=i["pokemon_fusion_id"]).first().serialize()
+                if(count == 0):
+                    team1.append(pokemon)
+                elif(count == 1):
+                    team2.append(pokemon)
+                else:
+                    team3.append(pokemon)
+        
+        count = count + 1
+            
+   
+
+
+    return jsonify({"votes":votes,"team1":team1,"team2":team2,"team3":team3})
+
+@api.route("/lastvotes", methods = ["GET"])
+@jwt_required()
+def lastvotes():
+  
+    current_user_id = get_jwt_identity()
+    votes = Votes.query.filter_by(user_id=current_user_id).order_by(Votes.id.desc()).limit(3)
+    votes = list(map(lambda x: x.serialize(), votes ))
+
+    pokemons = []
+    for i in votes:
+        pokemon = Pokemon_fusion.query.filter_by(pokemon_id=i["pokemon_id"]).first().serialize()
+        pokemons.append(pokemon)
+        print(pokemon)
+    return jsonify({"pokemons":pokemons})
+
+@api.route("/distinctteam", methods = ["GET"])
+def distinctteam():
+  
+    teams = Equipo.query.distinct(Equipo.user_id).limit(3)
+    teams = list(map(lambda x: x.serialize(), teams ))
+    team1 = [] 
+    team2 = [] 
+    team3 = []
+    count = 0
+    for i in teams:
+
+
+        equip = Equipo.query.filter_by(user_id=i["user_id"])
+        equip = list(map(lambda x: x.serialize(), equip ))
+
+        for i in equip:
+
+            if(i["pokemon_id"] ):
+                pokemon = Pokemon.query.filter_by(id=i["pokemon_id"]).first().serialize()
+                if(count == 0):
+                    team1.append(pokemon)
+                elif(count == 1):
+                    team2.append(pokemon)
+                else:
+                    team3.append(pokemon)
+            else:
+                pokemon = Pokemon_fusion.query.filter_by(pokemon_id=i["pokemon_fusion_id"]).first().serialize()
+                if(count == 0):
+                    team1.append(pokemon)
+                elif(count == 1):
+                    team2.append(pokemon)
+                else:
+                    team3.append(pokemon)
+        
+        count = count + 1
+            
+   
+    return jsonify({"team1":team1,"team2":team2,"team3":team3})
+
 
 @api.route("/login/<string:username>/<string:password>", methods = ["GET"])
 def login(username,password):
 
     user = User.query.filter_by(username=username, password=password).first()
-    print(username)
-    print(password)
-    print(user)
+
     if user:
         access_token = create_access_token(identity=user.id)
         votes = Votes.query.filter_by(user_id=user.id)
@@ -87,7 +176,6 @@ def signup():
 def token_access():
    
     current_user_id = get_jwt_identity()
-    print(current_user_id)
     user = User.query.get(current_user_id)
     
     return jsonify(user.serialize()), 200
@@ -198,7 +286,7 @@ def createPokemonFusion():
     if (learning):
         fusion = Pokemon_fusion.query.order_by(
             Pokemon_fusion.pokemon_id.desc()).first().findone()
-        print(fusion)
+
         for i in learning:
             move = db.session.query(Moves).filter_by(
                 id=i).first().findone()
@@ -273,7 +361,7 @@ def createMove():
     if (learning):
         move = db.session.query(Moves).filter_by(
             name=name).first().findone()
-        print(move)
+
         for i in learning:
             pokemon = db.session.query(Pokemon).filter_by(
                 name=i).first().findone()
@@ -384,8 +472,7 @@ def addvote():
     pokemon = Pokemon_fusion.query.filter_by(pokemon_id=pokemon_id).update(dict(votes=vot))
 
 
-    print(pokemon)
-
+  
     db.session.add(vote)
     db.session.commit()
     return jsonify({"vote": "vote"}), 200
@@ -423,14 +510,14 @@ def allmoves(pokemon_id):
     for i in rows:
         move = Moves.query.filter_by(move_id=i["move_id"]).first().serialize()
         moves.append(move)
-    print(moves)
+ 
     pokemon = Pokemon.query.filter_by(id=pokemon_id).first().serialize()
     pokeid = Pokemon.query.filter_by(id=pokemon_id).first().findone()
     abilities = []
-    print(pokeid["pokemon_id"])
+
     rows = Pokemon_Ability.query.filter_by(pokemon_id=pokeid["pokemon_id"])
     rows = list(map(lambda x: x.serialize(), rows))
-    print(rows)
+  
     for i in rows:
         ability = Ability.query.filter_by(
             ability_id=i["ability_id"]).first().serialize()
@@ -511,14 +598,14 @@ def storeid(user_id):
     equipos = list(map(lambda x: x.serialize(), equipos))
     equiposall = []
     for i in equipos:
-        print(i)
+    
         if(i["pokemon_fusion_id"] != None):
 
             equipo = Pokemon_fusion.query.filter_by(pokemon_id=i["pokemon_fusion_id"]).first().serialize()
             equiposall.append({"equipo":equipo, "linea":i["linea"]})
         if(i["pokemon_id"] != None):
             equipo = Pokemon.query.filter_by(id=i["pokemon_id"]).first().serialize()
-            print(equipo)
+      
             equiposall.append({"equipo":equipo, "linea":i["linea"]})
 
 
