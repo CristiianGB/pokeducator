@@ -229,7 +229,7 @@ const PokeducatorFusion = () => {
     actions.addfus(pokeFus);
 
     const resp = fetch(
-      "https://3001-cristiiangb-pokeducator-7yne1ttdf09.ws-eu75.gitpod.io/api/createPokemonFusion",
+      "https://3001-cristiiangb-pokeducator-orhyao9u3ig.ws-eu74.gitpod.io/api/createPokemonFusion",
       {
         method: "POST",
         headers: { "Content-Type": "application/json" },
